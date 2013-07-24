@@ -1,0 +1,33 @@
+DROP TABLE ActivityLog
+DROP TABLE ActivityLogType
+DROP TABLE ConfigurationSetting
+DROP TABLE Addresses
+DROP TABLE GenericAttributes
+DROP TABLE Country
+DROP TABLE Currencies
+DROP TABLE EmailAccount
+DROP TABLE InlineNumbers
+DROP TABLE Languages
+DROP TABLE LocaleStringResource
+DROP TABLE LocalizedProperty
+DROP TABLE MessageTemplate
+DROP TABLE Permissions
+DROP TABLE PermissionsInRoles
+DROP TABLE QueuedEmail
+DROP TABLE ScheduleTask
+DROP TABLE StateProvince
+DROP TABLE SystemLog
+DROP TABLE UserAttributes
+DROP TABLE UserLoginHistory
+DROP TABLE UserRoles
+DROP TABLE clientaudithistory
+DROP TABLE Clients
+DROP TABLE Users
+DROP TABLE UsersInRoles
+DROP TABLE Widget
+
+DROP FUNCTION fnCreateInlineTable
+DROP FUNCTION fnGetGMTDateTime
+
+DROP VIEW Function_Assist_GETDATE
+DROP VIEW Function_Assist_GETUTCDATE
