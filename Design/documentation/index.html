@@ -1,0 +1,3595 @@
+<!doctype html>  
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	
+	<title>Supr - Responsive Admin Template</title>
+	
+	<meta name="description" content="">
+	<meta name="author" content="SuggeElson">
+	<meta name="copyright" content="SuggeElson">
+	<meta name="generator" content="Documenter v2.0 http://rxa.li/documenter">
+	<meta name="date" content="2013-06-27T00:00:00+02:00">
+	
+	<link rel="stylesheet" href="assets/css/documenter_style.css" media="all">
+	<link rel="stylesheet" href="assets/js/google-code-prettify/prettify.css" media="screen">
+	<script src="assets/js/google-code-prettify/prettify.js"></script>
+
+	<script src="assets/js/jquery.js"></script>
+	
+	<script src="assets/js/jquery.scrollTo.js"></script>
+	<script src="assets/js/jquery.easing.js"></script>
+	
+	<script>document.createElement('section');var duration='500',easing='swing';</script>
+	<script src="assets/js/script.js"></script>
+	
+	<style>
+		html{background-color:#FFFFFF;color:#666666;background-image:url(assets/images/image_1.png);background-repeat:repeat;background-attachment:scroll;}
+		::-moz-selection{background:#333636;color:#00DFFC;}
+		::selection{background:#333636;color:#00DFFC;}
+		#documenter_sidebar #documenter_logo{background-image:url(assets/images/image_4.png);}
+		a{color:#3399CC;}
+		.btn {
+			border-radius:3px;
+		}
+		.btn-primary {
+			  background-image: -moz-linear-gradient(top, #, #);
+			  background-image: -ms-linear-gradient(top, #, #);
+			  background-image: -webkit-gradient(linear, 0 0, 0 %, from(#595E5E), to(#));
+			  background-image: -webkit-linear-gradient(top, #, #);
+			  background-image: -o-linear-gradient(top, #, #);
+			  background-image: linear-gradient(top, #, #);
+			  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#', endColorstr='#', GradientType=0);
+			  border-color: # # #bfbfbf;
+			  color:#;
+		}
+		.btn-primary:hover,
+		.btn-primary:active,
+		.btn-primary.active,
+		.btn-primary.disabled,
+		.btn-primary[disabled] {
+		  border-color: # # #bfbfbf;
+		  background-color: #;
+		}
+		hr{border-top:1px solid #D4D4D4;border-bottom:1px solid #FFFFFF;}
+		#documenter_sidebar, #documenter_sidebar ul a{background-color:#595E5E;color:#FFFFFF;http://suggeelson.com/themes/supr/img/2.png}
+		#documenter_sidebar ul a{-webkit-text-shadow:1px 1px 0px #494F4F;-moz-text-shadow:1px 1px 0px #494F4F;text-shadow:1px 1px 0px #494F4F;}
+		#documenter_sidebar ul{border-top:1px solid #212424;}
+		#documenter_sidebar ul a{border-top:1px solid #494F4F;border-bottom:1px solid #212424;color:#3399CC;}
+		#documenter_sidebar ul a:hover{background:#333636;color:#00DFFC;border-top:1px solid #333636;}
+		#documenter_sidebar ul a.current{background:#333636;color:#00DFFC;border-top:1px solid #333636;}
+		#documenter_copyright{display:block !important;visibility:visible !important;}
+	</style>
+	
+</head>
+<body class="documenter-project-supr">
+	<div id="documenter_sidebar">
+		<a href="#documenter_cover" id="documenter_logo"></a>
+		<ul id="documenter_nav">
+			<li><a class="current" href="#documenter_cover">Start</a></li>
+				
+			<li><a href="#features" title="Features">Features</a></li>
+			<li><a href="#upgrade_instructions" title="Upgrade instructions">Upgrade instructions</a></li>
+			<li><a href="#files_structure" title="Files structure">Files structure</a></li>
+			<li><a href="#html_structure" title="HTML structure">HTML structure</a></li>
+			<li><a href="#php_files" title="PHP files">PHP files</a></li>
+			<li><a href="#css_structure" title="CSS structure">CSS structure</a></li>
+			<li><a href="#plugins_structure" title="Plugins structure">Plugins structure</a></li>
+			<li><a href="#jquery_plugins" title="JQuery plugins">JQuery plugins</a></li>
+			<li><a href="#plugin_loader" title="Plugin loader">Plugin loader</a></li>
+			<li><a href="#credits_and_source_for_plugins" title="Credits and source for plugins">Credits and source for plugins</a></li>
+			<li><a href="#changelog" title="Changelog">Changelog</a></li>
+
+		</ul>
+		<div id="documenter_copyright">Copyright SuggeElson 2013<br>
+		made with the <a href="http://rxa.li/documenter">Documenter v2.0</a> 
+		</div>
+	</div>
+	<div id="documenter_content">
+	<section id="documenter_cover">
+	<h1>Supr</h1>
+	<h2>Responsive Admin Template</h2>
+	<div id="documenter_buttons">
+		<a href="http://www.suggeelson.com/support" class="btn btn-primary btn-large">Support Forum</a> <a href="http://themeforest.net/user/SuggeElson/portfolio" class="btn btn-large">Portfolio</a> 
+	</div>
+	<hr>
+	<ul>
+	<li>created: 08/15/2012</li>
+	<li>latest update: 06/27/2013</li>
+	<li>by: SuggeElson</li>
+	<li><a href="http://themes.suggeelson.com/supr">themes.suggeelson.com/supr</a></li>
+	
+	</ul>
+	<p>First of all i want to thank you for purchasing my theme. If you have any questions that are beyond the scope of this help file, please use my support forum i will glad to help you. Thanks so much!</p>
+	</section>
+	
+	<section id="features">
+	<div class="page-header"><h3>Features</h3><hr class="notop"></div>
+<h2>
+	Surp - features</h2>
+<ul>
+	<li>
+		Responsive design</li>
+	<li>
+		2 columns layout ( sidebar and mainContent with hide sidebar feature)</li>
+	<li>
+		Integrated flot charts - Lines , bars and pies, with auto update content and tooltips.</li>
+	<li>
+		Jquery sparklines ( bars, lines, pies ),</li>
+	<li>
+		Form Elements
+		<ul>
+			<li>
+				Text fields - password, readonly , tooltip , placeholder, disabled input field , predefined value, max lenghts, tags, simple text area, auto grow text area, text area with limiter, WYSIWYG Editor, masked input fields</li>
+			<li>
+				Custom check boxes</li>
+			<li>
+				Custom radio buttons</li>
+			<li>
+				Iphone like style checkboxes and radios.</li>
+			<li>
+				Selects - simple select, select with filter, select with search fields, multi select, dual multi select, multi select with filter.</li>
+			<li>
+				Spinners - normal spinner, with currency, with steps, Spinner with decimals and step.</li>
+			<li>
+				Color picker</li>
+			<li>
+				Date picker - normal , inline.</li>
+			<li>
+				Time picker.</li>
+			<li>
+				Form wizzard with steps and validation.</li>
+			<li>
+				Validation - required field, min lenght, max lenght and etc all types.</li>
+		</ul>
+	</li>
+	<li>
+		Typography- Headings, links, tags, cursive text, underline text, color text - 5 predefined colors, blockquote, codeview, 14 list types with custom icon and colors&nbsp;, badges and labels.</li>
+	<li>
+		Grid system - Fluid grid system 12 columns.</li>
+	<li>
+		Tables - static and dynamic. ( Tables are responsive too).</li>
+	<li>
+		Galleries - with pagination, pretty photo support and delete.</li>
+	<li>
+		Calendar - simple as widget and with drop items.</li>
+	<li>
+		Icons - 400+ font-face icons ( any color or size ).</li>
+	<li>
+		Buttons - normal buttons, small buttons, big buttons, buttons with icons, buttons with notification, buttons with status change, different states.</li>
+	<li>
+		Notification - Pines notification and static notification ( 5 types - normal, success, error, info, warrning).</li>
+	<li>
+		Tooltips and popovers.</li>
+	<li>
+		Ui dialogs and modals.</li>
+	<li>
+		Paginations and breadcrumb.</li>
+	<li>
+		Ajax loaders -more that 70 types.</li>
+	<li>
+		Progress bars - simple ,animated with delay, updating in every 2 seconds, 5 colors.</li>
+	<li>
+		Sliders - simple , range slider, minimum value , maximum value, circular typ ( all are touch friendly).</li>
+	<li>
+		File manager with upload and only uploader.</li>
+	<li>
+		Widgets:
+		<ul>
+			<li>
+				Default widget container.</li>
+			<li>
+				Closed by default</li>
+			<li>
+				Collapsible</li>
+			<li>
+				With icons</li>
+			<li>
+				With loaders, badges and labels.</li>
+			<li>
+				With progress bars</li>
+			<li>
+				With search fields&nbsp;</li>
+			<li>
+				With sparklines.</li>
+			<li>
+				With buttons and checkboxes</li>
+			<li>
+				With gradient header style.</li>
+			<li>
+				With tables , checkboxes and mass action button.</li>
+			<li>
+				Calendar widget.</li>
+			<li>
+				Todo list.</li>
+			<li>
+				Vital stats</li>
+			<li>
+				Reminder widget</li>
+			<li>
+				Spark line stats.</li>
+			<li>
+				Send Private messages widget.</li>
+			<li>
+				Gallery view.</li>
+			<li>
+				Recent Activity.</li>
+			<li>
+				Recent users.</li>
+			<li>
+				Wizzard with steps.</li>
+			<li>
+				Contact widget.</li>
+			<li>
+				Messages layout.</li>
+			<li>
+				Typeahead widget.</li>
+			<li>
+				Carousel widget.</li>
+		</ul>
+	</li>
+	<li>
+		Error pages - 403,404,405, 500,503, offline page.</li>
+	<li>
+		All twitter boostrap features are integrated too.</li>
+</ul>
+</section>
+<section id="upgrade_instructions">
+	<div class="page-header"><h3>Upgrade instructions</h3><hr class="notop"></div>
+<h2>
+	Upgrade from 1.9 to 2.0</h2>
+<ul>
+	<li>
+		First backup your existing project before do anything&nbsp;</li>
+	<li>
+		Be sure if you have changes in main.css file to isolate your code and move it to safe location. I advice you to use custom.css file</li>
+	<li>
+		Be sure if you have changes to main.js file to backup your code before replace with new one.</li>
+	<li>
+		New version have some html markup changes general is to sidebar so get the new markup from <strong>structure.html &nbsp;</strong>and populate your existing template ( header, sidebar , footer), also some new javascript libraries are added like modernizr be sure to not skip all required files</li>
+	<li>
+		replace all files from css folder to your css folder ( make sure you backup old files first )</li>
+	<li>
+		replace all files from js, and plugins folders to your folders ( backup files first )</li>
+</ul>
+<h3>
+	Activate fixed version.</h3>
+<p>
+	v2.0 have new way to activate fixed version just open main.js and change <strong>fixedWidth</strong> property to false in line 6.</p>
+<h3>
+	Activate rtl version.</h3>
+<p>
+	Open main.js and change in line 7 property <strong>rtl&nbsp;</strong>to true.</p>
+<p>
+	Here how looks options</p>
+<pre class="prettyprint lang-js linenums">
+
+<div>
+	//------------- Options for Supr - admin tempalte -------------//</div>
+<div>
+	var supr_Options = {</div>
+<div>
+	fixedWidth: false, //activate fixed version with true</div>
+<div>
+	rtl:true, //activate rtl version with true</div>
+<div>
+	showSwitcher: false //show switcher with true</div>
+<div>
+	}</div>
+</pre>
+<p>
+	Some plugins like fullCalnedar have rlt option so be sure to activate if you need it.&nbsp;</p>
+<p>
+	Don`t be shame to contact me and ask help if something not working or you have troubles with new version.</p>
+</section>
+<section id="files_structure">
+	<div class="page-header"><h3>Files structure</h3><hr class="notop"></div>
+<p>
+	In downloaded package you&#39;ll find &quot;html&quot; folder, which contains main theme files: HTML files, Jquery plugins and libraries, images, PHP files, CSS files:</p>
+<p>
+	<img alt="" src="assets/images/image_3.jpg"></p>
+<p>
+	All Css files, js files, php files, images are in proper folders all jquery plugins are in folder plugins</p>
+</section>
+<section id="html_structure">
+	<div class="page-header"><h3>HTML structure</h3><hr class="notop"></div>
+<p>	In total there are 23 main theme .html files:</p>
+<ul>	<li>		index.html - login page</li>
+	<li>		dashboard.html - dashboard page</li>
+	<li>		forms.html - page with form elements</li>
+	<li>		form-validation.html - page with form validation</li>
+	<li>		charts.html - page with chart and pies using flot library</li>
+	<li>		typo.html - template typography</li>
+	<li>		grid.html - grid structure</li>
+	<li>		tables.html - page with static tables&nbsp;</li>
+	<li>		data-table - page with dynamic table</li>
+	<li>		calendar.html - calendar page</li>
+	<li>		widgets.html - page with widgets demo</li>
+	<li>		icons.html - font-face icons</li>
+	<li>		elements.html - UI elements</li>
+	<li>		invoice.html - Invoice template page</li>
+	<li>		profile.html - user profile page</li>
+	<li>		file.html - file manager and upload form.</li>
+	<li>		403.html - 403 error page</li>
+	<li>		404.html - 404 error page</li>
+	<li>		405.html - 405 error page</li>
+	<li>		500.html - 500 error page</li>
+	<li>		503.html - 503 error page</li>
+	<li>		offline.html - offline error page</li>
+</ul>
+<p>	All these html files have certain html blocks in their source code. All the html blocks are clearly commented out and should be easy to spot. Each HTML file contains left navigation sidebar. The main structure of a typical page would be:</p>
+<pre class="prettyprint lang-html linenums">
+
+<p>	&lt;div id=&quot;header&quot;&gt;</p>
+<p>	&lt;/div&gt;&lt;!-- end header --&gt;</p>
+<p>	&lt;div id=&quot;wrapper&quot;&gt;</p>
+<p>	&nbsp; &nbsp; &nbsp; &lt;!--Sidebar background--&gt;</p>
+<div>
+	<pre class="prettyprint lang-html linenums">
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;div id=&quot;sidebarbg&quot;&gt;&lt;/div&gt;</pre>
+</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &lt;!--Sidebar content--&gt;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &lt;div id=&quot;sidebar&quot;&gt;</div>
+<p>	&nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;&lt;!-- End sidebar content--&gt;</p>
+<p>	&nbsp;</p>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &lt;!--Body content--&gt;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &lt;div id=&quot;content&quot; class=&quot;clearfix&quot;&gt;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;contentwrapper&quot;&gt;&lt;!--Content wrapper--&gt;</div>
+<p>	&nbsp;</p>
+<p>	&nbsp;</p>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/div&gt;&lt;!-- End contentwrapper --&gt;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;&lt;!-- End #content --&gt;</div>
+<p>	&nbsp;</p>
+<p>	&lt;/div&gt;&lt;!-- end wrapper --&gt;</p>
+<p>	&nbsp;</p>
+</pre>
+</section>
+<section id="php_files">
+	<div class="page-header"><h3>PHP files</h3><hr class="notop"></div>
+<p>
+	&nbsp;</p>
+<div>
+	There are 3 .php main files included to the package:</div>
+<div>
+	&nbsp;</div>
+<ul>
+	<li>
+		connector.php - php connector for file manager</li>
+	<li>
+		elFinder.class.php - main settings for file manager</li>
+	<li>
+		upload.php - server side settings for file uploader</li>
+</ul>
+<div>
+	In upload.php file you can set folder for uploaded files. All PHP files are well commented so just follow those tips to setup theme features for your needs.</div>
+<div>
+	&nbsp;</div>
+<p class="info">
+	Read full documentation here:&nbsp;<a href="https://github.com/Studio-42/elFinder/wiki">https://github.com/Studio-42/elFinder/wiki</a></p>
+</section>
+<section id="css_structure">
+	<div class="page-header"><h3>CSS structure</h3><hr class="notop"></div>
+<p>
+	Template contain this css files<img alt="" src="assets/images/image_2.jpg"></p>
+<p>
+	<strong>bootstrap</strong> folder contain all twitter boostrap css files</p>
+<p>
+	<strong>supr-theme</strong> folder contain all JQuery theme files</p>
+<p>
+	<strong>icons.css</strong> contain font-face icons for this template</p>
+<p>
+	<strong>main.css</strong> - this is the main css file.</p>
+<p class="warning">
+	do not edit this files, just create a new one and put after main.css in the head of each document. This will help you to mantain template after i release some updates. And not mess the template.</p>
+<h2>
+	Google fonts</h2>
+<p>
+	I used &quot;Open Sans&quot; font from Google Font Library for headings and &quot;Droid Sans&quot; for paragraph. In each HTML page inside &lt;head&gt; tag inserted &nbsp;this line of code, which loads this font from Google library:</p>
+<pre class="prettyprint lang-html linenums">
+
+<div>
+	<pre class="prettyprint lang-html linenums">
+&lt;!-- Use new way for google web fonts&nbsp;</pre>
+</div>
+<div>
+	&nbsp; &nbsp; http://www.smashingmagazine.com/2012/07/11/avoiding-faux-weights-styles-google-web-fonts --&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&#39;http://fonts.googleapis.com/css?family=Open+Sans:400,700&#39; rel=&#39;stylesheet&#39; type=&#39;text/css&#39; /&gt; &lt;!-- Headings --&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&#39;http://fonts.googleapis.com/css?family=Droid+Sans:400,700&#39; rel=&#39;stylesheet&#39; type=&#39;text/css&#39; /&gt; &lt;!-- Text --&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;!--[if lt IE 9]&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;http://fonts.googleapis.com/css?family=Open+Sans:400&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;http://fonts.googleapis.com/css?family=Open+Sans:700&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;http://fonts.googleapis.com/css?family=Droid+Sans:400&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;http://fonts.googleapis.com/css?family=Droid+Sans:700&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;![endif]--&gt;</div>
+<p>
+	&nbsp;</p>
+<div>
+	If you want to use other just go to http://www.google.com/webfonts</div>
+<div>
+	&nbsp;</div>
+<div>
+	Choise your favorite font and click quick-use , copy and paste the code after this you need to edit the &nbsp;main.css in line 221 and 222.</div>
+<div>
+	&nbsp;</div>
+<div>
+	All CSS files are well commented, so you can easily find and edit any class in any CSS file.</div>
+<div>
+	&nbsp;</div>
+</pre>
+</section>
+<section id="plugins_structure">
+	<div class="page-header"><h3>Plugins structure</h3><hr class="notop"></div>
+<p>
+	In total there are 36 plugin directories:</p>
+<p>
+	<img alt="" src="assets/images/image_5.jpg"></p>
+<p>
+	Each plugin folder have same structure - js files , css files and images ( some plugins not have css files or images )</p>
+<p>
+	All plugins are inserted in the bottom of the page if have js files and in the head of the page if have css files.</p>
+<p>
+	I like this way becouse you easy remove some if not want to use.</p>
+<p>
+	Css files for plugins:</p>
+<div>
+	<pre class="prettyprint lang-html linenums">
+&lt;!-- Plugin stylesheets --&gt;
+</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/qtip/jquery.qtip.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/fullcalendar/fullcalendar.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/jpages/jPages.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/prettify/prettify.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/inputlimiter/jquery.inputlimiter.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/ibutton/jquery.ibutton.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/uniform/uniform.default.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/color-picker/color-picker.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/select/select2.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/validate/validate.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/pnotify/jquery.pnotify.default.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/pretty-photo/prettyPhoto.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/smartWizzard/smart_wizard.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/dataTables/jquery.dataTables.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/elfinder/elfinder.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;link href=&quot;plugins/plupload/jquery.ui.plupload/css/jquery.ui.plupload.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</div>
+<p>
+</pre>
+	And js files for plugins:</p>
+<div>
+	<pre class="prettyprint lang-html linenums">
+&lt;!-- Le javascript
+</div>
+<div>
+	&nbsp; &nbsp; ================================================== --&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;js/bootstrap/bootstrap.js&quot;&gt;&lt;/script&gt; &nbsp;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.cookie.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.mousewheel.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &lt;!-- Load plugins --&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/qtip/jquery.qtip.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/flot/jquery.flot.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/flot/jquery.flot.grow.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/flot/jquery.flot.pie.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/flot/jquery.flot.resize.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/flot/jquery.flot.tooltip_0.4.4.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/flot/jquery.flot.orderBars.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/sparkline/jquery.sparkline.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/knob/jquery.knob.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/fullcalendar/fullcalendar.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/prettify/prettify.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/watermark/jquery.watermark.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/elastic/jquery.elastic.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/inputlimiter/jquery.inputlimiter.1.3.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/maskedinput/jquery.maskedinput-1.3.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/ibutton/jquery.ibutton.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/uniform/jquery.uniform.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/stepper/ui.stepper.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/color-picker/colorpicker.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/timeentry/jquery.timeentry.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/select/select2.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/dualselect/jquery.dualListBox-1.3.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/tiny_mce/jquery.tinymce.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/validate/jquery.validate.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/animated-progress-bar/jquery.progressbar.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/pnotify/jquery.pnotify.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/lazy-load/jquery.lazyload.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/jpages/jPages.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/pretty-photo/jquery.prettyPhoto.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/smartWizzard/jquery.smartWizard-2.0.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/touch-punch/jquery.ui.touch-punch.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/ios-fix/ios-orientationchange-fix.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/dataTables/jquery.dataTables.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/elfinder/elfinder.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/plupload/plupload.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/plupload/plupload.html4.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/plupload/jquery.plupload.queue/jquery.plupload.queue.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &lt;!-- Init plugins --&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;js/statistic.js&quot;&gt;&lt;/script&gt;&lt;!-- Control graphs ( chart, pies and etc) --&gt;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &lt;!-- Important Place before main.js &nbsp;--&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;js/main.js&quot;&gt;&lt;/script&gt;</div>
+<p>
+	&nbsp;</p>
+<p>
+	&nbsp;</p>
+</pre>
+</section>
+<section id="jquery_plugins">
+	<div class="page-header"><h3>JQuery plugins</h3><hr class="notop"></div>
+<h2>
+	Animated progress bar (jquery.progressbar.js)</h2>
+<p>
+	This plugin make jquery progress bar animated:</p>
+<p>
+	You need to include the plugin in the bottom of the page like this:</p>
+<pre class="prettyprint lang-html linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/animated-progress-bar/jquery.progressbar.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official documentation is here:&nbsp;<a href="http://www.script-tutorials.com/animated-jquery-progressbar/" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-family: Arial, verdana, arial, sans-serif; vertical-align: baseline; color: rgb(255, 153, 0); text-decoration: none; cursor: pointer; line-height: 18px; -webkit-text-size-adjust: none; ">http://www.script-tutorials.com/animated-jquery-progressbar/</a></p>
+<h2>
+	Color picker (colorpicker.js)</h2>
+<p>
+	Including js:&nbsp;</p>
+<pre class="prettyprint lang-html linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/color-picker/colorpicker.js&quot;&gt;&lt;/script&gt;</pre>
+<p>
+	Including css file:</p>
+<pre class="prettyprint lang-html linenums">
+&lt;link href=&quot;plugins/color-picker/color-picker.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</pre>
+<p class="warning">
+	Official documentation is here:&nbsp;<a href="http://acko.net/blog/farbtastic-jquery-color-picker-plug-in/">http://acko.net/blog/farbtastic-jquery-color-picker-plug-in/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Data tables (jquery.dataTables.min.js)</h2>
+<p>
+	DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, based upon the foundations of progressive enhancement, which will add advanced interaction controls to any HTML table.</p>
+<p>
+	Including plugin css:</p>
+<pre class="prettyprint lang-html linenums">
+&lt;link href=&quot;plugins/dataTables/jquery.dataTables.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</pre>
+<p>
+	And js files:</p>
+<pre class="prettyprint lang-html linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/dataTables/jquery.dataTables.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official documentation is here:&nbsp;<a href="http://datatables.net/ref">http://datatables.net/ref</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Dual select (jquery.dualListBox-1.3.min.js)</h2>
+<p>
+	Including the plugin:&nbsp;</p>
+<pre class="prettyprint lang-html linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/dualselect/jquery.dualListBox-1.3.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Documentation is here:&nbsp;<a href="http://www.meadmiracle.com/dlb/DLBDocumentation.aspx">http://www.meadmiracle.com/dlb/DLBDocumentation.aspx</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Elastic (jquery.elastic.js)</h2>
+<p>
+	Make any text form elastic if content is bigger.</p>
+<p>
+	Include the plugin:</p>
+<pre class="prettyprint lang-html linenums">
+&nbsp;&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/elastic/jquery.elastic.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official page:&nbsp;<a href="http://www.unwrongest.com/">http://www.unwrongest.com/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Elfinder (elfinder.min.js)</h2>
+<p>
+	File manager and uploader:</p>
+<p>
+	Include the css file:</p>
+<pre class="prettyprint lang-html linenums">
+&lt;link href=&quot;plugins/elfinder/elfinder.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</pre>
+<p>
+	and js file:</p>
+<pre class="prettyprint lang-html linenums">
+&nbsp;&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/elfinder/elfinder.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Options and how to use read here:&nbsp;<a href="https://github.com/Studio-42/elFinder/wiki">https://github.com/Studio-42/elFinder/wiki</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Flot charts</h2>
+<p>
+	Making a awesome charts</p>
+<p>
+	include the plugin js files:</p>
+<pre class="prettyprint lang-html linenums">
+</pre>
+<div>
+	<pre class="prettyprint lang-html linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/flot/jquery.flot.js&quot;&gt;&lt;/script&gt;</pre>
+</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/flot/jquery.flot.grow.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/flot/jquery.flot.pie.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/flot/jquery.flot.resize.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/flot/jquery.flot.tooltip_0.4.4.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/flot/jquery.flot.orderBars.js&quot;&gt;&lt;/script&gt;</div>
+<p>
+	&nbsp;</p>
+<p class="warning">
+	Official documentation api is here:&nbsp;<a href="http://code.google.com/p/flot/">http://code.google.com/p/flot/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Full calendar (fullcalendar.js)</h2>
+<p>
+	FullCalendar is a jQuery plugin that provides a full-sized, drag &amp; drop calendar like the one below. It uses AJAX to fetch events on-the-fly for each month and is easily configured to use your own feed format (an extension is provided for Google Calendar). It is visually customizable and exposes hooks for user-triggered events (like clicking or dragging an event).</p>
+<p>
+	include the css:</p>
+<pre class="prettyprint lang-html linenums">
+&nbsp;&lt;link href=&quot;plugins/fullcalendar/fullcalendar.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</pre>
+<p>
+	and js file:</p>
+<pre class="prettyprint lang-html linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/fullcalendar/fullcalendar.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official documentation is here:&nbsp;<a href="http://arshaw.com/fullcalendar/">http://arshaw.com/fullcalendar/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	IButton (jquery.ibutton.min.js)</h2>
+<p>
+	Make a checkboxes or radios loook like iphone buttons.</p>
+<p>
+	include the css:</p>
+<pre class="prettyprint lang-html linenums">
+&lt;link href=&quot;plugins/ibutton/jquery.ibutton.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</pre>
+<p>
+	and javascript:&nbsp;</p>
+<pre class="prettyprint lang-html linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/ibutton/jquery.ibutton.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official documentation is here:&nbsp;<a href="http://www.givainc.com/labs/ibutton_jquery_plugin.htm">http://www.givainc.com/labs/ibutton_jquery_plugin.htm</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Input limiter (jquery.inputlimiter.1.3.js)</h2>
+<p>
+	Limit text area or input field to x chars.</p>
+<p>
+	Include the css file:</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;link href=&quot;plugins/inputlimiter/jquery.inputlimiter.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</pre>
+<p>
+	Include js file:</p>
+<pre class="prettyprint lang-html linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/inputlimiter/jquery.inputlimiter.1.3.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official documentation is here:&nbsp;http://rustyjeans.com/jquery-plugins/input-limiter/</p>
+<p>
+	&nbsp;</p>
+<h2>
+	IOS fix (ios-orientationchange-fix.js)</h2>
+<p>
+	&nbsp;</p>
+<div>
+	A fix for the iOS orientationchange zoom bug</div>
+<div>
+	&nbsp;</div>
+<div>
+	How it works: This fix works by listening to the device&#39;s accelerometer to predict when an orientation change is about to occur. When it deems an orientation change imminent, the script disables user zooming, allowing the orientation change to occur properly, with zooming disabled. The script restores zoom again once the device is either oriented close to upright, or after its orientation has changed. This way, user zooming is never disabled while the page is in use.</div>
+<p>
+	&nbsp;</p>
+<p>
+	include the plugin:</p>
+<pre class="prettyprint lang-html linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/ios-fix/ios-orientationchange-fix.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official documentation is here:&nbsp;<a href="https://github.com/scottjehl/iOS-Orientationchange-Fix">https://github.com/scottjehl/iOS-Orientationchange-Fix</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Jpages (jPages.min.js)</h2>
+<p>
+	&nbsp;</p>
+<div>
+	jPages is a client-side pagination plugin but it gives you a lot more features comparing to most of the other plugins for this purpose, such as auto page turn, key and scroll browse, showing items with delay, completely customizable navigation panel and also integration with Animate.css and Lazy Load.</div>
+<div>
+	Apart from all its features, the main diference for the other pagination plugins is that with jPages you can create as many navigation panels as you want and you can choose exactly where to place them.</div>
+<div>
+	The plugin is very unobtrusive and it won&#39;t apply any extra styles to the items you are paginating. It will only create and insert the links inside the element(s) you are applying the plugin to, in order to turn them into navigation panel(s).</div>
+<div>
+	&nbsp;</div>
+<p>
+	&nbsp;</p>
+<p>
+	Include the plugin css:</p>
+<pre class="prettyprint lang-html linenums">
+&lt;link href=&quot;plugins/jpages/jPages.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</pre>
+<p>
+	and js flles:&nbsp;</p>
+<pre class="prettyprint lang-html linenums">
+</pre>
+<div>
+	<pre class="prettyprint lang-html linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/lazy-load/jquery.lazyload.min.js&quot;&gt;&lt;/script&gt;</pre>
+</div>
+<div>
+	&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/jpages/jPages.min.js&quot;&gt;&lt;/script&gt;</div>
+<p class="info">
+	This plugin use lazy load for bigger images:&nbsp;<a href="http://www.appelsiini.net/projects/lazyload">http://www.appelsiini.net/projects/lazyload</a>&nbsp;be sure to include too.</p>
+<p class="warning">
+	Official documentation is here:<a href="http://luis-almeida.github.com/jPages/">http://luis-almeida.github.com/jPages/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Knob (jquery.knob.js)</h2>
+<p>
+	Circular progress bars , and dials.</p>
+<p>
+	Include the plugin:</p>
+<pre class="prettyprint lang-html linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/knob/jquery.knob.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official documentation is here:&nbsp;<a href="https://github.com/aterrien/jQuery-Knob">https://github.com/aterrien/jQuery-Knob</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Lazzy load (jquery.lazyload.min.js)</h2>
+<p>
+	I mention before this plugin load bunch of images in groups it`s pretty cool.</p>
+<p>
+	Load the plugin:</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/lazy-load/jquery.lazyload.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official documentation is here:&nbsp;<a href="http://www.appelsiini.net/projects/lazyload">http://www.appelsiini.net/projects/lazyload</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Masked input (jquery.maskedinput-1.3.min.js)</h2>
+<p>
+	This is a masked input plugin for the jQuery javascript library. It allows a user to more easily enter fixed width input where you would like them to enter the data in a certain format (dates,phone numbers, etc). It has been tested on Internet Explorer, Firefox, Safari and Chrome.A mask is defined by a format made up of mask literals and mask definitions. Any character not in the definitions list below is considered a mask literal. Mask literals will be automatically entered for the user as they type and will not be able to be removed by the use</p>
+<p>
+	Load the plugin:</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/maskedinput/jquery.maskedinput-1.3.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official documentation is here:&nbsp;<a href="http://digitalbush.com/projects/masked-input-plugin/">http://digitalbush.com/projects/masked-input-plugin/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Plupload</h2>
+<p>
+	Allows you to upload files using HTML5 Gears, Silverlight, Flash, BrowserPlus or normal forms, providing some unique features such as upload progress, image resizing and chunked uploads.</p>
+<p>
+	Include the plugin css:</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;link href=&quot;plugins/plupload/jquery.ui.plupload/css/jquery.ui.plupload.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</pre>
+<p>
+	and this 3 js:</p>
+<pre class="prettyprint lang-plain linenums">
+</pre>
+<div>
+	<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/plupload/plupload.js&quot;&gt;&lt;/script&gt;</pre>
+</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/plupload/plupload.html4.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&nbsp; &nbsp; &lt;script type=&quot;text/javascript&quot; src=&quot;plugins/plupload/jquery.plupload.queue/jquery.plupload.queue.js&quot;&gt;&lt;/script&gt;</div>
+<p class="warning">
+	Official documentation is here:<a href="http://www.plupload.com/">http://www.plupload.com/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Pines notify (jquery.pnotify.min.js)</h2>
+<p>
+	Pines Notify is a JavaScript notification plugin, developed by Hunter Perrin as part of Pines. It is designed to provide an unparalleled level of flexibility, while still being very easy to implement and use.</p>
+<p>
+	Include the css file:</p>
+<pre class="prettyprint lang-plain linenums">
+&nbsp;&lt;link href=&quot;plugins/pnotify/jquery.pnotify.default.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</pre>
+<p>
+	and js file:</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/pnotify/jquery.pnotify.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Visit official page for more examples:&nbsp;<a href="http://pinesframework.org/pnotify/">http://pinesframework.org/pnotify/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	prettify (prettify.js)</h2>
+<p>
+	Makes code view pretty&nbsp;</p>
+<p>
+	Include the plugin css:</p>
+<pre class="prettyprint lang-plain linenums">
+&nbsp;&lt;link href=&quot;plugins/prettify/prettify.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</pre>
+<p>
+	and js:</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/prettify/prettify.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official page:&nbsp;<a href="http://code.google.com/p/google-code-prettify/">http://code.google.com/p/google-code-prettify/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Pretty photo (jquery.prettyPhoto.js)</h2>
+<p>
+	&nbsp;</p>
+<div>
+	&ldquo;prettyPhoto is a jQuery lightbox clone. Not only does it support images, it also support for videos, flash, YouTube, iframes and ajax. It&rsquo;s a full blown media lightbox. It is very easy to setup, yet very flexible if you want to customize it a bit. Plus the script is compatible in every major browser, even IE6. It also comes with useful APIs so prettyPhoto can be launched from nearly anywhere (yes, that includes Flash)!&rdquo;</div>
+<div>
+	&nbsp;</div>
+<div>
+	Read more about jQuery lightbox for images, videos, YouTube, iframes, ajax | St&eacute;phane Caron &ndash; No Margin For Errors on:</div>
+<div>
+	http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/?utm_source=INK&amp;utm_medium=copy&amp;utm_campaign=share&amp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	Include the css:</div>
+<pre class="prettyprint lang-plain linenums">
+&lt;link href=&quot;plugins/pretty-photo/prettyPhoto.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</pre>
+<p>
+	&nbsp;</p>
+<p>
+	and js file:</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/pretty-photo/jquery.prettyPhoto.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official documentation is here:&nbsp;<a href="http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/">http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Qtip (jquery.qtip.min)</h2>
+<p>
+	&nbsp;</p>
+<div>
+	qTip is an advanced tooltip plugin for the ever popular jQuery JavaScript framework.</div>
+<div>
+	&nbsp;</div>
+<div>
+	Built from the ground up to be user friendly, yet feature rich, qTip provides you with tonnes of features like rounded corners and speech bubble tips,</div>
+<div>
+	&nbsp;</div>
+<div>
+	Include the plugin css:</div>
+<pre class="prettyprint lang-plain linenums">
+&lt;link href=&quot;plugins/qtip/jquery.qtip.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</pre>
+<p>
+	&nbsp;</p>
+<p>
+	and js file:&nbsp;</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/qtip/jquery.qtip.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p>
+	&nbsp;</p>
+<h2>
+	Responsive tables (responsive-tables.js)</h2>
+<p>
+	Plugin make all tables responsive automatic.</p>
+<h2>
+	Select (select2.min.js)</h2>
+<p>
+	&nbsp;</p>
+<div>
+	Select2 is a jQuery based replacement for select boxes. It supports searching, remote data sets, and infinite scrolling of results. Look and feel of Select2 is based on the excellent Chosen library.</div>
+<div>
+	&nbsp;</div>
+<div>
+	To get started -- checkout http://ivaynberg.github.com/select2!</div>
+<div>
+	&nbsp;</div>
+<div>
+	What Does Select2 Support That Chosen Does Not?</div>
+<div>
+	Working with large datasets: Chosen requires the entire dataset to be loaded as option tags in the DOM, which limits it to working with small-ish datasets. Select2 uses a function to find results on-the-fly, which allows it to partially load results.</div>
+<div>
+	Paging of results: Since Select2 works with large datasets and only loads a small amount of matching results at a time it has to support paging. Select2 will call the search function when the user scrolls to the bottom of currently loaded result set allowing for the &#39;infinite scrolling&#39; of results.</div>
+<div>
+	Custom markup for results: Chosen only supports rendering text results because that is the only markup supported by option tags. Select2 provides an extension point which can be used to produce any kind of markup to represent results.</div>
+<div>
+	Ability to add results on the fly: Select2 provides the ability to add results from the search term entered by the user, which allows it to be used for tagging.</div>
+<div>
+	&nbsp;</div>
+<div>
+	Load css file:</div>
+<pre class="prettyprint lang-plain linenums">
+&lt;link href=&quot;plugins/select/select2.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</pre>
+<div>
+	and js file:</div>
+<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/select/select2.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official page is here:&nbsp;<a href="https://github.com/ivaynberg/select2">https://github.com/ivaynberg/select2</a></p>
+<p>
+	&nbsp;</p>
+<p>
+	&nbsp;</p>
+<h2>
+	Wizard plugin (jquery.form.wizard.js)</h2>
+<p>
+	<span style="color: rgb(102, 102, 102); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 16px; line-height: 22px;">jQuery plugin based on top of jQuery UI which turns a form into a multistep wizard. Integrates with the jQuery form plugin for AJAX submission of the form, the validation plugin for client side validation and the BBQ plugin for enabling the browsers back and forward buttons</span></p>
+<p>
+	Load &nbsp;js file:&nbsp;</p>
+<pre class="prettyprint lang-plain linenums">
+</pre>
+<div>
+	&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/forms/wizard/jquery.bbq.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/forms/wizard/jquery.form.js&quot;&gt;&lt;/script&gt;</div>
+<div>
+	&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/forms/wizard/jquery.form.wizard.js&quot;&gt;&lt;/script&gt;</div>
+<p class="warning">
+	Official documentation is here:<a href="https://github.com/thecodemine/formwizard">https://github.com/thecodemine/formwizard</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Spark line (jquery.sparkline.min.js)</h2>
+<p>
+	This jQuery plugin generates sparklines (small inline charts) directly in the browser using data supplied either inline in the HTML, or via javascript.</p>
+<p>
+	Include the js file:</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/sparkline/jquery.sparkline.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official page is here:&nbsp;<a href="http://omnipotent.net/jquery.sparkline/#s-about">http://omnipotent.net/jquery.sparkline/#s-about</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Stepper (ui.stepper.js)</h2>
+<p>
+	Numeric stepper with mouse support</p>
+<p>
+	include the plugin:</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/stepper/ui.stepper.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official documentation is here:&nbsp;<a href="http://yelotofu.com/labs/jquery/UI/stepper/">http://yelotofu.com/labs/jquery/UI/stepper/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Time spinner (jquery.timeentry.min.js)</h2>
+<p>
+	A jQuery plugin that sets an input field up to pick a time value using a spinner.</p>
+<p>
+	Load plugin js</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/timeentry/jquery.timeentry.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official page is here:&nbsp;<a href="http://keith-wood.name/timeEntry.html">http://keith-wood.name/timeEntry.html</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Tiny Mce (jquery.tinymce.js)</h2>
+<p>
+	TinyMCE is a platform independent web based Javascript HTML WYSIWYG editor control</p>
+<p>
+	Load the plugin js:</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/tiny_mce/jquery.tinymce.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official documentation is here :&nbsp;<a href="http://www.tinymce.com/">http://www.tinymce.com</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Touch punch (jquery.ui.touch-punch.min.js)</h2>
+<p>
+	jQuery UI Touch Punch is a small hack that enables the use of touch events on sites using the jQuery UI user interface library.</p>
+<p>
+	include the plugin: Plugin is included automatic if touch screen is detected by modernizr library</p>
+<p class="warning">
+	Official page:&nbsp;<a href="http://touchpunch.furf.com/">http://touchpunch.furf.com/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Uniform (jquery.uniform.min.js)</h2>
+<p>
+	&nbsp;</p>
+<div>
+	Have you ever wished you could style checkboxes, drop down menus, radio buttons, and file upload inputs? Ever wished you could control the look and feel of your form elements between all browsers?</div>
+<div>
+	&nbsp;</div>
+<div>
+	If so, Uniform is your new best friend.</div>
+<div>
+	&nbsp;</div>
+<div>
+	Uniform masks your standard form controls with custom themed controls. It works in sync with your real form elements to ensure accessibility and compatibility.</div>
+<div>
+	&nbsp;</div>
+<div>
+	Include the plugin css:</div>
+<pre class="prettyprint lang-plain linenums">
+&lt;link href=&quot;plugins/uniform/uniform.default.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</pre>
+<p>
+	&nbsp;</p>
+<p>
+	and js:</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/uniform/jquery.uniform.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official page is here:&nbsp;<a href="http://uniformjs.com/">http://uniformjs.com/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Validate (jquery.validate.min.js)</h2>
+<p>
+	This jQuery plugin makes simple clientside form validation trivial, while offering lots of option for customization. That makes a good choice if you&rsquo;re building something new from scratch, but also when you&rsquo;re trying to integrate it into an existing application with lots of existing markup. The plugin comes bundled with a useful set of validation methods, including URL and email validation, while providing an API to write your own methods. All bundled methods come with default error messages in english and translations into 36 locales.</p>
+<p>
+	Load css file:</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;link href=&quot;plugins/validate/validate.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;</pre>
+<p>
+	and js file:</p>
+<pre class="prettyprint lang-plain linenums">
+&lt;script type=&quot;text/javascript&quot; src=&quot;plugins/validate/jquery.validate.min.js&quot;&gt;&lt;/script&gt;</pre>
+<p class="warning">
+	Official page :&nbsp;<a href="http://bassistance.de/jquery-plugins/jquery-plugin-validation/">http://bassistance.de/jquery-plugins/jquery-plugin-validation/</a></p>
+<p>
+	&nbsp;</p>
+<h2>
+	Placeholder (jquery.placeholder.min.js)</h2>
+<p>
+	Placeholder fallback for internet explorer</p>
+<p>
+	Plugin is loaded automatic if old ie is detected.</p>
+</section>
+<section id="plugin_loader">
+	<div class="page-header"><h3>Plugin loader</h3><hr class="notop"></div>
+<p class="warning">
+	main.js contain all plugin loader without charts and sparklines.</p>
+<p class="warning">
+	statistic.js contain flot chart and sparkline loaders.</p>
+<h1>
+	Statistic.js</h1>
+<h2>
+	sparklines loader</h2>
+<pre class="prettyprint lang-plain linenums">
+</pre>
+<div>
+	<pre class="prettyprint lang-plain linenums">
+//generate random number for charts</pre>
+</div>
+<div>
+	randNum = function(){</div>
+<div>
+	//return Math.floor(Math.random()*101);</div>
+<div>
+	return (Math.floor( Math.random()* (1+40-20) ) ) + 20;</div>
+<div>
+	}</div>
+<div>
+	&nbsp;</div>
+<div>
+	var chartColours = [&#39;#88bbc8&#39;, &#39;#ed7a53&#39;, &#39;#9FC569&#39;, &#39;#bbdce3&#39;, &#39;#9a3b1b&#39;, &#39;#5a8022&#39;, &#39;#2c7282&#39;];</div>
+<div>
+	&nbsp;</div>
+<div>
+	//sparklines (making loop with random data for all 7 sparkline)</div>
+<div>
+	i=1;</div>
+<div>
+	for (i=1; i&lt;8; i++) {</div>
+<div>
+	&nbsp;<span class="Apple-tab-span"> </span>var data = [[1, 3+randNum()], [2, 5+randNum()], [3, 8+randNum()], [4, 11+randNum()],[5, 14+randNum()],[6, 17+randNum()],[7, 20+randNum()], [8, 15+randNum()], [9, 18+randNum()], [10, 22+randNum()]];</div>
+<div>
+	&nbsp;<span class="Apple-tab-span"> </span>placeholder = &#39;.sparkLine&#39; + i;</div>
+<div>
+	$(placeholder).sparkline(data, {&nbsp;</div>
+<div>
+	width: 100,//Width of the chart - Defaults to &#39;auto&#39; - May be any valid css width - 1.5em, 20px, etc (using a number without a unit specifier won&#39;t do what you want) - This option does nothing for bar and tristate chars (see barWidth)</div>
+<div>
+	height: 30,//Height of the chart - Defaults to &#39;auto&#39; (line height of the containing tag)</div>
+<div>
+	lineColor: &#39;#88bbc8&#39;,//Used by line and discrete charts to specify the colour of the line drawn as a CSS values string</div>
+<div>
+	fillColor: &#39;#f2f7f9&#39;,//Specify the colour used to fill the area under the graph as a CSS value. Set to false to disable fill</div>
+<div>
+	spotColor: &#39;#467e8c&#39;,//The CSS colour of the final value marker. Set to false or an empty string to hide it</div>
+<div>
+	maxSpotColor: &#39;#9FC569&#39;,//The CSS colour of the marker displayed for the maximum value. Set to false or an empty string to hide it</div>
+<div>
+	minSpotColor: &#39;#ED7A53&#39;,//The CSS colour of the marker displayed for the mimum value. Set to false or an empty string to hide it</div>
+<div>
+	spotRadius: 3,//Radius of all spot markers, In pixels (default: 1.5) - Integer</div>
+<div>
+	lineWidth: 2,//In pixels (default: 1) - Integer</div>
+<div>
+	});</div>
+<div>
+	}</div>
+<div>
+	&nbsp;</div>
+<div>
+	//sparkline in sidebar area</div>
+<div>
+	var positive = [1,5,3,7,8,6,10];</div>
+<div>
+	var negative = [10,6,8,7,3,5,1]</div>
+<div>
+	var negative1 = [7,6,8,7,6,5,4]</div>
+<div>
+	&nbsp;</div>
+<div>
+	$(&#39;#stat1&#39;).sparkline(positive,{</div>
+<div>
+	height:15,</div>
+<div>
+	spotRadius: 0,</div>
+<div>
+	barColor: &#39;#9FC569&#39;,</div>
+<div>
+	type: &#39;bar&#39;</div>
+<div>
+	});</div>
+<div>
+	$(&#39;#stat2&#39;).sparkline(negative,{</div>
+<div>
+	height:15,</div>
+<div>
+	spotRadius: 0,</div>
+<div>
+	barColor: &#39;#ED7A53&#39;,</div>
+<div>
+	type: &#39;bar&#39;</div>
+<div>
+	});</div>
+<div>
+	$(&#39;#stat3&#39;).sparkline(negative1,{</div>
+<div>
+	height:15,</div>
+<div>
+	spotRadius: 0,</div>
+<div>
+	barColor: &#39;#ED7A53&#39;,</div>
+<div>
+	type: &#39;bar&#39;</div>
+<div>
+	});</div>
+<div>
+	$(&#39;#stat4&#39;).sparkline(positive,{</div>
+<div>
+	height:15,</div>
+<div>
+	spotRadius: 0,</div>
+<div>
+	barColor: &#39;#9FC569&#39;,</div>
+<div>
+	type: &#39;bar&#39;</div>
+<div>
+	});</div>
+<div>
+	//sparkline in widget</div>
+<div>
+	$(&#39;#stat5&#39;).sparkline(positive,{</div>
+<div>
+	height:15,</div>
+<div>
+	spotRadius: 0,</div>
+<div>
+	barColor: &#39;#9FC569&#39;,</div>
+<div>
+	type: &#39;bar&#39;</div>
+<div>
+	});</div>
+<div>
+	&nbsp;</div>
+<div>
+	$(&#39;#stat6&#39;).sparkline(positive, {&nbsp;</div>
+<div>
+	width: 70,//Width of the chart - Defaults to &#39;auto&#39; - May be any valid css width - 1.5em, 20px, etc (using a number without a unit specifier won&#39;t do what you want) - This option does nothing for bar and tristate chars (see barWidth)</div>
+<div>
+	height: 20,//Height of the chart - Defaults to &#39;auto&#39; (line height of the containing tag)</div>
+<div>
+	lineColor: &#39;#88bbc8&#39;,//Used by line and discrete charts to specify the colour of the line drawn as a CSS values string</div>
+<div>
+	fillColor: &#39;#f2f7f9&#39;,//Specify the colour used to fill the area under the graph as a CSS value. Set to false to disable fill</div>
+<div>
+	spotColor: &#39;#e72828&#39;,//The CSS colour of the final value marker. Set to false or an empty string to hide it</div>
+<div>
+	maxSpotColor: &#39;#005e20&#39;,//The CSS colour of the marker displayed for the maximum value. Set to false or an empty string to hide it</div>
+<div>
+	minSpotColor: &#39;#f7941d&#39;,//The CSS colour of the marker displayed for the mimum value. Set to false or an empty string to hide it</div>
+<div>
+	spotRadius: 3,//Radius of all spot markers, In pixels (default: 1.5) - Integer</div>
+<div>
+	lineWidth: 2,//In pixels (default: 1) - Integer</div>
+<div>
+	});</div>
+<p>
+	&nbsp;</p>
+<h2>
+	Knob circular stats</h2>
+<pre class="prettyprint lang-plain linenums">
+</pre>
+<div>
+	<pre class="prettyprint lang-plain linenums">
+$(&quot;.greenCircle&quot;).knob({</pre>
+</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;min&#39;:0,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;max&#39;:100,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;readOnly&#39;: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;width&#39;: 80,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;height&#39;: 80,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;fgColor&#39;: &#39;#9FC569&#39;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;dynamicDraw&#39;: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;thickness&#39;: 0.2,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;tickColorizeValues&#39;: true</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; })</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; $(&quot;.redCircle&quot;).knob({</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;min&#39;:0,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;max&#39;:100,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;readOnly&#39;: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;width&#39;: 80,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;height&#39;: 80,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;fgColor&#39;: &#39;#ED7A53&#39;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;dynamicDraw&#39;: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;thickness&#39;: 0.2,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;tickColorizeValues&#39;: true</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; })</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; $(&quot;.blueCircle&quot;).knob({</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;min&#39;:0,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;max&#39;:100,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;readOnly&#39;: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;width&#39;: 80,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;height&#39;: 80,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;fgColor&#39;: &#39;#88BBC8&#39;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;dynamicDraw&#39;: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;thickness&#39;: 0.2,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;tickColorizeValues&#39;: true</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; })</div>
+<p>
+	&nbsp;</p>
+<h2>
+	Flot charts</h2>
+<pre class="prettyprint lang-plain linenums">
+</pre>
+<div>
+	<pre class="prettyprint lang-plain linenums">
+//------------- Visitor chart -------------//</pre>
+</div>
+<div>
+	&nbsp;</div>
+<div>
+	if (divElement.hasClass(&#39;visitors-chart&#39;)) {</div>
+<div>
+	$(function () {</div>
+<div>
+	//some data</div>
+<div>
+	var d1 = [[1, 3+randNum()], [2, 6+randNum()], [3, 9+randNum()], [4, 12+randNum()],[5, 15+randNum()],[6, 18+randNum()],[7, 21+randNum()],[8, 15+randNum()],[9, 18+randNum()],[10, 21+randNum()],[11, 24+randNum()],[12, 27+randNum()],[13, 30+randNum()],[14, 33+randNum()],[15, 24+randNum()],[16, 27+randNum()],[17, 30+randNum()],[18, 33+randNum()],[19, 36+randNum()],[20, 39+randNum()],[21, 42+randNum()],[22, 45+randNum()],[23, 36+randNum()],[24, 39+randNum()],[25, 42+randNum()],[26, 45+randNum()],[27,38+randNum()],[28, 51+randNum()],[29, 55+randNum()], [30, 60+randNum()]];</div>
+<div>
+	var d2 = [[1, randNum()-5], [2, randNum()-4], [3, randNum()-4], [4, randNum()],[5, 4+randNum()],[6, 4+randNum()],[7, 5+randNum()],[8, 5+randNum()],[9, 6+randNum()],[10, 6+randNum()],[11, 6+randNum()],[12, 2+randNum()],[13, 3+randNum()],[14, 4+randNum()],[15, 4+randNum()],[16, 4+randNum()],[17, 5+randNum()],[18, 5+randNum()],[19, 2+randNum()],[20, 2+randNum()],[21, 3+randNum()],[22, 3+randNum()],[23, 3+randNum()],[24, 2+randNum()],[25, 4+randNum()],[26, 4+randNum()],[27,5+randNum()],[28, 2+randNum()],[29, 2+randNum()], [30, 3+randNum()]];</div>
+<div>
+	//define placeholder class</div>
+<div>
+	var placeholder = $(&quot;.visitors-chart&quot;);</div>
+<div>
+	//graph options</div>
+<div>
+	var options = {</div>
+<div>
+	grid: {</div>
+<div>
+	show: true,</div>
+<div>
+	&nbsp; &nbsp;aboveData: true,</div>
+<div>
+	&nbsp; &nbsp;color: &quot;#3f3f3f&quot; ,</div>
+<div>
+	&nbsp; &nbsp;labelMargin: 5,</div>
+<div>
+	&nbsp; &nbsp;axisMargin: 0,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;borderWidth: 0,</div>
+<div>
+	&nbsp; &nbsp;borderColor:null,</div>
+<div>
+	&nbsp; &nbsp;minBorderMargin: 5 ,</div>
+<div>
+	&nbsp; &nbsp;clickable: true,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;hoverable: true,</div>
+<div>
+	&nbsp; &nbsp;autoHighlight: true,</div>
+<div>
+	&nbsp; &nbsp;mouseActiveRadius: 20</div>
+<div>
+	},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;series: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>grow: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>active: false,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>stepMode: &quot;linear&quot;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>steps: 50,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>stepDelay: true</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lines: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>show: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>fill: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>lineWidth: 4,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>steps: false</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;points: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>show:true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>radius: 5,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>symbol: &quot;circle&quot;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>fill: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>borderColor: &quot;#fff&quot;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;legend: {&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>position: &quot;ne&quot;,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>margin: [0,-25],&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>noColumns: 0,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>labelBoxBorderColor: null,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>labelFormatter: function(label, series) {</div>
+<div>
+	&nbsp; &nbsp;// just add some space to labes</div>
+<div>
+	&nbsp; &nbsp;return label+&#39;&amp;nbsp;&amp;nbsp;&#39;;</div>
+<div>
+	}</div>
+<div>
+	&nbsp; &nbsp;<span class="Apple-tab-span"> </span>},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;yaxis: { min: 0 },</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;xaxis: {ticks:11, tickDecimals: 0},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;colors: chartColours,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;shadowSize:1,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;tooltip: true, //activate tooltip</div>
+<div>
+	tooltipOpts: {</div>
+<div>
+	content: &quot;%s : %y.0&quot;,</div>
+<div>
+	shifts: {</div>
+<div>
+	x: -30,</div>
+<div>
+	y: -50</div>
+<div>
+	}</div>
+<div>
+	}</div>
+<div>
+	&nbsp; &nbsp;}; &nbsp;&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>$.plot(placeholder, [&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>{</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>label: &quot;Visits&quot;,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>data: d1,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>lines: {fillColor: &quot;#f2f7f9&quot;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>points: {fillColor: &quot;#88bbc8&quot;}</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>},&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>{<span class="Apple-tab-span"> </span></div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>label: &quot;Unique Visits&quot;,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>data: d2,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>lines: {fillColor: &quot;#fff8f2&quot;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>points: {fillColor: &quot;#ed7a53&quot;}</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>}&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>], options);</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;</div>
+<div>
+	&nbsp; &nbsp; });</div>
+<div>
+	&nbsp; &nbsp; }//end if</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp;&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	//pie visits graph</div>
+<div>
+	if (divElement.hasClass(&#39;pieStats&#39;)) {</div>
+<div>
+	$(function () {</div>
+<div>
+	&nbsp; var data = [</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;%78.75 New Visitor&quot;, &nbsp;data: 78.75, color: &quot;#88bbc8&quot;},</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;%21.25 Returning Visitor&quot;, &nbsp;data: 21.25, color: &quot;#ed7a53&quot;}</div>
+<div>
+	];</div>
+<div>
+	&nbsp;</div>
+<div>
+	$.plot($(&quot;.pieStats&quot;), data,&nbsp;</div>
+<div>
+	{</div>
+<div>
+	series: {</div>
+<div>
+	pie: {&nbsp;</div>
+<div>
+	show: true,</div>
+<div>
+	highlight: {</div>
+<div>
+	opacity: 0.1</div>
+<div>
+	},</div>
+<div>
+	stroke: {</div>
+<div>
+	color: &#39;#fff&#39;,</div>
+<div>
+	width: 3</div>
+<div>
+	},</div>
+<div>
+	startAngle: 2,</div>
+<div>
+	label: {</div>
+<div>
+	radius:1</div>
+<div>
+	}</div>
+<div>
+	},</div>
+<div>
+	grow: {<span class="Apple-tab-span"> </span>active: false},</div>
+<div>
+	},</div>
+<div>
+	legend: {&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>position: &quot;ne&quot;,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>labelBoxBorderColor: null</div>
+<div>
+	&nbsp; &nbsp;<span class="Apple-tab-span"> </span>},</div>
+<div>
+	grid: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;hoverable: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;clickable: true</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;tooltip: true, //activate tooltip</div>
+<div>
+	tooltipOpts: {</div>
+<div>
+	content: &quot;%s : %y.1&quot;,</div>
+<div>
+	shifts: {</div>
+<div>
+	x: -30,</div>
+<div>
+	y: -50</div>
+<div>
+	}</div>
+<div>
+	}</div>
+<div>
+	});</div>
+<div>
+	});</div>
+<div>
+	}//end if</div>
+<div>
+	&nbsp;</div>
+<div>
+	//------------- Graphs for chart.html page -------------//</div>
+<div>
+	&nbsp;</div>
+<div>
+	//Simple chart&nbsp;</div>
+<div>
+	&nbsp; &nbsp; if (divElement.hasClass(&#39;simple-chart&#39;)) {</div>
+<div>
+	$(function () {</div>
+<div>
+	var sin = [], cos = [];</div>
+<div>
+	&nbsp; &nbsp;for (var i = 0; i &lt; 14; i += 0.5) {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;sin.push([i, Math.sin(i)]);</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;cos.push([i, Math.cos(i)]);</div>
+<div>
+	&nbsp; &nbsp;}</div>
+<div>
+	&nbsp; &nbsp;//graph options</div>
+<div>
+	var options = {</div>
+<div>
+	grid: {</div>
+<div>
+	show: true,</div>
+<div>
+	&nbsp; &nbsp;aboveData: true,</div>
+<div>
+	&nbsp; &nbsp;color: &quot;#3f3f3f&quot; ,</div>
+<div>
+	&nbsp; &nbsp;labelMargin: 5,</div>
+<div>
+	&nbsp; &nbsp;axisMargin: 0,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;borderWidth: 0,</div>
+<div>
+	&nbsp; &nbsp;borderColor:null,</div>
+<div>
+	&nbsp; &nbsp;minBorderMargin: 5 ,</div>
+<div>
+	&nbsp; &nbsp;clickable: true,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;hoverable: true,</div>
+<div>
+	&nbsp; &nbsp;autoHighlight: true,</div>
+<div>
+	&nbsp; &nbsp;mouseActiveRadius: 20</div>
+<div>
+	},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;series: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>grow: {active: false},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lines: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>show: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>fill: false,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>lineWidth: 4,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>steps: false</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;points: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>show:true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>radius: 5,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>symbol: &quot;circle&quot;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>fill: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>borderColor: &quot;#fff&quot;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;legend: { position: &quot;se&quot; },</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;colors: chartColours,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;shadowSize:1,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;tooltip: true, //activate tooltip</div>
+<div>
+	tooltipOpts: {</div>
+<div>
+	content: &quot;%s : %y.3&quot;,</div>
+<div>
+	shifts: {</div>
+<div>
+	x: -30,</div>
+<div>
+	y: -50</div>
+<div>
+	}</div>
+<div>
+	}</div>
+<div>
+	}; &nbsp;</div>
+<div>
+	var plot = $.plot($(&quot;.simple-chart&quot;),</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;[{</div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>label: &quot;Sin&quot;,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>data: sin,</div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>lines: {fillColor: &quot;#f2f7f9&quot;},</div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>points: {fillColor: &quot;#88bbc8&quot;}</div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>},&nbsp;</div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>{<span class="Apple-tab-span"> </span></div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>label: &quot;Cos&quot;,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>data: cos,</div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>lines: {fillColor: &quot;#fff8f2&quot;},</div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>points: {fillColor: &quot;#ed7a53&quot;}</div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>}], options);</div>
+<div>
+	});</div>
+<div>
+	}//end if</div>
+<div>
+	&nbsp;</div>
+<div>
+	//Donut simple chart</div>
+<div>
+	&nbsp; &nbsp; if (divElement.hasClass(&#39;simple-donut&#39;)) {</div>
+<div>
+	$(function () {</div>
+<div>
+	var data = [</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;USA&quot;, &nbsp;data: 38, color: &quot;#88bbc8&quot;},</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;Brazil&quot;, &nbsp;data: 23, color: &quot;#ed7a53&quot;},</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;India&quot;, &nbsp;data: 15, color: &quot;#9FC569&quot;},</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;Turkey&quot;, &nbsp;data: 9, color: &quot;#bbdce3&quot;},</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;France&quot;, &nbsp;data: 7, color: &quot;#9a3b1b&quot;},</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;China&quot;, &nbsp;data: 5, color: &quot;#5a8022&quot;},</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;Germany&quot;, &nbsp;data: 3, color: &quot;#2c7282&quot;}</div>
+<div>
+	];</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp;$.plot($(&quot;.simple-donut&quot;), data,&nbsp;</div>
+<div>
+	{</div>
+<div>
+	series: {</div>
+<div>
+	pie: {&nbsp;</div>
+<div>
+	show: true,</div>
+<div>
+	innerRadius: 0.4,</div>
+<div>
+	highlight: {</div>
+<div>
+	opacity: 0.1</div>
+<div>
+	},</div>
+<div>
+	radius: 1,</div>
+<div>
+	stroke: {</div>
+<div>
+	color: &#39;#fff&#39;,</div>
+<div>
+	width: 8</div>
+<div>
+	},</div>
+<div>
+	startAngle: 2,</div>
+<div>
+	&nbsp; &nbsp;combine: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;color: &#39;#353535&#39;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;threshold: 0.05</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;label: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;show: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;radius: 1,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;formatter: function(label, series){</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return &#39;&lt;div class=&quot;pie-chart-label&quot;&gt;&#39;+label+&#39;&amp;nbsp;&#39;+Math.round(series.percent)+&#39;%&lt;/div&gt;&#39;;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>
+	},</div>
+<div>
+	grow: {<span class="Apple-tab-span"> </span>active: false}</div>
+<div>
+	},</div>
+<div>
+	legend:{show:false},</div>
+<div>
+	grid: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;hoverable: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;clickable: true</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;tooltip: true, //activate tooltip</div>
+<div>
+	tooltipOpts: {</div>
+<div>
+	content: &quot;%s : %y.1&quot;+&quot;%&quot;,</div>
+<div>
+	shifts: {</div>
+<div>
+	x: -30,</div>
+<div>
+	y: -50</div>
+<div>
+	}</div>
+<div>
+	}</div>
+<div>
+	});</div>
+<div>
+	});</div>
+<div>
+	}//end if</div>
+<div>
+	&nbsp;</div>
+<div>
+	//Pie simple chart</div>
+<div>
+	&nbsp; &nbsp; if (divElement.hasClass(&#39;simple-pie&#39;)) {</div>
+<div>
+	$(function () {</div>
+<div>
+	var data = [</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;USA&quot;, &nbsp;data: 38, color: &quot;#88bbc8&quot;},</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;Brazil&quot;, &nbsp;data: 23, color: &quot;#ed7a53&quot;},</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;India&quot;, &nbsp;data: 15, color: &quot;#9FC569&quot;},</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;Turkey&quot;, &nbsp;data: 9, color: &quot;#bbdce3&quot;},</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;France&quot;, &nbsp;data: 7, color: &quot;#9a3b1b&quot;},</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;China&quot;, &nbsp;data: 5, color: &quot;#5a8022&quot;},</div>
+<div>
+	&nbsp; &nbsp;{ label: &quot;Germany&quot;, &nbsp;data: 3, color: &quot;#2c7282&quot;}</div>
+<div>
+	];</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp;$.plot($(&quot;.simple-pie&quot;), data,&nbsp;</div>
+<div>
+	{</div>
+<div>
+	series: {</div>
+<div>
+	pie: {&nbsp;</div>
+<div>
+	show: true,</div>
+<div>
+	highlight: {</div>
+<div>
+	opacity: 0.1</div>
+<div>
+	},</div>
+<div>
+	radius: 1,</div>
+<div>
+	stroke: {</div>
+<div>
+	color: &#39;#fff&#39;,</div>
+<div>
+	width: 2</div>
+<div>
+	},</div>
+<div>
+	startAngle: 2,</div>
+<div>
+	&nbsp; &nbsp;combine: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;color: &#39;#353535&#39;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;threshold: 0.05</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;label: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;show: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;radius: 1,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;formatter: function(label, series){</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return &#39;&lt;div class=&quot;pie-chart-label&quot;&gt;&#39;+label+&#39;&amp;nbsp;&#39;+Math.round(series.percent)+&#39;%&lt;/div&gt;&#39;;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>
+	},</div>
+<div>
+	grow: {<span class="Apple-tab-span"> </span>active: false}</div>
+<div>
+	},</div>
+<div>
+	legend:{show:false},</div>
+<div>
+	grid: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;hoverable: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;clickable: true</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;tooltip: true, //activate tooltip</div>
+<div>
+	tooltipOpts: {</div>
+<div>
+	content: &quot;%s : %y.1&quot;+&quot;%&quot;,</div>
+<div>
+	shifts: {</div>
+<div>
+	x: -30,</div>
+<div>
+	y: -50</div>
+<div>
+	}</div>
+<div>
+	}</div>
+<div>
+	});</div>
+<div>
+	});</div>
+<div>
+	}//end if</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	//Ordered bars chart</div>
+<div>
+	&nbsp; &nbsp; if (divElement.hasClass(&#39;order-bars-chart&#39;)) {</div>
+<div>
+	$(function () {</div>
+<div>
+	//some data</div>
+<div>
+	var d1 = [];</div>
+<div>
+	&nbsp; &nbsp;for (var i = 0; i &lt;= 10; i += 1)</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;d1.push([i, parseInt(Math.random() * 30)]);</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp;var d2 = [];</div>
+<div>
+	&nbsp; &nbsp;for (var i = 0; i &lt;= 10; i += 1)</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;d2.push([i, parseInt(Math.random() * 30)]);</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp;var d3 = [];</div>
+<div>
+	&nbsp; &nbsp;for (var i = 0; i &lt;= 10; i += 1)</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;d3.push([i, parseInt(Math.random() * 30)]);</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp;var ds = new Array();</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; ds.push({</div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>label: &quot;Data One&quot;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;data:d1,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;bars: {order: 1}</div>
+<div>
+	&nbsp; &nbsp;});</div>
+<div>
+	&nbsp; &nbsp;ds.push({</div>
+<div>
+	&nbsp; &nbsp;<span class="Apple-tab-span"> </span>label: &quot;Data Two&quot;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;data:d2,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;bars: {order: 2}</div>
+<div>
+	&nbsp; &nbsp;});</div>
+<div>
+	&nbsp; &nbsp;ds.push({</div>
+<div>
+	&nbsp; &nbsp;<span class="Apple-tab-span"> </span>label: &quot;Data Three&quot;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;data:d3,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;bars: {order: 3}</div>
+<div>
+	&nbsp; &nbsp;});</div>
+<div>
+	&nbsp;</div>
+<div>
+	var options = {</div>
+<div>
+	bars: {</div>
+<div>
+	show:true,</div>
+<div>
+	barWidth: 0.2,</div>
+<div>
+	fill:1</div>
+<div>
+	},</div>
+<div>
+	grid: {</div>
+<div>
+	show: true,</div>
+<div>
+	&nbsp; &nbsp;aboveData: false,</div>
+<div>
+	&nbsp; &nbsp;color: &quot;#3f3f3f&quot; ,</div>
+<div>
+	&nbsp; &nbsp;labelMargin: 5,</div>
+<div>
+	&nbsp; &nbsp;axisMargin: 0,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;borderWidth: 0,</div>
+<div>
+	&nbsp; &nbsp;borderColor:null,</div>
+<div>
+	&nbsp; &nbsp;minBorderMargin: 5 ,</div>
+<div>
+	&nbsp; &nbsp;clickable: true,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;hoverable: true,</div>
+<div>
+	&nbsp; &nbsp;autoHighlight: false,</div>
+<div>
+	&nbsp; &nbsp;mouseActiveRadius: 20</div>
+<div>
+	},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;series: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>grow: {active:false}</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;legend: { position: &quot;ne&quot; },</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;colors: chartColours,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;tooltip: true, //activate tooltip</div>
+<div>
+	tooltipOpts: {</div>
+<div>
+	content: &quot;%s : %y.0&quot;,</div>
+<div>
+	shifts: {</div>
+<div>
+	x: -30,</div>
+<div>
+	y: -50</div>
+<div>
+	}</div>
+<div>
+	}</div>
+<div>
+	};</div>
+<div>
+	&nbsp;</div>
+<div>
+	$.plot($(&quot;.order-bars-chart&quot;), ds, options);</div>
+<div>
+	});</div>
+<div>
+	}//end if</div>
+<div>
+	&nbsp;</div>
+<div>
+	//Stacked bars chart</div>
+<div>
+	&nbsp; &nbsp; if (divElement.hasClass(&#39;stacked-bars-chart&#39;)) {</div>
+<div>
+	$(function () {</div>
+<div>
+	//some data</div>
+<div>
+	var d1 = [];</div>
+<div>
+	&nbsp; &nbsp;for (var i = 0; i &lt;= 10; i += 1)</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;d1.push([i, parseInt(Math.random() * 30)]);</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp;var d2 = [];</div>
+<div>
+	&nbsp; &nbsp;for (var i = 0; i &lt;= 10; i += 1)</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;d2.push([i, parseInt(Math.random() * 30)]);</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp;var d3 = [];</div>
+<div>
+	&nbsp; &nbsp;for (var i = 0; i &lt;= 10; i += 1)</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;d3.push([i, parseInt(Math.random() * 30)]);</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp;var ds = new Array();</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; ds.push({</div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>label: &quot;Data One&quot;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;data:d1</div>
+<div>
+	&nbsp; &nbsp;});</div>
+<div>
+	&nbsp; &nbsp;ds.push({</div>
+<div>
+	&nbsp; &nbsp;<span class="Apple-tab-span"> </span>label: &quot;Data Two&quot;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;data:d2</div>
+<div>
+	&nbsp; &nbsp;});</div>
+<div>
+	&nbsp; &nbsp;ds.push({</div>
+<div>
+	&nbsp; &nbsp;<span class="Apple-tab-span"> </span>label: &quot;Data Tree&quot;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;data:d3</div>
+<div>
+	&nbsp; &nbsp;});</div>
+<div>
+	&nbsp;</div>
+<div>
+	var stack = 0, bars = true, lines = false, steps = false;</div>
+<div>
+	&nbsp;</div>
+<div>
+	var options = {</div>
+<div>
+	grid: {</div>
+<div>
+	show: true,</div>
+<div>
+	&nbsp; &nbsp;aboveData: false,</div>
+<div>
+	&nbsp; &nbsp;color: &quot;#3f3f3f&quot; ,</div>
+<div>
+	&nbsp; &nbsp;labelMargin: 5,</div>
+<div>
+	&nbsp; &nbsp;axisMargin: 0,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;borderWidth: 0,</div>
+<div>
+	&nbsp; &nbsp;borderColor:null,</div>
+<div>
+	&nbsp; &nbsp;minBorderMargin: 5 ,</div>
+<div>
+	&nbsp; &nbsp;clickable: true,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;hoverable: true,</div>
+<div>
+	&nbsp; &nbsp;autoHighlight: true,</div>
+<div>
+	&nbsp; &nbsp;mouseActiveRadius: 20</div>
+<div>
+	},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;series: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>grow: {active:false},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>stack: stack,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lines: { show: lines, fill: true, steps: steps },</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bars: { show: bars, barWidth: 0.5, fill:1}</div>
+<div>
+	&nbsp; &nbsp;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;xaxis: {ticks:11, tickDecimals: 0},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;legend: { position: &quot;se&quot; },</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;colors: chartColours,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;shadowSize:1,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;tooltip: true, //activate tooltip</div>
+<div>
+	tooltipOpts: {</div>
+<div>
+	content: &quot;%s : %y.0&quot;,</div>
+<div>
+	shifts: {</div>
+<div>
+	x: -30,</div>
+<div>
+	y: -50</div>
+<div>
+	}</div>
+<div>
+	}</div>
+<div>
+	};</div>
+<div>
+	&nbsp;</div>
+<div>
+	$.plot($(&quot;.stacked-bars-chart&quot;), ds, options);</div>
+<div>
+	});</div>
+<div>
+	}//end if</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	//Lines chart without points</div>
+<div>
+	&nbsp; &nbsp; if (divElement.hasClass(&#39;lines-chart&#39;)) {</div>
+<div>
+	$(function () {</div>
+<div>
+	&nbsp;</div>
+<div>
+	//some data</div>
+<div>
+	var d1 = [[1, 3+randNum()], [2, 6+randNum()], [3, 9+randNum()], [4, 12+randNum()],[5, 15+randNum()],[6, 18+randNum()],[7, 21+randNum()],[8, 15+randNum()],[9, 18+randNum()],[10, 21+randNum()],[11, 24+randNum()],[12, 27+randNum()],[13, 30+randNum()],[14, 33+randNum()],[15, 24+randNum()],[16, 27+randNum()],[17, 30+randNum()],[18, 33+randNum()],[19, 36+randNum()],[20, 39+randNum()],[21, 42+randNum()],[22, 45+randNum()],[23, 36+randNum()],[24, 39+randNum()],[25, 42+randNum()],[26, 45+randNum()],[27,38+randNum()],[28, 51+randNum()],[29, 55+randNum()], [30, 60+randNum()]];</div>
+<div>
+	var d2 = [[1, randNum()-5], [2, randNum()-4], [3, randNum()-4], [4, randNum()],[5, 4+randNum()],[6, 4+randNum()],[7, 5+randNum()],[8, 5+randNum()],[9, 6+randNum()],[10, 6+randNum()],[11, 6+randNum()],[12, 2+randNum()],[13, 3+randNum()],[14, 4+randNum()],[15, 4+randNum()],[16, 4+randNum()],[17, 5+randNum()],[18, 5+randNum()],[19, 2+randNum()],[20, 2+randNum()],[21, 3+randNum()],[22, 3+randNum()],[23, 3+randNum()],[24, 2+randNum()],[25, 4+randNum()],[26, 4+randNum()],[27,5+randNum()],[28, 2+randNum()],[29, 2+randNum()], [30, 3+randNum()]];</div>
+<div>
+	//define placeholder class</div>
+<div>
+	var placeholder = $(&quot;.lines-chart&quot;);</div>
+<div>
+	//graph options</div>
+<div>
+	var options = {</div>
+<div>
+	grid: {</div>
+<div>
+	show: true,</div>
+<div>
+	&nbsp; &nbsp;aboveData: true,</div>
+<div>
+	&nbsp; &nbsp;color: &quot;#3f3f3f&quot; ,</div>
+<div>
+	&nbsp; &nbsp;labelMargin: 5,</div>
+<div>
+	&nbsp; &nbsp;axisMargin: 0,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;borderWidth: 0,</div>
+<div>
+	&nbsp; &nbsp;borderColor:null,</div>
+<div>
+	&nbsp; &nbsp;minBorderMargin: 5 ,</div>
+<div>
+	&nbsp; &nbsp;clickable: true,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;hoverable: true,</div>
+<div>
+	&nbsp; &nbsp;autoHighlight: true,</div>
+<div>
+	&nbsp; &nbsp;mouseActiveRadius: 20</div>
+<div>
+	},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;series: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>grow: {active:false},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lines: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>show: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>fill: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>lineWidth: 2,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>steps: false</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;points: {show:false}</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;legend: { position: &quot;se&quot; },</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;yaxis: { min: 0 },</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;xaxis: {ticks:11, tickDecimals: 0},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;colors: chartColours,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;shadowSize:1,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;tooltip: true, //activate tooltip</div>
+<div>
+	tooltipOpts: {</div>
+<div>
+	content: &quot;%s : %y.0&quot;,</div>
+<div>
+	shifts: {</div>
+<div>
+	x: -30,</div>
+<div>
+	y: -50</div>
+<div>
+	}</div>
+<div>
+	}</div>
+<div>
+	&nbsp; &nbsp;}; &nbsp;&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>$.plot(placeholder, [&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>{</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>label: &quot;Visits&quot;,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>data: d1,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>lines: {fillColor: &quot;#f2f7f9&quot;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>points: {fillColor: &quot;#88bbc8&quot;}</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>},&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>{<span class="Apple-tab-span"> </span></div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>label: &quot;Unique Visits&quot;,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>data: d2,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>lines: {fillColor: &quot;#fff8f2&quot;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>points: {fillColor: &quot;#ed7a53&quot;}</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>}&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>], options);</div>
+<div>
+	&nbsp;</div>
+<div>
+	});</div>
+<div>
+	}//end if</div>
+<div>
+	&nbsp;</div>
+<div>
+	//Horizontal bars chart</div>
+<div>
+	&nbsp; &nbsp; if (divElement.hasClass(&#39;horizontal-bars-chart&#39;)) {</div>
+<div>
+	$(function () {</div>
+<div>
+	//some data</div>
+<div>
+	//Display horizontal graph</div>
+<div>
+	&nbsp; &nbsp; var d1_h = [];</div>
+<div>
+	&nbsp; &nbsp; for (var i = 0; i &lt;= 5; i += 1)</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; d1_h.push([parseInt(Math.random() * 30),i ]);</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; var d2_h = [];</div>
+<div>
+	&nbsp; &nbsp; for (var i = 0; i &lt;= 5; i += 1)</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; d2_h.push([parseInt(Math.random() * 30),i ]);</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; var d3_h = [];</div>
+<div>
+	&nbsp; &nbsp; for (var i = 0; i &lt;= 5; i += 1)</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; d3_h.push([ parseInt(Math.random() * 30),i]);</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div>
+<div>
+	&nbsp; &nbsp; var ds_h = new Array();</div>
+<div>
+	&nbsp; &nbsp; ds_h.push({</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; data:d1_h,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; bars: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; horizontal:true,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; show: true,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; barWidth: 0.2,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; order: 1,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; }</div>
+<div>
+	&nbsp; &nbsp; });</div>
+<div>
+	ds_h.push({</div>
+<div>
+	&nbsp; &nbsp;data:d2_h,</div>
+<div>
+	&nbsp; &nbsp;bars: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;horizontal:true,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;show: true,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;barWidth: 0.2,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;order: 2</div>
+<div>
+	&nbsp; &nbsp;}</div>
+<div>
+	});</div>
+<div>
+	ds_h.push({</div>
+<div>
+	&nbsp; &nbsp;data:d3_h,</div>
+<div>
+	&nbsp; &nbsp;bars: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;horizontal:true,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;show: true,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;barWidth: 0.2,&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;order: 3</div>
+<div>
+	&nbsp; &nbsp;}</div>
+<div>
+	});</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	var options = {</div>
+<div>
+	grid: {</div>
+<div>
+	show: true,</div>
+<div>
+	&nbsp; &nbsp;aboveData: false,</div>
+<div>
+	&nbsp; &nbsp;color: &quot;#3f3f3f&quot; ,</div>
+<div>
+	&nbsp; &nbsp;labelMargin: 5,</div>
+<div>
+	&nbsp; &nbsp;axisMargin: 0,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;borderWidth: 0,</div>
+<div>
+	&nbsp; &nbsp;borderColor:null,</div>
+<div>
+	&nbsp; &nbsp;minBorderMargin: 5 ,</div>
+<div>
+	&nbsp; &nbsp;clickable: true,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;hoverable: true,</div>
+<div>
+	&nbsp; &nbsp;autoHighlight: false,</div>
+<div>
+	&nbsp; &nbsp;mouseActiveRadius: 20</div>
+<div>
+	},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;series: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>grow: {active:false},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;bars: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>show:true,</div>
+<div>
+	horizontal: true,</div>
+<div>
+	barWidth:0.2,</div>
+<div>
+	fill:1</div>
+<div>
+	}</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;legend: { position: &quot;ne&quot; },</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;colors: chartColours,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;tooltip: true, //activate tooltip</div>
+<div>
+	tooltipOpts: {</div>
+<div>
+	content: &quot;%s : %y.0&quot;,</div>
+<div>
+	shifts: {</div>
+<div>
+	x: -30,</div>
+<div>
+	y: -50</div>
+<div>
+	}</div>
+<div>
+	}</div>
+<div>
+	};</div>
+<div>
+	&nbsp;</div>
+<div>
+	$.plot($(&quot;.horizontal-bars-chart&quot;), ds_h, options);</div>
+<div>
+	});</div>
+<div>
+	}//end if</div>
+<div>
+	&nbsp;</div>
+<div>
+	//Auto update chart</div>
+<div>
+	&nbsp; &nbsp; if (divElement.hasClass(&#39;auto-update-chart&#39;)) {</div>
+<div>
+	$(function () {</div>
+<div>
+	// we use an inline data source in the example, usually data would</div>
+<div>
+	&nbsp; &nbsp;// be fetched from a server</div>
+<div>
+	&nbsp; &nbsp;var data = [], totalPoints = 300;</div>
+<div>
+	&nbsp; &nbsp;function getRandomData() {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;if (data.length &gt; 0)</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;data = data.slice(1);</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;// do a random walk</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;while (data.length &lt; totalPoints) {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;var prev = data.length &gt; 0 ? data[data.length - 1] : 50;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;var y = prev + Math.random() * 10 - 5;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (y &lt; 0)</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;y = 0;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (y &gt; 100)</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;y = 100;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;data.push(y);</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;// zip the generated y values with the x values</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;var res = [];</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;for (var i = 0; i &lt; data.length; ++i)</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;res.push([i, data[i]])</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;return res;</div>
+<div>
+	&nbsp; &nbsp;}</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp;// Update interval</div>
+<div>
+	&nbsp; &nbsp;var updateInterval = 200;</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp;// setup plot</div>
+<div>
+	&nbsp; &nbsp;var options = {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;series: {&nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>grow: {active:false}, //disable auto grow</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>shadowSize: 0, // drawing is faster without shadows</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>lines: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>show: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>fill: true,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>lineWidth: 2,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>steps: false</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;},</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;grid: {</div>
+<div>
+	show: true,</div>
+<div>
+	&nbsp; &nbsp;aboveData: false,</div>
+<div>
+	&nbsp; &nbsp;color: &quot;#3f3f3f&quot; ,</div>
+<div>
+	&nbsp; &nbsp;labelMargin: 5,</div>
+<div>
+	&nbsp; &nbsp;axisMargin: 0,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;borderWidth: 0,</div>
+<div>
+	&nbsp; &nbsp;borderColor:null,</div>
+<div>
+	&nbsp; &nbsp;minBorderMargin: 5 ,</div>
+<div>
+	&nbsp; &nbsp;clickable: true,&nbsp;</div>
+<div>
+	&nbsp; &nbsp;hoverable: true,</div>
+<div>
+	&nbsp; &nbsp;autoHighlight: false,</div>
+<div>
+	&nbsp; &nbsp;mouseActiveRadius: 20</div>
+<div>
+	},&nbsp;</div>
+<div>
+	colors: chartColours,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;tooltip: true, //activate tooltip</div>
+<div>
+	tooltipOpts: {</div>
+<div>
+	content: &quot;Value is : %y.0&quot;,</div>
+<div>
+	shifts: {</div>
+<div>
+	x: -30,</div>
+<div>
+	y: -50</div>
+<div>
+	}</div>
+<div>
+	},<span class="Apple-tab-span"> </span></div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;yaxis: { min: 0, max: 100 },</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;xaxis: { show: true}</div>
+<div>
+	&nbsp; &nbsp;};</div>
+<div>
+	&nbsp; &nbsp;var plot = $.plot($(&quot;.auto-update-chart&quot;), [ getRandomData() ], options);</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp;function update() {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;plot.setData([ getRandomData() ]);</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;// since the axes don&#39;t change, we don&#39;t need to call plot.setupGrid()</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;plot.draw();</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;setTimeout(update, updateInterval);</div>
+<div>
+	&nbsp; &nbsp;}</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp; &nbsp;update();</div>
+<div>
+	});</div>
+<div>
+	}//end if</div>
+<p>
+	&nbsp;</p>
+<h1>
+	Main.js</h1>
+<h2>
+	Tooltips</h2>
+<pre class="prettyprint lang-plain linenums">
+</pre>
+<div>
+	<pre class="prettyprint lang-plain linenums">
+//------------- Tooltips -------------//</pre>
+</div>
+<div>
+	&nbsp;</div>
+<div>
+	//top tooltip</div>
+<div>
+	$(&#39;.tip&#39;).qtip({</div>
+<div>
+	content: false,</div>
+<div>
+	position: {</div>
+<div>
+	my: &#39;bottom center&#39;,</div>
+<div>
+	at: &#39;top center&#39;,</div>
+<div>
+	viewport: $(window)</div>
+<div>
+	},</div>
+<div>
+	style: {</div>
+<div>
+	classes: &#39;ui-tooltip-tipsy&#39;</div>
+<div>
+	}</div>
+<div>
+	});</div>
+<div>
+	&nbsp;</div>
+<div>
+	//tooltip in right</div>
+<div>
+	$(&#39;.tipR&#39;).qtip({</div>
+<div>
+	content: false,</div>
+<div>
+	position: {</div>
+<div>
+	my: &#39;left center&#39;,</div>
+<div>
+	at: &#39;right center&#39;,</div>
+<div>
+	viewport: $(window)</div>
+<div>
+	},</div>
+<div>
+	style: {</div>
+<div>
+	classes: &#39;ui-tooltip-tipsy&#39;</div>
+<div>
+	}</div>
+<div>
+	});</div>
+<div>
+	&nbsp;</div>
+<div>
+	//tooltip in bottom</div>
+<div>
+	$(&#39;.tipB&#39;).qtip({</div>
+<div>
+	content: false,</div>
+<div>
+	position: {</div>
+<div>
+	my: &#39;top center&#39;,</div>
+<div>
+	at: &#39;bottom center&#39;,</div>
+<div>
+	viewport: $(window)</div>
+<div>
+	},</div>
+<div>
+	style: {</div>
+<div>
+	classes: &#39;ui-tooltip-tipsy&#39;</div>
+<div>
+	}</div>
+<div>
+	});</div>
+<div>
+	&nbsp;</div>
+<div>
+	//tooltip in left</div>
+<div>
+	$(&#39;.tipL&#39;).qtip({</div>
+<div>
+	content: false,</div>
+<div>
+	position: {</div>
+<div>
+	my: &#39;right center&#39;,</div>
+<div>
+	at: &#39;left center&#39;,</div>
+<div>
+	viewport: $(window)</div>
+<div>
+	},</div>
+<div>
+	style: {</div>
+<div>
+	classes: &#39;ui-tooltip-tipsy&#39;</div>
+<div>
+	}</div>
+<div>
+	});</div>
+<h2>
+	Full calendar</h2>
+<pre class="prettyprint lang-plain linenums">
+</pre>
+<div>
+	<pre class="prettyprint lang-plain linenums">
+//------------- Full calendar &nbsp;-------------//</pre>
+</div>
+<div>
+	$(function () {</div>
+<div>
+	var date = new Date();</div>
+<div>
+	var d = date.getDate();</div>
+<div>
+	var m = date.getMonth();</div>
+<div>
+	var y = date.getFullYear();</div>
+<div>
+	&nbsp;</div>
+<div>
+	//front page calendar</div>
+<div>
+	$(&#39;#calendar&#39;).fullCalendar({</div>
+<div>
+	//theme: true,</div>
+<div>
+	header: {</div>
+<div>
+	left: &#39;title,today&#39;,</div>
+<div>
+	center: &#39;prev,next&#39;,</div>
+<div>
+	right: &#39;month,agendaWeek,agendaDay&#39;</div>
+<div>
+	},</div>
+<div>
+	buttonText: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>prev: &#39;&lt;span class=&quot;icon24 icomoon-icon-arrow-left&quot;&gt;&lt;/span&gt;&#39;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-tab-span"> </span>next: &#39;&lt;span class=&quot;icon24 icomoon-icon-arrow-right&quot;&gt;&lt;/span&gt;&#39;</div>
+<div>
+	&nbsp; &nbsp;<span class="Apple-tab-span"> </span>},</div>
+<div>
+	editable: true,</div>
+<div>
+	events: [</div>
+<div>
+	{</div>
+<div>
+	title: &#39;All Day Event&#39;,</div>
+<div>
+	start: new Date(y, m, 1)</div>
+<div>
+	},</div>
+<div>
+	{</div>
+<div>
+	title: &#39;Long Event&#39;,</div>
+<div>
+	start: new Date(y, m, d-5),</div>
+<div>
+	end: new Date(y, m, d-2)</div>
+<div>
+	},</div>
+<div>
+	{</div>
+<div>
+	id: 999,</div>
+<div>
+	title: &#39;Repeating Event&#39;,</div>
+<div>
+	start: new Date(y, m, d-3, 16, 0),</div>
+<div>
+	allDay: false</div>
+<div>
+	},</div>
+<div>
+	{</div>
+<div>
+	id: 999,</div>
+<div>
+	title: &#39;Repeating Event&#39;,</div>
+<div>
+	start: new Date(y, m, d+4, 16, 0),</div>
+<div>
+	allDay: false</div>
+<div>
+	},</div>
+<div>
+	{</div>
+<div>
+	title: &#39;Meeting&#39;,</div>
+<div>
+	start: new Date(y, m, d, 10, 30),</div>
+<div>
+	allDay: false</div>
+<div>
+	},</div>
+<div>
+	{</div>
+<div>
+	title: &#39;Lunch&#39;,</div>
+<div>
+	start: new Date(y, m, d, 12, 0),</div>
+<div>
+	end: new Date(y, m, d, 14, 0),</div>
+<div>
+	allDay: false,</div>
+<div>
+	color: &#39;#9FC569&#39;</div>
+<div>
+	},</div>
+<div>
+	{</div>
+<div>
+	title: &#39;Birthday Party&#39;,</div>
+<div>
+	start: new Date(y, m, d+1, 19, 0),</div>
+<div>
+	end: new Date(y, m, d+1, 22, 30),</div>
+<div>
+	allDay: false,</div>
+<div>
+	color: &#39;#ED7A53&#39;</div>
+<div>
+	},</div>
+<div>
+	{</div>
+<div>
+	title: &#39;Click for Google&#39;,</div>
+<div>
+	start: new Date(y, m, 28),</div>
+<div>
+	end: new Date(y, m, 29),</div>
+<div>
+	url: &#39;http://google.com/&#39;</div>
+<div>
+	}</div>
+<div>
+	]</div>
+<div>
+	});</div>
+<div>
+	});</div>
+<div>
+	&nbsp;</div>
+<div>
+	/* initialize the external events</div>
+<div>
+	-----------------------------------------------------------------*/</div>
+<div>
+	&nbsp;</div>
+<div>
+	$(&#39;#external-events div.external-event&#39;).each(function() {</div>
+<div>
+	&nbsp;</div>
+<div>
+	// create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)</div>
+<div>
+	// it doesn&#39;t need to have a start or end</div>
+<div>
+	var eventObject = {</div>
+<div>
+	title: $.trim($(this).text()) // use the element&#39;s text as the event title</div>
+<div>
+	};</div>
+<div>
+	&nbsp;</div>
+<div>
+	// store the Event Object in the DOM element so we can get to it later</div>
+<div>
+	$(this).data(&#39;eventObject&#39;, eventObject);</div>
+<div>
+	&nbsp;</div>
+<div>
+	// make the event draggable using jQuery UI</div>
+<div>
+	$(this).draggable({</div>
+<div>
+	zIndex: 999,</div>
+<div>
+	revert: true, &nbsp; &nbsp; &nbsp;// will cause the event to go back to its</div>
+<div>
+	revertDuration: 0 &nbsp;// &nbsp;original position after the drag</div>
+<div>
+	});</div>
+<div>
+	&nbsp;</div>
+<div>
+	});</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	/* initialize the calendar</div>
+<div>
+	-----------------------------------------------------------------*/</div>
+<div>
+	&nbsp;</div>
+<div>
+	$(&#39;#calendar-events&#39;).fullCalendar({</div>
+<div>
+	header: {</div>
+<div>
+	left: &#39;title,today&#39;,</div>
+<div>
+	center: &#39;prev,next&#39;,</div>
+<div>
+	right: &#39;month,agendaWeek,agendaDay&#39;</div>
+<div>
+	},</div>
+<div>
+	buttonText: {</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>prev: &#39;&lt;span class=&quot;icon24 icomoon-icon-arrow-left&quot;&gt;&lt;/span&gt;&#39;,</div>
+<div>
+	&nbsp; &nbsp; &nbsp; &nbsp; <span class="Apple-tab-span"> </span>next: &#39;&lt;span class=&quot;icon24 icomoon-icon-arrow-right&quot;&gt;&lt;/span&gt;&#39;</div>
+<div>
+	&nbsp; &nbsp; <span class="Apple-tab-span"> </span>},</div>
+<div>
+	editable: true,</div>
+<div>
+	droppable: true, // this allows things to be dropped onto the calendar !!!</div>
+<div>
+	drop: function(date, allDay) { // this function is called when something is dropped</div>
+<div>
+	&nbsp;</div>
+<div>
+	// retrieve the dropped element&#39;s stored Event Object</div>
+<div>
+	var originalEventObject = $(this).data(&#39;eventObject&#39;);</div>
+<div>
+	&nbsp;</div>
+<div>
+	// we need to copy it, so that multiple events don&#39;t have a reference to the same object</div>
+<div>
+	var copiedEventObject = $.extend({}, originalEventObject);</div>
+<div>
+	&nbsp;</div>
+<div>
+	// assign it the date that was reported</div>
+<div>
+	copiedEventObject.start = date;</div>
+<div>
+	copiedEventObject.allDay = allDay;</div>
+<div>
+	&nbsp;</div>
+<div>
+	// render the event on the calendar</div>
+<div>
+	// the last `true` argument determines if the event &quot;sticks&quot; (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)</div>
+<div>
+	$(&#39;#calendar-events&#39;).fullCalendar(&#39;renderEvent&#39;, copiedEventObject, true);</div>
+<div>
+	$(this).remove();</div>
+<div>
+	&nbsp;</div>
+<div>
+	}</div>
+<div>
+	});</div>
+<h2>
+	Pretty code</h2>
+<pre class="prettyprint lang-plain linenums">
+</pre>
+<div>
+	<pre class="prettyprint lang-plain linenums">
+//------------- Prettify code &nbsp;-------------//</pre>
+</div>
+<div>
+	prettyPrint();</div>
+<p>
+	&nbsp;</p>
+<h2>
+	Tags plugin</h2>
+<pre class="prettyprint lang-plain linenums">
+</pre>
+<div>
+	<pre class="prettyprint lang-plain linenums">
+//------------- Tags plugin &nbsp;-------------//</pre>
+</div>
+<div>
+	&nbsp;</div>
+<div>
+	$(&quot;#tags&quot;).select2({</div>
+<div>
+	tags:[&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;, &quot;orange&quot;]</div>
+<div>
+	});</div>
+<p>
+	&nbsp;</p>
+</section>
+<section id="credits_and_source_for_plugins">
+	<div class="page-header"><h3>Credits and source for plugins</h3><hr class="notop"></div>
+<p>
+	&nbsp;</p>
+<h2>
+	Jquery plugins</h2>
+<ul>
+	<li>
+		http://www.script-tutorials.com/animated-jquery-progressbar/</li>
+	<li>
+		http://acko.net/blog/farbtastic-jquery-color-picker-plug-in/</li>
+	<li>
+		http://www.meadmiracle.com/dlb/DLBDocumentation.aspx</li>
+	<li>
+		http://datatables.net/ref</li>
+	<li>
+		http://www.unwrongest.com/ - elastic textarea</li>
+	<li>
+		https://github.com/Studio-42/elFinder/wiki</li>
+	<li>
+		http://code.google.com/p/flot/</li>
+	<li>
+		http://arshaw.com/fullcalendar/</li>
+	<li>
+		http://www.givainc.com/labs/ibutton_jquery_plugin.htm</li>
+	<li>
+		http://rustyjeans.com/jquery-plugins/input-limiter/</li>
+	<li>
+		https://github.com/scottjehl/iOS-Orientationchange-Fix</li>
+	<li>
+		http://luis-almeida.github.com/jPages/</li>
+	<li>
+		http://www.appelsiini.net/projects/lazyload</li>
+	<li>
+		https://github.com/aterrien/jQuery-Knob</li>
+	<li>
+		http://digitalbush.com/projects/masked-input-plugin/</li>
+	<li>
+		http://www.plupload.com/</li>
+	<li>
+		http://pinesframework.org/pnotify/</li>
+	<li>
+		http://code.google.com/p/google-code-prettify/</li>
+	<li>
+		http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/</li>
+	<li>
+		http://craigsworks.com/projects/qtip/</li>
+	<li>
+		http://www.zurb.com/playground/responsive-tables</li>
+	<li>
+		https://github.com/ivaynberg/select2</li>
+	<li>
+		http://techlaboratory.net/products.php?product=smartwizard</li>
+	<li>
+		http://omnipotent.net/jquery.sparkline/#s-about</li>
+	<li>
+		http://yelotofu.com/labs/jquery/UI/stepper/</li>
+	<li>
+		http://keith-wood.name/timeEntry.html</li>
+	<li>
+		http://www.tinymce.com</li>
+	<li>
+		http://touchpunch.furf.com/</li>
+	<li>
+		http://uniformjs.com/</li>
+	<li>
+		http://bassistance.de/jquery-plugins/jquery-plugin-validation/</li>
+	<li>
+		http://code.google.com/p/jquery-watermark/</li>
+</ul>
+<p>
+	Special thanks to&nbsp;<a href="http://www.premiumpixels.com/">http://www.premiumpixels.com/</a>&nbsp;for awesome psd and ideas thanks</p>
+<h2>
+	Patterns</h2>
+<p>
+	<a href="http://subtlepatterns.com/">http://subtlepatterns.com/</a></p>
+<h2>
+	Icons:</h2>
+<p>
+	Special thanks for this awesome app:&nbsp;<a href="http://keyamoon.com/icomoon/app/">http://keyamoon.com/icomoon/app/</a></p>
+<p>
+	I planed to put all icomoon icons in next update your purchase make this real.</p>
+<p>
+	&nbsp;</p>
+<div>
+	Icon Set:<span class="Apple-tab-span" style="white-space:pre"> </span>Typicons -- http://typicons.com/ - License:<span class="Apple-tab-span" style="white-space:pre"> </span>CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/</div>
+<div>
+	Icon Set:<span class="Apple-tab-span" style="white-space:pre"> </span>Silkcons -- http://dribbble.com/shots/632219-Silkcons-You-can-t-do-with-just-one-icon-set License:<span class="Apple-tab-span" style="white-space:pre"> </span>CC0 -- http://creativecommons.org/publicdomain/zero/1.0/</div>
+<div>
+	Icon Set:<span class="Apple-tab-span" style="white-space:pre"> </span>Meteocons -- http://www.alessioatzeni.com/meteocons/ License:<span class="Apple-tab-span" style="white-space:pre"> </span>Arbitrary -- http://www.alessioatzeni.com/meteocons/#about</div>
+<div>
+	Icon Set:<span class="Apple-tab-span" style="white-space:pre"> </span>Iconic -- http://somerandomdude.com/work/iconic/ License:<span class="Apple-tab-span" style="white-space:pre"> </span>CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/us/</div>
+<div>
+	Icon Set:<span class="Apple-tab-span" style="white-space:pre"> </span>Icon Minia -- http://dribbble.com/shots/598215-Icon-Minia-139-Vector-Icons License:<span class="Apple-tab-span" style="white-space:pre"> </span>GPL V3 -- http://www.gnu.org/copyleft/gpl.html</div>
+<div>
+	Icon Set:<span class="Apple-tab-span" style="white-space:pre"> </span>IcoMoon (limited) -- http://keyamoon.com/icomoon/ License:<span class="Apple-tab-span" style="white-space:pre"> </span>CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/</div>
+<div>
+	Icon Set:<span class="Apple-tab-span" style="white-space:pre"> </span>Entypo -- http://www.entypo.com/ License:<span class="Apple-tab-span" style="white-space:pre"> </span>CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/</div>
+<div>
+	Icon Set:<span class="Apple-tab-span" style="white-space:pre"> </span>Cuticons -- http://dribbble.com/shots/631056-Cuticons-You-wanted-free-icons-right License:<span class="Apple-tab-span" style="white-space:pre"> </span>CC0 -- http://creativecommons.org/publicdomain/zero/1.0/</div>
+<div>
+	Icon Set:<span class="Apple-tab-span" style="white-space:pre"> </span>Broccolidry -- http://dribbble.com/shots/587469-Free-16px-Broccolidryiconsaniconsetitisfullof-icons License:<span class="Apple-tab-span" style="white-space:pre"> </span>Aribitrary -- http://licence.visualidiot.com/</div>
+<p>
+	&nbsp;</p>
+<p>
+	&nbsp;</p>
+<p>
+	&nbsp;</p>
+</section>
+<section id="changelog">
+	<div class="page-header"><h3>Changelog</h3><hr class="notop"></div>
+<div>
+	<strong>v1.1 Update (8.23.12)</strong></div>
+<ul>
+	<li>
+		Added button to collapse sidebar</li>
+	<li>
+		Added user profile page</li>
+	<li>
+		Added invoice page</li>
+	<li>
+		2 new icon sets</li>
+	<li>
+		Preload animation</li>
+	<li>
+		70 new ajax loaders</li>
+	<li>
+		Fix some bugs</li>
+</ul>
+<div>
+	<strong>v1.2 Update (8.26.12)</strong></div>
+<ul>
+	<li>
+		Added fixed version</li>
+	<li>
+		Updated to bootstrap 2.1.0</li>
+	<li>
+		Added blank page</li>
+	<li>
+		Fix reported bugs</li>
+</ul>
+<div>
+	<strong>v1.3 Update (8.27.12)</strong></div>
+<ul>
+	<li>
+		Fix notification dropdown expand bug</li>
+	<li>
+		Fix responsive bug in 980px resolution for fixed version.</li>
+	<li>
+		Fixed &ndash; 2 new icons sets not aligned properly.</li>
+	<li>
+		Fix missed border in navigation on active link.</li>
+	<li>
+		Add plain box widget</li>
+	<li>
+		Add widget with custom scroll bar</li>
+	<li>
+		Add search page</li>
+</ul>
+<div>
+	<strong>v1.4 Update (8.30.12)</strong></div>
+<ul>
+	<li>
+		Add email page</li>
+	<li>
+		Added missing css folder (sorry about that mistake)</li>
+	<li>
+		Fix some bugs</li>
+</ul>
+<div>
+	<strong>v1.5 Update (9.02.12)</strong></div>
+<ul>
+	<li>
+		Fix login form icons not shown on Internet Explorer</li>
+	<li>
+		Added borders between tabs links</li>
+	<li>
+		Added 4 missing images for apple touch icon</li>
+	<li>
+		Make simple select fluid</li>
+	<li>
+		Remove unnecessary ie.css declaration on top of each page</li>
+	<li>
+		Added support page</li>
+	<li>
+		Fix other small bugs</li>
+</ul>
+<div>
+	<strong>v1.6 Update (9.10.12)</strong></div>
+<ul>
+	<li>
+		Update documentation for how to download @font-face icons</li>
+	<li>
+		Added FAQ page</li>
+	<li>
+		Added back to top plugin</li>
+	<li>
+		Added textarea validation example</li>
+	<li>
+		Fix small bugs</li>
+</ul>
+<div>
+	<strong>v1.7 Update (9.24.12)</strong></div>
+<ul>
+	<li>
+		bootstrap is updated to 2.1.1</li>
+	<li>
+		added IcoMoon premium icons (700+)</li>
+	<li>
+		added page with right sidebar example</li>
+	<li>
+		added page with two sidebars example</li>
+	<li>
+		added page with fixed top bar example</li>
+	<li>
+		added combined picker ( date + time )</li>
+	<li>
+		added JQuery autocomplete and combobox plugin.</li>
+	<li>
+		added in form-validation.html &ndash; required checkbox , required combobox, required select with filter</li>
+	<li>
+		added in calendar.html &ndash; demo with calendar in tabs.</li>
+	<li>
+		fix accordion bug if have only one item.</li>
+	<li>
+		fix other small bugs</li>
+</ul>
+<div>
+	<strong>v1.8 Update (11.08.12)</strong></div>
+<ul>
+	<li>
+		bootstrap is updated to 2.2.1</li>
+	<li>
+		full calendar plugin is updated to 1.5.4</li>
+	<li>
+		addes missing bootstrap elements to demo</li>
+	<li>
+		added vertical wizard example</li>
+	<li>
+		added sublevel 2 navigation example in dashboard.html -&gt; Forms</li>
+	<li>
+		added no-sidebar.html page</li>
+	<li>
+		added Filetree plugin</li>
+	<li>
+		added RTL version in package</li>
+	<li>
+		added pattern switcher</li>
+	<li>
+		optimize template plus new semantic plugin structure.</li>
+	<li>
+		added php demo files how to populate chart from db via ajax method</li>
+	<li>
+		fix minor bugs</li>
+</ul>
+<div>
+	<strong>v1.9 Update (26.01.13)</strong></div>
+<ul>
+	<li>
+		Jquery is updated to 1.8.3</li>
+	<li>
+		Jquery UI is updated to 1.9.2</li>
+	<li>
+		Bootstrap is updated to 2.2.2</li>
+	<li>
+		Fixed sidebar height if not have content.</li>
+	<li>
+		Add examples how to load data with json for Charts.</li>
+	<li>
+		Stepper plugin is replaced with JqueryUI spinner ( this fix select2 issue in new chrome).</li>
+	<li>
+		Added globalize plugin (in order to release full power in JqueryUI spinner)</li>
+	<li>
+		Fixed disappear first column in large monitors for responsive tables</li>
+	<li>
+		Sparkline plugin is updated to 2.1</li>
+	<li>
+		Fixed smart wizard plugin not show properly in firefox.</li>
+	<li>
+		TinyMce plugin is updated to 3.5.8</li>
+	<li>
+		Remove ibutton plugin and replace with boostrap toggle button</li>
+	<li>
+		Plugin Pretty Photo plugin is updated to 3.1.5</li>
+	<li>
+		Plugin Lazy Load is updated to 1.8.4</li>
+	<li>
+		Plugin jpages is updated to 0.8</li>
+	<li>
+		Plugin nicescroll is updated to 3.1.4 (Now support horizontal scroll)</li>
+	<li>
+		Added horizontal scroll example in widgets.html</li>
+	<li>
+		Plugin qTip is updated to lastest version.</li>
+	<li>
+		Plugin tipue Search is updated to 2.0</li>
+	<li>
+		Plugin DataTables is updated to 1.9.4</li>
+	<li>
+		removed old Current system and replace with new one without cookies.</li>
+	<li>
+		added Page with drag&amp;drop example.</li>
+	<li>
+		removed old responsive menu and replaced with Off Canvas responsive menu.</li>
+	<li>
+		Fixed other minor bugs</li>
+</ul>
+<p>
+	<strong>v2.0 Update (27.06.13)</strong></p>
+<ul>
+	<li>
+		jquery is updated to 1.9.2</li>
+	<li>
+		jqueryUI is updated to 1.10.2</li>
+	<li>
+		add modernizr</li>
+	<li>
+		add win8 touch icon</li>
+	<li>
+		Depricate jquery.cookie plugin</li>
+	<li>
+		Upgrade jquery.sparkline from v2.0 to v2.1(added support for new jquery)</li>
+	<li>
+		Upgrade uniform.js plugin from v1.7.5 to v.2.1.1</li>
+	<li>
+		Update qtip plugin to last version.</li>
+	<li>
+		Add jquery migrate (in order some plugins to work with last jquery)</li>
+	<li>
+		change loading screen logic (conflict with fontface icons in IE8)</li>
+	<li>
+		add support to IE8</li>
+	<li>
+		Update flot charts from v0.7 to 0.8.1</li>
+	<li>
+		remove old placeholder fallback plugin and replace with better</li>
+	<li>
+		update jquery.Knob plugin to last version.</li>
+	<li>
+		update plupload to last version.</li>
+	<li>
+		update select2 plugin to last version</li>
+	<li>
+		update tinymce to last version</li>
+	<li>
+		update jquery validation to last version.</li>
+	<li>
+		update fullcalendar to last version</li>
+	<li>
+		fileTree plugin is fixed (stop working in new php versions.)</li>
+	<li>
+		change responsive tables plugin (old not work with datatables)</li>
+	<li>
+		fix Datatables first column disapear in small screens</li>
+	<li>
+		add Tabletools example for datatables</li>
+	<li>
+		add meta tag for IE9 to render as normal.</li>
+	<li>
+		Optimize some javasript functions</li>
+	<li>
+		Add jrespond plugin</li>
+	<li>
+		Make invoice printable</li>
+	<li>
+		Replace old wizard plugin with new one.</li>
+	<li>
+		IcoMoon font is updated to last version. (added new icons &amp; fix render in IE8)</li>
+</ul>
+</section>
+
+	</div>
+</body>
+</html>
