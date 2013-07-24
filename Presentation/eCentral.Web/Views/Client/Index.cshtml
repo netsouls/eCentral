@@ -1,0 +1,74 @@
+﻿@{
+    var pageHeading = T("PageTitle.Clients").Text;
+    Html.AddTitleParts(pageHeading);
+    ViewBag.Heading = pageHeading;
+    ViewBag.HasDataTable = true;
+}
+@section SidebarWidget
+{
+}
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box gradient">
+            <div class="title">
+                @Html.Partial("ActionList", new ActionListModel() { AddNewRouteName = SystemRouteNames.ClientAdd, 
+                    EditRouteName = SystemRouteNames.ClientEdit, ChangeStatusRouteName = SystemRouteNames.ClientChangeStatus })                
+            </div>
+            <div class="content noPad">
+                <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered" id="myDataTable" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Client Name
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Phone
+                            </th>
+                            <th>
+                                City
+                            </th>
+                            <th>
+                                Country
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Last Update By
+                            </th>
+                            <th id="masterCh" class="ch"><input type="checkbox" name="checkbox" value="all" class="styled" /></th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- End .box -->
+    </div>
+    <!-- End .span12 -->
+</div>
+@section inlineScripts {
+    <script type="text/javascript">
+        appEngine.util.setDataTable('myDataTable', '@Url.Action("List")',
+            [
+                { 'sName': 'ClientName', 'mData': 'ClientName' },
+                { 'sName': 'Email', 'mData': 'Email' },
+                { 'sName': 'Phone', 'mData': 'Address.PhoneNumber' },
+                { 'sName': 'City', 'mData': 'Address.City' },
+                { 'sName': 'Country', 'mData': 'Address.CountryName' },
+                { 'PublishingStatus': 'PublishingStatus', 'mData': 'PublishingStatus', "bSearchable": false, "bSortable": false },
+                { 'LastUpdated': 'LastUpdated', 'mData': 'LastUpdated', "bSearchable": false, "bSortable": false },
+                { "sName": "Actions", "mData": "RowId", "bSearchable": false, "bSortable": false, sClass: "chChildren",
+                    "mRender": function (dataItem) {
+                        return '<input type="checkbox" name="checkbox" value="' + dataItem + '" />';
+                    }
+                }
+            ], true, true, function (dataTable) {
+                
+            });
+    </script>
+}

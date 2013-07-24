@@ -1,0 +1,142 @@
+﻿@model CompanyModel
+@{
+    var pageHeading = "Add new company";
+    Html.AddTitleParts(pageHeading);
+    ViewBag.Heading = pageHeading;
+
+    //other variables
+    var random = CommonHelper.GenerateRandomInteger();
+    var clientId = "picture" + random;
+
+    var siteInformationSettings = EngineContext.Current.Resolve<SiteInformationSettings>();
+    var siteState = siteInformationSettings.ApplicationState;
+    
+    if (siteState == eCentral.Core.Domain.ApplicationState.Production)
+    {
+        Html.AddScriptParts(ResourceLocation.Foot,
+            Url.Content("plugins/misc/jquery.fileupload.min.js"));
+
+        Html.AddCssFileParts(ResourceLocation.Head,
+            Url.Content("plugins/misc/fileupload.min.css"));
+    }
+    else
+    {
+        Html.AddScriptParts(ResourceLocation.Foot,
+            Url.Content("plugins/misc/fileUpload/jquery.iframe-transport.js"),
+            Url.Content("plugins/misc/fileUpload/jquery.fileupload.js"));
+    }
+}
+@section SidebarWidget
+{
+}
+<div class="row-fluid">
+    <div class="span12">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.HiddenFor(model => model.RowId)
+            @Html.HiddenFor(model => model.IsEdit)
+                    
+            <div class="box hover">
+                <div class="title">
+                    <h4>
+                        <span class="icon16 brocco-icon-grid"></span><span>Company details</span>
+                    </h4>
+                    <a href="#" class="minimize">Minimize</a>
+                </div>
+                <div class="content">
+                    <div class="form-row row-fluid">
+                        <div class="span12">
+                            <div class="row-fluid">
+                                @Html.LabelFor(m => m.CompanyName, new { @class = "span2" })
+                                @Html.TextBoxFor(m => m.CompanyName, new { @class = "span10 readonly" })
+                                @Html.ValidationMessageFor(m => m.CompanyName)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row row-fluid">
+                        <div class="span12">
+                            <div class="row-fluid">
+                                @Html.LabelFor(m => m.Abbreviation, new { @class = "span2" })
+                                @Html.TextBoxFor(m => m.Abbreviation, new { @class = "span10" })
+                                @Html.ValidationMessageFor(m => m.Abbreviation)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box hover">
+                <div class="title">
+                    <h4>
+                        <span class="icon16 icomoon-icon-upload"></span><span>Upload Logo</span>
+                    </h4>
+                </div>
+                <div class="content">
+                    <div class="form-row row-fluid">
+                        <div class="span12">
+                            <div class="row-fluid">
+                                <div class="form-label span2">
+                                    <img src="http://placehold.it/100x100&text=Logo" id="defaultLogo" alt="" class="image marginR10" /></div>
+                                <div class="span10">
+                                    <div class="row-fluid">
+                                        <div class="span12">
+                                            <div class="file_browse_wrapper">
+                                                <input type="file" class="file_browse" id="@(clientId + "-upload")"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row-fluid">
+                                        <div class="span12">
+                                            <div class="" id="progress">
+                                                <div class="bar">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @Html.HiddenFor(m => m.LogoId)
+                                @Html.ValidationMessageFor(m => m.LogoId)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-info marginR10">
+                    @T("Common.Save")</button>
+                <button type="button" class="btn btn-danger href-action" data-href="@Url.RouteUrl(SystemRouteNames.Company)">
+                    @T("Common.Cancel")</button>
+            </div>            
+                    
+        }
+    </div>
+    <!-- End .span12 -->
+</div>
+@section inlineScripts {
+    <script type="text/javascript">
+        var clientId = '@clientId';
+        $('#' + clientId + '-upload').fileupload({
+            'singleFileUploads': 'true',
+            'url': '@Url.RouteUrl(SystemRouteNames.AsyncUpload)',
+            'formData': { 'fileType':  @((int)eCentral.Core.Domain.Media.FileType.CompanyLogo)},
+            fail: function (e, data) {
+                $('#progress').removeClass("progress progress-success progress-striped");
+                alert(data.errorThrown);
+            },
+            progressall: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress .bar').css('width', progress + '%');
+            },
+            start: function(e) {
+                $('#progress').addClass("progress progress-success progress-striped");
+            },
+            done: function (e, data) {
+                var json = appEngine.util.stringToJSON( data.result);
+                $('#progress').removeClass("progress progress-success progress-striped");
+                if ( json.success ) {
+                    $('#@(Html.FieldIdFor(model => model.LogoId))').val(json.fileId);
+                    $('#defaultLogo').attr('src',json.fileUrl);
+                }
+            }
+        });
+    </script>
+}

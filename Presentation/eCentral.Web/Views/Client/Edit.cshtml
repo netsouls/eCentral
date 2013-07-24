@@ -1,0 +1,22 @@
+﻿@model ClientModel
+@{
+    var pageHeading = T("PageTitle.Clients.Edit").Text.FormatWith(Model.ClientName);
+    Html.AddTitleParts(pageHeading);
+    ViewBag.Heading = pageHeading; 
+}
+@section SidebarWidget
+{
+}
+<div class="row-fluid">
+    <div class="span12">        
+        @Html.Partial("_AddEdit", Model)
+    </div>
+    <!-- End .span12 -->
+</div>
+@section inlineScripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            appEngine.util.statesByCountry($("#@Html.FieldIdFor(m => m.Address.CountryId)"), $("#@Html.FieldIdFor(m => m.Address.StateProvinceId)"));
+        });
+    </script>
+}

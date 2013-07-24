@@ -1,0 +1,78 @@
+﻿@using eCentral.Core
+@{
+    Layout = "~/Views/Shared/_Root.cshtml";
+    var siteInformationSettings = EngineContext.Current.Resolve<SiteInformationSettings>();
+
+    var pageHeading = string.Empty;
+    if (ViewBag.Heading != null)
+    {
+        pageHeading = ViewBag.Heading;
+    }
+}
+@section inlineScripts
+{
+    @RenderSection("inlineScripts", false)
+}
+<!-- loading animation -->
+<div id="qLoverlay">
+</div>
+<div id="qLbar">
+</div>
+<div id="header">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a href="@Url.RouteUrl(SystemRouteNames.HomePage)" class="brand">@siteInformationSettings.SiteName<span
+                    class="slogan">.@siteInformationSettings.SiteNameBlurb</span><span class="slogan short">.admin</span></a>
+                @Html.Action("Header", "Common", new { area = "" })
+            </div>
+        </div>
+        <!-- /navbar-inner -->
+    </div>
+    <!-- /navbar -->
+</div>
+<!-- End #header -->
+<div id="wrapper">
+    <!--Responsive navigation button-->
+    <div class="resBtn">
+        <a href="#"><span class="icon16 minia-icon-list-3"></span></a>
+    </div>
+    <!--Sidebar collapse button-->
+    <div class="collapseBtn leftbar">
+        <a href="#" class="tipR" title="Hide sidebar"><span class="icon12 minia-icon-layout">
+        </span></a>
+    </div>
+    <!--Sidebar background-->
+    <div id="sidebarbg">
+    </div>
+    <!--Sidebar content-->
+    <div id="sidebar">
+        @Html.Action("Navigation", "Common", new { area = "" })
+        @RenderSection("SidebarWidget", false)
+    </div>
+    <!-- End #sidebar -->
+    <!--Body content-->
+    <div id="content" class="clearfix">
+        <div class="contentwrapper">
+            <!--Content wrapper-->
+            <div class="heading">
+                <h3>@pageHeading</h3>
+                <div class="resBtnSearch">
+                    <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
+                </div>
+                @Html.Partial("_Search")
+                @Html.Action("Breadcrumb", "Common", new { area = "" })
+            </div>
+            <!-- End .heading-->
+            @Html.Partial("_Notifications")
+            <!-- Build page from here: -->
+            @RenderBody()
+            <!-- End .row-fluid -->
+            <!--End page -->
+        </div>
+        <!-- End contentwrapper -->
+    </div>
+    <!-- End #content -->    
+</div>
+
+<!-- End #wrapper -->

@@ -1,0 +1,74 @@
+﻿@{
+    var pageHeading = T("PageTitle.BranchOffice").Text;
+    Html.AddTitleParts(pageHeading);
+    ViewBag.Heading = pageHeading;
+    ViewBag.HasDataTable = true;
+}
+@section SidebarWidget
+{
+}
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box gradient">
+            <div class="title">
+                @Html.Partial("ActionList", new ActionListModel() { AddNewRouteName = SystemRouteNames.BranchOfficeAdd, 
+                    EditRouteName = SystemRouteNames.BranchOfficeEdit, ChangeStatusRouteName = SystemRouteNames.BranchOfficeChangeStatus })                
+            </div>
+            <div class="content noPad">
+                <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered" id="myDataTable" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Branch Name
+                            </th>
+                            <th>
+                                Abbreviation
+                            </th>
+                            <th>
+                                Phone
+                            </th>
+                            <th>
+                                City
+                            </th>
+                            <th>
+                                Country
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Last Update By
+                            </th>
+                            <th id="masterCh" class="ch"><input type="checkbox" name="checkbox" value="all" class="styled" /></th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- End .box -->
+    </div>
+    <!-- End .span12 -->
+</div>
+@section inlineScripts {
+    <script type="text/javascript">
+        appEngine.util.setDataTable('myDataTable', '@Url.Action("List")',
+            [
+                { 'sName': 'BranchName', 'mData': 'BranchName'},
+                { 'sName': 'Abbreviation', 'mData': 'Abbreviation' },
+                { 'sName': 'Phone', 'mData': 'Address.PhoneNumber', "bSearchable": false, "bSortable": false },
+                { 'sName': 'City', 'mData': 'Address.City', "bSearchable": false, "bSortable": false },
+                { 'sName': 'Country', 'mData': 'Address.CountryName', "bSearchable": false, "bSortable": false },
+                { 'PublishingStatus': 'PublishingStatus', 'mData': 'PublishingStatus', "bSearchable": false, "bSortable": false },
+                { 'LastUpdated': 'LastUpdated', 'mData': 'LastUpdated', "bSearchable": false, "bSortable": false },
+                { "sName": "Actions", "mData": "RowId", "bSearchable": false, "bSortable": false, sClass: "chChildren",
+                    "mRender": function (dataItem) {
+                        return '<input type="checkbox" name="checkbox" value="' + dataItem + '" />';
+                    }
+                }
+            ], false, false, function (dataTable) {
+
+            });
+    </script>
+}

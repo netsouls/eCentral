@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/_Root.Head.cshtml";
+}
+@Html.Action("WidgetsByZone", "Widget", new { area = "", widgetZone = eCentral.Core.Domain.Cms.WidgetZone.AfterBodyStartHtmlTag })
+@Html.Action("WidgetsByZone", "Widget", new { area = "", widgetZone = eCentral.Core.Domain.Cms.WidgetZone.BeforeContent })
+@RenderBody()
+@Html.Action("WidgetsByZone", "Widget", new { area = "", widgetZone = eCentral.Core.Domain.Cms.WidgetZone.AfterContent })
+@Html.Action("WidgetsByZone", "Widget", new { area = "", widgetZone = eCentral.Core.Domain.Cms.WidgetZone.BeforeBodyEndHtmlTag })
+@section inlineScripts
+{
+    @RenderSection("inlineScripts", false)
+}

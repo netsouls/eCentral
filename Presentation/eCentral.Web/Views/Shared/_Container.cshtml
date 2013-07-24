@@ -1,0 +1,31 @@
+﻿@using eCentral.Core
+@{
+    Layout = "~/Views/Shared/_Root.cshtml";
+    var siteInformationSettings = EngineContext.Current.Resolve<SiteInformationSettings>();
+}
+@section inlineScripts
+{
+    @RenderSection("inlineScripts", false)
+}
+<div class="container-fluid">
+    <div id="header">
+        <div class="row-fluid">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a href="@Url.RouteUrl(SystemRouteNames.HomePage)" class="brand">@siteInformationSettings.SiteName.<span
+                            class="slogan">@siteInformationSettings.SiteNameBlurb</span></a>
+                    </div>
+                </div>
+                <!-- /navbar-inner -->
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- End .row-fluid -->
+    </div>
+    <!-- End #header -->
+</div>
+<!-- End .container-fluid -->
+<div class="container-fluid">
+    @RenderBody()
+</div>

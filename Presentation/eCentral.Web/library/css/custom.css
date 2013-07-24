@@ -1,0 +1,50 @@
+/* ------------------Put your custom code here--------------------*/
+form input.input-validation-error{border: 1px solid #ED7A53 !important;}
+form input.valid {border: 1px solid #9FC569 !important;}
+form span.field-validation-valid 
+{
+    display:none;
+}
+
+span.field-validation-error {
+	padding: 3px 4px 3px 4px;
+	color: #c93605;
+	font-weight: bold;
+	text-shadow: 0px 1px 1px rgba(164, 44, 4, 0.20);
+    -moz-text-shadow: 0px 1px 1px rgba(164, 44, 4, 0.20);
+    -webkit-text-shadow: 0px 1px 1px rgba(164, 44, 4, 0.20);
+    font-size:11px;
+ }
+ 
+.controls span.field-validation-error {
+	margin-top:-20px;
+}
+.controls .selector span.field-validation-error{
+	position: absolute;
+	top: 5px;
+	right: 0;
+	margin:0;
+}
+
+.navbar .brand .short {display:none;} /*remove the short slogan iin all devices*/ 
+.collapseBtn.leftbar.top {left: 400px;} /* hide navigation button*/
+@media only screen and (max-width: 600px) {
+	.navbar .brand .slogan {display:none;} /*remove the slogan in smaller devices*/
+	.navbar .brand .short {display:inline-block;} /*show the short slogan in smaller devices*/
+}
+
+.form-actions 
+{
+    border-bottom: 10px solid #E5E5E5;
+	border-top:none;
+	-moz-box-shadow:0 1px 0px rgba(229, 229, 229, 0.1);
+	-webkit-box-shadow: 0 1px 0px rgba(229, 229, 229, 0.1);
+	box-shadow: 0 1px 0px rgba(229, 229, 229, 0.1);
+}
+/*Tables */
+.table thead th, .table tbody td{text-align: left;} /*removed center aligned*/
+.table thead th.center, .table tbody td.center{text-align: center;}
+table.display tr.even.row_selected td, table.display tr.odd.row_selected td {
+	background-color: #dff0d8;
+}
+.btn-group > .dropdown-toggle {padding-bottom: 1px;}

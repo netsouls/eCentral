@@ -1,0 +1,85 @@
+﻿@{
+    var pageHeading = "Company Management";
+    Html.AddTitleParts(pageHeading);
+    ViewBag.Heading = pageHeading;
+    ViewBag.HasDataTable = true;
+}
+@section SidebarWidget
+{
+}
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box gradient">
+            <div class="title">
+                <h4>
+                    <span>&nbsp;</span> <a href="@Url.RouteUrl(SystemRouteNames.CompanyAdd)" class="icon tip" title="Add a new company">
+                        <span class="icon16 icomoon-icon-plus blue"></span></a>
+                </h4>
+            </div>
+            <div class="content noPad">
+                <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered"
+                    id="myDataTable" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Company Name
+                            </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="content">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, aperiam, voluptatum
+                    aspernatur eos impedit repellat odit quibusdam asperiores sed dignissimos repellendus
+                    neque vitae optio eligendi soluta inventore at autem velit reprehenderit beatae!
+                    Dolor, temporibus, magni officia cum dolorem reprehenderit laboriosam minus perspiciatis
+                    at consectetur sed molestiae quis neque expedita voluptatum blanditiis vero modi
+                    earum quo illum ipsum quidem eius beatae!</p>
+            </div>
+        </div>
+        <!-- End .box -->
+    </div>
+    <!-- End .span12 -->
+</div>
+@section inlineScripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var oTable = $('#myDataTable').dataTable({
+                "aoColumns": [
+                    { "sName": "CompanyName", "mData": "CompanyName", "bSearchable": true, "bSortable": true },
+                    { "sName": "Actions", "mData" : "RowId", "bSearchable": false, "bSortable": false,
+                        "fnRender": function (dataItem) {
+                            return '<div class="controls center"><a href="edit/' + dataItem.aData.RowId + '" title="Edit task" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a></div>';
+                        }
+                    }
+                ],
+                "sServerMethod": "POST",
+                "sAjaxSource": '@Url.Action("List")',
+                "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+                "sPaginationType": "bootstrap",
+                "bJQueryUI": true,
+                "bAutoWidth": false,
+                "bServerSide": true,
+                "bProcessing": true,
+                "oLanguage": {
+                    "sSearch": "<span>Filter:</span> _INPUT_",
+                    "sLengthMenu": "<span>_MENU_ entries</span>",
+                    "oPaginate": { "sFirst": "First", "sLast": "Last" }
+                }
+            });
+            $('.dataTables_length select').uniform();
+
+            $('.dataTables_filter input')
+                .unbind('keypress keyup')
+                .bind('keypress keyup', function (e) {
+                    if (e.keyCode == 13 && $(this).val().length == 0) oTable.fnDraw();
+                    else if ($(this).val().length < 3 && e.keyCode != 13) return;
+                    oTable.fnFilter($(this).val());
+                });
+        });
+    </script>
+}

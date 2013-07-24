@@ -1,0 +1,116 @@
+﻿@model ClientModel
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+{ 
+    @Html.HiddenFor(model => model.RowId)
+    @Html.HiddenFor(model => model.IsEdit)
+    @Html.HiddenFor(model => model.Address.RowId)
+            
+    <div class="box hover">
+        <div class="title">
+            <h4>
+                <span class="icon16 brocco-icon-grid"></span><span>@T("Clients.Form.Heading")</span>
+            </h4>
+        </div>
+        <div class="content">
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.ClientName, new { @class = "span2" })
+                        @Html.TextBoxFor(m => m.ClientName, new { @class = "span10 readonly" })
+                        @Html.ValidationMessageFor(m => m.ClientName)
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Email, new { @class = "span2" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "span10" })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Address.Address1, new { @class = "span2" })
+                        @Html.TextBoxFor(m => m.Address.Address1, new { @class = "span10" })
+                        @Html.ValidationMessageFor(m => m.Address.Address1)
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Address.Address2, new { @class = "span2" })
+                        @Html.TextBoxFor(m => m.Address.Address2, new { @class = "span10" })
+                        @Html.ValidationMessageFor(m => m.Address.Address2)
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Address.City, new { @class = "span2" })
+                        @Html.TextBoxFor(m => m.Address.City, new { @class = "span10" })
+                        @Html.ValidationMessageFor(m => m.Address.City)
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Address.ZipPostalCode, new { @class = "span2" })
+                        @Html.TextBoxFor(m => m.Address.ZipPostalCode, new { @class = "span10" })
+                        @Html.ValidationMessageFor(m => m.Address.ZipPostalCode)
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Address.CountryId, new { @class = "span2" })
+                        <div class="span10 controls">
+                            @Html.DropDownListFor(m => m.Address.CountryId, Model.Address.AvailableCountries, new { @class = "nostyle", style = "width:100%;" })
+                            @Html.ValidationMessageFor(m => m.Address.CountryId)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Address.StateProvinceId, new { @class = "span2" })
+                        <div class="span10 controls">
+                            @Html.DropDownListFor(m => m.Address.StateProvinceId, Model.Address.AvailableStates, new { @class = "nostyle", style = "width:100%;" })
+                            @Html.ValidationMessageFor(m => m.Address.StateProvinceId)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Address.PhoneNumber, new { @class = "span2" }, "<span class=\"help-block\">(+91) 011 41643499</span>")
+                        @Html.TextBoxFor(m => m.Address.PhoneNumber, new { @class = "span10 mask mask-phoneInt" })
+                        @Html.ValidationMessageFor(m => m.Address.PhoneNumber)
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Address.FaxNumber, new { @class = "span2" }, "<span class=\"help-block\">(+91) 011 41643499</span>")
+                        @Html.TextBoxFor(m => m.Address.FaxNumber, new { @class = "span10 mask mask-phoneInt" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-info marginR10">
+            @T("Common.Save")</button>
+        <button type="button" class="btn btn-danger href-action" data-href="@Url.RouteUrl(SystemRouteNames.Client)">
+            @T("Common.Cancel")</button>
+    </div>
+}

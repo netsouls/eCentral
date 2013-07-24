@@ -1,0 +1,79 @@
+﻿@using Telerik.Web.Mvc.UI;
+@using eCentral.Web.Framework.Web;
+@{
+    var siteInformationSettings = EngineContext.Current.Resolve<SiteInformationSettings>();
+    var urlGenerator = new Telerik.Web.Mvc.UrlGenerator();
+
+    if (!Telerik.Web.Mvc.SiteMapManager.SiteMaps.ContainsKey("sitemap"))
+    {
+        Telerik.Web.Mvc.SiteMapManager.SiteMaps.Register<Telerik.Web.Mvc.XmlSiteMap>("sitemap", sitemap =>
+            sitemap.Load());
+    }
+
+    var currentNode = FindCurrentNode(Telerik.Web.Mvc.SiteMapManager.SiteMaps["sitemap"].RootNode);
+    IList<Telerik.Web.Mvc.SiteMapNode> ancestorList = currentNode.GetAncestors(n => n.Parent)
+        .Where(n => !n.Attributes["siteResource"].ToString().IsCaseInsensitiveEqual("Navigation.Home")).ToList();
+}
+@functions 
+{
+    private Telerik.Web.Mvc.SiteMapNode FindCurrentNode(Telerik.Web.Mvc.SiteMapNode rootNode)
+    {
+        if (rootNode != null)
+        {
+            // Get all child nodes
+            IList<Telerik.Web.Mvc.SiteMapNode> childNodes = rootNode.ChildNodes;
+
+            // Search current level
+            foreach (Telerik.Web.Mvc.SiteMapNode node in childNodes)
+            {
+                // Check if it is an MvcSiteMapNode
+                var mvcNode = node;
+                if (mvcNode != null)
+                {
+                    // Look at the route property
+                    if (mvcNode.IsCurrent(base.ViewContext, new Telerik.Web.Mvc.UrlGenerator()))
+                    {
+                        return mvcNode;
+                    }
+                }
+            }
+
+            // Search one deeper level
+            foreach (Telerik.Web.Mvc.SiteMapNode node in childNodes)
+            {
+                var siteMapNode = FindCurrentNode(node);
+                if (siteMapNode != null)
+                {
+                    return siteMapNode;
+                }
+            }
+        }
+
+        return null;
+    }
+}
+<ul class="breadcrumb">
+    <li>You are here:</li>
+    <li><a href="@Url.RouteUrl(SystemRouteNames.HomePage)" class="tip" title="@T("Breadcrumb.Dashboard")">
+        <span class="icon16 icomoon-icon-screen-2"></span></a><span class="divider"><span
+            class="icon16 icomoon-icon-arrow-right-3"></span></span></li>
+    @foreach (var siteNode in ancestorList.Reverse())
+     {
+         var routeUrl = "#";
+         if (!string.IsNullOrEmpty(siteNode.RouteName))
+         {
+             routeUrl = Url.RouteUrl(siteNode.RouteName);
+         }
+         
+         var resource = siteNode.Attributes["siteResource"];
+         if (resource != null && !string.IsNullOrEmpty(resource.ToString()))
+         {
+             resource = T(resource.ToString()).ToHtmlString();
+         }
+         <li class="active"><a href="@routeUrl">@resource</a><span class="divider"><span class="icon16 icomoon-icon-arrow-right-3"></span></li> 
+     }
+     @if (currentNode != null)
+     { 
+        <li class="active">@T(currentNode.Attributes["siteResource"].ToString())</li>
+     }
+</ul>

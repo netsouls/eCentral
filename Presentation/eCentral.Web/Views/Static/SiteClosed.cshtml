@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Error.cshtml";
+    Html.AddTitleParts("Site Closed");
+
+    var siteInformationSettings = EngineContext.Current.Resolve<SiteInformationSettings>();
+}
+<div class="errorContainer offline">
+    <div class="page-header">
+        <h1 class="center">
+            Our site is OFFLINE</h1>
+    </div>
+    <h2 class="center">
+        Some big improvements be made. Please come back later!</h2>
+    <div class="center">
+        Overall progress so far
+        <div class="progress progress-striped active">
+            <div class="bar" style="width: 34%;">
+            </div>
+        </div>
+    </div>
+    <div class="social">
+        <ul class="unstyled">
+            <li><span class="icon16 icomoon-icon-mail-2 blue"></span><a href="mailto:@siteInformationSettings.SupportEmailAddress">Keep in touch
+                with email</a></li>
+        </ul>
+    </div>
+    <div class="center">
+        <a href="javascript: history.go(-1)" class="btn" style="margin-right: 10px;"><span
+            class="icon16 icomoon-icon-arrow-left-10"></span>Go back</a> <a href="@Url.RouteUrl(SystemRouteNames.HomePage)"
+                class="btn"><span class="icon16 icomoon-icon-screen"></span>Dashboard</a>
+    </div>
+</div>

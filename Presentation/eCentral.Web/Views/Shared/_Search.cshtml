@@ -1,0 +1,8 @@
+﻿<div class="search">
+    @using (Html.BeginRouteForm(SystemRouteNames.Search, FormMethod.Post, new { @id = "search-form" }))
+    {
+        @Html.TextBox("search_input", null, new { @class = "top-search", placeholder = "Search by job number" }) 
+        <input type="submit" id="tipue_search_button" class="search-btn" value="" />    
+    }
+</div>
+<!-- End search -->

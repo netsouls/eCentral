@@ -1,0 +1,49 @@
+﻿@using eCentral.Web.Framework.UI;
+@{
+    //success messages
+    var successMessages = new List<string>();
+    if (TempData[string.Format("eCentral.notifications.{0}", NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(TempData[string.Format("eCentral.notifications.{0}", NotifyType.Success)] as IList<string>);
+    }
+    if (ViewData[string.Format("eCentral.notifications.{0}", NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(ViewData[string.Format("eCentral.notifications.{0}", NotifyType.Success)] as IList<string>);
+    }
+
+
+    //error messages
+    var errorMessages = new List<string>();
+    if (TempData[string.Format("eCentral.notifications.{0}", NotifyType.Error)] != null)
+    {
+        errorMessages.AddRange(TempData[string.Format("eCentral.notifications.{0}", NotifyType.Error)] as IList<string>);
+    }
+    if (ViewData[string.Format("eCentral.notifications.{0}", NotifyType.Error)] != null)
+    {
+        errorMessages.AddRange(ViewData[string.Format("eCentral.notifications.{0}", NotifyType.Error)] as IList<string>);
+    }
+}
+@if (successMessages.Count > 0 || errorMessages.Count > 0)
+{
+    <div class="row-fluid">
+        <div class="span12">
+            @foreach (var message in successMessages)
+            {
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">
+                        &times;</button>
+                    <strong>@message</strong>
+                </div>
+            }
+            @foreach (var message in errorMessages)
+            {
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">
+                        &times;</button>
+                    <strong>@message</strong>
+                </div>
+            }
+        </div>
+        <!-- End .span12 -->
+    </div>
+}

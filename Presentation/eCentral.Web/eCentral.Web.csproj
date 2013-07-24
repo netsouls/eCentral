@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C930C27E-9510-48E1-A255-4333A5F7A92B}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>eCentral.Web</RootNamespace>
+    <AssemblyName>eCentral.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.2.6.3.862\lib\NET40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Configuration, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.2.6.3.862\lib\NET40\Autofac.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\..\packages\FluentValidation.3.4.6.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc">
+      <HintPath>..\..\packages\FluentValidation.MVC3.3.4.6.0\lib\Net40\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Items\Version.cs">
+      <Link>Version.cs</Link>
+    </Compile>
+    <Compile Include="Controller\BaseController.cs" />
+    <Compile Include="Controller\ClientController.cs" />
+    <Compile Include="Controller\CommonController.cs" />
+    <Compile Include="Controller\CompanyController.cs" />
+    <Compile Include="Controller\BranchOfficeController.cs" />
+    <Compile Include="Controller\SystemController.cs" />
+    <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Controller\MediaController.cs" />
+    <Compile Include="Controller\TestController.cs" />
+    <Compile Include="Controller\CountryController.cs" />
+    <Compile Include="Controller\HomeController.cs" />
+    <Compile Include="Controller\SecurityController.cs" />
+    <Compile Include="Controller\StaticController.cs" />
+    <Compile Include="Controller\WidgetController.cs" />
+    <Compile Include="Extensions\MappingExtensions.cs" />
+    <Compile Include="Extensions\PagerHtmlExtension.cs" />
+    <Compile Include="Extensions\SortingHtmlExtension.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Cache\ModelCacheEventUser.cs" />
+    <Compile Include="Infrastructure\DependencyRegistrar.cs" />
+    <Compile Include="Infrastructure\RouteProvider.cs" />
+    <Compile Include="Models\Clients\ClientModel.cs" />
+    <Compile Include="Models\Cms\ContentModel.cs" />
+    <Compile Include="Models\Cms\WidgetModel.cs" />
+    <Compile Include="Models\Common\ActionListModel.cs" />
+    <Compile Include="Models\Common\AddressModel.cs" />
+    <Compile Include="Models\Common\ChangeStatusModel.cs" />
+    <Compile Include="Models\Common\CurrencyModel.cs" />
+    <Compile Include="Models\Common\CurrencySelectorModel.cs" />
+    <Compile Include="Models\Common\FaviconModel.cs" />
+    <Compile Include="Models\Common\HeaderModel.cs" />
+    <Compile Include="Models\Common\JQueryDataTableParamModel.cs" />
+    <Compile Include="Models\Common\LanguageModel.cs" />
+    <Compile Include="Models\Common\LanguageSelectorModel.cs" />
+    <Compile Include="Models\Common\PagerModel.cs" />
+    <Compile Include="Models\Common\SiteThemeModel.cs" />
+    <Compile Include="Models\Common\SiteThemeSelectorModel.cs" />
+    <Compile Include="Models\Companies\BranchOfficeModel.cs" />
+    <Compile Include="Models\Companies\CompanyModel.cs" />
+    <Compile Include="Models\Security\LoginModel.cs" />
+    <Compile Include="Models\System\SystemInfoModel.cs" />
+    <Compile Include="Models\Users\UserModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\Clients\ClientValidator.cs" />
+    <Compile Include="Validators\Common\AddressValidator.cs" />
+    <Compile Include="Validators\Companies\BranchOfficeValidator.cs" />
+    <Compile Include="Validators\Companies\CompanyValidator.cs" />
+    <Compile Include="Validators\Security\LoginValidator.cs" />
+    <Compile Include="Validators\Users\UserValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="connections.config" />
+    <Content Include="Global.asax" />
+    <Content Include="library\css\bootstrap\bootstrap-responsive.css" />
+    <Content Include="library\css\bootstrap\bootstrap.css" />
+    <Content Include="library\css\custom.css" />
+    <Content Include="library\css\icons.css" />
+    <Content Include="library\css\ie8.css" />
+    <Content Include="library\css\main.css" />
+    <Content Include="library\css\plugins\forms\select\select2.css" />
+    <Content Include="library\css\plugins\forms\togglebutton\toggle-buttons.css" />
+    <Content Include="library\css\plugins\forms\uniform\uniform.default.css" />
+    <Content Include="library\css\plugins\misc\file-uploader\fileuploader.css" />
+    <Content Include="library\css\plugins\misc\fullcalendar\fullcalendar.css" />
+    <Content Include="library\css\plugins\misc\fullcalendar\fullcalendar.print.css" />
+    <Content Include="library\css\plugins\misc\plupload\jquery.plupload.queue.css" />
+    <Content Include="library\css\plugins\misc\plupload\jquery.ui.plupload.css" />
+    <Content Include="library\css\plugins\misc\pnotify\jquery.pnotify.default.css" />
+    <Content Include="library\css\plugins\misc\qtip\jquery.qtip.css" />
+    <Content Include="library\css\plugins\misc\search\tipuesearch.css" />
+    <Content Include="library\css\plugins\tables\dataTables\jquery.dataTables.css" />
+    <Content Include="library\css\plugins\tables\dataTables\TableTools.css" />
+    <Content Include="library\css\supr-theme\jquery-ui-timepicker-addon.css" />
+    <Content Include="library\css\supr-theme\jquery.ui.autocomplete.css" />
+    <Content Include="library\css\supr-theme\jquery.ui.combobox.css" />
+    <Content Include="library\css\supr-theme\jquery.ui.core.css" />
+    <Content Include="library\css\supr-theme\jquery.ui.datepicker.css" />
+    <Content Include="library\css\supr-theme\jquery.ui.dialog.css" />
+    <Content Include="library\css\supr-theme\jquery.ui.progressbar.css" />
+    <Content Include="library\css\supr-theme\jquery.ui.resizable.css" />
+    <Content Include="library\css\supr-theme\jquery.ui.slider.css" />
+    <Content Include="library\css\supr-theme\jquery.ui.spinner.css" />
+    <Content Include="library\css\supr-theme\jquery.ui.supr.css" />
+    <Content Include="library\css\supr-theme\jquery.ui.theme.css" />
+    <Content Include="library\css\supr-theme\jquery.ui.tooltip.css" />
+    <Content Include="library\fonts\broccolidry.svg" />
+    <Content Include="library\fonts\cuticons.svg" />
+    <Content Include="library\fonts\ecoico.svg" />
+    <Content Include="library\fonts\entypo.svg" />
+    <Content Include="library\fonts\icomoon.dev.svg" />
+    <Content Include="library\fonts\icomoon.svg" />
+    <Content Include="library\fonts\iconic.svg" />
+    <Content Include="library\fonts\index.html" />
+    <Content Include="library\fonts\license.txt" />
+    <Content Include="library\fonts\meteocons.svg" />
+    <Content Include="library\fonts\minia.svg" />
+    <Content Include="library\fonts\silkcons.svg" />
+    <Content Include="library\fonts\typicons.svg" />
+    <Content Include="library\fonts\wpzoom.svg" />
+    <Content Include="library\images\apple-touch-icon-114-precomposed.png" />
+    <Content Include="library\images\apple-touch-icon-144-precomposed.png" />
+    <Content Include="library\images\apple-touch-icon-57-precomposed.png" />
+    <Content Include="library\images\apple-touch-icon-72-precomposed.png" />
+    <Content Include="library\images\arrowdown.png" />
+    <Content Include="library\images\arrowup.png" />
+    <Content Include="library\images\favicon.ico" />
+    <Content Include="library\images\glyphicons-halflings.png" />
+    <Content Include="library\images\handle.png" />
+    <Content Include="library\images\icons\arrow-left.png" />
+    <Content Include="library\images\icons\arrow-right.png" />
+    <Content Include="library\images\icons\external.png" />
+    <Content Include="library\images\icons\left-arrow.png" />
+    <Content Include="library\images\icons\minus.png" />
+    <Content Include="library\images\icons\plus.png" />
+    <Content Include="library\images\icons\right-arrow.png" />
+    <Content Include="library\images\jquery.ui\ui-bg_diagonals-small_100_f4f4f4_40x40.png" />
+    <Content Include="library\images\jquery.ui\ui-bg_dots-small_75_dedede_2x2.png" />
+    <Content Include="library\images\jquery.ui\ui-bg_dots-small_75_f7f7f7_2x2.png" />
+    <Content Include="library\images\jquery.ui\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="library\images\jquery.ui\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="library\images\jquery.ui\ui-bg_glass_55_9fc569_1x400.png" />
+    <Content Include="library\images\jquery.ui\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="library\images\jquery.ui\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="library\images\jquery.ui\ui-icons_2e83ff_256x240.png" />
+    <Content Include="library\images\jquery.ui\ui-icons_353535_256x240.png" />
+    <Content Include="library\images\jquery.ui\ui-icons_454545_256x240.png" />
+    <Content Include="library\images\jquery.ui\ui-icons_ed7a53_256x240.png" />
+    <Content Include="library\images\loader.gif" />
+    <Content Include="library\images\loaders\3d\015.gif" />
+    <Content Include="library\images\loaders\3d\019.gif" />
+    <Content Include="library\images\loaders\3d\026.gif" />
+    <Content Include="library\images\loaders\3d\028.gif" />
+    <Content Include="library\images\loaders\3d\039.gif" />
+    <Content Include="library\images\loaders\3d\067.gif" />
+    <Content Include="library\images\loaders\3d\071.gif" />
+    <Content Include="library\images\loaders\circular\001.gif" />
+    <Content Include="library\images\loaders\circular\002.gif" />
+    <Content Include="library\images\loaders\circular\003.gif" />
+    <Content Include="library\images\loaders\circular\007.gif" />
+    <Content Include="library\images\loaders\circular\008.gif" />
+    <Content Include="library\images\loaders\circular\010.gif" />
+    <Content Include="library\images\loaders\circular\011.gif" />
+    <Content Include="library\images\loaders\circular\012.gif" />
+    <Content Include="library\images\loaders\circular\013.gif" />
+    <Content Include="library\images\loaders\circular\016.gif" />
+    <Content Include="library\images\loaders\circular\017.gif" />
+    <Content Include="library\images\loaders\circular\020.gif" />
+    <Content Include="library\images\loaders\circular\021.gif" />
+    <Content Include="library\images\loaders\circular\022.gif" />
+    <Content Include="library\images\loaders\circular\023.gif" />
+    <Content Include="library\images\loaders\circular\025.gif" />
+    <Content Include="library\images\loaders\circular\027.gif" />
+    <Content Include="library\images\loaders\circular\029.gif" />
+    <Content Include="library\images\loaders\circular\030.gif" />
+    <Content Include="library\images\loaders\circular\033.gif" />
+    <Content Include="library\images\loaders\circular\034.gif" />
+    <Content Include="library\images\loaders\circular\035.gif" />
+    <Content Include="library\images\loaders\circular\038.gif" />
+    <Content Include="library\images\loaders\circular\040.gif" />
+    <Content Include="library\images\loaders\circular\041.gif" />
+    <Content Include="library\images\loaders\circular\042.gif" />
+    <Content Include="library\images\loaders\circular\044.gif" />
+    <Content Include="library\images\loaders\circular\046.gif" />
+    <Content Include="library\images\loaders\circular\047.gif" />
+    <Content Include="library\images\loaders\circular\049.gif" />
+    <Content Include="library\images\loaders\circular\050.gif" />
+    <Content Include="library\images\loaders\circular\051.gif" />
+    <Content Include="library\images\loaders\circular\052.gif" />
+    <Content Include="library\images\loaders\circular\054.gif" />
+    <Content Include="library\images\loaders\circular\055.gif" />
+    <Content Include="library\images\loaders\circular\056.gif" />
+    <Content Include="library\images\loaders\circular\059.gif" />
+    <Content Include="library\images\loaders\circular\060.gif" />
+    <Content Include="library\images\loaders\circular\061.gif" />
+    <Content Include="library\images\loaders\circular\064.gif" />
+    <Content Include="library\images\loaders\circular\065.gif" />
+    <Content Include="library\images\loaders\circular\066.gif" />
+    <Content Include="library\images\loaders\circular\068.gif" />
+    <Content Include="library\images\loaders\circular\069.gif" />
+    <Content Include="library\images\loaders\circular\070.gif" />
+    <Content Include="library\images\loaders\circular\072.gif" />
+    <Content Include="library\images\loaders\horizontal\004.gif" />
+    <Content Include="library\images\loaders\horizontal\005.gif" />
+    <Content Include="library\images\loaders\horizontal\006.gif" />
+    <Content Include="library\images\loaders\horizontal\009.gif" />
+    <Content Include="library\images\loaders\horizontal\014.gif" />
+    <Content Include="library\images\loaders\horizontal\018.gif" />
+    <Content Include="library\images\loaders\horizontal\024.gif" />
+    <Content Include="library\images\loaders\horizontal\031.gif" />
+    <Content Include="library\images\loaders\horizontal\032.gif" />
+    <Content Include="library\images\loaders\horizontal\036.gif" />
+    <Content Include="library\images\loaders\horizontal\037.gif" />
+    <Content Include="library\images\loaders\horizontal\043.gif" />
+    <Content Include="library\images\loaders\horizontal\045.gif" />
+    <Content Include="library\images\loaders\horizontal\048.gif" />
+    <Content Include="library\images\loaders\horizontal\053.gif" />
+    <Content Include="library\images\loaders\horizontal\057.gif" />
+    <Content Include="library\images\loaders\horizontal\058.gif" />
+    <Content Include="library\images\loaders\horizontal\062.gif" />
+    <Content Include="library\images\loaders\horizontal\063.gif" />
+    <Content Include="library\images\patterns\1.png" />
+    <Content Include="library\images\patterns\2-1.png" />
+    <Content Include="library\images\patterns\2-2.png" />
+    <Content Include="library\images\patterns\2.png" />
+    <Content Include="library\images\patterns\3-1.png" />
+    <Content Include="library\images\patterns\3.png" />
+    <Content Include="library\images\patterns\4-1.png" />
+    <Content Include="library\images\patterns\4-2.png" />
+    <Content Include="library\images\patterns\4.png" />
+    <Content Include="library\images\patterns\5.png" />
+    <Content Include="library\images\patterns\6.png" />
+    <Content Include="library\images\patterns\7.png" />
+    <Content Include="library\images\patterns\8.png" />
+    <Content Include="library\images\patterns\body\1.png" />
+    <Content Include="library\images\patterns\body\2.png" />
+    <Content Include="library\images\patterns\body\3.png" />
+    <Content Include="library\images\patterns\body\4.png" />
+    <Content Include="library\images\patterns\body\cream_dust.png" />
+    <Content Include="library\images\patterns\body\cream_dust_%402X.png" />
+    <Content Include="library\images\patterns\body\dust.png" />
+    <Content Include="library\images\patterns\body\dust_%402X.png" />
+    <Content Include="library\images\patterns\body\grey.png" />
+    <Content Include="library\images\patterns\body\grey_%402X.png" />
+    <Content Include="library\images\patterns\body\subtle_dots.png" />
+    <Content Include="library\images\patterns\body\subtle_dots_%402X.png" />
+    <Content Include="library\images\patterns\header\1.png" />
+    <Content Include="library\images\patterns\header\2.png" />
+    <Content Include="library\images\patterns\header\3.png" />
+    <Content Include="library\images\patterns\header\4.png" />
+    <Content Include="library\images\patterns\header\bedge_grunge.png" />
+    <Content Include="library\images\patterns\header\bedge_grunge_%402X.png" />
+    <Content Include="library\images\patterns\header\grid.png" />
+    <Content Include="library\images\patterns\header\grid_%402X.png" />
+    <Content Include="library\images\patterns\header\nasty_fabric.png" />
+    <Content Include="library\images\patterns\header\nasty_fabric_%402X.png" />
+    <Content Include="library\images\patterns\header\natural_paper.png" />
+    <Content Include="library\images\patterns\header\natural_paper_%402X.png" />
+    <Content Include="library\images\patterns\index.html" />
+    <Content Include="library\images\patterns\sidebarbg1.png" />
+    <Content Include="library\images\patterns\sidebarbg2.png" />
+    <Content Include="library\images\patterns\sidebar\1.png" />
+    <Content Include="library\images\patterns\sidebar\2.png" />
+    <Content Include="library\images\patterns\sidebar\3.png" />
+    <Content Include="library\images\patterns\sidebar\4.png" />
+    <Content Include="library\images\patterns\sidebar\az_subtle.png" />
+    <Content Include="library\images\patterns\sidebar\az_subtle_%402X.png" />
+    <Content Include="library\images\patterns\sidebar\billie_holiday.png" />
+    <Content Include="library\images\patterns\sidebar\billie_holiday_%402X.png" />
+    <Content Include="library\images\patterns\sidebar\grey.png" />
+    <Content Include="library\images\patterns\sidebar\grey_%402X.png" />
+    <Content Include="library\images\patterns\sidebar\noise_lines.png" />
+    <Content Include="library\images\patterns\sidebar\noise_lines_%402X.png" />
+    <Content Include="library\images\patterns\topbarbg.png" />
+    <Content Include="library\images\plugins\dataTables\background.png" />
+    <Content Include="library\images\plugins\dataTables\back_disabled.png" />
+    <Content Include="library\images\plugins\dataTables\back_enabled.png" />
+    <Content Include="library\images\plugins\dataTables\back_enabled_hover.png" />
+    <Content Include="library\images\plugins\dataTables\collection.png" />
+    <Content Include="library\images\plugins\dataTables\collection_hover.png" />
+    <Content Include="library\images\plugins\dataTables\copy.png" />
+    <Content Include="library\images\plugins\dataTables\copy_hover.png" />
+    <Content Include="library\images\plugins\dataTables\csv.png" />
+    <Content Include="library\images\plugins\dataTables\csv_hover.png" />
+    <Content Include="library\images\plugins\dataTables\forward_disabled.png" />
+    <Content Include="library\images\plugins\dataTables\forward_enabled.png" />
+    <Content Include="library\images\plugins\dataTables\forward_enabled_hover.png" />
+    <Content Include="library\images\plugins\dataTables\pdf.png" />
+    <Content Include="library\images\plugins\dataTables\pdf_hover.png" />
+    <Content Include="library\images\plugins\dataTables\print.png" />
+    <Content Include="library\images\plugins\dataTables\print_hover.png" />
+    <Content Include="library\images\plugins\dataTables\sort_asc.png" />
+    <Content Include="library\images\plugins\dataTables\sort_asc_disabled.png" />
+    <Content Include="library\images\plugins\dataTables\sort_both.png" />
+    <Content Include="library\images\plugins\dataTables\sort_desc.png" />
+    <Content Include="library\images\plugins\dataTables\sort_desc_disabled.png" />
+    <Content Include="library\images\plugins\dataTables\swf\copy_csv_xls.swf" />
+    <Content Include="library\images\plugins\dataTables\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="library\images\plugins\dataTables\xls.png" />
+    <Content Include="library\images\plugins\dataTables\xls_hover.png" />
+    <Content Include="library\images\plugins\file-uploader\fileuploader-loading.gif" />
+    <Content Include="library\images\plugins\plupload\arrowr.png" />
+    <Content Include="library\images\plugins\plupload\backgrounds.gif" />
+    <Content Include="library\images\plugins\plupload\buttons-disabled.png" />
+    <Content Include="library\images\plugins\plupload\buttons.png" />
+    <Content Include="library\images\plugins\plupload\cancel3.png" />
+    <Content Include="library\images\plugins\plupload\check.png" />
+    <Content Include="library\images\plugins\plupload\cloud-upload.png" />
+    <Content Include="library\images\plugins\plupload\delete.gif" />
+    <Content Include="library\images\plugins\plupload\done.gif" />
+    <Content Include="library\images\plugins\plupload\error.gif" />
+    <Content Include="library\images\plugins\plupload\info.png" />
+    <Content Include="library\images\plugins\plupload\plupload-bw.png" />
+    <Content Include="library\images\plugins\plupload\plupload.png" />
+    <Content Include="library\images\plugins\plupload\plus.png" />
+    <Content Include="library\images\plugins\plupload\throbber.gif" />
+    <Content Include="library\images\plugins\plupload\transp50.png" />
+    <Content Include="library\images\plugins\search\loader.gif" />
+    <Content Include="library\images\plugins\search\search.gif" />
+    <Content Include="library\images\plugins\select\select2-spinner.gif" />
+    <Content Include="library\images\plugins\select\select2.png" />
+    <Content Include="library\images\plugins\select\select2x2.png" />
+    <Content Include="library\images\plugins\select\spinner.gif" />
+    <Content Include="library\images\plugins\uniform\checkbox.png" />
+    <Content Include="library\images\plugins\uniform\choose-file.png" />
+    <Content Include="library\images\plugins\uniform\radio.png" />
+    <Content Include="library\images\plugins\uniform\select.png" />
+    <Content Include="library\images\plugins\uniform\select1.png" />
+    <Content Include="library\images\plugins\uniform\select2.png" />
+    <Content Include="library\images\search.png" />
+    <Content Include="library\images\spinner.png" />
+    <Content Include="library\images\ui.totop.png" />
+    <Content Include="library\js\appEngine.js" />
+    <Content Include="library\js\bootstrap\bootstrap.js" />
+    <Content Include="library\js\bootstrap\bootstrap.min.js" />
+    <Content Include="library\js\jquery-migrate-1.2.1.min.js" />
+    <Content Include="library\js\jquery-ui.1.10.2.min.js" />
+    <Content Include="library\js\jquery.1.9.1.min.js" />
+    <Content Include="library\js\jquery.mousewheel.js" />
+    <Content Include="library\js\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="library\js\jquery.validate.min.js" />
+    <Content Include="library\js\jquery.validate.unobtrusive.js" />
+    <Content Include="library\js\plugins\excanvas.min.js" />
+    <Content Include="library\js\plugins\fix\ios-fix\ios-orientationchange-fix.js" />
+    <Content Include="library\js\plugins\fix\touch-punch\jquery.ui.touch-punch.js" />
+    <Content Include="library\js\plugins\fix\touch-punch\jquery.ui.touch-punch.min.js" />
+    <Content Include="library\js\plugins\forms\maskedinput\jquery.maskedinput-1.3.js" />
+    <Content Include="library\js\plugins\forms\maskedinput\jquery.maskedinput-1.3.min.js" />
+    <Content Include="library\js\plugins\forms\placeholder\jquery.placeholder.js" />
+    <Content Include="library\js\plugins\forms\placeholder\jquery.placeholder.min.js" />
+    <Content Include="library\js\plugins\forms\select\select2.js" />
+    <Content Include="library\js\plugins\forms\select\select2.min.js" />
+    <Content Include="library\js\plugins\forms\togglebutton\jquery.toggle.buttons.js" />
+    <Content Include="library\js\plugins\forms\uniform\jquery.uniform.js" />
+    <Content Include="library\js\plugins\forms\uniform\jquery.uniform.min.js" />
+    <Content Include="library\js\plugins\jRespond.min.js" />
+    <Content Include="library\js\plugins\misc\file-uploader\fileuploader.js" />
+    <Content Include="library\js\plugins\misc\fileUpload\jquery.fileupload.js" />
+    <Content Include="library\js\plugins\misc\fileUpload\jquery.iframe-transport.js" />
+    <Content Include="library\js\plugins\misc\fullcalendar\fullcalendar.js" />
+    <Content Include="library\js\plugins\misc\fullcalendar\fullcalendar.min.js" />
+    <Content Include="library\js\plugins\misc\fullcalendar\gcal.js" />
+    <Content Include="library\js\plugins\misc\plupload\jquery.plupload.queue.js" />
+    <Content Include="library\js\plugins\misc\plupload\jquery.ui.plupload.js" />
+    <Content Include="library\js\plugins\misc\plupload\plupload.browserplus.js" />
+    <Content Include="library\js\plugins\misc\plupload\plupload.flash.js" />
+    <Content Include="library\js\plugins\misc\plupload\plupload.flash.swf" />
+    <Content Include="library\js\plugins\misc\plupload\plupload.full.js" />
+    <Content Include="library\js\plugins\misc\plupload\plupload.gears.js" />
+    <Content Include="library\js\plugins\misc\plupload\plupload.html4.js" />
+    <Content Include="library\js\plugins\misc\plupload\plupload.html5.js" />
+    <Content Include="library\js\plugins\misc\plupload\plupload.js" />
+    <Content Include="library\js\plugins\misc\plupload\plupload.silverlight.js" />
+    <Content Include="library\js\plugins\misc\plupload\plupload.silverlight.xap" />
+    <Content Include="library\js\plugins\misc\pnotify\jquery.pnotify.js" />
+    <Content Include="library\js\plugins\misc\pnotify\jquery.pnotify.min.js" />
+    <Content Include="library\js\plugins\misc\qtip\jquery.qtip.js" />
+    <Content Include="library\js\plugins\misc\qtip\jquery.qtip.min.js" />
+    <Content Include="library\js\plugins\misc\search\tipuesearch.js" />
+    <Content Include="library\js\plugins\misc\search\tipuesearch_content.js" />
+    <Content Include="library\js\plugins\misc\search\tipuesearch_data.js" />
+    <Content Include="library\js\plugins\misc\search\tipuesearch_set.js" />
+    <Content Include="library\js\plugins\misc\totop\jquery.ui.totop.js" />
+    <Content Include="library\js\plugins\misc\totop\jquery.ui.totop.min.js" />
+    <Content Include="library\js\plugins\modernizr.js" />
+    <Content Include="library\js\plugins\respond.min.js" />
+    <Content Include="library\js\plugins\tables\dataTables\jquery.dataTables.js" />
+    <Content Include="library\js\plugins\tables\dataTables\jquery.dataTables.min.js" />
+    <Content Include="library\js\plugins\tables\dataTables\TableTools.js" />
+    <Content Include="library\js\plugins\tables\dataTables\TableTools.min.js" />
+    <Content Include="library\js\plugins\tables\dataTables\ZeroClipboard.js" />
+    <Content Include="library\js\plugins\tables\responsive-tables\responsive-tables.js" />
+    <Content Include="library\user-content\images\Companies\2d2e953e-4e0c-403e-b029-b031fa4f72cd.png" />
+    <Content Include="library\user-content\images\Companies\Default.gif" />
+    <Content Include="robots.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business-Logic\eCentral.Core\eCentral.Core.csproj">
+      <Project>{E4CEF55B-ECE1-44C5-A126-7B1B98BC839A}</Project>
+      <Name>eCentral.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Business-Logic\eCentral.Services\eCentral.Services.csproj">
+      <Project>{F347481F-93C7-4051-B337-59ADAAF920F6}</Project>
+      <Name>eCentral.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eCentral.Web.Framework\eCentral.Web.Framework.csproj">
+      <Project>{1A1FF273-D816-4AF3-BF0B-911592A8EB08}</Project>
+      <Name>eCentral.Web.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Security\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Root.cshtml" />
+    <Content Include="Views\Shared\_Root.Head.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Widget\WidgetsByZone.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="library\fonts\broccolidry.eot" />
+    <None Include="library\fonts\broccolidry.ttf" />
+    <None Include="library\fonts\broccolidry.woff" />
+    <None Include="library\fonts\cuticons.eot" />
+    <None Include="library\fonts\cuticons.ttf" />
+    <None Include="library\fonts\cuticons.woff" />
+    <None Include="library\fonts\ecoico.eot" />
+    <None Include="library\fonts\ecoico.ttf" />
+    <None Include="library\fonts\ecoico.woff" />
+    <None Include="library\fonts\entypo.eot" />
+    <None Include="library\fonts\entypo.ttf" />
+    <None Include="library\fonts\entypo.woff" />
+    <None Include="library\fonts\icomoon.eot" />
+    <None Include="library\fonts\icomoon.ttf" />
+    <None Include="library\fonts\icomoon.woff" />
+    <None Include="library\fonts\iconic.eot" />
+    <None Include="library\fonts\iconic.ttf" />
+    <None Include="library\fonts\iconic.woff" />
+    <None Include="library\fonts\meteocons.eot" />
+    <None Include="library\fonts\meteocons.ttf" />
+    <None Include="library\fonts\meteocons.woff" />
+    <None Include="library\fonts\minia.eot" />
+    <None Include="library\fonts\minia.ttf" />
+    <None Include="library\fonts\minia.woff" />
+    <None Include="library\fonts\silkcons.eot" />
+    <None Include="library\fonts\silkcons.ttf" />
+    <None Include="library\fonts\silkcons.woff" />
+    <None Include="library\fonts\typicons.eot" />
+    <None Include="library\fonts\typicons.ttf" />
+    <None Include="library\fonts\typicons.woff" />
+    <None Include="library\fonts\wpzoom.eot" />
+    <None Include="library\fonts\wpzoom.ttf" />
+    <None Include="library\fonts\wpzoom.woff" />
+    <None Include="library\js\plugins\misc\search\tipuesearch_content.json" />
+    <Content Include="Views\Common\Favicon.cshtml" />
+    <Content Include="Views\Shared\_Container.cshtml" />
+    <Content Include="Views\Shared\_Copyright.cshtml" />
+    <Content Include="Views\Shared\_Error.cshtml" />
+    <Content Include="Views\Static\SiteClosed.cshtml" />
+    <Content Include="Views\Static\Error.cshtml" />
+    <Content Include="Views\Static\PageNotFound.cshtml" />
+    <Content Include="Views\Static\AccessDenied.cshtml" />
+    <Content Include="Views\Shared\_Structure.cshtml" />
+    <Content Include="Views\Common\Header.cshtml" />
+    <Content Include="Views\Common\Navigation.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Common\Breadcrumb.cshtml" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Client\Add.cshtml" />
+    <Content Include="Views\Client\Edit.cshtml" />
+    <Content Include="Views\Client\_AddEdit.cshtml" />
+    <Content Include="Views\Test\InstallPermissions.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\Company\Add.cshtml" />
+    <Content Include="Views\Company\Copy of Index.cshtml" />
+    <Content Include="Views\Company\Copy %282%29 of Index.cshtml" />
+    <Content Include="Views\Shared\ActionList.cshtml" />
+    <Content Include="Views\BranchOffice\Index.cshtml" />
+    <Content Include="Views\BranchOffice\_AddEdit.cshtml" />
+    <Content Include="Views\BranchOffice\Add.cshtml" />
+    <Content Include="Views\BranchOffice\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Add.cshtml" />
+    <Content Include="Views\User\_AddEdit.cshtml" />
+    <Content Include="Views\Test\ClearCache.cshtml" />
+    <Content Include="Views\System\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="library\logs\error\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49701</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>$(MSBuildBinPath)\msbuild.exe /p:Configuration=$(ConfigurationName);SolutionDir=$(SolutionDir) $(SolutionDir)Items\YUIMinification\application.xml</PostBuildEvent>
+  </PropertyGroup>
+</Project>
