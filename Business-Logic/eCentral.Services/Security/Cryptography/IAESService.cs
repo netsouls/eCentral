@@ -3,6 +3,20 @@
     public interface IAESService
     {
         /// <summary>
+        /// AES Encryption
+        /// </summary>
+        /// <param name="plainText">Text that needs to be encrypted</param>
+        /// <param name="encryptionKey">Encryption security key</param>
+        string Encrypt(string plainText, string encryptionKey);
+
+        /// <summary>
+        /// AES Decryption
+        /// </summary>
+        /// <param name="encryptedText">Text that needs to be decrypted</param>
+        /// <param name="encryptionKey">Encryption security key</param>
+        string Decrypt(string encryptedText, string encryptionKey);
+
+        /// <summary>
         /// Get AES Initial Vector
         /// </summary>
         /// <returns></returns>
@@ -41,7 +55,7 @@
         /// <param name="aesKey"></param>
         /// <param name="aesVI"></param>
         /// <returns></returns>
-        string AESEncrypt(string input, string aesKey, string aesIV);
+        string Encrypt(string input, string aesKey, string aesIV);
 
         /// <summary>
         /// AES Decryption
@@ -50,6 +64,6 @@
         /// <param name="aesKey"></param>
         /// <param name="aesVI"></param>
         /// <returns></returns>
-        string AESDecrypt(string input, string aesKey, string aesIV);
+        string Decrypt(string input, string aesKey, string aesIV);
     }
 }

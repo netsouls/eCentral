@@ -140,6 +140,7 @@
     <Compile Include="Security\Cryptography\AESService.cs" />
     <Compile Include="Security\Cryptography\CipherAES.cs" />
     <Compile Include="Security\Cryptography\EncryptionService.cs" />
+    <Compile Include="Security\Cryptography\Extensions.cs" />
     <Compile Include="Security\Cryptography\HashService.cs" />
     <Compile Include="Security\Cryptography\IAESService.cs" />
     <Compile Include="Security\Cryptography\IBlockCipherAES.cs" />

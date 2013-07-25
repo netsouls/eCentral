@@ -47,4 +47,6 @@ span.field-validation-error {
 table.display tr.even.row_selected td, table.display tr.odd.row_selected td {
 	background-color: #dff0d8;
 }
+.table .add-one-mini-button{ width:60px;}
+
 .btn-group > .dropdown-toggle {padding-bottom: 1px;}

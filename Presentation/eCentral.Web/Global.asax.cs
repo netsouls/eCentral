@@ -49,8 +49,8 @@ namespace eCentral.Web
 
             routes.MapRoute(
                 "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", area = "", id = UrlParameter.Optional },
+                "{controller}/{action}/{rowId}", // URL with parameters
+                new { controller = "Home", action = "Index", area = "", rowId = UrlParameter.Optional },
                 new[] { "eCentral.Web.Controllers" }
             );
         }

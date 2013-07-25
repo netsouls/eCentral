@@ -2,7 +2,7 @@
 
 namespace eCentral.Services.Security.Cryptography 
 {
-    public interface IEncryptionService : IAESService, IHashService
+    public interface IEncryptionService : IHashService
     {
         #region Hash Encryption 
 
@@ -42,6 +42,19 @@ namespace eCentral.Services.Security.Cryptography
         /// <returns></returns>
         string AESDecrypt<T>(string encryptedText, T entity)
             where T : BaseEntity;
+
+        /// <summary>
+        /// AES Encryption with server private key
+        /// </summary>
+        /// <param name="plainText">Text that needs to be encrypted</param>
+        string AESEncrypt(string plainText);
+
+        /// <summary>
+        /// AES Decryption with server private key
+        /// </summary>
+        /// <param name="encryptedText">Text that needs to be decrypted</param>
+        /// <returns></returns>
+        string AESDecrypt(string encryptedText);
 
         #endregion
     }

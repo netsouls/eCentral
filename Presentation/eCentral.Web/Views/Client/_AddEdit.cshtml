@@ -105,12 +105,13 @@
                     </div>
                 </div>
             </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-info marginR10">
+                    @T("Common.Save")</button>
+                <button type="button" class="btn btn-danger href-action" data-href="@Url.RouteUrl(SystemRouteNames.Client)">
+                    @T("Common.Cancel")</button>
+            </div>
         </div>
     </div>
-    <div class="form-actions">
-        <button type="submit" class="btn btn-info marginR10">
-            @T("Common.Save")</button>
-        <button type="button" class="btn btn-danger href-action" data-href="@Url.RouteUrl(SystemRouteNames.Client)">
-            @T("Common.Cancel")</button>
-    </div>
+    
 }

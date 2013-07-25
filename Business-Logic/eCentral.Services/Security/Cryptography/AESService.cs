@@ -29,6 +29,48 @@ namespace eCentral.Services.Security.Cryptography
         #region Methods
 
         /// <summary>
+        /// AES Decryption
+        /// </summary>
+        /// <param name="encryptedText">Text that needs to be decrypted</param>
+        /// <param name="encryptionKey">Encryption security key</param>
+        public string Decrypt(string encryptedText, string encryptionKey)
+        {
+            if (string.IsNullOrEmpty(encryptedText))
+                return encryptedText;
+
+            //#if DEBUG
+            //return encryptedText;
+            //#else
+            string aesIV = GetInStringAESIV();
+            string aesKey = GetAESKey(encryptionKey, 512, aesIV, 1024);
+
+            return Decrypt(encryptedText, aesKey, aesIV);
+            //#endif
+
+        }
+
+        /// <summary>
+        /// AES Encryption
+        /// </summary>
+        /// <param name="plainText">Text that needs to be encrypted</param>
+        /// <param name="encryptionKey">Encryption security key</param>
+        public string Encrypt(string plainText, string encryptionKey)
+        {
+            if (string.IsNullOrEmpty(plainText))
+                return plainText;
+
+            //#if DEBUG
+            //return plainText;
+            //#else
+            string aesIV = GetInStringAESIV();
+            string aesKey = GetAESKey(encryptionKey, 512, aesIV, 1024);
+
+            return Encrypt(plainText, aesKey, aesIV);
+            //#endif
+        }
+
+
+        /// <summary>
         /// Get AES Initial Vector
         /// </summary>
         /// <returns></returns>
@@ -43,8 +85,8 @@ namespace eCentral.Services.Security.Cryptography
         /// <returns></returns>
         public string GetInStringAESIV()
         {
-            return CommonHelper.ByteArrayToString
-                (new byte[this.cipherAES.BlockSizeInBytes()]).Replace("\\", "");
+            return
+                (new byte[this.cipherAES.BlockSizeInBytes()]).ByteArrayToString().Replace("\\", "");
         }
 
         /// <summary>
@@ -57,11 +99,11 @@ namespace eCentral.Services.Security.Cryptography
         /// <returns></returns>
         public string GetAESKey(string password, int keySize, string AESIV, int iterationCount)
         {
-            byte[] aesIV = CommonHelper.StringToByteArray(AESIV);
+            byte[] aesIV = AESIV.StringToByteArray();
             for (int i = 0; i < aesIV.Length; ++i) aesIV[i] = 0;
             var salt = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 };
 
-            return CommonHelper.ByteArrayToString(DeriveKey(password, keySize, salt, iterationCount));
+            return (DeriveKey(password, keySize, salt, iterationCount)).ByteArrayToString();
         }
 
         /// <summary>
@@ -87,7 +129,7 @@ namespace eCentral.Services.Security.Cryptography
         /// <param name="aesKey"></param>
         /// <param name="aesVI"></param>
         /// <returns></returns>
-        public string AESEncrypt(string input, string aesKey, string aesIV)
+        public string Encrypt(string input, string aesKey, string aesIV)
         {
             var rijndaelKey =
                 new RijndaelRequest(aesKey, aesIV); //, 4,8, 512, "SHA512", null, 1024);
@@ -102,7 +144,7 @@ namespace eCentral.Services.Security.Cryptography
         /// <param name="aesKey"></param>
         /// <param name="aesVI"></param>
         /// <returns></returns>
-        public string AESDecrypt(string input, string aesKey, string aesIV)
+        public string Decrypt(string input, string aesKey, string aesIV)
         {
             var rijndaelKey =
                 new RijndaelRequest(aesKey, aesIV); //, 10, 500, 512, "SHA512", null, 1024);
@@ -112,9 +154,9 @@ namespace eCentral.Services.Security.Cryptography
 
         #endregion
 
-        #region Private 
+        #region Private
 
-        #region AES Key Creator 
+        #region AES Key Creator
 
         /// <summary>
         /// safe method to generate a key
@@ -168,7 +210,7 @@ namespace eCentral.Services.Security.Cryptography
         }
 
         #endregion
-        
+
         #endregion
     }
 }

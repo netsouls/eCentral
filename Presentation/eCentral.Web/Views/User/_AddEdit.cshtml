@@ -50,24 +50,24 @@
             <div class="form-row row-fluid">
                 <div class="span12">
                     <div class="row-fluid">
-                        <div class="span2">
-                            &nbsp;</div>
+                        <div class="span2">&nbsp;</div>
                         <div class="span10 controls">
                             <div class="iToggle-button left marginR10">
                                 <input type="checkbox" class="nostyle" data-element="@Html.FieldIdFor(m => m.IsAdministrator)" />
-                                @T("Users.Fields.Administrator")
                             </div>
+                            @T("Users.Fields.Administrator")
                             @Html.HiddenFor(m => m.IsAdministrator)
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-info marginR10">
+                @T("Common.Save")</button>
+            <button type="button" class="btn btn-danger href-action" data-href="@Url.RouteUrl(SystemRouteNames.User)">
+                @T("Common.Cancel")</button>
+        </div>
     </div>
-    <div class="form-actions">
-        <button type="submit" class="btn btn-info marginR10">
-            @T("Common.Save")</button>
-        <button type="button" class="btn btn-danger href-action" data-href="@Url.RouteUrl(SystemRouteNames.User)">
-            @T("Common.Cancel")</button>
-    </div>
+    
 }

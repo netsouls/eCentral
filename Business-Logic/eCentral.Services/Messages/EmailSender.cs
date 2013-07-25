@@ -4,11 +4,30 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using eCentral.Core.Domain.Messages;
+using eCentral.Services.Security.Cryptography;
 
 namespace eCentral.Services.Messages
 {
     public partial class EmailSender:IEmailSender
     {
+        #region Fields
+
+        private readonly IEncryptionService encryptionService;
+        
+        #endregion
+
+        #region Ctor
+
+        /// <summary>
+        /// Ctor
+        /// </summary>
+        public EmailSender(IEncryptionService encryptionService)
+        {
+            this.encryptionService   = encryptionService;
+        }
+
+        #endregion
+
         /// <summary>
         /// Sends an email
         /// </summary>
@@ -75,7 +94,11 @@ namespace eCentral.Services.Messages
                 if (emailAccount.UseDefaultCredentials)
                     smtpClient.Credentials = CredentialCache.DefaultNetworkCredentials;
                 else
-                    smtpClient.Credentials = new NetworkCredential(emailAccount.Username, emailAccount.Password);
+                {
+                    // decrypt the password
+                    var emailPassword = encryptionService.AESDecrypt(emailAccount.Password);
+                    smtpClient.Credentials = new NetworkCredential(emailAccount.Username, emailPassword);
+                }
                 smtpClient.Send(message);
             }
         }

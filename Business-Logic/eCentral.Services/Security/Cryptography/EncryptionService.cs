@@ -103,74 +103,6 @@ namespace eCentral.Services.Security.Cryptography
         #region AES
 
         /// <summary>
-        /// Get AES Initial Vector
-        /// </summary>
-        /// <returns></returns>
-        public byte[] GetInbyteAESIV()
-        {
-            return aesService.GetInbyteAESIV();
-        }
-
-        /// <summary>
-        /// Get AES Initial Vector
-        /// </summary>
-        /// <returns></returns>
-        public string GetInStringAESIV()
-        {
-            return aesService.GetInStringAESIV();
-        }
-
-        /// <summary>
-        /// Get AES Key
-        /// </summary>
-        /// <param name="password"></param>
-        /// <param name="keySize"></param>
-        /// <param name="AESVI"></param>
-        /// <param name="iterationCount"></param>
-        /// <returns></returns>
-        public string GetAESKey(string password, int keySize, string AESIV, int iterationCount)
-        {
-            return aesService.GetAESKey(password, keySize, AESIV, iterationCount);
-        }
-
-        /// <summary>
-        /// Get AES Key
-        /// </summary>
-        /// <param name="password"></param>
-        /// <param name="keySize"></param>
-        /// <param name="AESVI"></param>
-        /// <param name="iterationCount"></param>
-        /// <returns></returns>
-        public byte[] GetAESKey(string password, int keySize, byte[] AESIV, int iterationCount)
-        {
-            return aesService.GetAESKey(password, keySize, AESIV, iterationCount);
-        }
-
-        /// <summary>
-        /// AES Encryption
-        /// </summary>
-        /// <param name="input"></param>
-        /// <param name="aesKey"></param>
-        /// <param name="aesVI"></param>
-        /// <returns></returns>
-        public string AESEncrypt(string input, string aesKey, string aesIV)
-        {
-            return aesService.AESEncrypt(input, aesKey, aesIV);
-        }
-
-        /// <summary>
-        /// AES Decryption
-        /// </summary>
-        /// <param name="input"></param>
-        /// <param name="aesKey"></param>
-        /// <param name="aesVI"></param>
-        /// <returns></returns>
-        public string AESDecrypt(string input, string aesKey, string aesIV)
-        {
-            return aesService.AESDecrypt(input, aesKey, aesIV);
-        }
-
-        /// <summary>
         /// AES Encryption
         /// </summary>
         /// <param name="plainText">Text that needs to be encrypted</param>
@@ -183,10 +115,7 @@ namespace eCentral.Services.Security.Cryptography
 
             string encryptKey = AESEncryptionKey<T>(entity);
 
-            string aesIV = GetInStringAESIV();
-            string aesKey = GetAESKey(encryptKey, 512, aesIV, 1024);
-
-            return AESEncrypt(plainText, aesKey, aesIV);
+            return AESEncrypt(plainText, encryptKey);
         }
 
         /// <summary>
@@ -203,10 +132,32 @@ namespace eCentral.Services.Security.Cryptography
 
             string encryptKey = AESEncryptionKey<T>(entity);
 
-            string aesIV = GetInStringAESIV();
-            string aesKey = GetAESKey(encryptKey, 512, aesIV, 1024);
+            return AESDecrypt(encryptedText, encryptKey);
+        }
 
-            return AESDecrypt(encryptedText, aesKey, aesIV);
+        /// <summary>
+        /// AES Encryption with server private key
+        /// </summary>
+        /// <param name="plainText">Text that needs to be encrypted</param>
+        public string AESEncrypt(string plainText)
+        {
+            if (string.IsNullOrEmpty(plainText))
+                return plainText;
+
+            return AESEncrypt(plainText, securitySettings.EncryptionKey + StateKeyManager.EncryptionKey);
+        }
+
+        /// <summary>
+        /// AES Decryption with server private key
+        /// </summary>
+        /// <param name="encryptedText">Text that needs to be decrypted</param>
+        /// <returns></returns>
+        public string AESDecrypt(string encryptedText)
+        {
+            if (string.IsNullOrEmpty(encryptedText))
+                return encryptedText;
+
+            return AESDecrypt(encryptedText, securitySettings.EncryptionKey + StateKeyManager.EncryptionKey);
         }
 
         #endregion
@@ -214,6 +165,26 @@ namespace eCentral.Services.Security.Cryptography
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// AES Decryption
+        /// </summary>
+        /// <param name="plainText">Text that needs to be decrypted</param>
+        /// <param name="encryptionKey">Encryption security key</param>
+        private string AESDecrypt(string encryptedText, string encryptionKey)
+        {
+            return aesService.Decrypt(encryptedText, encryptionKey);
+        }
+
+        /// <summary>
+        /// AES Encryption
+        /// </summary>
+        /// <param name="plainText">Text that needs to be encrypted</param>
+        /// <param name="encryptionKey">Encryption security key</param>
+        private string AESEncrypt(string plainText, string encryptionKey)
+        {
+            return aesService.Encrypt(plainText, encryptionKey);
+        }
 
         private string AESEncryptionKey<T> ( T entity) 
             where T : BaseEntity

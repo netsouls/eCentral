@@ -1,30 +1,74 @@
 ﻿@model ActionListModel
+@{
+    var addUrl = string.Empty;
+    var editUrl = string.Empty;
+    var changeStatusUrl = string.Empty;
+
+    if (Model.AddNewRouteName.HasValue() || Model.AddRouteUrl.HasValue())
+    {
+        if (Model.AddNewRouteName.HasValue())
+        {
+            addUrl = Url.RouteUrl(Model.AddNewRouteName);
+        }
+        else 
+        {
+            addUrl = Model.AddRouteUrl.Trim().ToLowerInvariant();
+        }
+    }
+
+    if (Model.EditRouteName.HasValue() || Model.EditRouteUrl.HasValue())
+    {
+        if (Model.EditRouteName.HasValue())
+        {
+            editUrl = Url.EditUrl(Model.EditRouteName);
+        }
+        else
+        {
+            editUrl = Model.EditRouteUrl.Trim().ToLowerInvariant();
+        }
+    }
+
+    if (Model.ChangeStatusRouteName.HasValue() || Model.ChangeStatusUrl.HasValue())
+    {
+        if (Model.ChangeStatusRouteName.HasValue())
+        {
+            changeStatusUrl = Url.RouteUrl(Model.ChangeStatusRouteName);
+        }
+        else
+        {
+            changeStatusUrl = Model.ChangeStatusUrl.Trim().ToLowerInvariant();
+        }
+    }
+}
 <h4 class="clearfix">
     <span class="icon16 icomoon-icon-table-2"></span><span class="processing"></span>
     <div class="right marginR10">
-        <button class="btn btn-mini btn-primary href-action tip" title="Add New" data-href="@Url.RouteUrl(Model.AddNewRouteName)">
-            <span class="icon8 icomoon-icon-plus white"></span>Add New</button>
-        @if (Model.EditRouteName.HasValue())
+        @if (addUrl.HasValue())
         { 
-            <button class="btn btn-mini btn-warning tip edit-action" data-href="@Url.EditUrl(Model.EditRouteName)" title="Select a single record to edit">
+        <button class="btn btn-mini btn-primary href-action tip" title="Add New" data-href="@addUrl">
+            <span class="icon8 icomoon-icon-plus white"></span>Add New</button>
+        }
+        @if (editUrl.HasValue())
+        { 
+            <button class="btn btn-mini btn-warning tip edit-action" data-href="@editUrl" title="Select a single record to edit">
                 <span class="icon8 icomoon-icon-pencil-4 white"></span>Edit</button>
         }
-        @if (Model.ChangeStatusRouteName.HasValue())
+        @if (changeStatusUrl.HasValue())
         { 
             <div class="btn-group change-status">
                 <button class="btn btn-mini btn-danger tip" title="Select single or multiple records to change their status">
                     Change Status
                 </button>
-                <button class="btn btn-mini btn-success tip change-status-action" data-href="@Url.RouteUrl(Model.ChangeStatusRouteName)" data-value="@((int)PublishingStatus.Active)" title="Change status to @PublishingStatus.Active.GetFriendlyName().ToLowerInvariant()">
+                <button class="btn btn-mini btn-success tip change-status-action" data-href="@changeStatusUrl" data-value="@((int)PublishingStatus.Active)" title="Change status to @PublishingStatus.Active.GetFriendlyName().ToLowerInvariant()">
                     <span class="icomoon-icon-checkmark-circle-2 white"></span>
                 </button>
-                <button class="btn btn-mini btn-info tip change-status-action" data-href="@Url.RouteUrl(Model.ChangeStatusRouteName)" data-value="@((int)PublishingStatus.Archived)" title="Change status to @PublishingStatus.Archived.GetFriendlyName().ToLowerInvariant()">
+                <button class="btn btn-mini btn-info tip change-status-action" data-href="@changeStatusUrl" data-value="@((int)PublishingStatus.Archived)" title="Change status to @PublishingStatus.Archived.GetFriendlyName().ToLowerInvariant()">
                     <span class="icomoon-icon-info-2 white"></span>
                 </button>
-                <button class="btn btn-mini btn-inverse tip change-status-action" data-href="@Url.RouteUrl(Model.ChangeStatusRouteName)" data-value="@((int)PublishingStatus.Draft)" title="Change status to @PublishingStatus.Draft.GetFriendlyName().ToLowerInvariant()">
+                <button class="btn btn-mini btn-inverse tip change-status-action" data-href="@changeStatusUrl" data-value="@((int)PublishingStatus.Draft)" title="Change status to @PublishingStatus.Draft.GetFriendlyName().ToLowerInvariant()">
                     <span class="icomoon-icon-pencil-3 white"></span>
                 </button>
-                <button class="btn btn-mini btn-danger tip change-status-action" data-href="@Url.RouteUrl(Model.ChangeStatusRouteName)" data-value="@((int)PublishingStatus.PendingDeletion)" title="Change status to @PublishingStatus.PendingDeletion.GetFriendlyName().ToLowerInvariant()">
+                <button class="btn btn-mini btn-danger tip change-status-action" data-href="@changeStatusUrl" data-value="@((int)PublishingStatus.PendingDeletion)" title="Change status to @PublishingStatus.PendingDeletion.GetFriendlyName().ToLowerInvariant()">
                     <span class="icomoon-icon-cancel-circle-2 white"></span>
                 </button>                
             </div>

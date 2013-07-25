@@ -10,7 +10,7 @@
 
     var siteInformationSettings = EngineContext.Current.Resolve<SiteInformationSettings>();
     var siteState = siteInformationSettings.ApplicationState;
-    
+
     if (siteState == eCentral.Core.Domain.ApplicationState.Production)
     {
         Html.AddScriptParts(ResourceLocation.Foot,
@@ -41,7 +41,6 @@
                     <h4>
                         <span class="icon16 brocco-icon-grid"></span><span>Company details</span>
                     </h4>
-                    <a href="#" class="minimize">Minimize</a>
                 </div>
                 <div class="content">
                     <div class="form-row row-fluid">
@@ -98,15 +97,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-info marginR10">
+                            @T("Common.Save")</button>
+                        <button type="button" class="btn btn-danger href-action" data-href="@Url.RouteUrl(SystemRouteNames.Company)">
+                            @T("Common.Cancel")</button>
+                    </div>
                 </div>
-            </div>            
-            <div class="form-actions">
-                <button type="submit" class="btn btn-info marginR10">
-                    @T("Common.Save")</button>
-                <button type="button" class="btn btn-danger href-action" data-href="@Url.RouteUrl(SystemRouteNames.Company)">
-                    @T("Common.Cancel")</button>
-            </div>            
-                    
+            </div>  
         }
     </div>
     <!-- End .span12 -->

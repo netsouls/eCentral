@@ -6,6 +6,7 @@ using eCentral.Core.Domain.Security;
 using eCentral.Core.Domain.Users;
 using eCentral.Services.Common;
 using eCentral.Services.Localization;
+using eCentral.Services.Messages;
 using eCentral.Services.Security.Cryptography;
 using eCentral.Services.Users;
 using eCentral.Web.Framework;
@@ -23,6 +24,7 @@ namespace eCentral.Web.Controllers
         #region Fields
 
         private readonly IUserService userService;
+        private readonly IWorkflowMessageService messageService;
         private readonly IUserRegistrationService registrationService;
         private readonly IWorkContext workContext;
         private readonly ILocalizationService localizationService;
@@ -35,12 +37,14 @@ namespace eCentral.Web.Controllers
 
         public UserController(IUserService userService, ILocalizationService localizationService,
             IEncryptionService encryptionService, IUserRegistrationService registrationService,
+            IWorkflowMessageService messageService,
             IWorkContext workContext, ICacheManager cacheManager)
         {
             this.localizationService  = localizationService;
             this.cacheManager         = cacheManager;
             this.encryptionService    = encryptionService;
             this.registrationService  = registrationService;
+            this.messageService       = messageService;
             this.userService          = userService;
             this.workContext          = workContext;
         }
@@ -101,7 +105,7 @@ namespace eCentral.Web.Controllers
                 if (result.Success)
                 {
                     // send the user activation email
-                    //messageService.SendUserEmailValidationMessage(workContext.CurrentEnterprise, result.Data, workContext.WorkingLanguage.RowId);
+                    messageService.SendUserEmailValidationMessage(result.Data, workContext.WorkingLanguage.RowId);
 
                     //activityService.InsertActivity(workContext.CurrentEnterprise, workContext.CurrentUser, result.Data.RowId,
                     //    SystemActivityLogTypeNames.Enterprise.AddNewUser, result.Data.FormatUserName(), request.Tags);

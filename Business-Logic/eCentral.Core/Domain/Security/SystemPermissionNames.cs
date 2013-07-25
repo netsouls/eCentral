@@ -19,8 +19,10 @@ namespace eCentral.Core.Domain.Security
         public const string ManageSystemLog = "ManageSystemLog";
         public const string ManageMessageQueue = "ManageMessageQueue";
         public const string ManageMaintenance = "ManageMaintenance";
+        public const string ManageMessageTemplates = "ManageMessageTemplates";
+        public const string ManageEmailAccounts = "ManageEmailAccounts";
 
-        /*public const string ManageMessageTemplates = "ManageMessageTemplates";
+        /*
         public const string ManageWidgets          = "ManageWidgets";
         public const string ManageLanguages        = "ManageLanguages";
         public const string ManageSettings         = "ManageSettings";
@@ -30,7 +32,7 @@ namespace eCentral.Core.Domain.Security
         public const string ManageSMSProviders     = "ManageSMSProviders";
         public const string ManageGeoIPProviders   = "ManageGeoIPProviders";
         public const string ManageCountries        = "ManageCountries";
-        public const string ManageEmailAccounts    = "ManageEmailAccounts";
+        
         public const string ManagePlugins          = "ManagePlugins";
         ;
         */

@@ -6,7 +6,7 @@ if (window.appEngine == undefined) { window.appEngine = {}; }
 var supr_Options = {
     fixedWidth: false, //activate fixed version with true
     rtl: false, //activate rtl version with true
-    showSwitcher: false //show switcher with true
+    showSwitcher: false//show switcher with true
 }
 //------------- Modernizr -------------//
 //load some plugins only if is needed
@@ -62,6 +62,13 @@ $.extend(appEngine, {
         stringToJSON: function (stringData) {
             return jQuery.parseJSON(stringData); // another option is eval("(" + stringData + ")")
         },
+        addTrailingSlash: function (strValue) {
+            if (strValue.substr(-1) != '/') {
+                strValue += '/';
+            }
+
+            return strValue;
+        },
         removeFromArray: function (source, valuetoRemove, seperator) {
             seperator = seperator || ",";
             var sourceArray = source.split(seperator);
@@ -112,6 +119,19 @@ $.extend(appEngine, {
                 }
             });
         },
+        setqTip: function (elements) {
+            $(elements).qtip({
+                content: false,
+                position: {
+                    my: 'bottom center',
+                    at: 'top center',
+                    viewport: $(window)
+                },
+                style: {
+                    classes: 'qtip-tipsy'
+                }
+            });
+        },
         setDataTable: function (elementId, serviceUrl, columnStructure, bLenghtChange, bFilter, callback) {
             $(document).ready(function () {
                 if ($('table').hasClass('dynamicTable')) {
@@ -159,6 +179,7 @@ $.extend(appEngine, {
                                 $('.edit-action, .change-status').hide();
                             }
                             $('td.chChildren input:checkbox').uniform();
+                            appEngine.util.setqTip('td.chChildren .tip');
                         },
                         'fnInitComplete': function (oSettings, json) {
                             $('#' + elementId + ' tr').live('click', function () {
@@ -199,7 +220,7 @@ $.extend(appEngine, {
                         if (dataTable.$('tr.row_selected').length != 1)
                             appEngine.util.errorNotification('Please select one record to edit!');
                         else
-                            window.location.href = $(this).attr('data-href') + $('tr.row_selected input:checkbox').val();
+                            window.location.href = appEngine.util.addTrailingSlash($(this).attr('data-href')) + $('tr.row_selected input:checkbox').val();
                     });
                     /* change status*/
                     $('.change-status-action').click(function () {
@@ -286,6 +307,53 @@ var userAgent = navigator.userAgent.toLowerCase();
 $.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
 
 $(document).ready(function () {
+
+    //------------- Switcher code ( Remove it in production site ) -------------//
+    (function () {
+        supr_switcher = {
+            create: function () {
+                //create switcher and inject into html
+                $('body').append('<a href="#" id="switchBtn"><span class="icon24 icomoon-icon-cogs"></span></a>');
+                $('body').append('<div id="switcher"><h4>Header patterns</h4><div class="header-patterns"><ul><li><a href="#" class="hpat1"><img src="' + appEngine.path.root + 'library/images/patterns/header/1.png"></a></li><li><a href="#" class="hpat2"><img src="' + appEngine.path.root + 'library/images/patterns/header/2.png"></a></li><li><a href="#" class="hpat3"><img src="' + appEngine.path.root + 'library/images/patterns/header/3.png"></a></li><li><a href="#" class="hpat4"><img src="' + appEngine.path.root + 'library/images/patterns/header/4.png"></a></li></ul></div><h4>Sidebar patterns</h4><div class="sidebar-patterns"><ul><li><a href="#" class="spat1"><img src="' + appEngine.path.root + 'library/images/patterns/sidebar/1.png"></a></li><li><a href="#" class="spat2"><img src="' + appEngine.path.root + 'library/images/patterns/sidebar/2.png"></a></li><li><a href="#" class="spat3"><img src="' + appEngine.path.root + 'library/images/patterns/sidebar/3.png"></a></li><li><a href="#" class="spat4"><img src="' + appEngine.path.root + 'library/images/patterns/sidebar/4.png"></a></li></ul></div><h4>Body patterns</h4><div class="body-patterns"><ul><li><a href="#" class="bpat1"><img src="' + appEngine.path.root + 'library/images/patterns/body/1.png"></a></li><li><a href="#" class="bpat2"><img src="' + appEngine.path.root + 'library/images/patterns/body/2.png"></a></li><li><a href="#" class="bpat3"><img src="' + appEngine.path.root + 'library/images/patterns/body/3.png"></a></li><li><a href="#" class="bpat4"><img src="' + appEngine.path.root + 'library/images/patterns/body/4.png"></a></li></ul></div></div>');
+            },
+            init: function () {
+                supr_switcher.create();
+                $('#switcher a').click(function () {
+                    if ($(this).hasClass('hpat1')) { $('#header').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/header/bedge_grunge.png)'); }
+                    if ($(this).hasClass('hpat2')) { $('#header').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/header/grid.png)'); }
+                    if ($(this).hasClass('hpat3')) { $('#header').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/header/nasty_fabric.png)'); }
+                    if ($(this).hasClass('hpat4')) { $('#header').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/header/natural_paper.png)'); }
+                    if ($(this).hasClass('spat1')) { $('#sidebarbg').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/sidebar/az_subtle.png)'); }
+                    if ($(this).hasClass('spat2')) { $('#sidebarbg').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/sidebar/billie_holiday.png)'); }
+                    if ($(this).hasClass('spat3')) { $('#sidebarbg').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/sidebar/grey.png)'); }
+                    if ($(this).hasClass('spat4')) { $('#sidebarbg').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/sidebar/noise_lines.png)'); }
+                    if ($(this).hasClass('bpat1')) { $('#content').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/body/cream_dust.png)'); }
+                    if ($(this).hasClass('bpat2')) { $('#content').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/body/dust.png)'); }
+                    if ($(this).hasClass('bpat3')) { $('#content').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/body/grey.png)'); }
+                    if ($(this).hasClass('bpat4')) { $('#content').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/body/subtle_dots.png)'); }
+                });
+
+                $('#switchBtn').click(function () {
+                    if ($(this).hasClass('toggle')) {
+                        //hide switcher
+                        $(this).removeClass('toggle').css('right', '-1px');
+                        $('#switcher').css('display', 'none');
+
+                    } else {
+                        //expand switcher
+                        $(this).animate({
+                            right: '135'
+                        }, 200, function () {
+                            // Animation complete.
+                            $('#switcher').css('display', 'block');
+                            $(this).addClass('toggle');
+                        });
+                    }
+                });
+            }
+        }
+    })();
+
     //show switcher
     if (supr_Options.showSwitcher) {
         supr_switcher.init();
@@ -317,9 +385,10 @@ $(document).ready(function () {
     var absoluteUrl = 0; //put value of 1 if use absolute path links. example http://www.host.com/dashboard instead of /dashboard
 
     function setCurrentClass(mainNavLinkAll, url) {
+        url = url.toLowerCase();
         mainNavLinkAll.each(function (index) {
             //convert href to array and get last element
-            var href = $(this).attr('href');
+            var href = $(this).attr('href').toLowerCase();
             if (href == url || url.indexOf(href) > 0) {
                 //set new current class
                 $(this).addClass('current');
@@ -589,17 +658,7 @@ $(document).ready(function () {
 
     //------------- Tooltips -------------//
     //top tooltip
-    $('.tip').qtip({
-        content: false,
-        position: {
-            my: 'bottom center',
-            at: 'top center',
-            viewport: $(window)
-        },
-        style: {
-            classes: 'qtip-tipsy'
-        }
-    });
+    appEngine.util.setqTip('.tip');
 
     //tooltip in right
     $('.tipR').qtip({
@@ -666,6 +725,9 @@ $(document).ready(function () {
     //------------- Uniform  -------------//
     //add class .nostyle if not want uniform to style field
     $("input, textarea, select").not('.nostyle').uniform();
+
+    // -- spinners --//
+    $('.spinner').spinner();
 
     //remove overlay and show page
     $("#qLoverlay").fadeOut(250);

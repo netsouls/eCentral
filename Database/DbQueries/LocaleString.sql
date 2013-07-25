@@ -1,6 +1,6 @@
 SELECT * from LocaleStringResource where ResourceName like 
 --'Account.ChangePassword.Fields.%'  --and resourcename not like 'Web.Admin%'
-'%System.SystemInfo.%'
+'%.edit%'
 order by updatedon desc
 
 /*UPDATE LocaleStringResource SET ResourceName = 'Clients.Form.Heading'
@@ -15,8 +15,8 @@ where ResourceName = 'Clients.Form.Add.Heading'
 /*
 insert into LocaleStringResource( LanguageId, ResourceName, ResourceValue, IsJsonResource, CreatedOn, UpdatedOn)
 VALUES ( 'C668E5F7-D174-4F09-B06C-4E3735A1BB4E',
-'System.SystemInfo.OperatingSystem',
-'Operating system', --.
+'PageTitle.EmailAccounts.Edit',
+'Edit email account', --.
 0, dbo.fnGetGMTDateTime(GETDATE()), dbo.fnGetGMTDateTime(GETDATE()))
 	
 */

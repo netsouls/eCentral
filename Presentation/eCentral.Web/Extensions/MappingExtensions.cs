@@ -1,4 +1,7 @@
-﻿using eCentral.Core.Domain.Clients;
+﻿using AutoMapper;
+using eCentral.Web.Models.Messages;
+using eCentral.Core.Domain.Messages;
+using eCentral.Core.Domain.Clients;
 using eCentral.Core.Domain.Common;
 using eCentral.Core.Domain.Companies;
 using eCentral.Core.Domain.Directory;
@@ -131,5 +134,43 @@ namespace eCentral.Web.Extensions
 
             return model;
         }
+
+        #region Email account
+
+        public static EmailAccountModel ToModel(this EmailAccount entity)
+        {
+            return Mapper.Map<EmailAccount, EmailAccountModel>(entity);
+        }
+
+        public static EmailAccount ToEntity(this EmailAccountModel model)
+        {
+            return Mapper.Map<EmailAccountModel, EmailAccount>(model);
+        }
+
+        public static EmailAccount ToEntity(this EmailAccountModel model, EmailAccount destination)
+        {
+            return Mapper.Map(model, destination);
+        }
+
+        #endregion
+
+        #region Message templates
+
+        public static MessageTemplateModel ToModel(this MessageTemplate entity)
+        {
+            return Mapper.Map<MessageTemplate, MessageTemplateModel>(entity);
+        }
+
+        public static MessageTemplate ToEntity(this MessageTemplateModel model)
+        {
+            return Mapper.Map<MessageTemplateModel, MessageTemplate>(model);
+        }
+
+        public static MessageTemplate ToEntity(this MessageTemplateModel model, MessageTemplate destination)
+        {
+            return Mapper.Map(model, destination);
+        }
+
+        #endregion
     }
 }

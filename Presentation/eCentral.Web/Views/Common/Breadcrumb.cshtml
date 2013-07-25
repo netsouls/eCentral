@@ -53,25 +53,29 @@
     }
 }
 <ul class="breadcrumb">
-    <li>You are here:</li>
-    <li><a href="@Url.RouteUrl(SystemRouteNames.HomePage)" class="tip" title="@T("Breadcrumb.Dashboard")">
+    @if (currentNode != null)
+    {
+        <li>You are here:</li>
+        <li><a href="@Url.RouteUrl(SystemRouteNames.HomePage)" class="tip" title="@T("Breadcrumb.Dashboard")">
         <span class="icon16 icomoon-icon-screen-2"></span></a><span class="divider"><span
             class="icon16 icomoon-icon-arrow-right-3"></span></span></li>
+    }    
+    
     @foreach (var siteNode in ancestorList.Reverse())
-     {
-         var routeUrl = "#";
-         if (!string.IsNullOrEmpty(siteNode.RouteName))
-         {
-             routeUrl = Url.RouteUrl(siteNode.RouteName);
-         }
-         
-         var resource = siteNode.Attributes["siteResource"];
-         if (resource != null && !string.IsNullOrEmpty(resource.ToString()))
-         {
-             resource = T(resource.ToString()).ToHtmlString();
-         }
+    {
+        var routeUrl = "#";
+        if (!string.IsNullOrEmpty(siteNode.RouteName))
+        {
+            routeUrl = Url.RouteUrl(siteNode.RouteName);
+        }
+
+        var resource = siteNode.Attributes["siteResource"];
+        if (resource != null && !string.IsNullOrEmpty(resource.ToString()))
+        {
+            resource = T(resource.ToString()).ToHtmlString();
+        }
          <li class="active"><a href="@routeUrl">@resource</a><span class="divider"><span class="icon16 icomoon-icon-arrow-right-3"></span></li> 
-     }
+    }
      @if (currentNode != null)
      { 
         <li class="active">@T(currentNode.Attributes["siteResource"].ToString())</li>

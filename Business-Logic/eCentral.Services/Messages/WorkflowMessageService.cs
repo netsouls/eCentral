@@ -49,58 +49,6 @@ namespace eCentral.Services.Messages
         #region user workflow
 
         /// <summary>
-        /// Sends 'New user' notification message to a store owner
-        /// </summary>
-        /// <param name="user">user instance</param>
-        /// <param name="languageId">Message language identifier</param>
-        /// <returns>Queued email identifier</returns>
-        public virtual Guid SendUserRegisteredNotificationMessage(User user, Guid languageId)
-        {
-            Guard.IsNotNull(user, "user");
-
-            languageId = EnsureLanguageIsActive(languageId);
-
-            var messageTemplate = GetLocalizedActiveMessageTemplate("User.AdminNotification", languageId);
-            if (messageTemplate == null)
-                return Guid.Empty;
-
-            var userTokens = GenerateTokens(user);
-
-            var emailAccount = GetEmailAccountOfMessageTemplate(messageTemplate, languageId);
-            var toEmail      = emailAccount.Email;
-            var toName       = emailAccount.DisplayName;
-            return SendNotification(messageTemplate, emailAccount,
-                languageId, userTokens,
-                toEmail, toName);
-        }
-
-        /// <summary>
-        /// Sends a welcome message to a user
-        /// </summary>
-        /// <param name="user">user instance</param>
-        /// <param name="languageId">Message language identifier</param>
-        /// <returns>Queued email identifier</returns>
-        public virtual Guid SendUserWelcomeMessage(User user, Guid languageId)
-        {
-            Guard.IsNotNull(user, "user"); 
-            
-            languageId = EnsureLanguageIsActive(languageId);
-
-            var messageTemplate = GetLocalizedActiveMessageTemplate("User.WelcomeMessage", languageId);
-            if (messageTemplate == null)
-                return Guid.Empty;
-
-            var userTokens = GenerateTokens(user);
-
-            var emailAccount = GetEmailAccountOfMessageTemplate(messageTemplate, languageId);
-            var toEmail      = user.Username;
-            var toName       = user.GetFullName();
-            return SendNotification(messageTemplate, emailAccount,
-                languageId, userTokens, 
-                toEmail, toName);
-        }
-
-        /// <summary>
         /// Sends an email validation message to a user
         /// </summary>
         /// <param name="user">user instance</param>
@@ -113,32 +61,6 @@ namespace eCentral.Services.Messages
             languageId = EnsureLanguageIsActive(languageId);
 
             var messageTemplate = GetLocalizedActiveMessageTemplate("User.EmailValidationMessage", languageId);
-            if (messageTemplate == null)
-                return Guid.Empty;
-
-            var userTokens = GenerateTokens(user);
-
-            var emailAccount = GetEmailAccountOfMessageTemplate(messageTemplate, languageId);
-            var toEmail      = user.Username;
-            var toName       = user.GetFullName();
-            return SendNotification(messageTemplate, emailAccount,
-                languageId, userTokens,
-                toEmail, toName);
-        }
-
-        /// <summary>
-        /// Sends password recovery message to a user
-        /// </summary>
-        /// <param name="user">user instance</param>
-        /// <param name="languageId">Message language identifier</param>
-        /// <returns>Queued email identifier</returns>
-        public virtual Guid SendUserPasswordRecoveryMessage(User user, Guid languageId)
-        {
-            Guard.IsNotNull(user, "user");
-            
-            languageId = EnsureLanguageIsActive(languageId);
-
-            var messageTemplate = GetLocalizedActiveMessageTemplate("User.PasswordRecovery", languageId);
             if (messageTemplate == null)
                 return Guid.Empty;
 
