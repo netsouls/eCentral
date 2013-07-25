@@ -1,0 +1,133 @@
+﻿@model EmailAccountModel
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+{ 
+    @Html.HiddenFor(model => model.RowId)
+    @Html.HiddenFor(model => model.IsEdit)
+            
+    <div class="box hover">
+        <div class="title">
+            <h4>
+                <span class="icon16 brocco-icon-grid"></span><span>Account details</span>
+            </h4>
+            @if (!Model.RowId.IsEmpty())
+            {
+                <a href="#" class="minimize">Minimize</a>
+            }
+        </div>
+        <div class="content">
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Email, new { @class = "span2" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "span10" })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.DisplayName, new { @class = "span2" })
+                        @Html.TextBoxFor(m => m.DisplayName, new { @class = "span10" })
+                        @Html.ValidationMessageFor(m => m.DisplayName)
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Host, new { @class = "span2" })
+                        @Html.TextBoxFor(m => m.Host, new { @class = "span10" })
+                        @Html.ValidationMessageFor(m => m.Host)
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Port, new { @class = "span2" })
+                        @Html.TextBoxFor(m => m.Port, new { @class = "span10 spinner" })
+                        @Html.ValidationMessageFor(m => m.Port)
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Username, new { @class = "span2" })
+                        @Html.TextBoxFor(m => m.Username, new { @class = "span10" })
+                        @Html.ValidationMessageFor(m => m.Username)
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.Password, new { @class = "span2" })
+                        @Html.TextBoxFor(m => m.Password, new { @class = "span10" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.EnableSsl, new { @class = "span2" })
+                        <div class="span10 controls">
+                            <div class="iToggle-button left marginR10">
+                                <input type="checkbox" class="nostyle" @if(Model.EnableSsl) {<text>checked="checked"</text>} data-element="@Html.FieldIdFor(m => m.EnableSsl)" />
+                            </div>
+                            @Html.HiddenFor(m => m.EnableSsl)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.UseDefaultCredentials, new { @class = "span2" })
+                        <div class="span10 controls">
+                            <div class="iToggle-button left marginR10">
+                                <input type="checkbox" class="nostyle" data-element="@Html.FieldIdFor(m => m.UseDefaultCredentials)" />
+                            </div>
+                            @Html.HiddenFor(m => m.UseDefaultCredentials)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-info marginR10" name="save" value="save">
+                    @T("Common.Save")</button>
+                <button type="button" class="btn btn-danger href-action" data-href="@Url.Action("index")">
+                    @T("Common.Cancel")</button>
+            </div>
+        </div>
+    </div>
+    
+            if (!Model.RowId.IsEmpty())
+            {
+    <div class="box hover">
+        <div class="title">
+            <h4>
+                <span class="icon16  icomoon-icon-mail-send"></span><span>Send Test Email</span>
+            </h4>
+        </div>
+        <div class="content">
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        @Html.LabelFor(m => m.SendTestEmailTo, new { @class = "span2" })
+                        <div class="span10">
+                            <div class="input-append">
+                                @Html.TextBoxFor(m => m.SendTestEmailTo, new { @class = "span10", size = "100" })
+                                <button class="btn btn-success test-email" type="submit" name="sendtestemail" value="sendtestemail">
+                                    Test <span class="icomoon-icon-arrow-right-2 white"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>        
+            }
+}

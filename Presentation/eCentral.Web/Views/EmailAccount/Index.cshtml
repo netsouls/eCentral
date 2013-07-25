@@ -1,0 +1,59 @@
+﻿@{
+    var pageHeading = T("PageTitle.EmailAccounts").Text;
+    Html.AddTitleParts(pageHeading);
+    ViewBag.Heading = pageHeading;
+    ViewBag.HasDataTable = true;
+}
+@section SidebarWidget
+{
+}
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box gradient">
+            <div class="title">
+                @Html.Partial("ActionList", new ActionListModel() { EditRouteUrl = Url.Action("edit"), AddRouteUrl = Url.Action("create")})                
+            </div>
+            <div class="content noPad">
+                <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered" id="myDataTable" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Email address
+                            </th>
+                            <th>
+                                Email display name
+                            </th>
+                            <th id="masterCh" class="ch add-one-mini-button"><input type="checkbox" name="checkbox" value="all" class="styled" /></th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- End .box -->
+    </div>
+    <!-- End .span12 -->
+</div>
+@section inlineScripts {
+    <script type="text/javascript">
+        appEngine.util.setDataTable('myDataTable', '@Url.Action("List")',
+            [
+                { 'sName': 'Email', 'mData': 'Email', 'bSortable': false },
+                { 'sName': 'DisplayName', 'mData': 'DisplayName', 'bSearchable': false, 'bSortable': false },
+                { "sName": "Actions", "mData": "RowId", 'bSearchable': false, 'bSortable': false, sClass: "chChildren",
+                    "mRender": function (dataItem, type, data) {
+                        var html = '<input type="checkbox" name="checkbox" value="' + dataItem + '" />';
+                        if (!data.IsDefaultEmailAccount)
+                            html += '<button class="btn btn-mini btn-info tip mark-default" title="Select as default email account"><span class="icomoon-icon-info-2 white"></span></button>';
+                        return html;
+                    }
+                }
+            ], false, false, function (dataTable) {
+                $('.mark-default').click(function(e) {
+                    e.preventDefault();
+                    window.location.href = appEngine.util.addTrailingSlash(window.location.href) + '?rowId=' + $(this).parent().find('input:checkbox').val();
+                });
+            });
+    </script>
+}

@@ -1,0 +1,13 @@
+﻿@model String
+@using eCentral.Web.Framework.UI;
+@{
+    Html.AddScriptParts(ResourceLocation.Foot,
+        Url.Content("plugins/forms/tiny-mce/jquery.tinymce.js"));
+
+    //set useDefaultImagePlugin to 'true' if you want to move back to a standard image plugin 		    
+    bool useDefaultImagePlugin = true;
+    var imagePluginName = "image";
+}
+@Html.TextArea(string.Empty, /* Name suffix */
+        ViewData.TemplateInfo.FormattedModelValue.ToString() /* Initial value */, new { @class = "tinymce" }
+)

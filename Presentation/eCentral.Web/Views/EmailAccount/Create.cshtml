@@ -1,0 +1,15 @@
+﻿@model EmailAccountModel
+@{
+    var pageHeading = T("PageTitle.EmailAccounts.Add").Text;
+    Html.AddTitleParts(pageHeading);
+    ViewBag.Heading = pageHeading; 
+}
+@section SidebarWidget
+{
+}
+<div class="row-fluid">
+    <div class="span12">
+        @Html.Partial("_AddEdit", Model)
+    </div>
+    <!-- End .span12 -->
+</div>
