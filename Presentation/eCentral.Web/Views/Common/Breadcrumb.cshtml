@@ -12,7 +12,7 @@
 
     var currentNode = FindCurrentNode(Telerik.Web.Mvc.SiteMapManager.SiteMaps["sitemap"].RootNode);
     IList<Telerik.Web.Mvc.SiteMapNode> ancestorList = currentNode.GetAncestors(n => n.Parent)
-        .Where(n => n.Attributes["siteResource"] != null && !n.Attributes["siteResource"].ToString().IsCaseInsensitiveEqual("Navigation.Home")).ToList();
+        .Where(n => n.Attributes["siteResource"] == null || (n.Attributes["siteResource"] != null && !n.Attributes["siteResource"].ToString().IsCaseInsensitiveEqual("Navigation.Home"))).ToList();
 }
 @functions 
 {
@@ -68,7 +68,11 @@
         {
             routeUrl = Url.RouteUrl(siteNode.RouteName);
         }
-
+        else if (!string.IsNullOrEmpty(siteNode.ControllerName) && !string.IsNullOrEmpty(siteNode.ActionName))
+        {
+            routeUrl = Url.Action(siteNode.ActionName, siteNode.ControllerName);
+        }
+        
         var resource = siteNode.Attributes["siteResource"];
         if (resource != null && !string.IsNullOrEmpty(resource.ToString()))
         {
