@@ -21,11 +21,12 @@ namespace eCentral.Core.Domain.Security
         public const string ManageMaintenance = "ManageMaintenance";
         public const string ManageMessageTemplates = "ManageMessageTemplates";
         public const string ManageEmailAccounts = "ManageEmailAccounts";
+        public const string ManageSettings = "ManageSettings";
 
         /*
         public const string ManageWidgets          = "ManageWidgets";
         public const string ManageLanguages        = "ManageLanguages";
-        public const string ManageSettings         = "ManageSettings";
+        
         public const string ManageCurrencies       = "ManageCurrencies";
         public const string ManageActivityLog      = "ManageActivityLog";
         public const string ManageACL              = "ManageACL";

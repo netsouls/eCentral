@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap>
     <siteMapNode title="Home" siteResource="Navigation.Home" >
-        <siteMapNode title="Dashboard" siteResource="Navigation.Dashboard" route="HomePage" Icon="icomoon-icon-screen" PermissionNames="AccessDashboard" IsNavigation="false" />
-        <siteMapNode title="Administration" Icon="wpzoom-settings" siteResource="Navigation.Administration" PermissionNames="ManageClients,ManageCompanies">
-            <siteMapNode title="Companies" siteResource="Navigation.Companies" PermissionNames="ManageCompanies" route="Company" Icon="icomoon-icon-office">
-                <siteMapNode title="Add new company" siteResource="Navigation.Companies.Add" PermissionNames="ManageCompanies" route="CompanyAdd" IsNavigation="False" />
+        <siteMapNode title="Dashboard" route="HomePage" Icon="icomoon-icon-screen" PermissionNames="AccessDashboard" IsNavigation="false" />
+        <siteMapNode title="Administration" Icon="wpzoom-settings" PermissionNames="ManageClients,ManageCompanies">
+            <siteMapNode title="Manage companies" PermissionNames="ManageCompanies" controller="Company" action="Index" Icon="icomoon-icon-office">
+                <siteMapNode title="Add new company" PermissionNames="ManageCompanies" controller="Company" action="Create" IsNavigation="False" />
             </siteMapNode>
-            <siteMapNode title="Branch Offices" siteResource="Navigation.BranchOffices" PermissionNames="ManageBranchOffices" route="BranchOffice" Icon="icomoon-icon-briefcase">
-                <siteMapNode title="Add new office" siteResource="Navigation.BranchOffices.Add" PermissionNames="ManageBranchOffices" route="BranchOfficeAdd" IsNavigation="False" />
-                <siteMapNode title="Edit office" siteResource="Navigation.BranchOffices.Edit" PermissionNames="ManageBranchOffices" route="BranchOfficeEdit" IsNavigation="False"/>
+            <siteMapNode title="Manage Offices" PermissionNames="ManageBranchOffices" controller="branchoffice" action="Index" Icon="icomoon-icon-briefcase">
+                <siteMapNode title="Add new office" PermissionNames="ManageBranchOffices" controller="branchoffice" action="Create" IsNavigation="False" />
+                <siteMapNode title="Edit office" PermissionNames="ManageBranchOffices" controller="branchoffice" action="Edit" IsNavigation="False"/>
             </siteMapNode>
-            <siteMapNode title="Clients" siteResource="Navigation.Clients" PermissionNames="ManageClients" route="Client" Icon="entypo-icon-users">
-                <siteMapNode title="Add new client" siteResource="Navigation.Clients.Add" PermissionNames="ManageClients" route="ClientAdd" IsNavigation="False" />
-                <siteMapNode title="Edit client" siteResource="Navigation.Clients.Edit" PermissionNames="ManageClients" route="ClientEdit" IsNavigation="False"/>
+            <siteMapNode title="Manage Clients" PermissionNames="ManageClients" controller="Client" action="Index" Icon="entypo-icon-users">
+                <siteMapNode title="Add new client" PermissionNames="ManageClients" controller="Client" action="Create" IsNavigation="False" />
+                <siteMapNode title="Edit client" PermissionNames="ManageClients" controller="Client" action="Edit" IsNavigation="False"/>
             </siteMapNode>
-            <siteMapNode title="Users" siteResource="Navigation.Users" PermissionNames="ManageUsers, ManageUsersRoles" Icon="icomoon-icon-user-3" route="User">
-                <siteMapNode title="Add new user" siteResource="Navigation.Users.Add" PermissionNames="ManageUsers" route="UserAdd" IsNavigation="False" />
-                <siteMapNode title="Edit user" siteResource="Navigation.Users.Edit" PermissionNames="ManageUsers" route="UserEdit" IsNavigation="False"/>
+            <siteMapNode title="Manage Users" PermissionNames="ManageUsers, ManageUsersRoles" Icon="icomoon-icon-user-3" Controller="User" action="Index">
+                <siteMapNode title="Add new user" PermissionNames="ManageUsers" Controller="User" action="Create" IsNavigation="False" />
+                <siteMapNode title="Edit user" PermissionNames="ManageUsers" Controller="User" action="Edit" IsNavigation="False"/>
             </siteMapNode>
         </siteMapNode>
-        <siteMapNode title="Configuration" siteResource="Navigation.Configuration" PermissionNames="ManageMessageTemplates,ManageCountries,ManageLanguages,ManageSettings,ManageCurrencies,ManageActivityLog,ManageACL,ManageSMSProviders,ManageEmailAccounts,ManagePlugins" Icon="icomoon-icon-cog-2">
-            <siteMapNode title="Email accounts" siteResource="Navigation.Configuration.EmailAccounts" PermissionNames="ManageEmailAccounts" controller="EmailAccount" action="Index" icon="icomoon-icon-mail-3">
-                <siteMapNode title="Add new email account" siteResource="PageTitle.EmailAccounts.Add" PermissionNames="ManageEmailAccounts" controller="EmailAccount" action="Create" IsNavigation="False" />
-                <siteMapNode title="Edit email account" siteResource="PageTitle.EmailAccounts.Edit" PermissionNames="ManageEmailAccounts" controller="EmailAccount" action="Edit" IsNavigation="False" />
+        <siteMapNode title="Configurations" PermissionNames="ManageMessageTemplates,ManageCountries,ManageLanguages,ManageSettings,ManageCurrencies,ManageActivityLog,ManageACL,ManageSMSProviders,ManageEmailAccounts,ManagePlugins" Icon="icomoon-icon-cog-2">
+            <siteMapNode title="Email Accounts" PermissionNames="ManageEmailAccounts" controller="EmailAccount" action="Index" icon="icomoon-icon-mail-3">
+                <siteMapNode title="Add new email account" PermissionNames="ManageEmailAccounts" controller="EmailAccount" action="Create" IsNavigation="False" />
+                <siteMapNode title="Edit email account" PermissionNames="ManageEmailAccounts" controller="EmailAccount" action="Edit" IsNavigation="False" />
             </siteMapNode>
-            <siteMapNode title="Message templates" siteResource="Navigation.Configuration.MessageTemplates" PermissionNames="ManageMessageTemplates" controller="MessageTemplate" action="Index" icon="icomoon-icon-bubble-3" />
-            <siteMapNode title="Settings" siteResource="Navigation.Configuration.Settings" PermissionNames="ManageSettings" Icon="icomoon-icon-cog" />
+            <siteMapNode title="Message templates" PermissionNames="ManageMessageTemplates" controller="MessageTemplate" action="Index" icon="icomoon-icon-bubble-3" />
+            <siteMapNode title="Settings" PermissionNames="ManageSettings" controller="Setting" action="Index" Icon="icomoon-icon-cog" />
             <!--
             <siteMapNode title="Countries" siteResource="Navigation.Configuration.Countries" PermissionNames="ManageCountries" route="Country" Icon="typ-icon-globe-2">
                 <siteMapNode title="Countries Add" siteResource="Navigation.Configuration.Countries" PermissionNames="ManageCountries" route="CountryAdd" Icon="typ-icon-globe-2" IsNavigation="false"/>
@@ -38,12 +38,12 @@
             <siteMapNode title="SMS providers" siteResource="Navigation.Configuration.SMSProviders" PermissionNames="ManageSMSProviders" controller="SMS" action="Providers" />-->
             <!--<siteMapNode title="Plugins" siteResource="Navigation.Configuration.Plugins" PermissionNames="ManagePlugins" route="Plugin" Icon="icomoon-icon-wrench"/>-->
         </siteMapNode>
-        <siteMapNode title="System" siteResource="Navigation.System" Icon="icomoon-icon-aid" PermissionNames="ManageSystemLog,ManageMessageQueue,ManageMaintenance" >
+        <siteMapNode title="System" Icon="icomoon-icon-aid" PermissionNames="ManageSystemLog,ManageMessageQueue,ManageMaintenance" >
             <!--<siteMapNode title="Log" siteResource="Navigation.System.Log" PermissionNames="ManageSystemLog" Icon=" icomoon-icon-list"/>
             <siteMapNode title="QueuedEmails" siteResource="Navigation.System.QueuedEmails" PermissionNames="ManageMessageQueue" Icon="icomoon-icon-envelop"/>-->
-            <siteMapNode title="System Information" siteResource="Navigation.System.Information" controller="System" action="Index" PermissionNames="ManageMaintenance" Icon="icomoon-icon-wrench-2" />
-            <siteMapNode title="Clear Cache" siteResource="Navigation.System.ClearCache" controller="system" action="clearcache" PermissionNames="ManageMaintenance" Icon="icomoon-icon-command" />
-            <siteMapNode title="Restart Application" siteResource="Navigation.System.RestartApplication" controller="system" action="RestartApplication" PermissionNames="ManageMaintenance" Icon="icomoon-icon-loop" />
+            <siteMapNode title="System Information" controller="System" action="Index" PermissionNames="ManageMaintenance" Icon="icomoon-icon-wrench-2" />
+            <siteMapNode title="Clear cache" controller="system" action="clearcache" PermissionNames="ManageMaintenance" Icon="icomoon-icon-command" />
+            <siteMapNode title="Restart application" controller="system" action="RestartApplication" PermissionNames="ManageMaintenance" Icon="icomoon-icon-loop" />
             <!--<siteMapNode title="Warnings" siteResource="Navigation.System.Warnings" controller="Common" action="Warnings" />-->
             <!--<siteMapNode title="System information" siteResource="Navigation.System.SystemInfo" route="SystemInfo" PermissionNames="ManageSystemLog" Icon="entypo-icon-broadcast"/>-->
         </siteMapNode>

@@ -57,7 +57,7 @@ namespace eCentral.Web.Controllers
         public ActionResult List(JQueryDataTableParamModel command)
         {
             if (!Request.IsAjaxRequest())
-                return Redirect(Url.RouteUrl(SystemRouteNames.Company));
+                return RedirectToAction(SystemRouteNames.Index);
 
             string cacheKey = ModelCacheEventUser.COMPANY_MODEL_KEY.FormatWith(
                     "List");
@@ -73,7 +73,7 @@ namespace eCentral.Web.Controllers
         }
 
         [PermissionAuthorization(Permission = SystemPermissionNames.ManageClients)]
-        public ActionResult Add()
+        public ActionResult Create()
         {
             var model = new CompanyModel();
 
@@ -82,7 +82,7 @@ namespace eCentral.Web.Controllers
 
         [HttpPost]
         [PermissionAuthorization(Permission = SystemPermissionNames.ManageCompanies)]
-        public ActionResult Add(CompanyModel model)
+        public ActionResult Create(CompanyModel model)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace eCentral.Web.Controllers
 
                 // return notification message
                 SuccessNotification(localizationService.GetResource("Company.Added"));
-                return RedirectToRoute(SystemRouteNames.Company);
+                return RedirectToAction(SystemRouteNames.Index);
             }
 
             return View(model);

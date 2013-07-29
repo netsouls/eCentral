@@ -26,10 +26,11 @@ namespace eCentral.Services.Security
         public static readonly PermissionRecord ManageMaintenance  = new PermissionRecord { Name = "Manage Maintenance", SystemName = SystemPermissionNames.ManageMaintenance, Category = "Configuration" };
         public static readonly PermissionRecord ManageMessageTemplates = new PermissionRecord { Name = "Manage Message Templates", SystemName = SystemPermissionNames.ManageMessageTemplates, Category = "Configuration" };
         public static readonly PermissionRecord ManageEmailAccounts = new PermissionRecord { Name = "Manage Email Accounts", SystemName = SystemPermissionNames.ManageEmailAccounts, Category = "Configuration" };
+        public static readonly PermissionRecord ManageSettings = new PermissionRecord { Name = "Manage Settings", SystemName = SystemPermissionNames.ManageSettings, Category = "Configuration" };
 
         //public static readonly PermissionRecord ManageWidgets = new PermissionRecord { Name = "Manage Widgets", SystemName = SystemPermissionNames.ManageWidgets, Category = "Content Management" };
         //public static readonly PermissionRecord ManageLanguages = new PermissionRecord { Name = "Manage Languages", SystemName = SystemPermissionNames.ManageLanguages, Category = "Configuration" };
-        //public static readonly PermissionRecord ManageSettings = new PermissionRecord { Name = "Manage Settings", SystemName = SystemPermissionNames.ManageSettings, Category = "Configuration" };
+        //
         //public static readonly PermissionRecord ManageCurrencies = new PermissionRecord { Name = "Manage Currencies", SystemName = SystemPermissionNames.ManageCurrencies, Category = "Configuration" };
         //public static readonly PermissionRecord ManageActivityLog = new PermissionRecord { Name = "Manage Activity Log", SystemName = SystemPermissionNames.ManageActivityLog, Category = "Configuration" };
         //public static readonly PermissionRecord ManageAcl = new PermissionRecord { Name = "Manage ACL", SystemName = SystemPermissionNames.ManageACL, Category = "Configuration" };

@@ -11,8 +11,8 @@
     <div class="span12">
         <div class="box gradient">
             <div class="title">
-                @Html.Partial("ActionList", new ActionListModel() { AddNewRouteName = SystemRouteNames.UserAdd, 
-                    ChangeStatusRouteName = SystemRouteNames.UserChangeStatus, EditRouteName = SystemRouteNames.UserEdit})                
+                @Html.Partial("ActionList", new ActionListModel() { AddRouteUrl = Url.Action(SystemRouteNames.Create), 
+                    ChangeStatusUrl = Url.Action(SystemRouteNames.ChangeStatus), EditRouteUrl = Url.Action(SystemRouteNames.Edit)})                
             </div>
             <div class="content noPad">
                 <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered" id="myDataTable" width="100%">

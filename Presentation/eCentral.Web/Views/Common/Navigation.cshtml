@@ -15,15 +15,15 @@
 }
 <div class="shortcuts">
     <ul>
-        <li><a href="#" title="@T("Navigation.JobAdd")" class="tip"><span class="icon24 icomoon-icon-pencil">
+        <li><a href="#" title="Add a new job" class="tip"><span class="icon24 icomoon-icon-pencil">
         </span></a></li>
-        <li><a href="@Url.RouteUrl(SystemRouteNames.ClientAdd)" title="@T("Navigation.Clients.Add")" class="tip">
+        <li><a href="@Url.Action(SystemRouteNames.Create, "Client")" title="Add a new client" class="tip">
             <span class="icon24 entypo-icon-users"></span></a></li>
-        <li><a href="#" title="@T("Navigation.ViewReports")" class="tip"><span class="icon24 iconic-icon-chart">
+        <li><a href="#" title="View reports" class="tip"><span class="icon24 iconic-icon-chart">
         </span></a></li>
         @if (WorkContext.IsAdministrator)
         {
-            <li><a href="#" title="@T("Navigation.DatabaseBackup")" class="tip"><span class="icon24 icomoon-icon-database">
+            <li><a href="#" title="Database backup" class="tip"><span class="icon24 icomoon-icon-database">
             </span></a></li>
         }
     </ul>
@@ -51,54 +51,59 @@
 }
 @helper BuildMenuItem(Telerik.Web.Mvc.SiteMapNode siteNode, IPermissionService permissionService)
     {
-    var icon = siteNode.Attributes["Icon"];
-    if (icon != null && !string.IsNullOrEmpty(icon.ToString()))
-    {
-        icon = icon.ToString();
-    }
-    else
-    {
-        icon = "icomoon-icon-arrow-right-3";
-    }
-
-    var resource = siteNode.Attributes["siteResource"];
-    if (resource != null && !string.IsNullOrEmpty(resource.ToString()))
-    {
-        resource = T(resource.ToString()).ToHtmlString();
-    }
-
-    var isValid = true;
-
-    // check whether to show in the navigation or not
-    if (siteNode.Attributes["IsNavigation"] != null)
-    {
-        isValid = Convert.ToBoolean(siteNode.Attributes["IsNavigation"]);
-    }
-
-    var routeUrl = "#";
-
-    if (isValid)
-    {
-        // reset isvalid
-        isValid = false;
-        var permissionNames = siteNode.Attributes["PermissionNames"];
-        if (permissionNames != null && !string.IsNullOrEmpty(permissionNames.ToString()))
+        var icon = siteNode.Attributes["Icon"];
+        if (icon != null && !string.IsNullOrEmpty(icon.ToString()))
         {
-            isValid = permissionNames.ToString().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                .Any(permissionName => permissionService.Authorize(permissionName.Trim()));
+            icon = icon.ToString();
         }
-
-        if (!string.IsNullOrEmpty(siteNode.RouteName))
+        else
         {
-            routeUrl = Url.RouteUrl(siteNode.RouteName);
+            icon = "icomoon-icon-arrow-right-3";
         }
-        else if (!string.IsNullOrEmpty(siteNode.ControllerName) && !string.IsNullOrEmpty(siteNode.ActionName)) {
-            routeUrl = Url.Action(siteNode.ActionName, siteNode.ControllerName);    
-        }
-    }
 
-    if (isValid)
-    {
+        var resource = siteNode.Attributes["siteResource"];
+        if (resource != null && !string.IsNullOrEmpty(resource.ToString()))
+        {
+            resource = T(resource.ToString()).ToHtmlString();
+        }
+        else
+        {
+            resource = siteNode.Title;
+        }
+
+        var isValid = true;
+
+        // check whether to show in the navigation or not
+        if (siteNode.Attributes["IsNavigation"] != null)
+        {
+            isValid = Convert.ToBoolean(siteNode.Attributes["IsNavigation"]);
+        }
+
+        var routeUrl = "#";
+
+        if (isValid)
+        {
+            // reset isvalid
+            isValid = false;
+            var permissionNames = siteNode.Attributes["PermissionNames"];
+            if (permissionNames != null && !string.IsNullOrEmpty(permissionNames.ToString()))
+            {
+                isValid = permissionNames.ToString().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Any(permissionName => permissionService.Authorize(permissionName.Trim()));
+            }
+
+            if (!string.IsNullOrEmpty(siteNode.RouteName))
+            {
+                routeUrl = Url.RouteUrl(siteNode.RouteName);
+            }
+            else if (!string.IsNullOrEmpty(siteNode.ControllerName) && !string.IsNullOrEmpty(siteNode.ActionName))
+            {
+                routeUrl = Url.Action(siteNode.ActionName, siteNode.ControllerName);
+            }
+        }
+
+        if (isValid)
+        {
     <li><a href="@routeUrl.ToLowerInvariant()"><span class="icon16 @icon"></span>@resource</a>
         @if (siteNode.ChildNodes.Count > 0)
         {
@@ -114,5 +119,5 @@
             }
         }
     </li>
-    }
+        }
 }

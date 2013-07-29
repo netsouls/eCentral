@@ -83,7 +83,7 @@ namespace eCentral.Web.Controllers.Configuration
         public ActionResult List()
         {
             if (!Request.IsAjaxRequest())
-                return Redirect(Url.RouteUrl(SystemRouteNames.Client));
+                return RedirectToAction(SystemRouteNames.Index);
 
             var messageTemplates = messageTemplateService.GetAll()
                     .Select(template => template.ToModel());

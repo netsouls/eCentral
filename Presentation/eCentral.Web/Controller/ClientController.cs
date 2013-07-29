@@ -63,7 +63,7 @@ namespace eCentral.Web.Controllers
         public ActionResult List(JQueryDataTableParamModel command)
         {
             if (!Request.IsAjaxRequest())
-                return Redirect(Url.RouteUrl(SystemRouteNames.Client));
+                return RedirectToAction(SystemRouteNames.Index);
 
             string cacheKey = ModelCacheEventUser.CLIENT_MODEL_KEY.FormatWith(
                     "List");
@@ -80,7 +80,7 @@ namespace eCentral.Web.Controllers
         }
 
         [PermissionAuthorization(Permission = SystemPermissionNames.ManageClients)]
-        public ActionResult Add()
+        public ActionResult Create()
         {
             var model = new ClientModel();
             PrepareAddEditModel(model);
@@ -90,7 +90,7 @@ namespace eCentral.Web.Controllers
 
         [HttpPost]
         [PermissionAuthorization(Permission = SystemPermissionNames.ManageClients)]
-        public ActionResult Add(ClientModel model)
+        public ActionResult Create(ClientModel model)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +116,7 @@ namespace eCentral.Web.Controllers
 
                 // return notification message
                 SuccessNotification(localizationService.GetResource("Clients.Added"));
-                return RedirectToRoute(SystemRouteNames.Client);
+                return RedirectToAction(SystemRouteNames.Index);
             }
 
             //If we got this far, something failed, redisplay form
@@ -129,12 +129,12 @@ namespace eCentral.Web.Controllers
         public ActionResult Edit(Guid rowId)
         {
             if (rowId.IsEmpty())
-                return RedirectToRoute(SystemRouteNames.Client);
+                return RedirectToAction(SystemRouteNames.Index);
 
             var client = clientService.GetById(rowId);
 
             if (client == null)
-                return RedirectToRoute(SystemRouteNames.Client);
+                return RedirectToAction(SystemRouteNames.Index);
 
             var model = client.ToModel();
             PrepareAddEditModel(model);
@@ -152,7 +152,7 @@ namespace eCentral.Web.Controllers
                 var client = clientService.GetById(model.RowId);
 
                 if (client == null)
-                    return RedirectToRoute(SystemRouteNames.Client);
+                    return RedirectToAction(SystemRouteNames.Index);
 
                 // update the properties
                 client.Email = model.Email;
@@ -164,7 +164,7 @@ namespace eCentral.Web.Controllers
 
                 // return notification message
                 SuccessNotification(localizationService.GetResource("Clients.Updated"));
-                return RedirectToRoute(SystemRouteNames.Client);
+                return RedirectToAction(SystemRouteNames.Index);
             }
 
             var errors = ModelState.GetModelErrors();

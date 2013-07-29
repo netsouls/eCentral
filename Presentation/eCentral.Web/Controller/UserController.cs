@@ -62,7 +62,7 @@ namespace eCentral.Web.Controllers
         public ActionResult List(JQueryDataTableParamModel command)
         {
             if (!Request.IsAjaxRequest())
-                return Redirect(Url.RouteUrl(SystemRouteNames.User));
+                return RedirectToAction(SystemRouteNames.Index);
 
             string cacheKey = ModelCacheEventUser.USERS_MODEL_KEY.FormatWith(
                     "List");
@@ -79,7 +79,7 @@ namespace eCentral.Web.Controllers
         }
 
         [PermissionAuthorization(Permission = SystemPermissionNames.ManageUsers)]
-        public ActionResult Add()
+        public ActionResult Create()
         {
             var model = new UserModel();
             return View(model);
@@ -87,7 +87,7 @@ namespace eCentral.Web.Controllers
 
         [HttpPost]
         [PermissionAuthorization(Permission = SystemPermissionNames.ManageUsers)]
-        public ActionResult Add(UserModel model)
+        public ActionResult Create(UserModel model)
         {
             if (ModelState.IsValid)
             {
@@ -112,7 +112,7 @@ namespace eCentral.Web.Controllers
 
                     // return notification message
                     SuccessNotification(localizationService.GetResource("Users.Added"));
-                    return RedirectToRoute(SystemRouteNames.User);
+                    return RedirectToAction(SystemRouteNames.Index);
                 }
             }
 

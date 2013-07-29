@@ -47,12 +47,12 @@ namespace eCentral.Web
             var routePublisher = EngineContext.Current.Resolve<IRoutePublisher>();
             routePublisher.RegisterRoutes(routes);
 
-            routes.MapRoute(
+            /*routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{rowId}", // URL with parameters
                 new { controller = "Home", action = "Index", area = "", rowId = UrlParameter.Optional },
                 new[] { "eCentral.Web.Controllers" }
-            );
+            );*/
         }
 
         protected void Application_Start()

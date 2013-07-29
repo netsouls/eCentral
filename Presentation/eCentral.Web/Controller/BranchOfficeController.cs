@@ -60,7 +60,7 @@ namespace eCentral.Web.Controllers
         public ActionResult List(JQueryDataTableParamModel command)
         {
             if (!Request.IsAjaxRequest())
-                return Redirect(Url.RouteUrl(SystemRouteNames.Company));
+                return RedirectToAction(SystemRouteNames.Index);
 
             string cacheKey = ModelCacheEventUser.OFFICE_MODEL_KEY.FormatWith(
                     "List");
@@ -77,7 +77,7 @@ namespace eCentral.Web.Controllers
         }
 
         [PermissionAuthorization(Permission = SystemPermissionNames.ManageBranchOffices)]
-        public ActionResult Add()
+        public ActionResult Create()
         {
             var model = new BranchOfficeModel();
             PrepareAddEditModel(model);
@@ -87,7 +87,7 @@ namespace eCentral.Web.Controllers
 
         [HttpPost]
         [PermissionAuthorization(Permission = SystemPermissionNames.ManageBranchOffices)]
-        public ActionResult Add(BranchOfficeModel model)
+        public ActionResult Create(BranchOfficeModel model)
         {
             if (ModelState.IsValid)
             {
@@ -113,7 +113,7 @@ namespace eCentral.Web.Controllers
 
                 // return notification message
                 SuccessNotification(localizationService.GetResource("BranchOffice.Added"));
-                return RedirectToRoute(SystemRouteNames.BranchOffice);
+                return RedirectToAction(SystemRouteNames.Index);
             }
 
             //If we got this far, something failed, redisplay form
@@ -126,12 +126,12 @@ namespace eCentral.Web.Controllers
         public ActionResult Edit(Guid rowId)
         {
             if (rowId.IsEmpty())
-                return RedirectToRoute(SystemRouteNames.BranchOffice);
+                return RedirectToAction(SystemRouteNames.Index);
 
             var office = dataService.GetById(rowId);
 
             if (office == null)
-                return RedirectToRoute(SystemRouteNames.BranchOffice);
+                return RedirectToAction(SystemRouteNames.Index);
 
             var model = office.ToModel();
             PrepareAddEditModel(model);
@@ -149,7 +149,7 @@ namespace eCentral.Web.Controllers
                 var office = dataService.GetById(model.RowId);
 
                 if (office == null)
-                    return RedirectToRoute(SystemRouteNames.BranchOffice);
+                    return RedirectToAction(SystemRouteNames.Index);
 
                 // update the properties
                 model.Address.ToEntity( office.Address );
@@ -160,7 +160,7 @@ namespace eCentral.Web.Controllers
 
                 // return notification message
                 SuccessNotification(localizationService.GetResource("BranchOffice.Updated"));
-                return RedirectToRoute(SystemRouteNames.BranchOffice);
+                return RedirectToAction(SystemRouteNames.Index);
             }
 
             var errors = ModelState.GetModelErrors();

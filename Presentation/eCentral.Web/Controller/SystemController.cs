@@ -42,6 +42,12 @@ namespace eCentral.Web.Controllers
         [PermissionAuthorization(Permission = SystemPermissionNames.ManageMaintenance)]
         public ActionResult Index()
         {
+            return RedirectToAction("Info");
+        }
+
+        [PermissionAuthorization(Permission = SystemPermissionNames.ManageMaintenance)]
+        public ActionResult Info()
+        {
             var model = new SystemInfoModel();
             model.SiteVersion = SiteVersion.CurrentVersion;
             try
