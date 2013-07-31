@@ -1,4 +1,5 @@
-﻿using eCentral.Core.Configuration;
+﻿using System.Text;
+using eCentral.Core.Configuration;
 
 namespace eCentral.Core.Domain
 {
@@ -43,6 +44,27 @@ namespace eCentral.Core.Domain
         /// Gets or sets the support email address
         /// </summary>
         public string SupportEmailAddress { get; set; }
+
+        #region To String
+
+        public override string ToString()
+        {
+            StringBuilder builder = new StringBuilder();
+
+            // set values 
+            builder.AppendFormat("SiteName: [{0}]", this.SiteName.Trim())
+                .AppendFormat(", SiteNameBlurb: [{0}]", this.SiteNameBlurb.Trim())
+                .AppendFormat(", SiteUrl: [{0}]", this.SiteUrl.Trim())
+                .AppendFormat(", SupportEmailAddress: [{0}]", this.SupportEmailAddress.Trim())
+                .AppendFormat(", ApplicationState: [{0}]", this.ApplicationState.ToString())
+                .AppendFormat(", SiteClosed: [{0}]", this.SiteClosed.ToString())
+                .AppendFormat(", SiteClosedAllowForWebAdmins: [{0}]", this.SiteClosedAllowForWebAdmins.ToString())
+                .AppendFormat(", DisplayMiniProfilerInPublicSite: [{0}]", this.DisplayMiniProfilerInPublicSite.ToString());
+
+            return builder.ToString();
+        }
+
+        #endregion
     }
 
     /// <summary>

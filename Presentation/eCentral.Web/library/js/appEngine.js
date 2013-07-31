@@ -629,6 +629,9 @@ $(document).ready(function () {
     $('.normal-toggle-button').toggleButtons({
         onChange: function (el, status, e) {
             $('#' + el.find('input:checkbox').attr('data-element')).val(status);
+        },
+        label: {
+            enabled: "Yes", disabled: "No"
         }
     });
     $('.iToggle-button').toggleButtons({

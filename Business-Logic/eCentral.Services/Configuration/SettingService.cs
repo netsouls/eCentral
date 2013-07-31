@@ -5,6 +5,8 @@ using eCentral.Core;
 using eCentral.Core.Caching;
 using eCentral.Core.Configuration;
 using eCentral.Core.Data;
+using eCentral.Core.Domain.Logging;
+using eCentral.Services.Logging;
 using eCentral.Core.Domain.Configuration;
 using eCentral.Core.Infrastructure;
 using eCentral.Services.Events;
@@ -212,6 +214,10 @@ namespace eCentral.Services.Configuration
         {
             //We should be sure that an appropriate ISettings object will not be cached in IoC tool after updating (by default cached per HTTP request)
             EngineContext.Current.Resolve<IConfigurationProvider<T>>().SaveSettings(settingInstance);
+
+            // add audit history
+            EngineContext.Current.Resolve<IUserActivityService>().
+                InsertActivity(SystemActivityLogTypeNames.EditSettings, settingInstance.ToString(), typeof(T).Name);
         }
 
         /// <summary>

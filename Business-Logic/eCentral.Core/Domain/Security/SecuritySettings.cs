@@ -1,4 +1,5 @@
-﻿using eCentral.Core.Configuration;
+﻿using System.Text;
+using eCentral.Core.Configuration;
 
 namespace eCentral.Core.Domain.Security
 {
@@ -13,5 +14,19 @@ namespace eCentral.Core.Domain.Security
         /// Gets or sets a vaule indicating whether to hide web admin menu items based on ACL
         /// </summary>
         public bool HideMenuItemsBasedOnPermissions { get; set; }
+
+        #region To String
+
+        public override string ToString()
+        {
+            StringBuilder builder = new StringBuilder();
+
+            // set values 
+            builder.AppendFormat("HideMenuItemsBasedOnPermissions: [{0}]", this.HideMenuItemsBasedOnPermissions.ToString());
+
+            return builder.ToString();
+        }
+
+        #endregion
     }
 }

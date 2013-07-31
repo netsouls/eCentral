@@ -1,4 +1,5 @@
-﻿using eCentral.Core.Configuration;
+﻿using System.Text;
+using eCentral.Core.Configuration;
 
 namespace eCentral.Core.Domain
 {
@@ -17,7 +18,23 @@ namespace eCentral.Core.Domain
         /// <summary>
         /// Gets or sets a value indicating whether to redirect non-lower case url to lower-case url 
         /// </summary>
-        public UrlLowercaseStatus urlLowercaseStatus { get; set;  }
+        public UrlLowercaseStatus urlLowercaseStatus { get; set; }
+
+        #region To String
+
+        public override string ToString()
+        {
+            StringBuilder builder = new StringBuilder();
+
+            // set values 
+            builder.AppendFormat("wwwStatus: [{0}]", this.wwwStatus.ToString())
+                .AppendFormat(", sslStatus: [{0}]", this.sslStatus.ToString())
+                .AppendFormat(", urlLowercaseStatus: [{0}]", this.urlLowercaseStatus.ToString());
+
+            return builder.ToString();
+        }
+
+        #endregion
     }
 
     /// <summary>

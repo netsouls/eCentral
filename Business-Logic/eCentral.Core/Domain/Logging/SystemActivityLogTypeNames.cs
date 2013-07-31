@@ -12,5 +12,6 @@ namespace eCentral.Core.Domain.Logging
 
         public const string ClearCache = "ClearCache";
         public const string ReinstallPermissions = "ReinstallPermissions";
+        public const string EditSettings = "EditSettings";
     }
 }

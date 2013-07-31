@@ -93,6 +93,7 @@
     <Compile Include="Controller\Configuration\MessageTemplateController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\Configuration\SettingController.cs" />
     <Compile Include="Controller\SystemController.cs" />
     <Compile Include="Controller\Administration\UserController.cs" />
     <Compile Include="Controller\MediaController.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Models\Messages\EmailAccountModel.cs" />
     <Compile Include="Models\Messages\MessageTemplateModel.cs" />
     <Compile Include="Models\Security\AccountActivationModel.cs" />
+    <Compile Include="Models\Setting\GeneralCommonSettingsModel.cs" />
     <Compile Include="Models\Security\LoginModel.cs" />
     <Compile Include="Models\Security\PasswordRecoveryModel.cs" />
     <Compile Include="Models\System\SystemInfoModel.cs" />
@@ -910,7 +912,6 @@
     <Content Include="Views\Client\Create.cshtml" />
     <Content Include="Views\Client\Edit.cshtml" />
     <Content Include="Views\Client\_CreateUpdate.cshtml" />
-    <Content Include="Views\Test\InstallPermissions.cshtml" />
     <Content Include="Views\Company\Index.cshtml" />
     <Content Include="Views\Company\Create.cshtml" />
     <Content Include="Views\Shared\ActionList.cshtml" />
@@ -921,7 +922,6 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\_CreateUpdate.cshtml" />
-    <Content Include="Views\Test\ClearCache.cshtml" />
     <Content Include="Views\System\Info.cshtml" />
     <Content Include="Views\MessageTemplate\Index.cshtml" />
     <Content Include="Views\EmailAccount\Index.cshtml" />
@@ -935,9 +935,15 @@
     <Content Include="Views\Security\PasswordRecovery.cshtml" />
     <Content Include="Views\Security\PasswordRecoveryConfirm.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Setting\Index.cshtml" />
+    <Content Include="Views\Setting\_SiteInformation.cshtml" />
+    <Content Include="Views\Setting\_Seo.cshtml" />
+    <Content Include="Views\Setting\_Security.cshtml" />
+    <Content Include="Views\Setting\_Domain.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="library\logs\error\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

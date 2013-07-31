@@ -25,7 +25,9 @@
                 <siteMapNode title="Edit email account" PermissionNames="ManageEmailAccounts" controller="EmailAccount" action="Edit" IsNavigation="False" />
             </siteMapNode>
             <siteMapNode title="Message templates" PermissionNames="ManageMessageTemplates" controller="MessageTemplate" action="Index" icon="icomoon-icon-bubble-3" />
-            <siteMapNode title="Settings" PermissionNames="ManageSettings" controller="Setting" action="Index" Icon="icomoon-icon-cog" />
+            <siteMapNode title="Settings" PermissionNames="ManageSettings" controller="Setting" action="Index" Icon="icomoon-icon-cog">
+                <siteMapNode title="Advanced settings" PermissionNames="ManageSettings" controller="Setting" action="advanced" IsNavigation="False"/>
+            </siteMapNode>
             <!--
             <siteMapNode title="Countries" siteResource="Navigation.Configuration.Countries" PermissionNames="ManageCountries" route="Country" Icon="typ-icon-globe-2">
                 <siteMapNode title="Countries Add" siteResource="Navigation.Configuration.Countries" PermissionNames="ManageCountries" route="CountryAdd" Icon="typ-icon-globe-2" IsNavigation="false"/>
