@@ -1,0 +1,15 @@
+﻿@model UserModel
+@{
+    var pageHeading = T("PageTitle.Users.Edit").Text.FormatWith("{0} {1}".FormatWith(Model.FirstName, Model.LastName));
+    Html.AddTitleParts(pageHeading);
+    ViewBag.Heading = pageHeading; 
+}
+@section SidebarWidget
+{
+}
+<div class="row-fluid">
+    <div class="span12">
+        @Html.Partial("_CreateUpdate", Model)
+    </div>
+    <!-- End .span12 -->
+</div>
