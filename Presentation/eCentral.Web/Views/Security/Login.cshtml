@@ -2,19 +2,12 @@
 @{
     Layout = "~/Views/Shared/_Container.cshtml"; //default layout
     Html.AddTitleParts(T("PageTitle.Login").Text);
-    var forgotPassword = "<span class=\"forgot\"><a href=\"#\">Forgot your password?</a></span>";
+    var forgotPassword = "<span class=\"forgot\"><a href=\"" + Url.RouteUrl(SystemRouteNames.PasswordRecovery) + "\">Forgot your password?</a></span>";
 }
 <div class="loginContainer">
-    @if (!string.IsNullOrEmpty(Model.Result))
-    {
-        <div class="form-row row-fluid">
-            <div class="span12">
-                <div class="alert alert-error">
-                    <h4>@Model.Result</h4>
-                </div>
-            </div>
-        </div>
-    }
+    <div class="form-row">
+        @Html.Partial("_Notifications")
+    </div>
     @using (Html.BeginForm(null, null, new { returnUrl = Request.QueryString["returnURl"] }, FormMethod.Post, new { @id = "loginForm", @name = "loginForm", @class = "form-horizontal" }))
     {
         <div class="form-row row-fluid">
@@ -30,7 +23,7 @@
             <div class="span12">
                 <div class="row-fluid">
                     @Html.LabelFor(m => m.Password, new { @class = "span12" }, "<span class=\"icon16 icomoon-icon-lock right gray marginR10\"></span>" + forgotPassword)
-                    @Html.PasswordFor(m => m.Password, new { @class = "span12", tabindex = 2, placeholder="***********" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "span12", tabindex = 2, placeholder = "***********" })
                     @Html.ValidationMessageFor(m => m.Password)
                 </div>
             </div>
@@ -44,7 +37,7 @@
                             @T("Security.Fields.RememberMe")
                             @Html.AntiForgeryToken()
                             <button type="submit" class="btn btn-info right" id="loginBtn">
-                                <span class="icon16 icomoon-icon-enter white"></span>@T("Security.Buttons.Login")</button>
+                                <span class="icon16 icomoon-icon-enter white"></span>Login</button>
                         </div>
                     </div>
                 </div>

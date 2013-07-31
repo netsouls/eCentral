@@ -18,10 +18,5 @@ namespace eCentral.Web.Models.Security
 
         [SiteResourceDisplayName("Security.Fields.RememberMe")]
         public bool RememberMe { get; set; }
-
-        /// <summary>
-        /// Get or set the error messages
-        /// </summary>
-        public string Result { get; set; }
     }
 }

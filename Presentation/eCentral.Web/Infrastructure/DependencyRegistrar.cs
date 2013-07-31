@@ -4,6 +4,7 @@ using eCentral.Core.Caching;
 using eCentral.Core.Infrastructure;
 using eCentral.Core.Infrastructure.DependencyManagement;
 using eCentral.Web.Controllers;
+using eCentral.Web.Controllers.Administration;
 
 namespace eCentral.Web.Infrastructure
 {

@@ -15,12 +15,14 @@
         public static string ChangeStatus { get { return "ChangeStatus"; } }
         public static string View { get { return "View"; } }
 
-        //login 
+        //login and user security
         public static string Login { get { return "Login"; } }
         public static string Logout { get { return "Logout"; } }
+        public static string AccountActivation { get { return "AccountActivation"; } }
+        public static string PasswordRecovery { get { return "PasswordRecovery"; } }
+        public static string PasswordRecoveryConfirm { get { return "PasswordRecoveryConfirm"; } }
 
-        // password recovery & security - todo
-        //public static string PasswordRecovery { get { return "PasswordRecovery"; } }
+        // password recovery & security - todo        
         //public static string ChangePassword { get { return "ChangePassword"; } }
 
         // miscellaneous

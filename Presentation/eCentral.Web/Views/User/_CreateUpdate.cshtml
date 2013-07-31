@@ -53,7 +53,7 @@
                         <div class="span2">&nbsp;</div>
                         <div class="span10 controls">
                             <div class="iToggle-button left marginR10">
-                                <input type="checkbox" class="nostyle" data-element="@Html.FieldIdFor(m => m.IsAdministrator)" />
+                                <input type="checkbox" @if(Model.IsAdministrator) {<text>checked="checked"</text>}  class="nostyle" data-element="@Html.FieldIdFor(m => m.IsAdministrator)" />
                             </div>
                             @T("Users.Fields.Administrator")
                             @Html.HiddenFor(m => m.IsAdministrator)

@@ -15,6 +15,14 @@ namespace eCentral.Services.Messages
         /// <returns>Queued email identifier</returns>
         Guid SendUserEmailValidationMessage(User user, Guid languageId);
 
+        /// <summary>
+        /// Sends an email with the password recovery message to the user
+        /// </summary>
+        /// <param name="user">user instance</param>
+        /// <param name="languageId">Message language identifier</param>
+        /// <returns>Queued email identifier</returns>
+        Guid SendUserPasswordRecoveryMessage(User user, Guid languageId);
+
         #endregion
 
         #region Misc

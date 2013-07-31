@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using eCentral.Core.Infrastructure;
+using eCentral.Core.Domain.Logging;
 using System.Runtime.InteropServices;
 using System.Web.Mvc;
 using eCentral.Core;
@@ -6,6 +9,7 @@ using eCentral.Core.Caching;
 using eCentral.Core.Domain.Security;
 using eCentral.Core.Domain.Users;
 using eCentral.Services.Localization;
+using eCentral.Services.Logging;
 using eCentral.Services.Security;
 using eCentral.Web.Framework.Controllers;
 using eCentral.Web.Models.System;
@@ -20,6 +24,7 @@ namespace eCentral.Web.Controllers
         private readonly ILocalizationService localizationService;
         private readonly IWorkContext workContext;
         private readonly IWebHelper webHelper;
+        private readonly IUserActivityService activityService;
         private readonly IPermissionService permissionService;
         
         #endregion
@@ -28,12 +33,13 @@ namespace eCentral.Web.Controllers
 
         public SystemController(ILocalizationService localizationService,
             IWorkContext workContext, IWebHelper webHelper, 
-            IPermissionService permissionService)
+            IUserActivityService activityService, IPermissionService permissionService)
         {
             this.localizationService = localizationService;
-            this.workContext = workContext;
-            this.webHelper = webHelper;
-            this.permissionService = permissionService;
+            this.workContext         = workContext;
+            this.webHelper           = webHelper;
+            this.activityService     = activityService;
+            this.permissionService   = permissionService;
         }
 
         #endregion
@@ -78,10 +84,37 @@ namespace eCentral.Web.Controllers
             var cacheManager = new MemoryCacheManager();
             cacheManager.Clear();
 
+            // set this in the activity log
+            activityService.InsertActivity(SystemActivityLogTypeNames.ClearCache,
+                string.Empty, string.Empty);
+
             SuccessNotification("Application cache has been cleared.");
             return RedirectToRoute(SystemRouteNames.HomePage);
         }
 
+        [PermissionAuthorization(Permission = SystemPermissionNames.ManageMaintenance)]
+        public ActionResult ReinstallPermissions()
+        {
+            var permissionService = EngineContext.Current.Resolve<IPermissionService>();
+            var permissionProviders = new List<Type>();
+            permissionProviders.Add(typeof(StandardPermissionProvider));
+
+            foreach (var providerType in permissionProviders)
+            {
+                dynamic provider = Activator.CreateInstance(providerType);
+                permissionService.Uninstall(provider);
+                permissionService.Install(provider);
+            }
+
+            // set this in the activity log
+            activityService.InsertActivity(SystemActivityLogTypeNames.ReinstallPermissions,
+                string.Empty, string.Empty);
+
+            SuccessNotification("User permissions have been re-installed");
+            return RedirectToRoute(SystemRouteNames.HomePage);
+        }
+
+        
         [PermissionAuthorization(Permission = SystemPermissionNames.ManageMaintenance)]
         public ActionResult RestartApplication()
         {

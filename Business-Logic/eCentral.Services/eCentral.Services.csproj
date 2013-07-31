@@ -164,7 +164,6 @@
     <Compile Include="Users\IUserRegistrationService.cs" />
     <Compile Include="Users\IUserReportService.cs" />
     <Compile Include="Users\IUserService.cs" />
-    <Compile Include="Users\ResetPasswordRequest.cs" />
     <Compile Include="Users\UserExtentions.cs" />
     <Compile Include="Users\UserRegistrationRequest.cs" />
     <Compile Include="Users\UserRegistrationService.cs" />

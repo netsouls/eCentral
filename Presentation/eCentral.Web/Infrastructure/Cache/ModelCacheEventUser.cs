@@ -222,6 +222,8 @@ namespace eCentral.Web.Infrastructure.Cache
         {
             cacheManager.RemoveByPattern(COMPANY_PATTERN_KEY);
             cacheManager.RemoveByPattern(CLIENT_PATTERN_KEY);
+            cacheManager.RemoveByPattern(OFFICE_PATTERN_KEY);
+            cacheManager.RemoveByPattern(USERS_PATTERN_KEY);
         }
     }
 }

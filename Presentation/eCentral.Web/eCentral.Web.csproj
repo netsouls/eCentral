@@ -85,16 +85,16 @@
       <Link>Version.cs</Link>
     </Compile>
     <Compile Include="Controller\BaseController.cs" />
-    <Compile Include="Controller\ClientController.cs" />
+    <Compile Include="Controller\Administration\ClientController.cs" />
     <Compile Include="Controller\CommonController.cs" />
-    <Compile Include="Controller\CompanyController.cs" />
-    <Compile Include="Controller\BranchOfficeController.cs" />
+    <Compile Include="Controller\Administration\CompanyController.cs" />
+    <Compile Include="Controller\Administration\BranchOfficeController.cs" />
     <Compile Include="Controller\Configuration\EmailAccountController.cs" />
     <Compile Include="Controller\Configuration\MessageTemplateController.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\SystemController.cs" />
-    <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Controller\Administration\UserController.cs" />
     <Compile Include="Controller\MediaController.cs" />
     <Compile Include="Controller\TestController.cs" />
     <Compile Include="Controller\CountryController.cs" />
@@ -132,7 +132,9 @@
     <Compile Include="Models\Companies\CompanyModel.cs" />
     <Compile Include="Models\Messages\EmailAccountModel.cs" />
     <Compile Include="Models\Messages\MessageTemplateModel.cs" />
+    <Compile Include="Models\Security\AccountActivationModel.cs" />
     <Compile Include="Models\Security\LoginModel.cs" />
+    <Compile Include="Models\Security\PasswordRecoveryModel.cs" />
     <Compile Include="Models\System\SystemInfoModel.cs" />
     <Compile Include="Models\Users\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,7 +144,9 @@
     <Compile Include="Validators\Companies\CompanyValidator.cs" />
     <Compile Include="Validators\Messages\EmailAccountValidator.cs" />
     <Compile Include="Validators\Messages\MessageTemplateValidator.cs" />
+    <Compile Include="Validators\Security\AccountActivationValidator.cs" />
     <Compile Include="Validators\Security\LoginValidator.cs" />
+    <Compile Include="Validators\Security\PasswordRecoveryValidator.cs" />
     <Compile Include="Validators\Users\UserValidator.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -927,6 +931,10 @@
     <Content Include="Views\MessageTemplate\Edit.cshtml" />
     <Content Include="Views\MessageTemplate\_CreateUpdate.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\RichEditor.cshtml" />
+    <Content Include="Views\Security\AccountActivation.cshtml" />
+    <Content Include="Views\Security\PasswordRecovery.cshtml" />
+    <Content Include="Views\Security\PasswordRecoveryConfirm.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="library\logs\error\" />

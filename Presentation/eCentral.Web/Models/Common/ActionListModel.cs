@@ -1,4 +1,5 @@
-﻿
+﻿using eCentral.Core;
+
 namespace eCentral.Web.Models.Common
 {
     public partial class ActionListModel
@@ -11,5 +12,7 @@ namespace eCentral.Web.Models.Common
         
         public string ChangeStatusRouteName { get; set; }
         public string ChangeStatusUrl { get; set; }
+
+        public PublishingStatus[] PublishingStatus { get; set; }
     }
 }

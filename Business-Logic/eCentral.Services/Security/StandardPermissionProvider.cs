@@ -51,7 +51,7 @@ namespace eCentral.Services.Security
                 ViewBranchOffices, ManageBranchOffices,
                 ViewClients, ManageClients,
                 ManageUsers, ManageUsersRoles, 
-                ManageSystemLog, ManageMessageQueue, ManageMaintenance
+                ManageSystemLog, ManageMessageQueue, ManageMaintenance,ManageMaintenance, ManageMessageTemplates,ManageEmailAccounts
             };
         }
 
@@ -69,7 +69,8 @@ namespace eCentral.Services.Security
                         ViewCompanies, ManageCompanies, 
                         ViewClients, ManageClients, 
                         ManageUsers, ManageUsersRoles,
-                        ManageSystemLog, ManageMessageQueue, ManageMaintenance, ManageMessageTemplates
+                        ManageSystemLog, ManageMessageQueue, ManageMaintenance, 
+                        ManageMessageTemplates, ManageEmailAccounts
                     }
                 },
                 new DefaultPermissionRecord 

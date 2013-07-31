@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using eCentral.Core;
 using eCentral.Core.Domain.Logging;
 using eCentral.Core.Domain.Users;
@@ -62,19 +61,19 @@ namespace eCentral.Services.Users
             var result = new DataResult();
             if (String.IsNullOrWhiteSpace(request.UserName))
             {
-                result.AddError(this.localizationService.GetResource("Account.ChangePassword.Errors.EmailIsNotProvided"));
+                result.AddError(this.localizationService.GetResource("Security.Login.UserDoesNotExists"));
                 return result;
             }
             if (String.IsNullOrWhiteSpace(request.NewPassword))
             {
-                result.AddError(this.localizationService.GetResource("Account.ChangePassword.Errors.PasswordIsNotProvided"));
+                result.AddError("Password is not entered");
                 return result;
             }
 
             var User = this.userService.GetByUsername(request.UserName);
             if (User == null)
             {
-                result.AddError(this.localizationService.GetResource("Account.ChangePassword.Errors.EmailNotFound"));
+                result.AddError(this.localizationService.GetResource("Security.Login.UserDoesNotExists"));
                 return result;
             }
 
@@ -84,10 +83,10 @@ namespace eCentral.Services.Users
                 //password
                 string oldPwd = request.OldPassword;
 
-                bool oldPasswordIsValid = oldPwd.IsCaseInsensitiveEqual(User.Password);
+                bool oldPasswordIsValid = encryptionService.GetSHAHash(oldPwd,true).IsCaseInsensitiveEqual(User.Password);
 
                 if (!oldPasswordIsValid)
-                    result.AddError(localizationService.GetResource("Account.ChangePassword.Errors.OldPasswordDoesntMatch"));
+                    result.AddError("Old password doesn't match");
 
                 if (oldPasswordIsValid)
                     requestIsValid = true;
@@ -99,57 +98,10 @@ namespace eCentral.Services.Users
             //at this point request is valid
             if (requestIsValid)
             {
-                User.Password = request.NewPassword;
+                User.Password = encryptionService.GetSHAHash(request.NewPassword, true);
                 User.LastPasswordChangeDate = DateTime.UtcNow; // set the date time when the password has been changed. 
 
                 this.userService.Update(User);
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        /// Recover the user lost password
-        /// </summary>
-        public virtual DataResult<IList<string>> RecoverPassword(ResetPasswordRequest request)
-        {
-            // we need to validate the user on each request and then validate the 
-            // user step messages and return the results
-            Guard.IsNotNull(request, "request");
-
-            var result = new DataResult<IList<string>>();
-            
-            var user = this.userService.GetByUsername(request.UserName);
-            
-            if (user == null) // user does not exists
-            {
-                result.AddError(this.localizationService.GetResource("Account.PasswordRecovery.UserNotFound"));
-                return result;
-            }
-
-            if (((PublishingStatus)user.CurrentPublishingStatus) != PublishingStatus.Active) // user has not activated their account
-            {
-                result.AddError(this.localizationService.GetResource("Account.PasswordRecovery.UserNotActive"));
-                return result;
-            }
-
-            // now take action depending upon the reset password step
-            switch (request.CurrentStep)
-            {
-                case PasswordResetSteps.ValidateEmailAddress:
-                    
-                case PasswordResetSteps.ValidateSecurityQuestions:
-                case PasswordResetSteps.ResetPassword: // re-check for question answer validation
-                    if (request.CurrentStep == PasswordResetSteps.ResetPassword)
-                    {
-                        var changePasswordRequest = new ChangePasswordRequest(request.UserName, false, request.NewPassword);
-                        var changeResult = ChangePassword(changePasswordRequest);
-
-                        // reset the variables to our result
-                        result.Errors = changeResult.Errors;
-                        return result;
-                    }
-                    break;
             }
 
             return result;
@@ -161,7 +113,7 @@ namespace eCentral.Services.Users
         /// <param name="userName">UserName</param>
         /// <param name="hashPassword">Hash Password</param>
         /// <returns>Result</returns>
-        public virtual DataResult<User> ValidateUser(string userName, string hashPassword)
+        public virtual DataResult<User> ValidateUser(string userName, string userPassword)
         {
             var result = new DataResult<User>();
 
@@ -186,7 +138,7 @@ namespace eCentral.Services.Users
                 return result;
 
             // validate the password
-            var isValid = encryptionService.GetSHAHash( hashPassword, true).IsCaseInsensitiveEqual(user.Password); //client is sending hashPassword
+            var isValid = encryptionService.GetSHAHash(userPassword, true).IsCaseInsensitiveEqual(user.Password); //client is sending hashPassword
 
             if (!isValid)
             {
@@ -273,9 +225,100 @@ namespace eCentral.Services.Users
             if ( !string.IsNullOrEmpty(request.Mobile))
                 attributeService.SaveAttribute(user, SystemUserAttributeNames.Mobile, encryptionService.AESEncrypt( request.Mobile,user));
 
+            // create activation token
+            attributeService.SaveAttribute(user, SystemUserAttributeNames.AccountActivationToken, Guid.NewGuid().ToString());
+
             // set the data result 
             result.Data = user;
             return result;
+        }
+
+        /// <summary>
+        /// Update registration
+        /// </summary>
+        /// <param name="request">Request</param>
+        /// <returns>Result</returns>
+        public virtual DataResult UpdateRegistration(UserRegistrationRequest request)
+        {
+            Guard.IsNotNull(request, "Request");
+
+            var result = new DataResult();
+
+            if (!CommonHelper.IsValidEmail(request.Username))
+            {
+                result.AddError(this.localizationService.GetResource("Common.WrongEmail"));
+                return result;
+            }
+
+            var user = userService.GetByUsername(request.Username);
+
+            // add or remove administrator role
+            // set the enterprise administrator role
+            var administratorRole = this.userService.GetUserRoleBySystemName(SystemUserRoleNames.Administrators);
+            if (administratorRole == null)
+                throw new SiteException("'" + SystemUserRoleNames.Administrators + "' role could not be loaded");
+
+            // if administrator
+            if (request.IsAdministrator)
+            {
+                user.UserRoles.Add(administratorRole);
+            }
+            else
+            {
+                if (user.IsInUserRole(SystemUserRoleNames.Administrators))
+                    user.UserRoles.Remove(administratorRole);
+            }
+
+            // add audit history
+            user.AuditHistory.Add
+            (
+                userActivityService.InsertActivity(SystemActivityLogTypeNames.Update,
+                    user.ToString(), string.Empty)
+             );
+
+            // insert the user
+            this.userService.Update(user);
+
+            // upadate attributes
+            attributeService.SaveAttribute(user, SystemUserAttributeNames.FirstName, encryptionService.AESEncrypt(request.FirstName, user));
+            attributeService.SaveAttribute(user, SystemUserAttributeNames.LastName, encryptionService.AESEncrypt(request.LastName, user));
+
+            if (!string.IsNullOrEmpty(request.Mobile))
+                attributeService.SaveAttribute(user, SystemUserAttributeNames.Mobile, encryptionService.AESEncrypt(request.Mobile, user));
+
+            return result;
+        }
+
+        /// <summary>
+        /// Change the status
+        /// </summary>
+        /// <param name="userId">user identifier</param>
+        /// <param name="publishingStatus">publishing status</param>
+        /// <returns></returns>
+        public virtual bool ChangeStatus(Guid userId, PublishingStatus publishingStatus)
+        {
+            Guard.IsNotEmpty(userId, "userId");
+
+            // retrieve the client
+            var user = userService.GetById(userId);
+
+            if (user != null && 
+                user.CurrentPublishingStatus != PublishingStatus.PendingApproval)
+            {
+                user.CurrentPublishingStatus = publishingStatus;
+
+                user.AuditHistory.Add
+                (
+                    userActivityService.InsertActivity(SystemActivityLogTypeNames.ChangePublishingStatus,
+                        publishingStatus.ToString(), string.Empty)
+                );
+
+                userService.Update(user);
+
+                return true;
+            }
+
+            return false;
         }
 
         #endregion

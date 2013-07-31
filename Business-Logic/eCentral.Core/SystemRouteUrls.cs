@@ -7,13 +7,16 @@
     {
         #region Application 
         
-        //login 
+        //login and user security
         public static string Login { get { return "login/"; } }
         public static string Logout { get { return "logout/"; } }
+        public static string AccountActivation { get { return "activation/{userId}/{token}"; } }
+        public static string PasswordRecovery { get { return "password-recovery"; } }
+        public static string PasswordRecoveryConfirm { get { return "password-recovery/confirm/{userId}/{token}"; } }
 
         // password recovery & security
         //public static string ChangePassword { get { return "security/change-password"; } }
-        //public static string PasswordRecovery { get { return "password-recovery"; } }
+        
 
         // miscellaneous
         public static string AsyncUpload { get { return "media/asyncupload"; } }

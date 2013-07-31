@@ -60,7 +60,7 @@ namespace eCentral.Services.Messages
 
             languageId = EnsureLanguageIsActive(languageId);
 
-            var messageTemplate = GetLocalizedActiveMessageTemplate("User.EmailValidationMessage", languageId);
+            var messageTemplate = GetLocalizedActiveMessageTemplate("User.WelcomeMessage", languageId);
             if (messageTemplate == null)
                 return Guid.Empty;
 
@@ -69,6 +69,32 @@ namespace eCentral.Services.Messages
             var emailAccount = GetEmailAccountOfMessageTemplate(messageTemplate, languageId);
             var toEmail      = user.Username;
             var toName       = user.GetFullName();
+            return SendNotification(messageTemplate, emailAccount,
+                languageId, userTokens,
+                toEmail, toName);
+        }
+
+        /// <summary>
+        /// Sends an email with the password recovery message to the user
+        /// </summary>
+        /// <param name="user">user instance</param>
+        /// <param name="languageId">Message language identifier</param>
+        /// <returns>Queued email identifier</returns>
+        public virtual Guid SendUserPasswordRecoveryMessage(User user, Guid languageId)
+        {
+            Guard.IsNotNull(user, "user");
+
+            languageId = EnsureLanguageIsActive(languageId);
+
+            var messageTemplate = GetLocalizedActiveMessageTemplate("User.PasswordRecovery", languageId);
+            if (messageTemplate == null)
+                return Guid.Empty;
+
+            var userTokens = GenerateTokens(user);
+
+            var emailAccount = GetEmailAccountOfMessageTemplate(messageTemplate, languageId);
+            var toEmail = user.Username;
+            var toName = user.GetFullName();
             return SendNotification(messageTemplate, emailAccount,
                 languageId, userTokens,
                 toEmail, toName);

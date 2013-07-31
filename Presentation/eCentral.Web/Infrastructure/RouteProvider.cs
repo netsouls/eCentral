@@ -48,13 +48,24 @@ namespace eCentral.Web.Infrastructure
                 new { controller = "Security", action = "Logout" },
                 new[] { "eCentral.Web.Controllers" });
 
-            // security settings - todo
-            /*routes.MapLocalizedRoute(SystemRouteNames.PasswordRecovery,
+            routes.MapLocalizedRoute(SystemRouteNames.AccountActivation,
+                SystemRouteUrls.AccountActivation,
+                new { controller = "Security", action = "AccountActivation" },
+                new { userId = new GuidConstraint(false), token = new GuidConstraint(false) },
+                new[] { "eCentral.Web.Controllers" });
+
+            routes.MapLocalizedRoute(SystemRouteNames.PasswordRecovery,
                 SystemRouteUrls.PasswordRecovery,
                 new { controller = "Security", action = "PasswordRecovery" },
                 new[] { "eCentral.Web.Controllers" });
 
-            routes.MapLocalizedRoute(SystemRouteNames.ChangePassword,
+            routes.MapLocalizedRoute(SystemRouteNames.PasswordRecoveryConfirm,
+                SystemRouteUrls.PasswordRecoveryConfirm,
+                new { controller = "Security", action = "PasswordRecoveryConfirm" },
+                new { userId = new GuidConstraint(false), token = new GuidConstraint(false) },
+                new[] { "eCentral.Web.Controllers" });
+
+            /*routes.MapLocalizedRoute(SystemRouteNames.ChangePassword,
                 SystemRouteUrls.ChangePassword,
                 new { controller = "Security", action = "ChangePassword" },
                 new[] { "eCentral.Web.Controllers" });*/

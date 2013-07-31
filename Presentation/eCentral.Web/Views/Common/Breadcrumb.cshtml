@@ -82,7 +82,7 @@
         {
             resource = siteNode.Title;
         }
-         <li class="active"><a href="@routeUrl">@resource</a><span class="divider"><span class="icon16 icomoon-icon-arrow-right-3"></span></li> 
+         <li class="active"><a href="@routeUrl.ToLowerInvariant()">@resource</a><span class="divider"><span class="icon16 icomoon-icon-arrow-right-3"></span></li> 
     }
      @if (currentNode != null)
      { 

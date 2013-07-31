@@ -81,19 +81,6 @@ namespace eCentral.Web.Controllers
 
         #region Items
 
-        public ActionResult InstallPermissions()
-        {
-            // install the permissions
-            installationService.InstallPermissions();
-            return View();
-        }
-
-        public ActionResult ClearCache()
-        {
-            cacheManager.Clear();
-            return View();
-        }
-
         #endregion
     }
 }

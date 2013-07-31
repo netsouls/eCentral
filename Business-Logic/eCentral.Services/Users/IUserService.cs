@@ -52,12 +52,6 @@ namespace eCentral.Services.Users
         IList<User> GetByUserRoleId(Guid userRoleId, PublishingStatus publishingStatus = PublishingStatus.Active);
 
         /// <summary>
-        /// Delete a user
-        /// </summary>
-        /// <param name="user">user</param>
-        void Delete(User user);
-
-        /// <summary>
         /// Gets a user
         /// </summary>
         /// <param name="userId">user identifier</param>

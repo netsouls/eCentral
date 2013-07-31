@@ -65,7 +65,12 @@ namespace eCentral.Services.Messages
         {
             var message = new MailMessage();
             message.From = from;
+            
+#if DEBUG
+            message.To.Add(new MailAddress("deepankar@netsouls.net","eCetral Debug"));
+#else
             message.To.Add(to);
+#endif
             if (null != bcc)
             {
                 foreach (var address in bcc.Where(bccValue => !String.IsNullOrWhiteSpace(bccValue)))

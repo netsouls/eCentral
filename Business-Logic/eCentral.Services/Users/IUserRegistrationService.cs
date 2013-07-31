@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using eCentral.Core;
 using eCentral.Core.Domain.Users;
 
@@ -25,6 +25,13 @@ namespace eCentral.Services.Users
         DataResult<User> RegisterUser(UserRegistrationRequest request);
 
         /// <summary>
+        /// Update registration
+        /// </summary>
+        /// <param name="request">Request</param>
+        /// <returns>Result</returns>
+        DataResult UpdateRegistration(UserRegistrationRequest request);
+
+        /// <summary>
         /// Change password
         /// </summary>
         /// <param name="request">Request</param>
@@ -32,8 +39,11 @@ namespace eCentral.Services.Users
         DataResult ChangePassword(ChangePasswordRequest request);
 
         /// <summary>
-        /// Recover the user lost password
+        /// Change the status
         /// </summary>
-        DataResult<IList<string>> RecoverPassword(ResetPasswordRequest request);        
+        /// <param name="userId">user identifier</param>
+        /// <param name="publishingStatus">publishing status</param>
+        /// <returns></returns>
+        bool ChangeStatus(Guid userId, PublishingStatus publishingStatus);
     }
 }

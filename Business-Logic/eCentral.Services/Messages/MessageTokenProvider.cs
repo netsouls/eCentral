@@ -64,24 +64,23 @@ namespace eCentral.Services.Messages
             tokens.Add(new Token("Site.Name", siteSettings.SiteName));
             tokens.Add(new Token("Site.URL", siteSettings.SiteUrl, true));
             tokens.Add(new Token("Site.ImageURL", siteSettings.SiteUrl + "library/images/", true));
-            var defaultEmailAccount = emailAccountService.GetById(emailAccountSettings.DefaultEmailAccountId);
-            if (defaultEmailAccount == null)
-                defaultEmailAccount = emailAccountService.GetAll().FirstOrDefault();
-            tokens.Add(new Token("Site.Email", defaultEmailAccount.Email));
+            tokens.Add(new Token("Site.Email", siteSettings.SupportEmailAddress));
         }
 
         public virtual void AddUserTokens(IList<Token> tokens, User user)
         {
             tokens.Add(new Token("User.Username", user.Username));
             tokens.Add(new Token("User.FullName", user.FormatUserName()));
-            
-            //TODO add a method for getting URL (use routing because it handles all SEO friendly URLs)
-            string passwordRecoveryUrl = string.Format("{0}passwordrecovery/confirm?token={1}&email={2}", webHelper.AbsoluteWebRoot.ToString(), 
-                user.GetAttribute<string>(SystemUserAttributeNames.PasswordRecoveryToken), user.Username);
-            
-            /*string accountActivationUrl = string.Format("{0}user/activation?token={1}-{2}", webHelper.AbsoluteWebRoot.ToString(), user.GetAttribute<string>(SystemUserAttributeNames.AccountActivationToken), user.UserGuid.ToString());*/
+
+            string accountActivationUrl = "{0}{1}".FormatWith(webHelper.AbsoluteWebRoot.ToString(),
+                    SystemRouteUrls.AccountActivation.Replace("{userId}", user.UserGuid.ToString()).Replace("{token}",
+                        user.GetAttribute<string>(SystemUserAttributeNames.AccountActivationToken)));
+            tokens.Add(new Token("User.AccountActivationURL", accountActivationUrl, true));
+
+            string passwordRecoveryUrl = "{0}{1}".FormatWith(webHelper.AbsoluteWebRoot.ToString(),
+                    SystemRouteUrls.PasswordRecoveryConfirm.Replace("{userId}", user.UserGuid.ToString()).Replace("{token}",
+                        user.GetAttribute<string>(SystemUserAttributeNames.PasswordRecoveryToken)));
             tokens.Add(new Token("User.PasswordRecoveryURL", passwordRecoveryUrl, true));
-            
         }
 
         public virtual void AddMasterTokens(IList<Token> tokens, string messageBody)

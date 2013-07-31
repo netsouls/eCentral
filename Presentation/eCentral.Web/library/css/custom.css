@@ -50,3 +50,5 @@ table.display tr.even.row_selected td, table.display tr.odd.row_selected td {
 .table .add-one-mini-button{ width:60px;}
 
 .btn-group > .dropdown-toggle {padding-bottom: 1px;}
+
+.loginContainer .page-header { margin:0px;}

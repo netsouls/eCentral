@@ -14,9 +14,9 @@
                 <siteMapNode title="Add new client" PermissionNames="ManageClients" controller="Client" action="Create" IsNavigation="False" />
                 <siteMapNode title="Edit client" PermissionNames="ManageClients" controller="Client" action="Edit" IsNavigation="False"/>
             </siteMapNode>
-            <siteMapNode title="Manage Users" PermissionNames="ManageUsers, ManageUsersRoles" Icon="icomoon-icon-user-3" Controller="User" action="Index">
-                <siteMapNode title="Add new user" PermissionNames="ManageUsers" Controller="User" action="Create" IsNavigation="False" />
-                <siteMapNode title="Edit user" PermissionNames="ManageUsers" Controller="User" action="Edit" IsNavigation="False"/>
+            <siteMapNode title="Manage Users" PermissionNames="ManageUsers, ManageUsersRoles" Icon="icomoon-icon-user-3" controller="User" action="Index">
+                <siteMapNode title="Add new user" PermissionNames="ManageUsers" controller="User" action="Create" IsNavigation="False" />
+                <siteMapNode title="Edit user" PermissionNames="ManageUsers" controller="User" action="Edit" IsNavigation="False"/>
             </siteMapNode>
         </siteMapNode>
         <siteMapNode title="Configurations" PermissionNames="ManageMessageTemplates,ManageCountries,ManageLanguages,ManageSettings,ManageCurrencies,ManageActivityLog,ManageACL,ManageSMSProviders,ManageEmailAccounts,ManagePlugins" Icon="icomoon-icon-cog-2">
@@ -43,6 +43,7 @@
             <siteMapNode title="QueuedEmails" siteResource="Navigation.System.QueuedEmails" PermissionNames="ManageMessageQueue" Icon="icomoon-icon-envelop"/>-->
             <siteMapNode title="System Information" controller="System" action="Index" PermissionNames="ManageMaintenance" Icon="icomoon-icon-wrench-2" />
             <siteMapNode title="Clear cache" controller="system" action="clearcache" PermissionNames="ManageMaintenance" Icon="icomoon-icon-command" />
+            <siteMapNode title="Reinstall Permissions" controller="system" action="ReinstallPermissions" PermissionNames="ManageMaintenance" Icon="icomoon-icon-lock" />
             <siteMapNode title="Restart application" controller="system" action="RestartApplication" PermissionNames="ManageMaintenance" Icon="icomoon-icon-loop" />
             <!--<siteMapNode title="Warnings" siteResource="Navigation.System.Warnings" controller="Common" action="Warnings" />-->
             <!--<siteMapNode title="System information" siteResource="Navigation.System.SystemInfo" route="SystemInfo" PermissionNames="ManageSystemLog" Icon="entypo-icon-broadcast"/>-->

@@ -150,17 +150,6 @@ namespace eCentral.Services.Users
         }
 
         /// <summary>
-        /// Delete a user
-        /// </summary>
-        /// <param name="user">user</param>
-        public virtual void Delete(User user)
-        {
-            Guard.IsNotNull(user, "User");
-
-            Update(user);
-        }
-
-        /// <summary>
         /// Gets a user
         /// </summary>
         /// <param name="userId">user identifier</param>
