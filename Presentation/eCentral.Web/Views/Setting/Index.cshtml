@@ -1,0 +1,42 @@
+﻿@model GeneralCommonSettingsModel
+@{
+    var pageHeading = T("PageTitle.Settings.General").Text;
+    Html.AddTitleParts(pageHeading);
+    ViewBag.Heading = pageHeading;
+}
+@section SidebarWidget
+{
+}
+<div class="row-fluid">
+    <div class="span12">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+        { 
+            <ul id="myTab" class="nav nav-tabs pattern">
+                <li class="active"><a href="#site" data-toggle="tab">Site information setting</a></li>
+                <li><a href="#domain" data-toggle="tab">Domain setting</a></li>
+                <li><a href="#security" data-toggle="tab">Security settings</a></li>
+                <li><a href="#seo" data-toggle="tab">SEO settings</a></li>
+                <li><a href="@Url.Action("advanced")">All settings (Advanced)</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="site">
+                    @Html.Partial("_SiteInformation", Model)
+                </div>
+                <div class="tab-pane fade" id="domain">
+                    @Html.Partial("_Domain", Model)
+                </div>
+                <div class="tab-pane fade" id="security">
+                    @Html.Partial("_Security", Model)
+                </div>
+                <div class="tab-pane fade" id="seo">
+                    @Html.Partial("_Seo", Model)
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-info marginR10" name="save" value="save">
+                    <span class="icon16 icomoon-icon-checkmark white"></span>@T("Common.Save")</button>
+            </div>
+        }
+    </div>
+    <!-- End .span12 -->
+</div>

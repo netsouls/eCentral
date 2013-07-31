@@ -1,0 +1,30 @@
+﻿@model GeneralCommonSettingsModel
+<div class="content">
+    <div class="form-row row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                @Html.LabelFor(m => m.SecuritySettings.EncryptionKey, new { @class = "span2" })
+                <div class="input-append span10">
+                    @Html.TextBoxFor(m => m.SecuritySettings.EncryptionKey, new { @class = "span8" })
+                    <button class="btn btn-warning" type="submit" name="changeencryptionkey" value="changeencryptionkey" id="changeencryptionkey">
+                        Change <span class="icomoon-icon-arrow-right-2 white"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                @Html.LabelFor(m => m.SecuritySettings.HideMenuItemsBasedOnPermissions, new { @class = "span2" })
+                <div class="span10 controls">
+                    <div class="normal-toggle-button left marginR10">
+                        <input type="checkbox" class="nostyle" @if (Model.SecuritySettings.HideMenuItemsBasedOnPermissions)
+                                                               {<text>checked="checked"</text>} data-element="@Html.FieldIdFor(m => m.SecuritySettings.HideMenuItemsBasedOnPermissions)" />
+                    </div>
+                    @Html.HiddenFor(m => m.SecuritySettings.HideMenuItemsBasedOnPermissions)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

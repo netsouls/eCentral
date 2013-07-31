@@ -1,0 +1,87 @@
+﻿@model GeneralCommonSettingsModel
+<div class="content">
+    <div class="form-row row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                @Html.LabelFor(m => m.SiteInformationSettings.SiteName, new { @class = "span2" })
+                @Html.TextBoxFor(m => m.SiteInformationSettings.SiteName, new { @class = "span10" })
+            </div>
+        </div>
+    </div>
+    <div class="form-row row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                @Html.LabelFor(m => m.SiteInformationSettings.SiteNameBlurb, new { @class = "span2" })
+                @Html.TextBoxFor(m => m.SiteInformationSettings.SiteNameBlurb, new { @class = "span10" })
+            </div>
+        </div>
+    </div>
+    <div class="form-row row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                @Html.LabelFor(m => m.SiteInformationSettings.SiteUrl, new { @class = "span2" })
+                @Html.TextBoxFor(m => m.SiteInformationSettings.SiteUrl, new { @class = "span10" })
+            </div>
+        </div>
+    </div>
+    <div class="form-row row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                @Html.LabelFor(m => m.SiteInformationSettings.SupportEmailAddress, new { @class = "span2" })
+                @Html.TextBoxFor(m => m.SiteInformationSettings.SupportEmailAddress, new { @class = "span10" })
+            </div>
+        </div>
+    </div>
+    <div class="form-row row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                @Html.LabelFor(m => m.SiteInformationSettings.ApplicationState, new { @class = "span2" })
+                <div class="span10 controls">
+                    @Html.DropDownListFor(m => m.SiteInformationSettings.ApplicationState, Model.SiteInformationSettings.ApplicationStateValues, new { @class = "nostyle", style = "width:100%;" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                @Html.LabelFor(m => m.SiteInformationSettings.DisplayMiniProfilerInPublicSite, new { @class = "span2" })
+                <div class="span10 controls">
+                    <div class="normal-toggle-button left marginR10">
+                        <input type="checkbox" class="nostyle" @if (Model.SiteInformationSettings.DisplayMiniProfilerInPublicSite)
+                                                               {<text>checked="checked"</text>} data-element="@Html.FieldIdFor(m => m.SiteInformationSettings.DisplayMiniProfilerInPublicSite)" />
+                    </div>
+                    @Html.HiddenFor(m => m.SiteInformationSettings.DisplayMiniProfilerInPublicSite)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                @Html.LabelFor(m => m.SiteInformationSettings.SiteClosed, new { @class = "span2" })
+                <div class="span10 controls">
+                    <div class="normal-toggle-button left marginR10">
+                        <input type="checkbox" class="nostyle" @if (Model.SiteInformationSettings.SiteClosed)
+                                                               {<text>checked="checked"</text>} data-element="@Html.FieldIdFor(m => m.SiteInformationSettings.SiteClosed)" />
+                    </div>
+                    @Html.HiddenFor(m => m.SiteInformationSettings.SiteClosed)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                @Html.LabelFor(m => m.SiteInformationSettings.SiteClosedAllowForWebAdmins, new { @class = "span2" })
+                <div class="span10 controls">
+                    <div class="normal-toggle-button left marginR10">
+                        <input type="checkbox" class="nostyle" @if (Model.SiteInformationSettings.SiteClosedAllowForWebAdmins)
+                                                               {<text>checked="checked"</text>} data-element="@Html.FieldIdFor(m => m.SiteInformationSettings.SiteClosedAllowForWebAdmins)" />
+                    </div>
+                    @Html.HiddenFor(m => m.SiteInformationSettings.SiteClosedAllowForWebAdmins)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
