@@ -134,9 +134,10 @@
     <Compile Include="Models\Messages\EmailAccountModel.cs" />
     <Compile Include="Models\Messages\MessageTemplateModel.cs" />
     <Compile Include="Models\Security\AccountActivationModel.cs" />
-    <Compile Include="Models\Setting\GeneralCommonSettingsModel.cs" />
+    <Compile Include="Models\Settings\GeneralCommonSettingsModel.cs" />
     <Compile Include="Models\Security\LoginModel.cs" />
     <Compile Include="Models\Security\PasswordRecoveryModel.cs" />
+    <Compile Include="Models\Settings\SettingModel.cs" />
     <Compile Include="Models\System\SystemInfoModel.cs" />
     <Compile Include="Models\Users\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,11 +150,13 @@
     <Compile Include="Validators\Security\AccountActivationValidator.cs" />
     <Compile Include="Validators\Security\LoginValidator.cs" />
     <Compile Include="Validators\Security\PasswordRecoveryValidator.cs" />
+    <Compile Include="Validators\Settings\SettingValidator.cs" />
     <Compile Include="Validators\Users\UserValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="connections.config" />
     <Content Include="Global.asax" />
+    <Content Include="library\css\bootstrap\bootstrap-modal.css" />
     <Content Include="library\css\bootstrap\bootstrap-responsive.css" />
     <Content Include="library\css\bootstrap\bootstrap.css" />
     <Content Include="library\css\custom.css" />
@@ -413,6 +416,8 @@
     <Content Include="library\images\spinner.png" />
     <Content Include="library\images\ui.totop.png" />
     <Content Include="library\js\appEngine.js" />
+    <Content Include="library\js\bootstrap\bootstrap-modal.js" />
+    <Content Include="library\js\bootstrap\bootstrap-modalmanager.js" />
     <Content Include="library\js\bootstrap\bootstrap.js" />
     <Content Include="library\js\bootstrap\bootstrap.min.js" />
     <Content Include="library\js\jquery-migrate-1.2.1.min.js" />
@@ -940,6 +945,8 @@
     <Content Include="Views\Setting\_Seo.cshtml" />
     <Content Include="Views\Setting\_Security.cshtml" />
     <Content Include="Views\Setting\_Domain.cshtml" />
+    <Content Include="Views\Setting\Advanced.cshtml" />
+    <Content Include="Views\Setting\_CreateUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="library\logs\error\" />

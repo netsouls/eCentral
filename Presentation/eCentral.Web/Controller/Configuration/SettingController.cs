@@ -1,15 +1,16 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Linq;
+using System.Web.Mvc;
 using eCentral.Core;
 using eCentral.Core.Domain;
 using eCentral.Core.Domain.Common;
-using eCentral.Core.Domain.Logging;
 using eCentral.Core.Domain.Security;
 using eCentral.Core.Domain.Users;
 using eCentral.Services.Configuration;
 using eCentral.Services.Security;
 using eCentral.Web.Framework;
 using eCentral.Web.Framework.Controllers;
-using eCentral.Web.Models.Setting;
+using eCentral.Web.Models.Settings;
 
 namespace eCentral.Web.Controllers.Configuration
 {
@@ -129,7 +130,64 @@ namespace eCentral.Web.Controllers.Configuration
             return View();
         }
 
-        
+        [PermissionAuthorization(Permission = SystemPermissionNames.ManageSettings)]
+        [HttpPost]
+        public ActionResult List()
+        {
+            if (!Request.IsAjaxRequest())
+                return RedirectToAction(SystemRouteNames.Index);
+
+            var settings = settingService.GetAll()
+                .OrderBy(s => s.Key)
+                .Select(s => new SettingModel()
+                {
+                    RowId = s.Value.RowId,
+                    Name = s.Key,
+                    Value = s.Value.Value
+                });
+
+            return Json(new DataTablesParser<SettingModel>(Request, settings).Parse());
+        }
+
+        [PermissionAuthorization(Permission = SystemPermissionNames.ManageSettings)]
+        public ActionResult Create(Guid rowId)
+        {
+            var model = new SettingModel()
+            {
+                RowId = rowId
+            };
+
+            if (!rowId.IsEmpty())
+            {
+                var setting = settingService.GetById(rowId);
+                if (setting != null)
+                {
+                    model.Name = setting.Name;
+                    model.Value = setting.Value;
+                    model.IsEdit = true;
+                }
+            }
+
+            return PartialView("_CreateUpdate", model);
+        }
+
+        [PermissionAuthorization(Permission = SystemPermissionNames.ManageSettings)]
+        [HttpPost]
+        public ActionResult Create(SettingModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.Name = model.Name.Trim();
+                model.Value = model.Value.Trim();
+
+                settingService.Set(model.Name, model.Value);
+                return Json(new { IsValid = true});
+            }
+
+            //If we got this far, something failed, redisplay form
+            return Json(new { IsValid = false, htmlData = RenderPartialViewToString("_CreateUpdate", model) });
+        }
+
         #endregion
     }
 }

@@ -1,15 +1,75 @@
-﻿@model GeneralCommonSettingsModel
-@{
+﻿@{
     var pageHeading = T("PageTitle.Settings.Advanced").Text;
     Html.AddTitleParts(pageHeading);
     ViewBag.Heading = pageHeading;
+    ViewBag.HasDataTable = true;
 }
 @section SidebarWidget
 {
 }
 <div class="row-fluid">
     <div class="span12">
-        
+        <div class="box gradient">
+            <div class="title">
+                <h4 class="clearfix">
+                    <span class="icon16 icomoon-icon-table-2"></span><span class="processing"></span>
+                    <div class="right marginR10">
+                        <a href="#" class="btn btn-mini btn-primary tip modal-action" data-url = "@Url.Action("create", new { rowId = Guid.Empty.ToString() })" title="Add New"><span class="icon8 icomoon-icon-plus white"></span>Add New</a>
+                    </div>
+                </h4>
+            </div>
+            <div class="content noPad">
+                <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered"
+                    id="myDataTable" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Value
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- End .box -->
     </div>
     <!-- End .span12 -->
 </div>
+
+@section inlineScripts {
+    <script type="text/javascript">
+        var dataUrl = '@Url.Action("create")';
+        appEngine.util.setDataTable('myDataTable', '@Url.Action("List")',
+            [
+                { 'sName': 'Name', 'mData': 'Name', 'bSortable': true },
+                { 'sName': 'Value', 'mData': 'Value', 'bSearchable': true, 'bSortable': false },
+                { 'sName': 'Action', 'mData': 'RowId', 'bSearchable': false, 'bSortable': false,
+                    'mRender': function (dataItem) {
+                        return '<div class="controls center"><a href="#" title="Edit" data-url = "' + dataUrl + '/' + dataItem + '" class="tip modal-action"><span class="icon12 icomoon-icon-pencil"></span></a></div>';
+                    }
+                }
+            ], true, true, function (dataTable) { }
+        );
+        appEngine.util.setModalAction();
+        
+        function onComplete(dataResult) {
+            appEngine.util.setModalActionCallback(dataResult, 
+                function() {
+                    var table = $.fn.dataTable.fnTables(true);
+                    if (table.length > 0) {
+                        $(table).dataTable().fnDraw();
+                    }    
+                }, 
+                function() {
+                    alert(dataResult.responseText);        
+                }
+            );
+        }
+    </script>
+}

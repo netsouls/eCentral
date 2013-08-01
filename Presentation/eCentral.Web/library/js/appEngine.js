@@ -247,6 +247,37 @@ $.extend(appEngine, {
                 }
             });
         },
+        setModalAction: function (callback) {
+            $(document).ready(function () {
+                var $modalContainer = $('<div id="modal-form-container" class="modal hide fade" style="display: none;"><div id="modal-form"></div></div>');
+                $('#content').append($modalContainer);
+
+                $('.modal-action').live('click', function (e) {
+                    e.preventDefault();
+                    $.get($(this).attr('data-url'), function (data) {
+                        $('#modal-form').html(data);
+                        $('#modal-form-container').modal('show');
+                        jQuery.validator.unobtrusive.parse($('#modal-form'));
+                    });
+                });
+
+                if ($.isFunction(callback))
+                    callback();
+            });
+        },
+        setModalActionCallback: function (dataResult, onSuccess, onFailure) {
+            var jsonData = appEngine.util.stringToJSON(dataResult.responseText);
+            if (jsonData.IsValid) {
+                $('#modal-form-container').modal('hide');
+                if ($.isFunction(onSuccess))
+                    onSuccess();
+            }
+            else {
+                $('#modal-form').html(jsonData.htmlData);
+                if ($.isFunction(onFailure))
+                    onFailure();
+            }
+        },
         statesByCountry: function ($country, $states) {
             /* Initialize */
             $country.html('<option></option>' + $country.html());

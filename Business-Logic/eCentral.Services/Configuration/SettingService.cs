@@ -151,21 +151,34 @@ namespace eCentral.Services.Configuration
                 setting = settings[key];
                 //little hack here because of EF issue
                 setting           = GetById(setting.RowId);
+                bool isUpdated = setting.Value.IsCaseInsensitiveEqual(valueStr);
+                
                 setting.Value     = valueStr;
                 setting.UpdatedOn = DateTime.UtcNow;
 
                 Update(setting, clearCache);
+
+                // add audit history
+                if ( !isUpdated )
+                EngineContext.Current.Resolve<IUserActivityService>().
+                    InsertActivity(SystemActivityLogTypeNames.EditSettings,
+                     "{0}: [{1}]".FormatWith(setting.Name, setting.Value), string.Empty);                
             }
             else
             {
                 //insert
                 setting = new Setting()
-                              {
-                                  Name = key,
-                                  Value = valueStr,
-                                  CreatedOn = DateTime.UtcNow, UpdatedOn = DateTime.UtcNow
-                              };
+                    {
+                        Name = key,
+                        Value = valueStr,
+                        CreatedOn = DateTime.UtcNow, UpdatedOn = DateTime.UtcNow
+                    };
                 Insert(setting, clearCache);
+
+                // add audit history
+                EngineContext.Current.Resolve<IUserActivityService>().
+                    InsertActivity(SystemActivityLogTypeNames.AddNewSettings,
+                     "{0}: [{1}]".FormatWith(setting.Name, setting.Value), string.Empty);
             }
         }
 
@@ -214,10 +227,6 @@ namespace eCentral.Services.Configuration
         {
             //We should be sure that an appropriate ISettings object will not be cached in IoC tool after updating (by default cached per HTTP request)
             EngineContext.Current.Resolve<IConfigurationProvider<T>>().SaveSettings(settingInstance);
-
-            // add audit history
-            EngineContext.Current.Resolve<IUserActivityService>().
-                InsertActivity(SystemActivityLogTypeNames.EditSettings, settingInstance.ToString(), typeof(T).Name);
         }
 
         /// <summary>
