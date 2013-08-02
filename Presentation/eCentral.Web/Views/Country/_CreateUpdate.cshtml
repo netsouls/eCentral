@@ -1,0 +1,128 @@
+﻿@model CountryModel
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+{ 
+    @Html.HiddenFor(model => model.RowId)
+    @Html.HiddenFor(model => model.IsEdit)
+    <ul id="myTab" class="nav nav-tabs pattern">
+        <li class="active"><a href="#info" data-toggle="tab">Country info</a></li>
+        <li><a href="#states" data-toggle="tab">States and provinces</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="info">
+            <div class="content">
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        <div class="row-fluid">
+                            @Html.LabelFor(m => m.Name, new { @class = "span2" })
+                            @Html.TextBoxFor(m => m.Name, new { @class = "span10" })
+                            @Html.ValidationMessageFor(m => m.Name)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        <div class="row-fluid">
+                            @Html.LabelFor(m => m.TwoLetterIsoCode, new { @class = "span2" })
+                            @Html.TextBoxFor(m => m.TwoLetterIsoCode, new { @class = "span10", maxlength = 2 })
+                            @Html.ValidationMessageFor(m => m.TwoLetterIsoCode)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        <div class="row-fluid">
+                            @Html.LabelFor(m => m.ThreeLetterIsoCode, new { @class = "span2" })
+                            @Html.TextBoxFor(m => m.ThreeLetterIsoCode, new { @class = "span10", maxlength = 3 })
+                            @Html.ValidationMessageFor(m => m.ThreeLetterIsoCode)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        <div class="row-fluid">
+                            @Html.LabelFor(m => m.NumericIsoCode, new { @class = "span2" })
+                            @Html.TextBoxFor(m => m.NumericIsoCode, new { @class = "span10 spinner" })
+                            @Html.ValidationMessageFor(m => m.NumericIsoCode)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        <div class="row-fluid">
+                            @Html.LabelFor(m => m.DisplayOrder, new { @class = "span2" })
+                            @Html.TextBoxFor(m => m.DisplayOrder, new { @class = "span4 spinner" })
+                            @Html.ValidationMessageFor(m => m.DisplayOrder)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        <div class="row-fluid">
+                            @Html.LabelFor(m => m.Published, new { @class = "span2" })
+                            <div class="span10 controls">
+                                <div class="iToggle-button left marginR10">
+                                    <input type="checkbox" class="nostyle" @if (Model.Published)
+                                                                           {<text>checked="checked"</text>} data-element="@Html.FieldIdFor(m => m.Published)" />
+                                </div>
+                                @Html.HiddenFor(m => m.Published)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="states">
+            @if (Model.RowId.IsEmpty())
+            {
+                <div class="content">
+                    You need to save the country before you can add states for this country page.</div>
+            }
+            else
+            {
+                <div class="content">
+                    <div class="title">
+                        <h4 class="clearfix">
+                            <span class="processing"></span>
+                            <div class="right marginR10">
+                                <a href="#" class="btn btn-mini btn-primary tip modal-action" data-url = "@Url.Action("createorupdatestate", new { countryId = Model.RowId.ToString(), rowId = Guid.Empty.ToString() })" title="Add New">
+                                    <span class="icon8 icomoon-icon-plus white"></span>Add a new state/province</a>
+                            </div>
+                        </h4>
+                    </div>
+                    <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered"
+                        id="myDataTable" width="100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Abbreviation
+                                </th>
+                                <th>
+                                    Display order
+                                </th>
+                                <th>
+                                    Published
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>    
+    <div class="form-actions">
+        <button type="submit" class="btn btn-info marginR10" name="save" value="save">
+            <span class="icon16 icomoon-icon-checkmark white"></span>@T("Common.Save")</button>
+        <button type="submit" class="btn btn-success marginR10" name="save-continue" value="save-continue">
+            <span class="icon16 icomoon-icon-pencil white"></span>@T("Common.SaveContinue")</button>
+        <button type="button" class="btn btn-danger href-action" data-href="@Url.Action(SystemRouteNames.Index)">
+            <span class="icon16 icomoon-icon-close white"></span>@T("Common.Cancel")</button>
+    </div>
+}

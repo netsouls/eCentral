@@ -1,0 +1,52 @@
+﻿@model CountryModel
+@{
+    var pageHeading = T("PageTitle.Country.Edit").Text.FormatWith(Model.Name);
+    Html.AddTitleParts(pageHeading);
+    ViewBag.Heading = pageHeading;
+    ViewBag.HasDataTable = true;
+}
+@section SidebarWidget
+{
+}
+<div class="row-fluid">
+    <div class="span12">
+        @Html.Partial("_CreateUpdate", Model)
+    </div>
+    <!-- End .span12 -->
+</div>
+@section inlineScripts
+{
+    <script type="text/javascript">
+        var dataUrl = '@Url.Action("createorupdatestate", new { rowId = Guid.Empty.ToString(), countryId = Model.RowId.ToString()})';
+        appEngine.util.setDataTable('myDataTable', '@Url.Action("states")',
+            function (aoData) {
+                aoData.push({ 'name': 'countryId', 'value': '@Model.RowId' });
+            },
+            [
+                { 'sName': 'Name', 'mData': 'Name' },
+                { 'sName': 'Abbreviation', 'mData': 'Abbreviation', 'bSearchable': false, 'bSortable': false },
+                { 'sName': 'DisplayOrder', 'mData': 'DisplayOrder', 'bSearchable': false, 'bSortable': false },
+                { 'sName': 'Published', 'mData': 'Published', 'bSearchable': false, 'bSortable': false },
+                { 'sName': 'Action', 'mData': 'RowId', 'bSearchable': false, 'bSortable': false, 'sWidth': '5%',
+                    'mRender': function (dataItem) {
+                        return '<div class="center"><a href="#" title="Edit" data-url = "' + dataUrl.replace(appEngine.global.emptyGUID, dataItem) + '" class="tip modal-action"><span class="icon12 icomoon-icon-pencil"></span></a></div>';
+                    }
+                }
+            ], true, true, function (dataTable) {
+            });
+        appEngine.util.setModalAction();
+
+        function onComplete(dataResult) {
+            appEngine.util.setModalActionCallback(dataResult,
+                function () {
+                    var table = $.fn.dataTable.fnTables(true);
+                    if (table.length > 0) {
+                        $(table).dataTable().fnDraw();
+                    }
+                },
+                function () {
+                }
+            );
+        }
+    </script>
+}

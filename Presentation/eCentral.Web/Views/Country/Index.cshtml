@@ -1,0 +1,73 @@
+﻿@{
+    var pageHeading = T("PageTitle.Countries").Text;
+    Html.AddTitleParts(pageHeading);
+    ViewBag.Heading = pageHeading;
+    ViewBag.HasDataTable = true;
+}
+@section SidebarWidget
+{
+}
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box gradient">
+            <div class="title">
+                @Html.Partial("ActionList", new ActionListModel() { AddRouteUrl = Url.Action(SystemRouteNames.Create),  EditRouteUrl = Url.Action(SystemRouteNames.Edit)})                
+            </div>
+            <div class="content noPad">
+                <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered" id="myDataTable" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Two letter ISO code
+                            </th>
+                            <th>
+                                Three letter ISO code
+                            </th>
+                            <th>
+                                Numeric ISO Code
+                            </th>
+                            <th>
+                                Number of states
+                            </th>
+                            <th>
+                                Display order
+                            </th>
+                            <th>
+                                Published
+                            </th>
+                            <th id="masterCh" class="ch"></th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- End .box -->
+    </div>
+    <!-- End .span12 -->
+</div>
+@section inlineScripts {
+    <script type="text/javascript">
+        appEngine.util.setDataTable('myDataTable', '@Url.Action(SystemRouteNames.List)',null,
+            [
+                { 'sName': 'Name', 'mData': 'Name' },
+                { 'sName': 'TwoLetterIsoCode', 'mData': 'TwoLetterIsoCode', 'bSearchable': false, 'bSortable': false },
+                { 'sName': 'ThreeLetterIsoCode', 'mData': 'ThreeLetterIsoCode', 'bSearchable': false, 'bSortable': false },
+                { 'sName': 'NumericIsoCode', 'mData': 'NumericIsoCode', 'bSearchable': false, 'bSortable': false },
+                { 'sName': 'NumberOfStates', 'mData': 'NumberOfStates', 'bSearchable': false, 'bSortable': false },
+                { 'sName': 'DisplayOrder', 'mData': 'DisplayOrder', 'bSearchable': false, 'bSortable': false },
+                { 'sName': 'Published', 'mData': 'Published', 'bSearchable': false, 'bSortable': false },
+                { "sName": "Actions", "mData": "RowId", 'bSearchable': false, 'bSortable': false, sClass: "chChildren",
+                    "mRender": function (dataItem) {
+                        return '<input type="checkbox" name="checkbox" value="' + dataItem + '" />';
+                    }
+                }
+            ], true, true, function (dataTable) {
+                
+            });
+    </script>
+}

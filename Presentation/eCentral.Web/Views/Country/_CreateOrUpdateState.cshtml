@@ -1,0 +1,81 @@
+﻿@model StateProvinceModel
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">
+        <span class="icon12 minia-icon-close"></span>
+    </button>
+    <h3>
+        @if (Model.IsEdit)
+        { <text>Edit State/Province</text> }
+        else
+        { <text>Add a new State/Province</text>}
+        <img id="modal-window-loader" class="hide" src="@Url.ImageUrl("loaders/horizontal/018.gif")" width="80" height="10" alt=""/>
+    </h3>
+</div>
+@using (Ajax.BeginForm(null, null, new AjaxOptions { HttpMethod = "Post", OnComplete = "onComplete", LoadingElementId = "modal-window-loader" }, new { @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(model => model.RowId)
+    @Html.HiddenFor(model => model.CountryId)
+    @Html.HiddenFor(model => model.IsEdit)  
+    <div class="modal-body">
+        <div class="paddingT15 paddingB15">
+            <div class="row-fluid">
+                <div class="span10">
+                    <div class="form-row row-fluid">
+                        <div class="span12">
+                            <div class="row-fluid">
+                                @Html.LabelFor(m => m.Name)
+                            </div>
+                            <div class="row-fluid">
+                                @Html.TextBoxFor(m => m.Name)
+                                @Html.ValidationMessageFor(m => m.Name)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row row-fluid">
+                        <div class="span12">
+                            <div class="row-fluid">
+                                @Html.LabelFor(m => m.Abbreviation)
+                            </div>
+                            <div class="row-fluid">
+                                @Html.TextBoxFor(m => m.Abbreviation)
+                                @Html.ValidationMessageFor(m => m.Abbreviation)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row row-fluid">
+                        <div class="span12">
+                            <div class="row-fluid">
+                                @Html.LabelFor(m => m.DisplayOrder)
+                            </div>
+                            <div class="row-fluid">
+                                @Html.TextBoxFor(m => m.DisplayOrder, new { @class = "spinner" })
+                                @Html.ValidationMessageFor(m => m.DisplayOrder)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row row-fluid">
+                        <div class="span12">
+                            <div class="row-fluid">
+                                @Html.LabelFor(m => m.Published, new { @class = "span3" })
+                                <div class="span9 controls">
+                                    <div class="iToggle-button left marginR10">
+                                        <input type="checkbox" class="nostyle" @if (Model.Published)
+                                                                               {<text>checked="checked"</text>} data-element="@Html.FieldIdFor(m => m.Published)" />
+                                    </div>
+                                    @Html.HiddenFor(m => m.Published)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span2">
+                    &nbsp;</div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-mini btn-success left" name="save" value="save">
+            <span class="icon16 icomoon-icon-checkmark white"></span>@T("Common.Save")</button>
+        <a href="#" class="btn btn-mini left marginL10" data-dismiss="modal">@T("Common.Close")</a>
+    </div>
+}
