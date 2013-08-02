@@ -7,7 +7,6 @@ using eCentral.Core.Domain.Common;
 using eCentral.Core.Domain.Security;
 using eCentral.Core.Domain.Users;
 using eCentral.Services.Configuration;
-using eCentral.Services.Security;
 using eCentral.Web.Framework;
 using eCentral.Web.Framework.Controllers;
 using eCentral.Web.Models.Settings;
@@ -15,11 +14,11 @@ using eCentral.Web.Models.Settings;
 namespace eCentral.Web.Controllers.Configuration
 {
     [RoleAuthorization(Role = SystemUserRoleNames.Administrators)]
+    [PermissionAuthorization(Permission = SystemPermissionNames.ManageSettings)]        
     public class SettingController : BaseController
     {
         #region Fields
 
-        private readonly IPermissionService permissionService;
         private readonly SiteInformationSettings siteInformationSettings;
         private readonly DomainSettings domainSettings;
         private readonly SeoSettings seoSettings;
@@ -30,12 +29,10 @@ namespace eCentral.Web.Controllers.Configuration
 
         #region Constructors
 
-        public SettingController(IPermissionService permissionService,
-            SiteInformationSettings siteInformationSettings, 
+        public SettingController( SiteInformationSettings siteInformationSettings, 
             DomainSettings domainSettings, SeoSettings seoSettings,
             SecuritySettings securitySettings, ISettingService settingService)
         {
-            this.permissionService       = permissionService;
             this.siteInformationSettings = siteInformationSettings;
             this.domainSettings          = domainSettings;
             this.securitySettings        = securitySettings;
@@ -51,7 +48,6 @@ namespace eCentral.Web.Controllers.Configuration
 
         #region Methods
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageSettings)]
         public ActionResult Index()
         {
             //set page timeout to 5 minutes
@@ -83,7 +79,6 @@ namespace eCentral.Web.Controllers.Configuration
             return View(model);
         }
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageSettings)]
         [HttpPost]
         [FormValueRequired("save")]
         public ActionResult Index( GeneralCommonSettingsModel model)
@@ -124,13 +119,11 @@ namespace eCentral.Web.Controllers.Configuration
             return RedirectToAction(SystemRouteNames.Index);
         }
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageSettings)]
         public ActionResult Advanced()
         {
             return View();
         }
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageSettings)]
         [HttpPost]
         public ActionResult List()
         {
@@ -149,7 +142,6 @@ namespace eCentral.Web.Controllers.Configuration
             return Json(new DataTablesParser<SettingModel>(Request, settings).Parse());
         }
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageSettings)]
         public ActionResult Create(Guid rowId)
         {
             var model = new SettingModel()
@@ -171,7 +163,6 @@ namespace eCentral.Web.Controllers.Configuration
             return PartialView("_CreateUpdate", model);
         }
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageSettings)]
         [HttpPost]
         public ActionResult Create(SettingModel model)
         {

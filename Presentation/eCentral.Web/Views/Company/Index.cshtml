@@ -41,7 +41,7 @@
 </div>
 @section inlineScripts {
     <script type="text/javascript">
-        appEngine.util.setDataTable('myDataTable', '@Url.Action("List")',
+        appEngine.util.setDataTable('myDataTable', '@Url.Action(SystemRouteNames.List)', null,
             [
                 { 'sName': 'CompanyName', 'mData': 'CompanyName', 'sWidth': '70%' },
                 { 'sName': 'Abbreviation', 'mData': 'Abbreviation','bSearchable': false, 'bSortable': false },

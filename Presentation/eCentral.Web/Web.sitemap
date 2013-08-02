@@ -20,6 +20,10 @@
             </siteMapNode>
         </siteMapNode>
         <siteMapNode title="Configurations" PermissionNames="ManageMessageTemplates,ManageCountries,ManageLanguages,ManageSettings,ManageCurrencies,ManageActivityLog,ManageACL,ManageSMSProviders,ManageEmailAccounts,ManagePlugins" Icon="icomoon-icon-cog-2">
+            <siteMapNode title="Countries" PermissionNames="ManageCountries" controller="Country" action="Index" Icon="icomoon-icon-earth">
+                <siteMapNode title="Add new country" PermissionNames="ManageCountries" controller="Country" action="Create"  IsNavigation="false"/>
+                <siteMapNode title="Edit a country" PermissionNames="ManageCountries" controller="Country" action="Edit"  IsNavigation="false"/>
+            </siteMapNode>
             <siteMapNode title="Email Accounts" PermissionNames="ManageEmailAccounts" controller="EmailAccount" action="Index" icon="icomoon-icon-mail-3">
                 <siteMapNode title="Add new email account" PermissionNames="ManageEmailAccounts" controller="EmailAccount" action="Create" IsNavigation="False" />
                 <siteMapNode title="Edit email account" PermissionNames="ManageEmailAccounts" controller="EmailAccount" action="Edit" IsNavigation="False" />
@@ -28,10 +32,7 @@
             <siteMapNode title="Settings" PermissionNames="ManageSettings" controller="Setting" action="Index" Icon="icomoon-icon-cog">
                 <siteMapNode title="Advanced settings" PermissionNames="ManageSettings" controller="Setting" action="advanced" IsNavigation="False"/>
             </siteMapNode>
-            <!--
-            <siteMapNode title="Countries" siteResource="Navigation.Configuration.Countries" PermissionNames="ManageCountries" route="Country" Icon="typ-icon-globe-2">
-                <siteMapNode title="Countries Add" siteResource="Navigation.Configuration.Countries" PermissionNames="ManageCountries" route="CountryAdd" Icon="typ-icon-globe-2" IsNavigation="false"/>
-            </siteMapNode>
+            <!--            
             <siteMapNode title="Languages" siteResource="Navigation.Configuration.Languages" PermissionNames="ManageLanguages" route="Language" Icon="typ-icon-flag"/>-->
             <!--<siteMapNode title="Currencies" siteResource="Navigation.Configuration.Currencies" PermissionNames="ManageCurrencies" controller="Currency" action="List"/>-->
             <!--<siteMapNode title="EmailAccounts" siteResource="Navigation.Configuration.EmailAccounts" PermissionNames="ManageEmailAccounts" route="EmailAccount" Icon="entypo-icon-email"/>-->

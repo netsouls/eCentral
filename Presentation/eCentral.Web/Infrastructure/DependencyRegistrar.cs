@@ -13,9 +13,6 @@ namespace eCentral.Web.Infrastructure
         public virtual void Register(ContainerBuilder builder, ITypeFinder typeFinder)
         {
             //we cache presentation models between requests
-            builder.RegisterType<CountryController>()
-                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("site_cache_static"));
-
             builder.RegisterType<ClientController>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("site_cache_static"));
 
@@ -28,13 +25,10 @@ namespace eCentral.Web.Infrastructure
             builder.RegisterType<UserController>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("site_cache_static"));
 
-            builder.RegisterType<TestController>()
+            builder.RegisterType<CommonController>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("site_cache_static"));
-
-            /*builder.RegisterType<CommonController>()
+            builder.RegisterType<APIController>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("site_cache_static"));
-            builder.RegisterType<CatalogController>()
-                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("site_cache_static"));*/
         }
 
         public int Order

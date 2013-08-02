@@ -19,9 +19,9 @@ using eCentral.Web.Models.Common;
 
 namespace eCentral.Web.Controllers.Administration
 {
-    [RoleAuthorization(Role = SystemUserRoleNames.Users)]
     [RoleAuthorization(Role = SystemUserRoleNames.Administrators)]
-    public class ClientController : BaseController
+    [RoleAuthorization(Role = SystemUserRoleNames.Users)]
+    public partial class ClientController : BaseController
     {
         #region Fields
 
@@ -52,14 +52,14 @@ namespace eCentral.Web.Controllers.Administration
 
         #endregion
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageClients)]
+        [PermissionAuthorization(Permission = SystemPermissionNames.ManageClients)]        
         public ActionResult Index()
         {
             return View();
         }
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageCompanies)]
         [HttpPost]
+        [PermissionAuthorization(Permission = SystemPermissionNames.ManageClients)]
         public ActionResult List(JQueryDataTableParamModel command)
         {
             if (!Request.IsAjaxRequest())
@@ -176,6 +176,7 @@ namespace eCentral.Web.Controllers.Administration
 
         [HttpGet]
         [ValidateInput(false)]
+        [PermissionAuthorization(Permission = SystemPermissionNames.ManageClients)]
         public ActionResult CheckNameAvailability(string clientName)
         {
             var nameAvailable = false;
@@ -190,7 +191,8 @@ namespace eCentral.Web.Controllers.Administration
         }
 
         [HttpPost]
-        public ActionResult ChangeStatus ( ChangeStatusModel model )
+        [PermissionAuthorization(Permission = SystemPermissionNames.ManageClients)]
+        public ActionResult ChangeStatus(ChangeStatusModel model)
         {
             var publishingStatus = CommonHelper.To<PublishingStatus>(model.StatusId);
 

@@ -31,11 +31,6 @@ namespace eCentral.Core.Domain.Directory
         public virtual int NumericIsoCode { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether customers in this country must be charged EU VAT
-        /// </summary>
-        public virtual bool SubjectToVat { get; set; }
-
-        /// <summary>
         /// Gets or sets a value indicating whether the entity is published
         /// </summary>
         public virtual bool Published { get; set; }

@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using eCentral.Core.Domain.Media;
 using eCentral.Core.Domain.Users;
 using eCentral.Services.Media;
-using eCentral.Services.Security;
 using eCentral.Web.Framework.Controllers;
 
 namespace eCentral.Web.Controllers
@@ -14,13 +13,10 @@ namespace eCentral.Web.Controllers
     public partial class MediaController : BaseController
     {
         private readonly IFileDataService fileDataService;
-        private readonly IPermissionService permissionService;
-
-        public MediaController(IFileDataService fileDataService,
-             IPermissionService permissionService)
+        
+        public MediaController(IFileDataService fileDataService)
         {
             this.fileDataService = fileDataService;
-            this.permissionService = permissionService;
         }
 
         [HttpPost]

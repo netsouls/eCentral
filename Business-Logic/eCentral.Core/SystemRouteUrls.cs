@@ -22,9 +22,6 @@
         public static string AsyncUpload { get { return "media/asyncupload"; } }
         public static string Search { get { return "search"; } }
 
-        //some AJAX links
-        public static string GetStatesByCountry { get { return "country/statesbycountry"; } }
-
         // static
         public static string SiteClosed { get { return "site-closed"; } }
         public static string PageNotFound { get { return "page-not-found"; } }

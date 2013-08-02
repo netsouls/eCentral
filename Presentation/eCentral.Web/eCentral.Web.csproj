@@ -84,11 +84,13 @@
     <Compile Include="..\..\Items\Version.cs">
       <Link>Version.cs</Link>
     </Compile>
+    <Compile Include="Controller\APIController.cs" />
     <Compile Include="Controller\BaseController.cs" />
     <Compile Include="Controller\Administration\ClientController.cs" />
     <Compile Include="Controller\CommonController.cs" />
     <Compile Include="Controller\Administration\CompanyController.cs" />
     <Compile Include="Controller\Administration\BranchOfficeController.cs" />
+    <Compile Include="Controller\Configuration\CountryController.cs" />
     <Compile Include="Controller\Configuration\EmailAccountController.cs" />
     <Compile Include="Controller\Configuration\MessageTemplateController.cs">
       <SubType>Code</SubType>
@@ -98,7 +100,6 @@
     <Compile Include="Controller\Administration\UserController.cs" />
     <Compile Include="Controller\MediaController.cs" />
     <Compile Include="Controller\TestController.cs" />
-    <Compile Include="Controller\CountryController.cs" />
     <Compile Include="Controller\HomeController.cs" />
     <Compile Include="Controller\SecurityController.cs" />
     <Compile Include="Controller\StaticController.cs" />
@@ -131,6 +132,8 @@
     <Compile Include="Models\Common\SiteThemeSelectorModel.cs" />
     <Compile Include="Models\Companies\BranchOfficeModel.cs" />
     <Compile Include="Models\Companies\CompanyModel.cs" />
+    <Compile Include="Models\Directory\CountryModel.cs" />
+    <Compile Include="Models\Directory\StateProvinceModel.cs" />
     <Compile Include="Models\Messages\EmailAccountModel.cs" />
     <Compile Include="Models\Messages\MessageTemplateModel.cs" />
     <Compile Include="Models\Security\AccountActivationModel.cs" />
@@ -145,6 +148,8 @@
     <Compile Include="Validators\Common\AddressValidator.cs" />
     <Compile Include="Validators\Companies\BranchOfficeValidator.cs" />
     <Compile Include="Validators\Companies\CompanyValidator.cs" />
+    <Compile Include="Validators\Directory\CountryValidator.cs" />
+    <Compile Include="Validators\Directory\StateProvinceValidator.cs" />
     <Compile Include="Validators\Messages\EmailAccountValidator.cs" />
     <Compile Include="Validators\Messages\MessageTemplateValidator.cs" />
     <Compile Include="Validators\Security\AccountActivationValidator.cs" />
@@ -947,6 +952,11 @@
     <Content Include="Views\Setting\_Domain.cshtml" />
     <Content Include="Views\Setting\Advanced.cshtml" />
     <Content Include="Views\Setting\_CreateUpdate.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
+    <Content Include="Views\Country\Create.cshtml" />
+    <Content Include="Views\Country\Edit.cshtml" />
+    <Content Include="Views\Country\_CreateUpdate.cshtml" />
+    <Content Include="Views\Country\_CreateOrUpdateState.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="library\logs\error\" />

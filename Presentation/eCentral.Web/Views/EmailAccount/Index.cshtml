@@ -23,7 +23,7 @@
                             <th>
                                 Email display name
                             </th>
-                            <th id="masterCh" class="ch add-one-mini-button"><input type="checkbox" name="checkbox" value="all" class="styled" /></th>                            
+                            <th id="masterCh" class="ch add-one-mini-button"></th>                            
                         </tr>
                     </thead>
                     <tbody>
@@ -37,7 +37,7 @@
 </div>
 @section inlineScripts {
     <script type="text/javascript">
-        appEngine.util.setDataTable('myDataTable', '@Url.Action("List")',
+        appEngine.util.setDataTable('myDataTable', '@Url.Action(SystemRouteNames.List)', null,
             [
                 { 'sName': 'Email', 'mData': 'Email', 'bSortable': false },
                 { 'sName': 'DisplayName', 'mData': 'DisplayName', 'bSearchable': false, 'bSortable': false },

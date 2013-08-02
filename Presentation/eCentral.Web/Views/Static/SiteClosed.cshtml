@@ -9,19 +9,19 @@
         <h1 class="center">
             Our site is OFFLINE</h1>
     </div>
-    <h2 class="center">
-        Some big improvements be made. Please come back later!</h2>
+    <h2 class="center red">
+        Some big improvements are being made. Please come back later!</h2>
     <div class="center">
         Overall progress so far
-        <div class="progress progress-striped active">
-            <div class="bar" style="width: 34%;">
+        <div class="progress progress-striped progress-success">
+            <div class="bar">
             </div>
         </div>
     </div>
     <div class="social">
         <ul class="unstyled">
-            <li><span class="icon16 icomoon-icon-mail-2 blue"></span><a href="mailto:@siteInformationSettings.SupportEmailAddress">Keep in touch
-                with email</a></li>
+            <li><span class="icon16 icomoon-icon-mail-2 blue"></span><a href="mailto:@siteInformationSettings.SupportEmailAddress">
+                Keep in touch with email</a></li>
         </ul>
     </div>
     <div class="center">
@@ -30,3 +30,17 @@
                 class="btn"><span class="icon16 icomoon-icon-screen"></span>Dashboard</a>
     </div>
 </div>
+@section inlineScripts 
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var width = 0;
+            setInterval(function () {
+                if (width == 100)
+                    width = 0;
+                width = width + 1;;
+                $('.bar').width(width + '%');
+            }, 200);
+        });
+    </script>
+}

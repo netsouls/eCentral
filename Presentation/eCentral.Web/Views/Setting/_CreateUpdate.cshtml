@@ -22,7 +22,7 @@
                     <div class="form-row row-fluid">
                         <div class="span12">
                             <div class="row-fluid">
-                                @Html.LabelFor(m => m.Name, new { @class = "span2" })
+                                @Html.LabelFor(m => m.Name)
                             </div>
                             <div class="row-fluid">
                                 @Html.TextBoxFor(m => m.Name)
@@ -33,7 +33,7 @@
                     <div class="form-row row-fluid">
                         <div class="span12">
                             <div class="row-fluid">
-                                @Html.LabelFor(m => m.Value, new { @class = "span2" })
+                                @Html.LabelFor(m => m.Value)
                             </div>
                             <div class="row-fluid">
                                 @Html.TextBoxFor(m => m.Value)
@@ -48,8 +48,8 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="submit" class="btn btn-mini btn-info" name="save" value="save">
+        <button type="submit" class="btn btn-mini btn-success left" name="save" value="save">
             <span class="icon16 icomoon-icon-checkmark white"></span>@T("Common.Save")</button>
-        <a href="#" class="btn btn-mini" data-dismiss="modal">@T("Common.Close")</a>
+        <a href="#" class="btn btn-mini left marginL10" data-dismiss="modal">@T("Common.Close")</a>
     </div>
 }

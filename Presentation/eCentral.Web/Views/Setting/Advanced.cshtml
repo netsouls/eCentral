@@ -44,12 +44,12 @@
 
 @section inlineScripts {
     <script type="text/javascript">
-        var dataUrl = '@Url.Action("create")';
-        appEngine.util.setDataTable('myDataTable', '@Url.Action("List")',
+        var dataUrl = '@Url.Action(SystemRouteNames.Create)';
+        appEngine.util.setDataTable('myDataTable', '@Url.Action(SystemRouteNames.List)', null,
             [
                 { 'sName': 'Name', 'mData': 'Name', 'bSortable': true },
                 { 'sName': 'Value', 'mData': 'Value', 'bSearchable': true, 'bSortable': false },
-                { 'sName': 'Action', 'mData': 'RowId', 'bSearchable': false, 'bSortable': false,
+                { 'sName': 'Action', 'mData': 'RowId', 'bSearchable': false, 'bSortable': false, 'sWidth': '5%',
                     'mRender': function (dataItem) {
                         return '<div class="controls center"><a href="#" title="Edit" data-url = "' + dataUrl + '/' + dataItem + '" class="tip modal-action"><span class="icon12 icomoon-icon-pencil"></span></a></div>';
                     }
@@ -67,7 +67,6 @@
                     }    
                 }, 
                 function() {
-                    alert(dataResult.responseText);        
                 }
             );
         }

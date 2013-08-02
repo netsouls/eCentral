@@ -132,7 +132,7 @@ $.extend(appEngine, {
                 }
             });
         },
-        setDataTable: function (elementId, serviceUrl, columnStructure, bLenghtChange, bFilter, callback) {
+        setDataTable: function (elementId, serviceUrl, pushDataCallback, columnStructure, bLenghtChange, bFilter, callback) {
             $(document).ready(function () {
                 if ($('table').hasClass('dynamicTable')) {
                     var $ajaxLoader = $('<img src="' + appEngine.path.root + 'library/images/loaders/horizontal/024.gif" width="80" height="10" alt=""/>');
@@ -155,6 +155,8 @@ $.extend(appEngine, {
                         },
                         'aoColumns': columnStructure,
                         'fnServerData': function (sSource, aoData, fnCallback, oSettings) {
+                            if ($.isFunction(pushDataCallback))
+                                pushDataCallback(aoData);
                             oSettings.jqXHR = $.ajax({
                                 'dataType': 'json',
                                 'beforeSend': function () {
@@ -257,7 +259,8 @@ $.extend(appEngine, {
                     $.get($(this).attr('data-url'), function (data) {
                         $('#modal-form').html(data);
                         $('#modal-form-container').modal('show');
-                        jQuery.validator.unobtrusive.parse($('#modal-form'));
+                        //jQuery.validator.unobtrusive.parse($('#modal-form'));
+                        appEngine.util.iToggleButton('#modal-form ');
                     });
                 });
 
@@ -269,11 +272,19 @@ $.extend(appEngine, {
             var jsonData = appEngine.util.stringToJSON(dataResult.responseText);
             if (jsonData.IsValid) {
                 $('#modal-form-container').modal('hide');
+                appEngine.util.successNotification('Changes saved.');                    
                 if ($.isFunction(onSuccess))
                     onSuccess();
             }
             else {
-                $('#modal-form').html(jsonData.htmlData);
+                // show error notification
+                if (jsonData.errorMessage) {
+                    $('#modal-form-container').modal('hide');
+                    appEngine.util.errorNotification(jsonData.errorMessage);
+                }
+                else {
+                    $('#modal-form').html(jsonData.htmlData);
+                }
                 if ($.isFunction(onFailure))
                     onFailure();
             }
@@ -295,7 +306,7 @@ $.extend(appEngine, {
                 $.ajax({
                     cache: false,
                     type: "GET",
-                    url: "/country/statesbycountry",
+                    url: "/api/statesbycountry",
                     data: { "countryId": e.val, "addEmptyStateIfRequired": "true" },
                     success: function (data) {
                         $states.html('<option></option>');
@@ -307,6 +318,21 @@ $.extend(appEngine, {
                         $states.select2({ placeholder: appEngine.i18n.Address_SelectState, allowClear: true });
                     }
                 });
+            });
+        },
+        iToggleButton: function (parentElement) {
+            $(parentElement + '.iToggle-button').toggleButtons({
+                onChange: function (el, status, e) {
+                    if (parentElement == '')
+                        $('#' + $(el).parent().parent().find('input:checkbox').attr('data-element')).val(status);
+                    else
+                        $(parentElement + '#' + $(parentElement).find(el).find('input').attr('data-element')).val(status);
+                },
+                width: 70,
+                label: {
+                    enabled: "<span class='icon16 icomoon-icon-checkmark white'></span>",
+                    disabled: "<span class='icon16 icomoon-icon-close white marginL10'></span>"
+                }
             });
         },
         setNotification: function (message, icons, notificationType, title) {
@@ -665,16 +691,17 @@ $(document).ready(function () {
             enabled: "Yes", disabled: "No"
         }
     });
-    $('.iToggle-button').toggleButtons({
-        onChange: function (el, status, e) {
-            $('#' + el.find('input:checkbox').attr('data-element')).val(status);
-        },
-        width: 70,
-        label: {
-            enabled: "<span class='icon16 icomoon-icon-checkmark white'></span>",
-            disabled: "<span class='icon16 icomoon-icon-close white marginL10'></span>"
-        }
-    });
+    appEngine.util.iToggleButton('');
+    /*$('.iToggle-button').toggleButtons({
+    onChange: function (el, status, e) {
+    $('#' + el.find('input:checkbox').attr('data-element')).val(status);
+    },
+    width: 70,
+    label: {
+    enabled: "<span class='icon16 icomoon-icon-checkmark white'></span>",
+    disabled: "<span class='icon16 icomoon-icon-close white marginL10'></span>"
+    }
+    });*/
     //------------- To top plugin  -------------//
     $().UItoTop({ easingType: 'easeOutQuart' });
 

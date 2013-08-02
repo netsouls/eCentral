@@ -18,7 +18,6 @@ using eCentral.Web.Models.Users;
 
 namespace eCentral.Web.Controllers.Administration
 {
-    [RoleAuthorization(Role = SystemUserRoleNames.Users)]
     [RoleAuthorization(Role = SystemUserRoleNames.Administrators)]
     public class UserController : BaseController
     {
@@ -60,8 +59,8 @@ namespace eCentral.Web.Controllers.Administration
             return View();
         }
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageUsers)]
         [HttpPost]
+        [PermissionAuthorization(Permission = SystemPermissionNames.ManageUsers)]
         public ActionResult List(JQueryDataTableParamModel command)
         {
             if (!Request.IsAjaxRequest())
@@ -180,6 +179,7 @@ namespace eCentral.Web.Controllers.Administration
 
         [HttpGet]
         [ValidateInput(false)]
+        [PermissionAuthorization(Permission = SystemPermissionNames.ManageUsers)]
         public ActionResult CheckNameAvailability(string userName)
         {
             var nameAvailable = false;
@@ -194,7 +194,8 @@ namespace eCentral.Web.Controllers.Administration
         }
 
         [HttpPost]
-        public ActionResult ChangeStatus ( ChangeStatusModel model )
+        [PermissionAuthorization(Permission = SystemPermissionNames.ManageUsers)]
+        public ActionResult ChangeStatus(ChangeStatusModel model)
         {
             var publishingStatus = CommonHelper.To<PublishingStatus>(model.StatusId);
 

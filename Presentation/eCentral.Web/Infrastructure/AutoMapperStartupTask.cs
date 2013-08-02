@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using eCentral.Core.Domain.Messages;
 using eCentral.Core.Infrastructure;
+using eCentral.Core.Domain.Directory;
+using eCentral.Web.Models.Directory;
 using eCentral.Web.Models.Messages;
 
 namespace eCentral.Web.Infrastructure
@@ -21,7 +23,19 @@ namespace eCentral.Web.Infrastructure
                 .ForMember(dest => dest.AllowedTokens, mo => mo.Ignore())
                 .ForMember(dest => dest.AvailableEmailAccounts, mo => mo.Ignore());
             Mapper.CreateMap<MessageTemplateModel, MessageTemplate>();
-            
+
+            //countries
+            Mapper.CreateMap<CountryModel, Country>()
+                .ForMember(dest => dest.StateProvinces, mo => mo.Ignore());
+            Mapper.CreateMap<Country, CountryModel>()
+                .ForMember(dest => dest.NumberOfStates, mo => mo.MapFrom(src => src.StateProvinces != null ? src.StateProvinces.Count : 0));
+
+            //state/provinces
+            Mapper.CreateMap<StateProvince, StateProvinceModel>()
+                .ForMember(dest => dest.DisplayOrder, mo => mo.MapFrom(src => src.DisplayOrder));
+            Mapper.CreateMap<StateProvinceModel, StateProvince>()
+                .ForMember(dest => dest.Abbreviation, mo => mo.NullSubstitute(string.Empty))
+                .ForMember(dest => dest.Country, mo => mo.Ignore());
             /*
             //locale resource
             Mapper.CreateMap<LocaleStringResource, LanguageResourceModel>()
@@ -61,21 +75,7 @@ namespace eCentral.Web.Infrastructure
                 .ForMember(dest => dest.SentOn, mo => mo.Ignore())
                 .ForMember(dest => dest.EmailAccount, mo => mo.Ignore())
                 .ForMember(dest => dest.EmailAccountId, mo => mo.Ignore());
-
-            //countries
-            Mapper.CreateMap<CountryModel, Country>()
-                .ForMember(dest => dest.StateProvinces, mo => mo.Ignore());
-            Mapper.CreateMap<Country, CountryModel>()
-                .ForMember(dest => dest.NumberOfStates, mo => mo.MapFrom(src => src.StateProvinces != null ? src.StateProvinces.Count : 0))
-                .ForMember(dest => dest.Locales, mo => mo.Ignore());
-            //state/provinces
-            Mapper.CreateMap<StateProvince, StateProvinceModel>()
-                .ForMember(dest => dest.DisplayOrder1, mo => mo.MapFrom(src => src.DisplayOrder))
-                .ForMember(dest => dest.Locales, mo => mo.Ignore());
-            Mapper.CreateMap<StateProvinceModel, StateProvince>()
-                .ForMember(dest => dest.DisplayOrder, mo => mo.MapFrom(src => src.DisplayOrder1))
-                .ForMember(dest => dest.Country, mo => mo.Ignore());
-
+            
             //look up codes
             Mapper.CreateMap<LookUpCodeModel, LookUpCode>();
             Mapper.CreateMap<LookUpCode, LookUpCodeModel>()

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using eCentral.Core.Infrastructure;
-using eCentral.Core.Domain.Logging;
 using System.Runtime.InteropServices;
 using System.Web.Mvc;
 using eCentral.Core;
 using eCentral.Core.Caching;
+using eCentral.Core.Domain.Logging;
 using eCentral.Core.Domain.Security;
 using eCentral.Core.Domain.Users;
 using eCentral.Services.Localization;
@@ -95,7 +94,6 @@ namespace eCentral.Web.Controllers
         [PermissionAuthorization(Permission = SystemPermissionNames.ManageMaintenance)]
         public ActionResult ReinstallPermissions()
         {
-            var permissionService = EngineContext.Current.Resolve<IPermissionService>();
             var permissionProviders = new List<Type>();
             permissionProviders.Add(typeof(StandardPermissionProvider));
 

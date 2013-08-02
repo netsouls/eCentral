@@ -8,7 +8,6 @@ using eCentral.Core.Domain.Security;
 using eCentral.Core.Domain.Users;
 using eCentral.Services.Localization;
 using eCentral.Services.Messages;
-using eCentral.Services.Security;
 using eCentral.Web.Extensions;
 using eCentral.Web.Framework;
 using eCentral.Web.Framework.Controllers;
@@ -17,6 +16,7 @@ using eCentral.Web.Models.Messages;
 namespace eCentral.Web.Controllers.Configuration
 {
     [RoleAuthorization(Role = SystemUserRoleNames.Administrators)]
+    [PermissionAuthorization(Permission = SystemPermissionNames.ManageMessageTemplates)]
     public class MessageTemplateController : BaseController
     {
         #region Fields
@@ -27,7 +27,6 @@ namespace eCentral.Web.Controllers.Configuration
         private readonly ILocalizedEntityService localizedEntityService;
         private readonly ILocalizationService localizationService;
         private readonly IMessageTokenProvider messageTokenProvider;
-        private readonly IPermissionService permissionService;
         private readonly EmailAccountSettings emailAccountSettings;
 
         #endregion Fields
@@ -38,7 +37,7 @@ namespace eCentral.Web.Controllers.Configuration
             IEmailAccountService emailAccountService, ILanguageService languageService, 
             ILocalizedEntityService localizedEntityService,
             ILocalizationService localizationService, IMessageTokenProvider messageTokenProvider, 
-            IPermissionService permissionService, EmailAccountSettings emailAccountSettings)
+            EmailAccountSettings emailAccountSettings)
         {
             this.messageTemplateService = messageTemplateService;
             this.emailAccountService = emailAccountService;
@@ -46,7 +45,6 @@ namespace eCentral.Web.Controllers.Configuration
             this.localizedEntityService = localizedEntityService;
             this.localizationService = localizationService;
             this.messageTokenProvider = messageTokenProvider;
-            this.permissionService = permissionService;
             this.emailAccountSettings = emailAccountSettings;
         }
 
@@ -72,13 +70,11 @@ namespace eCentral.Web.Controllers.Configuration
         
         #region Methods
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageMessageTemplates)]
         public ActionResult Index()
         {
             return View();
         }
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageMessageTemplates)]
         [HttpPost]
         public ActionResult List()
         {
@@ -91,7 +87,6 @@ namespace eCentral.Web.Controllers.Configuration
             return Json(new DataTablesParser<MessageTemplateModel>(Request, messageTemplates).Parse());
         }
         
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageMessageTemplates)]
         public ActionResult Edit(Guid rowId)
         {
             var messageTemplate = messageTemplateService.GetById(rowId);
@@ -110,7 +105,6 @@ namespace eCentral.Web.Controllers.Configuration
         }
 
         [HttpPost]
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageMessageTemplates)]
         public ActionResult Edit(MessageTemplateModel model)
         {
             var messageTemplate = messageTemplateService.GetById(model.RowId);

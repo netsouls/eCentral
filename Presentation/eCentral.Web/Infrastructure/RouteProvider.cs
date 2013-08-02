@@ -22,7 +22,7 @@ namespace eCentral.Web.Infrastructure
                 "Configuration", // Route name
                 "configuration/{controller}/{action}/{rowId}", // Route Pattern
                 new { controller = "Home", action = "Index", rowId = UrlParameter.Optional }, // Default values for parameters
-                new { controller = @"(EmailAccount|MessageTemplate|Setting)" }); //Restriction for controller and action
+                new { controller = @"(EmailAccount|MessageTemplate|Setting|Country)" }); //Restriction for controller and action
 
             routes.MapRoute(
                 "Administration", // Route name
@@ -33,7 +33,7 @@ namespace eCentral.Web.Infrastructure
             routes.MapRoute(
                 "SystemInfo", // Route name
                 "system-info/{action}/{rowId}", // Route Pattern
-                new { controller = "System", action = "Index", rowId = UrlParameter.Optional }); //Restriction for controller and action
+                new { controller = @"System", action = "Index", rowId = UrlParameter.Optional }); //Restriction for controller and action
 
             #endregion
 
@@ -69,12 +69,6 @@ namespace eCentral.Web.Infrastructure
                 SystemRouteUrls.ChangePassword,
                 new { controller = "Security", action = "ChangePassword" },
                 new[] { "eCentral.Web.Controllers" });*/
-
-            //some AJAX links
-            routes.MapRoute(SystemRouteNames.GetStatesByCountry,
-                SystemRouteUrls.GetStatesByCountry,
-                new { controller = "Country", action = "GetStatesByCountryId" },
-                new[] { "Nop.Web.Controllers" });
 
             //upload image
             routes.MapRoute(SystemRouteNames.AsyncUpload, 
@@ -112,7 +106,7 @@ namespace eCentral.Web.Infrastructure
                 "Default", // Route name
                 "{controller}/{action}/{rowId}", // URL with parameters
                 new { controller = "Home", action = "Index", area = "", rowId = UrlParameter.Optional },
-                new { controller = @"(Common|Widget)" }); //Restriction for controller and action
+                new { controller = @"(Common|Widget|API)" }); //Restriction for controller and action
         }
 
         public int Priority

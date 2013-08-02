@@ -1,4 +1,5 @@
 ﻿using System;
+using eCentral.Core;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -19,11 +20,13 @@ namespace eCentral.Web.Framework.Controllers
         private void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             // redirect the user to the access denied page
-            filterContext.Result = new RedirectToRouteResult(
-                new RouteValueDictionary
-                {
-                    {"controller", "Security"}, { "action", "AccessDenied"}, {"area", ""},  {"ReturnUrl", filterContext.HttpContext.Request.RawUrl}
-                });
+            var routeValueDictionary = new RouteValueDictionary();
+
+            // add the return url if not the default page
+            routeValueDictionary.Add("returnUrl", filterContext.HttpContext.Request.RawUrl);
+
+            // redirect the user to the login page
+            filterContext.Result = new RedirectToRouteResult(SystemRouteNames.AccessDenied, routeValueDictionary);
         }
 
         private IEnumerable<PermissionAuthorizationAttribute> GetPermissionAuthorizationAttributes(ActionDescriptor descriptor)

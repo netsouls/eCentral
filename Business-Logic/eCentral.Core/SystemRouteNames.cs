@@ -8,12 +8,12 @@
         public static string HomePage { get { return "HomePage"; } }
 
         // standard
-        public static string Create { get { return "Create"; } }
-        public static string Index { get { return "Index"; } }
-        public static string List { get { return "List"; } }
-        public static string Edit { get { return "Edit"; } }
-        public static string ChangeStatus { get { return "ChangeStatus"; } }
-        public static string View { get { return "View"; } }
+        public static string Create { get { return "create"; } }
+        public static string Index { get { return "index"; } }
+        public static string List { get { return "list"; } }
+        public static string Edit { get { return "edit"; } }
+        public static string ChangeStatus { get { return "changestatus"; } }
+        public static string View { get { return "view"; } }
 
         //login and user security
         public static string Login { get { return "Login"; } }
@@ -28,9 +28,6 @@
         // miscellaneous
         public static string AsyncUpload { get { return "AsyncUpload"; } }
         public static string Search { get { return "Search"; } }
-
-        //some AJAX links
-        public static string GetStatesByCountry { get { return "GetStatesByCountry"; }}
 
         // static
         public static string SiteClosed { get { return "SiteClosed"; } }

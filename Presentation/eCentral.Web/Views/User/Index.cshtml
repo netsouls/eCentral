@@ -52,7 +52,7 @@
 </div>
 @section inlineScripts {
     <script type="text/javascript">
-        appEngine.util.setDataTable('myDataTable', '@Url.Action("List")',
+        appEngine.util.setDataTable('myDataTable', '@Url.Action(SystemRouteNames.List)', null,
             [
                 { 'sName': 'UserName', 'mData': 'Username' },
                 { 'sName': 'ContactName', 'mData': 'FirstName',

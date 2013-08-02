@@ -55,7 +55,7 @@
 </div>
 @section inlineScripts {
     <script type="text/javascript">
-        appEngine.util.setDataTable('myDataTable', '@Url.Action("List")',
+        appEngine.util.setDataTable('myDataTable', '@Url.Action(SystemRouteNames.List)', null,
             [
                 { 'sName': 'BranchName', 'mData': 'BranchName'},
                 { 'sName': 'Abbreviation', 'mData': 'Abbreviation' },

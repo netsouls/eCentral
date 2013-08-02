@@ -6,11 +6,11 @@ using eCentral.Core;
 using eCentral.Core.Domain;
 using eCentral.Core.Domain.Messages;
 using eCentral.Core.Domain.Security;
+using eCentral.Core.Domain.Users;
 using eCentral.Core.Infrastructure;
 using eCentral.Services.Configuration;
 using eCentral.Services.Localization;
 using eCentral.Services.Messages;
-using eCentral.Services.Security;
 using eCentral.Services.Security.Cryptography;
 using eCentral.Web.Extensions;
 using eCentral.Web.Framework;
@@ -19,7 +19,9 @@ using eCentral.Web.Models.Messages;
 
 namespace eCentral.Web.Controllers.Configuration
 {
-	public class EmailAccountController : BaseController
+    [RoleAuthorization(Role = SystemUserRoleNames.Administrators)]
+    [PermissionAuthorization(Permission = SystemPermissionNames.ManageEmailAccounts)]
+    public class EmailAccountController : BaseController
 	{
         private readonly IEmailAccountService emailAccountService;
         private readonly ILocalizationService localizationService;
@@ -27,15 +29,13 @@ namespace eCentral.Web.Controllers.Configuration
         private readonly IEmailSender emailSender;
         private readonly EmailAccountSettings emailAccountSettings;
         private readonly SiteInformationSettings siteSettings;
-        private readonly IPermissionService permissionService;
-
+        
         #region Ctor
 
         public EmailAccountController(IEmailAccountService emailAccountService,
             ILocalizationService localizationService, ISettingService settingService, 
             IEmailSender emailSender, 
-            EmailAccountSettings emailAccountSettings, SiteInformationSettings siteSettings,
-            IPermissionService permissionService)
+            EmailAccountSettings emailAccountSettings, SiteInformationSettings siteSettings)
 		{
             this.emailAccountService = emailAccountService;
             this.localizationService = localizationService;
@@ -43,14 +43,12 @@ namespace eCentral.Web.Controllers.Configuration
             this.emailSender = emailSender;
             this.settingService = settingService;
             this.siteSettings = siteSettings;
-            this.permissionService = permissionService;
 		}
 
         #endregion
 
         #region Methods 
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageEmailAccounts)]
         public ActionResult Index()
         {
             //mark as default email account (if selected)
@@ -68,7 +66,6 @@ namespace eCentral.Web.Controllers.Configuration
             return View();
         }
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageEmailAccounts)]
         [HttpPost]
         public ActionResult List()
         {
@@ -81,7 +78,6 @@ namespace eCentral.Web.Controllers.Configuration
             return Json(new DataTablesParser<EmailAccountModel>(Request, emailAccounts).Parse());
         }
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageEmailAccounts)]
         public ActionResult Create()
         {
             var model = new EmailAccountModel();
@@ -91,7 +87,6 @@ namespace eCentral.Web.Controllers.Configuration
         }
 
         [HttpPost]
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageEmailAccounts)]
         public ActionResult Create(EmailAccountModel model)
         {
             if (ModelState.IsValid)
@@ -112,7 +107,6 @@ namespace eCentral.Web.Controllers.Configuration
             return View(model);
         }
 
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageEmailAccounts)]
         public ActionResult Edit(Guid rowId)
         {
             var emailAccount = emailAccountService.GetById(rowId);
@@ -132,7 +126,6 @@ namespace eCentral.Web.Controllers.Configuration
 
         [HttpPost]
         [FormValueRequired("save")]
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageEmailAccounts)]
         public ActionResult Edit(EmailAccountModel model)
         {
             var emailAccount = emailAccountService.GetById(model.RowId);
@@ -160,7 +153,6 @@ namespace eCentral.Web.Controllers.Configuration
         
         [HttpPost, ActionName("Edit")]
         [FormValueRequired("sendtestemail")]
-        [PermissionAuthorization(Permission = SystemPermissionNames.ManageEmailAccounts)]
         public ActionResult SendTestEmail(EmailAccountModel model)
         {
             var emailAccount = emailAccountService.GetById(model.RowId);

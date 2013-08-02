@@ -76,9 +76,9 @@
       <Link>Version.cs</Link>
     </Compile>
     <Compile Include="CompressAttribute.cs" />
-    <Compile Include="Controllers\FormValueExistsAttribute.cs" />
     <Compile Include="Controllers\FormValueRequiredAttribute.cs" />
     <Compile Include="Controllers\HandleErrorWithELMAHAttribute.cs" />
+    <Compile Include="Controllers\ParameterBasedOnFormNameAttribute.cs" />
     <Compile Include="Controllers\PermissionAuthorizationAttribute.cs" />
     <Compile Include="Controllers\RoleAuthorizationAttribute.cs" />
     <Compile Include="Controllers\SiteController.cs" />

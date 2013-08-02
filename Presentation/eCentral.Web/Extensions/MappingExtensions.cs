@@ -1,17 +1,18 @@
 ﻿using AutoMapper;
-using eCentral.Web.Models.Messages;
-using eCentral.Core.Domain.Messages;
 using eCentral.Core.Domain.Clients;
 using eCentral.Core.Domain.Common;
 using eCentral.Core.Domain.Companies;
 using eCentral.Core.Domain.Directory;
 using eCentral.Core.Domain.Localization;
+using eCentral.Core.Domain.Messages;
 using eCentral.Core.Infrastructure;
 using eCentral.Services.Directory;
 using eCentral.Services.Localization;
 using eCentral.Web.Models.Clients;
 using eCentral.Web.Models.Common;
 using eCentral.Web.Models.Companies;
+using eCentral.Web.Models.Directory;
+using eCentral.Web.Models.Messages;
 
 namespace eCentral.Web.Extensions
 {
@@ -170,6 +171,41 @@ namespace eCentral.Web.Extensions
         {
             return Mapper.Map(model, destination);
         }
+
+        #endregion
+
+        #region Countries / states
+
+        public static CountryModel ToModel(this Country entity)
+        {
+            return Mapper.Map<Country, CountryModel>(entity);
+        }
+
+        public static Country ToEntity(this CountryModel model)
+        {
+            return Mapper.Map<CountryModel, Country>(model);
+        }
+
+        public static Country ToEntity(this CountryModel model, Country destination)
+        {
+            return Mapper.Map(model, destination);
+        }
+
+        public static StateProvinceModel ToModel(this StateProvince entity)
+        {
+            return Mapper.Map<StateProvince, StateProvinceModel>(entity);
+        }
+
+        public static StateProvince ToEntity(this StateProvinceModel model)
+        {
+            return Mapper.Map<StateProvinceModel, StateProvince>(model);
+        }
+
+        public static StateProvince ToEntity(this StateProvinceModel model, StateProvince destination)
+        {
+            return Mapper.Map(model, destination);
+        }
+
 
         #endregion
     }
