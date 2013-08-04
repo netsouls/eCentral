@@ -1,0 +1,55 @@
+﻿@model ActivityLogSearchModel
+<div class="box hover">
+    <div class="title">
+        <h4 class="clearfix">
+            <span class="left"><span class="icon16 icomoon-icon-zoom-in-2"></span></span>
+            <div class="right">
+                <button class="btn btn-mini btn-primary tip modal-action" title="Add new activity type" data-url="@Url.Action("createactivitylogtype")">
+                    <span class="icon8 icomoon-icon-plus white"></span>Add New</button>
+                <button type="button" id="search-filter-clear" class="btn btn-mini btn-inverse">
+                    Clear <span class="icon8  icomoon-icon-undo-2 white"></span>
+                </button>
+                <button type="button" id="search-filter" class="btn btn-mini btn-warning marginR40">
+                    Search <span class="icon8 icomoon-icon-arrow-right-4 white"></span>
+                </button>
+            </div>
+        </h4>
+        <a href="#" class="minimize">Minimize</a>
+    </div>
+    <div class="content ">
+        <div class="row-fluid">
+            <div class="span6">
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        @Html.LabelFor(m => m.CreatedOnFrom, new { @class = "span4" })
+                        @Html.TextBoxFor(m => m.CreatedOnFrom, new { @class = "span8 datepicker" })
+                    </div>
+                </div>
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        @Html.LabelFor(m => m.CreatedOnTo, new { @class = "span4" })
+                        @Html.TextBoxFor(m => m.CreatedOnTo, new { @class = "span8 datepicker" })
+                    </div>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        @Html.LabelFor(m => m.ActivityLogTypeId, new { @class = "span4" })
+                        <div class="span7 controls">
+                            @Html.DropDownListFor(m => m.ActivityLogTypeId, Model.ActivityLogType)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        @Html.LabelFor(m => m.UserId, new { @class = "span4" })
+                        <div class="span7 controls">
+                            @Html.DropDownListFor(m => m.UserId, Model.Users)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
