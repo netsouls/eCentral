@@ -47,7 +47,12 @@ namespace eCentral.Web.Controllers
         [PermissionAuthorization(Permission = SystemPermissionNames.ManageMaintenance)]
         public ActionResult Index()
         {
-            return RedirectToAction("Info");
+            return RedirectToAction("Logs");
+        }
+
+        public ActionResult Logs()
+        {
+            return View("");
         }
 
         [PermissionAuthorization(Permission = SystemPermissionNames.ManageMaintenance)]

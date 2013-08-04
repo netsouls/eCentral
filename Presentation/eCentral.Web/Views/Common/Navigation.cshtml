@@ -15,15 +15,15 @@
 }
 <div class="shortcuts">
     <ul>
-        <li><a href="#" title="Add a new job" class="tip"><span class="icon24 icomoon-icon-pencil">
+        <li><a href="#" title="Add a new job" class="tip"><span class="icon24 icomoon-icon-pencil green">
         </span></a></li>
         <li><a href="@Url.Action(SystemRouteNames.Create, "Client")" title="Add a new client" class="tip">
-            <span class="icon24 entypo-icon-users"></span></a></li>
-        <li><a href="#" title="View reports" class="tip"><span class="icon24 iconic-icon-chart">
+            <span class="icon24 entypo-icon-users orange"></span></a></li>
+        <li><a href="#" title="View reports" class="tip"><span class="icon24 iconic-icon-chart red">
         </span></a></li>
         @if (WorkContext.IsAdministrator)
         {
-            <li><a href="#" title="Database backup" class="tip"><span class="icon24 icomoon-icon-database">
+            <li><a href="#" title="Database backup" class="tip"><span class="icon24 icomoon-icon-database blue">
             </span></a></li>
         }
     </ul>

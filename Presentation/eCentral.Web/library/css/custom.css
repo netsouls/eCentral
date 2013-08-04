@@ -27,7 +27,6 @@ span.field-validation-error {
 }
 
 .navbar .brand .short {display:none;} /*remove the short slogan iin all devices*/ 
-.collapseBtn.leftbar.top {left: 400px;} /* hide navigation button*/
 @media only screen and (max-width: 600px) {
 	.navbar .brand .slogan {display:none;} /*remove the slogan in smaller devices*/
 	.navbar .brand .short {display:inline-block;} /*show the short slogan in smaller devices*/
@@ -53,3 +52,11 @@ table.display tr.even.row_selected td, table.display tr.odd.row_selected td {
 
 .loginContainer .page-header { margin:0px;}
 #search-filter-clear { display:none; } /* for hiding the search filter clear button*/ 
+.nav-tabs li.active span  
+{
+    color:#9FC569;
+}
+.mainnav ul.expand a.current span 
+{
+    color:#ED7A53;
+}

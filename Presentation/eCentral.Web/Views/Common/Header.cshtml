@@ -4,11 +4,11 @@
     <ul class="nav">
         <li @if (Model.DashboardActive)
             {<text>class="active"</text>}><a href="@Url.RouteUrl(SystemRouteNames.HomePage)"><span
-                class="icon16 icomoon-icon-screen-2"></span><span class="txt">Dashboard</span></a></li>
+                class="icon16 icomoon-icon-screen-2 @if (Model.DashboardActive){<text>red</text>} else {<text>blue</text>}"></span><span class="txt">Dashboard</span></a></li>
         @if (WorkContext.IsAdministrator)
         { 
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                class="icon16 icomoon-icon-cog"></span><span class="txt">Settings</span> <b class="caret">
+                class="icon16 icomoon-icon-cog green"></span><span class="txt">Settings</span> <b class="caret">
                 </b></a>
                 <ul class="dropdown-menu">
                     <li class="menu">
@@ -25,7 +25,7 @@
     </ul>
     <ul class="nav pull-right usernav">
         <li class="dropdown"><a href="mailto:@Model.SupportEmailAddress" ><span
-            class="icon16 entypo-icon-help-2"></span></a>
+            class="icon16 entypo-icon-help-2 dark"></span></a>
         </li>
         <li class="dropdown"><a href="#" class="dropdown-toggle avatar" data-toggle="dropdown">
             @Html.Raw(Html.Gravatar(WorkContext.CurrentUser.Username, size: Model.GravtarSize, htmlAttributes: new { @class = "image" }))
@@ -41,7 +41,7 @@
                 </li>
             </ul>
         </li>
-        <li><a href="@Url.RouteUrl(SystemRouteNames.Logout)"><span class="icon16 icomoon-icon-exit"></span><span class="txt">
+        <li><a href="@Url.RouteUrl(SystemRouteNames.Logout)"><span class="icon16 icomoon-icon-exit gray"></span><span class="txt">
             Logout</span></a></li>
     </ul>
 </div>

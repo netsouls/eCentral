@@ -10,13 +10,18 @@
 <div class="row-fluid">
     <div class="span12">
         @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
-        { 
+        {   
             <ul id="myTab" class="nav nav-tabs pattern">
-                <li class="active"><a href="#site" data-toggle="tab">Site information setting</a></li>
-                <li><a href="#domain" data-toggle="tab">Domain setting</a></li>
-                <li><a href="#security" data-toggle="tab">Security settings</a></li>
-                <li><a href="#seo" data-toggle="tab">SEO settings</a></li>
-                <li><a href="@Url.Action("advanced")">All settings (Advanced)</a></li>
+                <li class="active"><a href="#site" data-toggle="tab"><span class="icon16 icomoon-icon-file-4 gray">
+                    Site information setting</a></li>
+                <li><a href="#domain" data-toggle="tab"><span class="icon16 icomoon-icon-earth gray">
+                    Domain setting</a></li>
+                <li><a href="#security" data-toggle="tab"><span class="icon16  icomoon-icon-key-2 gray">
+                    Security settings</a></li>
+                <li><a href="#seo" data-toggle="tab"><span class="icon16 icomoon-icon-bookmarks gray"> SEO
+                    settings</a></li>
+                <li><a href="@Url.Action("advanced")"><span class="icon16 icomoon-icon-tags gray">
+                    All settings (Advanced)</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="site">

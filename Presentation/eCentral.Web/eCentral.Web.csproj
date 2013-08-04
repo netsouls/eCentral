@@ -967,6 +967,7 @@
     <Content Include="Views\AuditHistory\Index.cshtml" />
     <Content Include="Views\AuditHistory\_AuditSearch.cshtml" />
     <Content Include="Views\AuditHistory\_CreateActivityLogType.cshtml" />
+    <Content Include="Views\System\Logs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="library\logs\error\" />
