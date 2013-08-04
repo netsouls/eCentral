@@ -23,6 +23,8 @@ namespace eCentral.Services.Companies
         private const string BRANCHOFFICE_BY_ID_KEY = "eCentral.branchoffice.id-{0}";
         private const string BRANCHOFFICE_PATTERN_KEY = "eCentral.branchoffice.";
 
+        private const string USER_ACTIVITY_COMMENT = "Office:[{0}]";
+
         #endregion
 
         #region Fields
@@ -118,7 +120,7 @@ namespace eCentral.Services.Companies
             branchOffice.AuditHistory.Add
              (
                 userActivityService.InsertActivity( SystemActivityLogTypeNames.Add, 
-                    branchOffice.ToString(), string.Empty)
+                    branchOffice.ToString(), USER_ACTIVITY_COMMENT, branchOffice.BranchName)
              );
 
             this.dataRepository.Insert(branchOffice);
@@ -141,7 +143,7 @@ namespace eCentral.Services.Companies
             branchOffice.AuditHistory.Add
              (
                 userActivityService.InsertActivity(SystemActivityLogTypeNames.Update,
-                    branchOffice.ToString(), string.Empty)
+                    branchOffice.ToString(), USER_ACTIVITY_COMMENT, branchOffice.BranchName)
              );
 
             this.dataRepository.Update(branchOffice);
@@ -173,7 +175,7 @@ namespace eCentral.Services.Companies
                 branchOffice.AuditHistory.Add
                 (
                     userActivityService.InsertActivity(SystemActivityLogTypeNames.ChangePublishingStatus,
-                        publishingStatus.ToString(), string.Empty)
+                        publishingStatus.GetFriendlyName(), USER_ACTIVITY_COMMENT, branchOffice.BranchName)
                 );
 
                 this.dataRepository.Update(branchOffice);

@@ -25,6 +25,9 @@ namespace eCentral.Web.Infrastructure
             builder.RegisterType<UserController>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("site_cache_static"));
 
+            builder.RegisterType<AuditHistoryController>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("site_cache_static"));
+
             builder.RegisterType<CommonController>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("site_cache_static"));
             builder.RegisterType<APIController>()

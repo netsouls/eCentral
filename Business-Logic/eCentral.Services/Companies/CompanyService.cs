@@ -23,6 +23,8 @@ namespace eCentral.Services.Companies
         private const string COMPANY_BY_ID_KEY = "eCentral.company.id-{0}";
         private const string COMPANY_PATTERN_KEY = "eCentral.company.";
 
+        private const string USER_ACTIVITY_COMMENT = "Company:[{0}]";
+
         #endregion
 
         #region Fields
@@ -117,7 +119,7 @@ namespace eCentral.Services.Companies
             company.AuditHistory.Add
              (
                 userActivityService.InsertActivity( SystemActivityLogTypeNames.Add,
-                    company.ToString(), string.Empty)
+                    company.ToString(), USER_ACTIVITY_COMMENT, company.CompanyName)
              );
 
             this.companyRepository.Insert(company);
@@ -140,7 +142,7 @@ namespace eCentral.Services.Companies
             company.AuditHistory.Add
              (
                 userActivityService.InsertActivity(SystemActivityLogTypeNames.Update,
-                    company.ToString(), string.Empty)
+                    company.ToString(), USER_ACTIVITY_COMMENT, company.CompanyName)
              );
 
             this.companyRepository.Update(company);

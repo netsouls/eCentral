@@ -101,6 +101,15 @@ namespace eCentral.Web.Infrastructure.Cache
         public const string CLIENT_PATTERN_KEY = "ecentral.web.client-";
 
         /// <summary>
+        /// Key for audit history
+        /// </summary>
+        /// <remarks>
+        /// {0} : Filter values
+        /// </remarks>
+        public const string AUDITHISTORY_MODEL_KEY = "ecentral.web.audithistory-{0}";
+        public const string AUDITHISTORY_PATTERN_KEY = "ecentral.web.audithistory-";
+
+        /// <summary>
         /// Key for users
         /// </summary>
         /// <remarks>
@@ -224,6 +233,7 @@ namespace eCentral.Web.Infrastructure.Cache
             cacheManager.RemoveByPattern(CLIENT_PATTERN_KEY);
             cacheManager.RemoveByPattern(OFFICE_PATTERN_KEY);
             cacheManager.RemoveByPattern(USERS_PATTERN_KEY);
+            cacheManager.RemoveByPattern(AUDITHISTORY_PATTERN_KEY);
         }
     }
 }

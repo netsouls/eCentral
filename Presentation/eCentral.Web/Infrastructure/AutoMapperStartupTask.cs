@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using eCentral.Core.Domain.Directory;
+using eCentral.Core.Domain.Logging;
 using eCentral.Core.Domain.Messages;
 using eCentral.Core.Infrastructure;
-using eCentral.Core.Domain.Directory;
 using eCentral.Web.Models.Directory;
+using eCentral.Web.Models.Logging;
 using eCentral.Web.Models.Messages;
 
 namespace eCentral.Web.Infrastructure
@@ -36,17 +38,7 @@ namespace eCentral.Web.Infrastructure
             Mapper.CreateMap<StateProvinceModel, StateProvince>()
                 .ForMember(dest => dest.Abbreviation, mo => mo.NullSubstitute(string.Empty))
                 .ForMember(dest => dest.Country, mo => mo.Ignore());
-            /*
-            //locale resource
-            Mapper.CreateMap<LocaleStringResource, LanguageResourceModel>()
-                .ForMember(dest => dest.Name, mo => mo.MapFrom(src => src.ResourceName))
-                .ForMember(dest => dest.Value, mo => mo.MapFrom(src => src.ResourceValue))
-                .ForMember(dest => dest.LanguageName, mo => mo.MapFrom(src => src.Language != null ? src.Language.Name : string.Empty));
-            Mapper.CreateMap<LanguageResourceModel, LocaleStringResource>()
-                .ForMember(dest => dest.ResourceName, mo => mo.MapFrom(src => src.Name))
-                .ForMember(dest => dest.ResourceValue, mo => mo.MapFrom(src => src.Value))
-                .ForMember(dest => dest.Language, mo => mo.Ignore());
-             
+
             //logs
             Mapper.CreateMap<Log, LogModel>()
                 .ForMember(dest => dest.UserName, mo => mo.Ignore())
@@ -64,7 +56,17 @@ namespace eCentral.Web.Infrastructure
                 .ForMember(dest => dest.ActivityLogTypeName, mo => mo.MapFrom(src => src.ActivityLogType.Name))
                 .ForMember(dest => dest.UserName, mo => mo.MapFrom(src => src.User.Username))
                 .ForMember(dest => dest.CreatedOn, mo => mo.Ignore());
-
+            /*
+            //locale resource
+            Mapper.CreateMap<LocaleStringResource, LanguageResourceModel>()
+                .ForMember(dest => dest.Name, mo => mo.MapFrom(src => src.ResourceName))
+                .ForMember(dest => dest.Value, mo => mo.MapFrom(src => src.ResourceValue))
+                .ForMember(dest => dest.LanguageName, mo => mo.MapFrom(src => src.Language != null ? src.Language.Name : string.Empty));
+            Mapper.CreateMap<LanguageResourceModel, LocaleStringResource>()
+                .ForMember(dest => dest.ResourceName, mo => mo.MapFrom(src => src.Name))
+                .ForMember(dest => dest.ResourceValue, mo => mo.MapFrom(src => src.Value))
+                .ForMember(dest => dest.Language, mo => mo.Ignore());
+             
             //queued email
             Mapper.CreateMap<QueuedEmail, QueuedEmailModel>()
                 .ForMember(dest => dest.EmailAccountName, mo => mo.MapFrom(src => src.EmailAccount != null ? src.EmailAccount.FriendlyName : string.Empty))

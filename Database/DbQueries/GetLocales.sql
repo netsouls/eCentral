@@ -5,7 +5,7 @@ and ResourceName Not like 'Admin.Configuration.Countries.%.Hint'
 --order by updatedon desc
 
 /*
-SELECT 'insert into LocaleStringResource( LanguageId, ResourceName, ResourceValue, IsJsonResource, CreatedOn, UpdatedOn) VALUES (''C668E5F7-D174-4F09-B06C-4E3735A1BB4E'',''' + Replace(ResourceName,'Admin.','') + ''',''' + ResourceValue + ''',0,fnGetGMTDateTime(GETDATE()), ecentral.dbo.fnGetGMTDateTime(GETDATE())' 
+SELECT 'insert into LocaleStringResource( LanguageId, ResourceName, ResourceValue, IsJsonResource, CreatedOn, UpdatedOn) VALUES (''C668E5F7-D174-4F09-B06C-4E3735A1BB4E'',''' + Replace(ResourceName,'Admin.','') + ''',''' + ResourceValue + ''',0,dbo.fnGetGMTDateTime(GETDATE()), dbo.fnGetGMTDateTime(GETDATE()))' 
  from LocaleStringResource where ResourceName like 
 'Admin.Configuration.Countries%'
 and ResourceName Not like 'Admin.Configuration.Countries.%.Hint'

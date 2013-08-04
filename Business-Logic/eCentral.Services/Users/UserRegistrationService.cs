@@ -14,6 +14,12 @@ namespace eCentral.Services.Users
     /// </summary>
     public partial class UserRegistrationService : IUserRegistrationService
     {
+        #region Constants
+
+        private const string USER_ACTIVITY_COMMENT = "User:[{0}]";
+
+        #endregion
+
         #region Fields
 
         private readonly IUserService userService;
@@ -212,7 +218,7 @@ namespace eCentral.Services.Users
             user.AuditHistory.Add
              (
                 userActivityService.InsertActivity(SystemActivityLogTypeNames.Add,
-                    user.ToString(), string.Empty)
+                    user.ToString(), USER_ACTIVITY_COMMENT, request.Username)
              );
 
             // insert the user
@@ -273,7 +279,7 @@ namespace eCentral.Services.Users
             user.AuditHistory.Add
             (
                 userActivityService.InsertActivity(SystemActivityLogTypeNames.Update,
-                    user.ToString(), string.Empty)
+                    user.ToString(), USER_ACTIVITY_COMMENT, request.Username)
              );
 
             // insert the user
@@ -310,7 +316,7 @@ namespace eCentral.Services.Users
                 user.AuditHistory.Add
                 (
                     userActivityService.InsertActivity(SystemActivityLogTypeNames.ChangePublishingStatus,
-                        publishingStatus.ToString(), string.Empty)
+                        publishingStatus.GetFriendlyName(), USER_ACTIVITY_COMMENT, user.Username)
                 );
 
                 userService.Update(user);

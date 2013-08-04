@@ -1,4 +1,8 @@
 ﻿using System;
+using eCentral.Web.Infrastructure.Cache;
+using System.Collections.Generic;
+using eCentral.Services.Users;
+using eCentral.Core.Caching;
 using System.Linq;
 using System.Web.Mvc;
 using eCentral.Core;
@@ -53,6 +57,36 @@ namespace eCentral.Web.Controllers
                 model.LastUpdated = string.Empty;
 
             model.PublishingStatus = entity.CurrentPublishingStatus.GetFriendlyName();
+        }
+
+        /// <summary>
+        /// Sets the list of all users in the system
+        /// </summary>
+        [NonAction]
+        protected IList<SelectListItem> PrepareUserSelectList(IUserService userService, ICacheManager cacheManager,
+            Guid selectedUserId, PublishingStatus status = PublishingStatus.Active)
+        {
+            string cacheKey = ModelCacheEventUser.USERS_MODEL_KEY.FormatWith(
+                "SelectList.{0}".FormatWith(status.ToString()));
+
+            var cacheModel = cacheManager.Get(cacheKey, () =>
+            {
+                var users = userService.GetAll(status)
+                    .Select(user =>
+                    {
+                        return new SelectListItem()
+                        {
+                            Value = user.RowId.ToString(),
+                            Text = user.GetFullName(),
+                            Selected = user.RowId.Equals(selectedUserId)
+                        };
+                    })
+                    .ToList();
+
+                return users;
+            });
+
+            return cacheModel;
         }
 
         #endregion

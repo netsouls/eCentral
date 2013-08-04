@@ -19,7 +19,8 @@
                 <siteMapNode title="Edit user" PermissionNames="ManageUsers" controller="User" action="Edit" IsNavigation="False"/>
             </siteMapNode>
         </siteMapNode>
-        <siteMapNode title="Configurations" PermissionNames="ManageMessageTemplates,ManageCountries,ManageLanguages,ManageSettings,ManageCurrencies,ManageActivityLog,ManageACL,ManageSMSProviders,ManageEmailAccounts,ManagePlugins" Icon="icomoon-icon-cog-2">
+        <siteMapNode title="Audit History" PermissionNames="ManageActivityLog" controller="AuditHistory" action="index" Icon="icomoon-icon-history"/>
+        <siteMapNode title="Configurations" PermissionNames="ManageMessageTemplates,ManageCountries,ManageLanguages,ManageSettings,ManageCurrencies,ManageACL,ManageSMSProviders,ManageEmailAccounts,ManagePlugins" Icon="icomoon-icon-cog-2">
             <siteMapNode title="Countries" PermissionNames="ManageCountries" controller="Country" action="Index" Icon="icomoon-icon-earth">
                 <siteMapNode title="Add new country" PermissionNames="ManageCountries" controller="Country" action="Create"  IsNavigation="false"/>
                 <siteMapNode title="Edit a country" PermissionNames="ManageCountries" controller="Country" action="Edit"  IsNavigation="false"/>
@@ -36,7 +37,7 @@
             <siteMapNode title="Languages" siteResource="Navigation.Configuration.Languages" PermissionNames="ManageLanguages" route="Language" Icon="typ-icon-flag"/>-->
             <!--<siteMapNode title="Currencies" siteResource="Navigation.Configuration.Currencies" PermissionNames="ManageCurrencies" controller="Currency" action="List"/>-->
             <!--<siteMapNode title="EmailAccounts" siteResource="Navigation.Configuration.EmailAccounts" PermissionNames="ManageEmailAccounts" route="EmailAccount" Icon="entypo-icon-email"/>-->
-            <!--<siteMapNode title="Activity Log" siteResource="Navigation.Configuration.ActivityLog" PermissionNames="ManageActivityLog" route="ActivityLog" Icon="brocco-icon-list"/>-->
+            
             <!--<siteMapNode title="Access control list" siteResource="Navigation.Configuration.ACL" PermissionNames="ManageACL" controller="Security" action="Permissions" />
             <siteMapNode title="SMS providers" siteResource="Navigation.Configuration.SMSProviders" PermissionNames="ManageSMSProviders" controller="SMS" action="Providers" />-->
             <!--<siteMapNode title="Plugins" siteResource="Navigation.Configuration.Plugins" PermissionNames="ManagePlugins" route="Plugin" Icon="icomoon-icon-wrench"/>-->

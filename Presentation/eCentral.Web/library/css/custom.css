@@ -52,3 +52,4 @@ table.display tr.even.row_selected td, table.display tr.odd.row_selected td {
 .btn-group > .dropdown-toggle {padding-bottom: 1px;}
 
 .loginContainer .page-header { margin:0px;}
+#search-filter-clear { display:none; } /* for hiding the search filter clear button*/ 

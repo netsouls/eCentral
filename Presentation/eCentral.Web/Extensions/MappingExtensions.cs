@@ -4,6 +4,7 @@ using eCentral.Core.Domain.Common;
 using eCentral.Core.Domain.Companies;
 using eCentral.Core.Domain.Directory;
 using eCentral.Core.Domain.Localization;
+using eCentral.Core.Domain.Logging;
 using eCentral.Core.Domain.Messages;
 using eCentral.Core.Infrastructure;
 using eCentral.Services.Directory;
@@ -12,6 +13,7 @@ using eCentral.Web.Models.Clients;
 using eCentral.Web.Models.Common;
 using eCentral.Web.Models.Companies;
 using eCentral.Web.Models.Directory;
+using eCentral.Web.Models.Logging;
 using eCentral.Web.Models.Messages;
 
 namespace eCentral.Web.Extensions
@@ -206,6 +208,35 @@ namespace eCentral.Web.Extensions
             return Mapper.Map(model, destination);
         }
 
+
+        #endregion
+
+        #region Log
+
+        public static LogModel ToModel(this Log entity)
+        {
+            return Mapper.Map<Log, LogModel>(entity);
+        }
+
+        public static Log ToEntity(this LogModel model)
+        {
+            return Mapper.Map<LogModel, Log>(model);
+        }
+
+        public static Log ToEntity(this LogModel model, Log destination)
+        {
+            return Mapper.Map(model, destination);
+        }
+
+        public static ActivityLogTypeModel ToModel(this ActivityLogType entity)
+        {
+            return Mapper.Map<ActivityLogType, ActivityLogTypeModel>(entity);
+        }
+
+        public static ActivityLogModel ToModel(this ActivityLog entity)
+        {
+            return Mapper.Map<ActivityLog, ActivityLogModel>(entity);
+        }
 
         #endregion
     }

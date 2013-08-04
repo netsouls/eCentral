@@ -33,7 +33,12 @@ namespace eCentral.Web.Infrastructure
             routes.MapRoute(
                 "SystemInfo", // Route name
                 "system-info/{action}/{rowId}", // Route Pattern
-                new { controller = @"System", action = "Index", rowId = UrlParameter.Optional }); //Restriction for controller and action
+                new { controller = "System", action = "Index", rowId = UrlParameter.Optional }); //Restriction for controller and action
+
+            routes.MapRoute(
+                "AuditHistory", // Route name
+                "audit-history/{action}/{rowId}", // Route Pattern
+                new { controller = "AuditHistory", action = "Index", rowId = UrlParameter.Optional }); //Restriction for controller and action
 
             #endregion
 
@@ -64,11 +69,6 @@ namespace eCentral.Web.Infrastructure
                 new { controller = "Security", action = "PasswordRecoveryConfirm" },
                 new { userId = new GuidConstraint(false), token = new GuidConstraint(false) },
                 new[] { "eCentral.Web.Controllers" });
-
-            /*routes.MapLocalizedRoute(SystemRouteNames.ChangePassword,
-                SystemRouteUrls.ChangePassword,
-                new { controller = "Security", action = "ChangePassword" },
-                new[] { "eCentral.Web.Controllers" });*/
 
             //upload image
             routes.MapRoute(SystemRouteNames.AsyncUpload, 

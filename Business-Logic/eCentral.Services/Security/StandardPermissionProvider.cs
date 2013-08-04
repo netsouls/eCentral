@@ -29,11 +29,13 @@ namespace eCentral.Services.Security
         public static readonly PermissionRecord ManageSettings = new PermissionRecord { Name = "Manage Settings", SystemName = SystemPermissionNames.ManageSettings, Category = "Configuration" };
         public static readonly PermissionRecord ManageCountries = new PermissionRecord { Name = "Manage Countries", SystemName = SystemPermissionNames.ManageCountries, Category = "Configuration" };
 
+        public static readonly PermissionRecord ManageActivityLog = new PermissionRecord { Name = "Manage Activity Log", SystemName = SystemPermissionNames.ManageActivityLog, Category = "Configuration" };
+
         //public static readonly PermissionRecord ManageWidgets = new PermissionRecord { Name = "Manage Widgets", SystemName = SystemPermissionNames.ManageWidgets, Category = "Content Management" };
         //public static readonly PermissionRecord ManageLanguages = new PermissionRecord { Name = "Manage Languages", SystemName = SystemPermissionNames.ManageLanguages, Category = "Configuration" };
         //
         //public static readonly PermissionRecord ManageCurrencies = new PermissionRecord { Name = "Manage Currencies", SystemName = SystemPermissionNames.ManageCurrencies, Category = "Configuration" };
-        //public static readonly PermissionRecord ManageActivityLog = new PermissionRecord { Name = "Manage Activity Log", SystemName = SystemPermissionNames.ManageActivityLog, Category = "Configuration" };
+        
         //public static readonly PermissionRecord ManageAcl = new PermissionRecord { Name = "Manage ACL", SystemName = SystemPermissionNames.ManageACL, Category = "Configuration" };
         //public static readonly PermissionRecord ManageSmsProviders = new PermissionRecord { Name = "Manage SMS Providers", SystemName = SystemPermissionNames.ManageSMSProviders, Category = "Configuration" };
         //public static readonly PermissionRecord ManageGeoIPProviders = new PermissionRecord { Name = "Manage Geo IP Providers", SystemName = SystemPermissionNames.ManageGeoIPProviders, Category = "Configuration" };
@@ -52,7 +54,8 @@ namespace eCentral.Services.Security
                 ViewBranchOffices, ManageBranchOffices,
                 ViewClients, ManageClients,
                 ManageUsers, ManageUsersRoles, 
-                ManageSystemLog, ManageMessageQueue, ManageMaintenance,ManageMaintenance, ManageMessageTemplates,ManageEmailAccounts, ManageCountries
+                ManageSystemLog, ManageMessageQueue, ManageMaintenance,ManageMaintenance, 
+                ManageMessageTemplates,ManageEmailAccounts, ManageCountries, ManageActivityLog
             };
         }
 
@@ -71,7 +74,8 @@ namespace eCentral.Services.Security
                         ViewClients, ManageClients, 
                         ManageUsers, ManageUsersRoles,
                         ManageSystemLog, ManageMessageQueue, ManageMaintenance, 
-                        ManageMessageTemplates, ManageEmailAccounts, ManageCountries
+                        ManageMessageTemplates, ManageEmailAccounts, ManageCountries,
+                        ManageActivityLog
                     }
                 },
                 new DefaultPermissionRecord 

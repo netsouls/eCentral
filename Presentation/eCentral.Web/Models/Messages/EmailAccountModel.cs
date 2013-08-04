@@ -5,7 +5,6 @@ using eCentral.Web.Framework.Mvc;
 using eCentral.Web.Validators.Messages;
 using FluentValidation.Attributes;
 
-
 namespace eCentral.Web.Models.Messages
 {
     [Validator(typeof(EmailAccountValidator))]

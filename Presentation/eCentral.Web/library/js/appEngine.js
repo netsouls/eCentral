@@ -146,6 +146,7 @@ $.extend(appEngine, {
                         'bAutoWidth': false,
                         'bServerSide': true,
                         'bFilter': (typeof bFilter === "undefined") ? true : bFilter,
+                        'bSort': false,
                         'bLengthChange': (typeof bLenghtChange === "undefined") ? true : bLenghtChange,
                         'bProcessing': false,
                         'oLanguage': {
@@ -177,9 +178,15 @@ $.extend(appEngine, {
                             if (oSettings._iRecordsTotal <= oSettings._iDisplayLength) { // hide pagination if records are for one page only
                                 $('.dataTables_paginate, .dataTables_info').hide();
                             }
+                            else {
+                                $('.dataTables_paginate, .dataTables_info').show();
+                            }
+
                             if (oSettings._iRecordsTotal == 0) {
                                 $('.edit-action, .change-status').hide();
                             }
+                            else
+                                $('.edit-action, .change-status').show();
                             $('td.chChildren input:checkbox').uniform();
                             appEngine.util.setqTip('td.chChildren .tip');
                         },
@@ -192,13 +199,7 @@ $.extend(appEngine, {
                         }
                     });
                     $('.dataTables_length select').uniform(); //uniform style
-                    $('.dataTables_filter input') //minimum three characters for search
-                        .unbind('keypress keyup')
-                        .bind('keypress keyup', function (e) {
-                            if (e.keyCode == 13 && $(this).val().length == 0) dataTable.fnDraw();
-                            else if ($(this).val().length < 3 && e.keyCode != 13) return;
-                            dataTable.fnFilter($(this).val());
-                        });
+                    dataTable.fnFilterOnReturn();
 
                     /* all checkboxes */
                     $("#masterCh").click(function () {
@@ -259,7 +260,7 @@ $.extend(appEngine, {
                     $.get($(this).attr('data-url'), function (data) {
                         $('#modal-form').html(data);
                         $('#modal-form-container').modal('show');
-                        //jQuery.validator.unobtrusive.parse($('#modal-form'));
+                        jQuery.validator.unobtrusive.parse($('#modal-form'));
                         appEngine.util.iToggleButton('#modal-form ');
                     });
                 });
@@ -272,7 +273,7 @@ $.extend(appEngine, {
             var jsonData = appEngine.util.stringToJSON(dataResult.responseText);
             if (jsonData.IsValid) {
                 $('#modal-form-container').modal('hide');
-                appEngine.util.successNotification('Changes saved.');                    
+                appEngine.util.successNotification('Changes saved.');
                 if ($.isFunction(onSuccess))
                     onSuccess();
             }
@@ -692,16 +693,6 @@ $(document).ready(function () {
         }
     });
     appEngine.util.iToggleButton('');
-    /*$('.iToggle-button').toggleButtons({
-    onChange: function (el, status, e) {
-    $('#' + el.find('input:checkbox').attr('data-element')).val(status);
-    },
-    width: 70,
-    label: {
-    enabled: "<span class='icon16 icomoon-icon-checkmark white'></span>",
-    disabled: "<span class='icon16 icomoon-icon-close white marginL10'></span>"
-    }
-    });*/
     //------------- To top plugin  -------------//
     $().UItoTop({ easingType: 'easeOutQuart' });
 
@@ -806,6 +797,14 @@ $(document).ready(function () {
         if ($('form #IsEdit').val().toLowerCase() == 'true') {
             $('form .readonly').attr('readonly', 'readonly');
         }
+    }
+    //------------- Datepicker -------------//
+    if ($('.datepicker').length) {
+        $(".datepicker").datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            dateFormat: 'd MM, y'
+        });
     }
 });
 

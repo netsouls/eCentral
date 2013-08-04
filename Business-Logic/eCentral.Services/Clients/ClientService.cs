@@ -23,6 +23,8 @@ namespace eCentral.Services.Clients
         private const string CLIENTS_BY_ID_KEY = "eCentral.clients.id-{0}";
         private const string CLIENTS_PATTERN_KEY = "eCentral.clients.";
 
+        private const string USER_ACTIVITY_COMMENT = "Client:[{0}]";
+
         #endregion
 
         #region Fields
@@ -145,8 +147,8 @@ namespace eCentral.Services.Clients
             // add audit history
             client.AuditHistory.Add
              (
-                userActivityService.InsertActivity( SystemActivityLogTypeNames.Add, 
-                    client.ToString(), string.Empty)
+                userActivityService.InsertActivity( SystemActivityLogTypeNames.Add,
+                    client.ToString(), USER_ACTIVITY_COMMENT, client.ClientName)
              );
 
             this.clientRepository.Insert(client);
@@ -169,7 +171,7 @@ namespace eCentral.Services.Clients
             client.AuditHistory.Add
              (
                 userActivityService.InsertActivity(SystemActivityLogTypeNames.Update,
-                    client.ToString(), string.Empty)
+                    client.ToString(), USER_ACTIVITY_COMMENT, client.ClientName)
              );
 
             this.clientRepository.Update(client);
@@ -195,7 +197,7 @@ namespace eCentral.Services.Clients
                 client.AuditHistory.Add
                 (
                     userActivityService.InsertActivity(SystemActivityLogTypeNames.ChangePublishingStatus,
-                        publishingStatus.ToString(), string.Empty)
+                        publishingStatus.GetFriendlyName(), USER_ACTIVITY_COMMENT, client.ClientName)
                 );
 
                 this.clientRepository.Update(client);

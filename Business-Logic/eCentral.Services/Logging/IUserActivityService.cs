@@ -76,14 +76,11 @@ namespace eCentral.Services.Logging
         /// <param name="createdOnFrom">Log item creation from; null to load all customers</param>
         /// <param name="createdOnTo">Log item creation to; null to load all customers</param>
         /// <param name="email">Customer Email</param>
-        /// <param name="username">Customer username</param>
+        /// <param name="userId">user identifier</param>
         /// <param name="activityLogTypeId">Activity log type identifier</param>
-        /// <param name="pageIndex">Page index</param>
-        /// <param name="pageSize">Page size</param>
         /// <returns>Activity log collection</returns>
-        PagedList<ActivityLog> GetAllActivities(DateTime? createdOnFrom,
-            DateTime? createdOnTo, string username, Guid activityLogTypeId,
-            int pageIndex, int pageSize);
+        IList<ActivityLog> GetAllActivities(DateTime? createdOnFrom,
+            DateTime? createdOnTo, Guid userId, Guid activityLogTypeId);
         
         /// <summary>
         /// Gets an activity log item

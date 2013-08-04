@@ -24,12 +24,13 @@ namespace eCentral.Core.Domain.Security
         public const string ManageSettings = "ManageSettings";
         public const string ManageCountries = "ManageCountries";
 
+        public const string ManageActivityLog = "ManageActivityLog";
         /*
         public const string ManageWidgets          = "ManageWidgets";
         public const string ManageLanguages        = "ManageLanguages";
         
         public const string ManageCurrencies       = "ManageCurrencies";
-        public const string ManageActivityLog      = "ManageActivityLog";
+        
         public const string ManageACL              = "ManageACL";
         public const string ManageSMSProviders     = "ManageSMSProviders";
         public const string ManageGeoIPProviders   = "ManageGeoIPProviders";

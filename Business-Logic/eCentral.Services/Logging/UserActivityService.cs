@@ -239,14 +239,11 @@ namespace eCentral.Services.Logging
         /// <param name="createdOnFrom">Log item creation from; null to load all customers</param>
         /// <param name="createdOnTo">Log item creation to; null to load all customers</param>
         /// <param name="email">Customer Email</param>
-        /// <param name="username">Customer username</param>
+        /// <param name="userId">user identifier</param>
         /// <param name="activityLogTypeId">Activity log type identifier</param>
-        /// <param name="pageIndex">Page index</param>
-        /// <param name="pageSize">Page size</param>
         /// <returns>Activity log collection</returns>
-        public virtual PagedList<ActivityLog> GetAllActivities(DateTime? createdOnFrom,
-            DateTime? createdOnTo, string username, Guid activityLogTypeId,
-            int pageIndex, int pageSize)
+        public virtual IList<ActivityLog> GetAllActivities(DateTime? createdOnFrom,
+            DateTime? createdOnTo, Guid userId, Guid activityLogTypeId)
         {
             var query = activityLogRepository.Table;
             if (createdOnFrom.HasValue)
@@ -255,16 +252,15 @@ namespace eCentral.Services.Logging
                 query = query.Where(al => createdOnTo.Value >= al.CreatedOn);
             if (!activityLogTypeId.IsEmpty())
                 query = query.Where(al => activityLogTypeId == al.ActivityLogTypeId);
-            
-            if (!String.IsNullOrEmpty(username))
+
+            if (!userId.IsEmpty())
             {
-                query = query.Where(c => c.User.Username.Contains(username));
+                query = query.Where(c => c.UserId.Equals(userId));
             }
 
             query = query.OrderByDescending(al => al.CreatedOn);
 
-            var activityLog = new PagedList<ActivityLog>(query, pageIndex, pageSize);
-            return activityLog;
+            return query.ToList();
         }
         
         /// <summary>
