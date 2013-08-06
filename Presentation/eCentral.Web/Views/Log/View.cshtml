@@ -1,0 +1,56 @@
+﻿@model LogModel
+@{
+    var pageHeading = "View log entry details";
+    Html.AddTitleParts(pageHeading);
+    ViewBag.Heading = pageHeading;
+}
+<div class="row-fluid">
+    <div class="span4">
+        <div class="box">
+            <div class="title">
+                <h4 class="clearfix">
+                    <span class="icon16 icomoon-icon-info-2 orange"></span><span>Log information</span>
+                    <a data-confirm="Are you sure you want to delete this log item?" href = "@Url.Action("delete", new { rowId = Model.RowId.ToString() })" 
+                        class="btn btn-danger btn-mini right marginR10">@T("Common.Delete")</a>
+                </h4>
+            </div>
+            <div class="content">
+                <dl class="dl-horizontal">
+                    <dt>@Html.LabelTextFor(m => m.LogLevel)</dt>
+                    <dd>@Html.DisplayTextFor(m => m.LogLevel)</dd>
+                    <dt>@Html.LabelTextFor(m => m.IpAddress)</dt>
+                    <dd>@Html.DisplayTextFor(m => m.IpAddress)</dd>
+                    <dt>@Html.LabelTextFor(m => m.UserName)</dt>
+                    <dd>@Html.DisplayTextFor(m => m.UserName)</dd>
+                    <dt>@Html.LabelTextFor(m => m.PageUrl)</dt>
+                    <dd>@Html.DisplayTextFor(m => m.PageUrl)</dd>
+                    <dt>@Html.LabelTextFor(m => m.ReferrerUrl)</dt>
+                    <dd>@Html.DisplayTextFor(m => m.ReferrerUrl)</dd>
+                    <dt>@Html.LabelTextFor(m => m.CreatedOn)</dt>
+                    <dd>@Html.DisplayTextFor(m => m.CreatedOn)</dd>
+                </dl>
+            </div>
+        </div>
+        <!-- End .box -->
+    </div>
+    <div class="span8">
+        <div class="box">
+            <div class="title">
+                <h4>
+                    <span class="icon16 icomoon-icon-cancel-circle-2 red"></span><span>Error information</span>
+                </h4>
+                <a href="#" class="minimize">Minimize</a>
+            </div>
+            <div class="content">
+                <p>@Model.ShortMessage</p>
+                <p>
+                    &nbsp;</p>
+                <p>@Model.FullMessage</p>
+            </div>
+        </div>
+        <!-- End .box -->
+    </div>
+</div>
+@section SidebarWidget {
+    @Url.BackActionLink("Back to system logs", SystemRouteNames.Index)    
+}

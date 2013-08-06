@@ -1,0 +1,126 @@
+﻿@model LogSearchModel
+@{
+    var pageHeading = "Logs";
+    Html.AddTitleParts(pageHeading);
+    ViewBag.Heading = pageHeading;
+    ViewBag.HasDataTable = true;
+}
+<div class="row-fluid">
+    <div class="span12">
+        @Html.Partial("_LogSearch", Model)
+    </div>
+    <!-- End .span12 -->
+</div>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box gradient">
+            <div class="title">
+                <h4 class="clearfix">
+                    <span class="icon16 icomoon-icon-table-2 blue"></span><span class="processing"></span>
+                    <div class="right marginR10">
+                        <button class="btn btn-mini btn-info delete-selected tip" title="Delete selected" data-href="@Url.Action("DeleteSelected")">
+                            <span class="icon8  icomoon-icon-bookmark white"></span>Delete selected</button>
+                        <a data-confirm="Are you sure you want to delete all the log items?" href = "@Url.Action("clearall")" 
+                            class="btn btn-danger btn-mini tip"><span class="icon8 icomoon-icon-bubble-down white">
+                            </span>Clear log</a>
+                    </div>
+                </h4>
+            </div>
+            <div class="content noPad">
+                <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered"
+                    id="myDataTable" width="100%">
+                    <thead>
+                        <tr>
+                            <th id="masterCh" class="ch">
+                                <input type="checkbox" name="checkbox" value="all" class="styled" />
+                            </th>
+                            <th>
+                                Log Level
+                            </th>
+                            <th>
+                                Short Message
+                            </th>
+                            <th>
+                                Created on
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- End .box -->
+    </div>
+    <!-- End .span12 -->
+</div>
+@section inlineScripts {
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            // cache search variables
+            var viewUrl = '@Url.Action(SystemRouteNames.View)';
+            var $logLevelId = $('#@Html.FieldIdFor(m => m.LogLevelId)');
+            var $message = $('#@Html.FieldIdFor(m => m.Message)');
+            var $createdOnFrom = $('#@Html.FieldIdFor(m => m.CreatedOnFrom)');
+            var $createdOnTo = $('#@Html.FieldIdFor(m => m.CreatedOnTo)');
+
+            appEngine.util.setDataTable('myDataTable', '@Url.Action(SystemRouteNames.List)',
+                function (aoData) {
+                    aoData.push({ 'name': '@Html.FieldIdFor(m => m.LogLevelId)', 'value': $logLevelId.val() });
+                    aoData.push({ 'name': '@Html.FieldIdFor(m => m.Message)', 'value': $message.val() });
+                    aoData.push({ 'name': '@Html.FieldIdFor(m => m.CreatedOnFrom)', 'value': $createdOnFrom.val() });
+                    aoData.push({ 'name': '@Html.FieldIdFor(m => m.CreatedOnTo)', 'value': $createdOnTo.val() });
+                },
+                [
+                    { "sName": "Selection", "mData": "RowId", "bSearchable": false, "bSortable": false, sClass: "chChildren",
+                        "mRender": function (dataItem) {
+                            return '<input type="checkbox" name="checkbox" value="' + dataItem + '" />';
+                        }
+                    },
+                    { 'sName': 'LogLevel', 'mData': 'LogLevel', 'bSearchable': false, 'bSortable': false },
+                    { 'sName': 'ShortMessage', 'mData': 'ShortMessage', 'bSearchable': false, 'bSortable': false },
+                    { 'sName': 'CreatedOn', 'mData': 'CreatedOn', 'bSearchable': false, 'bSortable': false },
+                    { 'sName': 'CreatedOn', 'mData': 'RowId', 'bSearchable': false, 'bSortable': false, sWidth: '70px',
+                        'mRender': function (dataItem) {
+                            return '<div class="action"><a href="' + viewUrl + '/' + dataItem + '" class="btn btn-mini btn-success">View <span class="icon8 icomoon-icon-file white"></span></a></div>';
+                        }
+                    },
+                ], true, false, function (dataTable) {
+                    $('#search-filter, #search-filter-clear').click(function (e) {
+                        e.preventDefault();
+                        if ($(this).hasClass('btn-inverse')) {
+                            $logLevelId.val('0'); $message.val('');
+                            $createdOnFrom.val(''); $createdOnTo.val(''); $.uniform.update();
+                            $('#search-filter-clear').hide();
+                        }
+                        else {
+                            $('#search-filter-clear').show();
+                        }
+                        dataTable.fnReloadAjax();
+                    });
+                    $('.delete-selected').click(function () {
+                        if (dataTable.$('tr.row_selected').length == 0)
+                            appEngine.util.errorNotification('Please select the record(s) that you want to delete!');
+                        else {
+                            var selectedRows = new Array();
+                            $('tr.row_selected input:checked').each(function () {
+                                if (this.value != 'all')
+                                    selectedRows.push(this.value);
+                            });
+
+                            appEngine.util.ajaxPost($(this).attr('data-href'),
+                            {
+                                'RowIds': selectedRows
+                            }, function (result) {
+                                $("#masterCh span.checked").removeClass('checked');
+                                appEngine.util.successNotification('Selected records have been successfully deleted!');
+                                dataTable.fnDraw();
+                            });
+                        }
+                    });
+                });
+        });
+    </script>
+}
