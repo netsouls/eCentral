@@ -31,9 +31,9 @@ namespace eCentral.Web.Infrastructure
                 new { controller = @"(Company|BranchOffice|Client|User)" }); //Restriction for controller and action
 
             routes.MapRoute(
-                "SystemInfo", // Route name
-                "system-info/{action}/{rowId}", // Route Pattern
-                new { controller = "System", action = "Index", rowId = UrlParameter.Optional }); //Restriction for controller and action
+                "System", // Route name
+                "system-maintenance/{controller}/{action}/{rowId}", // Route Pattern
+                new { controller = @"(System|Log)", action = "Index", rowId = UrlParameter.Optional }); //Restriction for controller and action
 
             routes.MapRoute(
                 "AuditHistory", // Route name

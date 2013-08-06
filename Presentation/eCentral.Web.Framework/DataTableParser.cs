@@ -4,6 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Web;
+using eCentral.Core;
+using eCentral.Web.Framework.Mvc;
 
 namespace eCentral.Web.Framework
 {
@@ -28,14 +30,6 @@ namespace eCentral.Web.Framework
         * string: sSortDir_(int) - Direction to be sorted - "desc" or "asc". Note that the prefix for this variable is wrong in 1.5.x, but left for backward compatibility)
         * string: sEcho - Information for DataTables to use for rendering
         */
-
-        private const string INDIVIDUAL_SEARCH_KEY_PREFIX = "sSearch_";
-        private const string INDIVIDUAL_SORT_KEY_PREFIX = "iSortCol_";
-        private const string INDIVIDUAL_SORT_DIRECTION_KEY_PREFIX = "sSortDir_";
-        private const string DISPLAY_START = "iDisplayStart";
-        private const string DISPLAY_LENGTH = "iDisplayLength";
-        private const string ECHO = "sEcho";
-        private const string ASCENDING_SORT = "asc";
 
         private IQueryable<T> _queriable;
         private readonly HttpRequestBase _httpRequest;
@@ -72,7 +66,7 @@ namespace eCentral.Web.Framework
             var list = new FormatedList<T>();
 
             // parse the echo property (must be returned as int to prevent XSS-attack)
-            list.sEcho = int.Parse(_httpRequest[ECHO]);
+            list.sEcho = int.Parse(_httpRequest[StateKeyManager.DataTable.ECHO]);
 
             // count the record BEFORE filtering
             list.iTotalRecords = _queriable.Count();
@@ -82,8 +76,8 @@ namespace eCentral.Web.Framework
 
             // parse the paging values
             int skip = 0, take = 10;
-            int.TryParse(_httpRequest[DISPLAY_START], out skip);
-            int.TryParse(_httpRequest[DISPLAY_LENGTH], out take);
+            int.TryParse(_httpRequest[StateKeyManager.DataTable.DISPLAY_START], out skip);
+            int.TryParse(_httpRequest[StateKeyManager.DataTable.DISPLAY_LENGTH], out take);
 
             //This needs to be an expression or else it won't limit results
             Func<T, bool> GenericFind = delegate(T item)
@@ -131,7 +125,7 @@ namespace eCentral.Web.Framework
             var paramExpr = Expression.Parameter(typeof(T), "val");
 
             // enumerate the keys for any sortations
-            foreach (string key in _httpRequest.Params.AllKeys.Where(x => x.StartsWith(INDIVIDUAL_SORT_KEY_PREFIX)))
+            foreach (string key in _httpRequest.Params.AllKeys.Where(x => x.StartsWith(StateKeyManager.DataTable.INDIVIDUAL_SORT_KEY_PREFIX)))
             {
                 // column number to sort (same as the array)
                 int sortcolumn = int.Parse(_httpRequest[key]);
@@ -141,7 +135,7 @@ namespace eCentral.Web.Framework
                     break;
 
                 // get the direction of the sort
-                string sortdir = _httpRequest[INDIVIDUAL_SORT_DIRECTION_KEY_PREFIX + key.Replace(INDIVIDUAL_SORT_KEY_PREFIX, string.Empty)];
+                string sortdir = _httpRequest[StateKeyManager.DataTable.INDIVIDUAL_SORT_DIRECTION_KEY_PREFIX + key.Replace(StateKeyManager.DataTable.INDIVIDUAL_SORT_KEY_PREFIX, string.Empty)];
 
                 // form the sortation per property via a property expression
 
@@ -152,7 +146,7 @@ namespace eCentral.Web.Framework
                 var propertyExpr = Expression.Lambda(delegateType, expression1, paramExpr);
 
                 // apply the sort (default is ascending if not specified)
-                if (string.IsNullOrEmpty(sortdir) || sortdir.Equals(ASCENDING_SORT, StringComparison.OrdinalIgnoreCase))
+                if (string.IsNullOrEmpty(sortdir) || sortdir.Equals(StateKeyManager.DataTable.ASCENDING_SORT, StringComparison.OrdinalIgnoreCase))
                     //_queriable = _queriable.OrderBy<T, dynamic>(propertyExpr);
 
                     _queriable = typeof(Queryable).GetMethods().Single(
@@ -194,6 +188,81 @@ namespace eCentral.Web.Framework
                  .Invoke(null, new object[] { _queriable, propertyExpr }) as IOrderedQueryable<T>;
             }
         }
+
+        #endregion
+    }
+
+    public class DataTablesPagedParser<T> where T : class
+    {
+        /*
+         * int: iDisplayStart - Display start point
+         * int: iDisplayLength - Number of records to display
+         * string: string: sSearch - Global search field
+         * boolean: bEscapeRegex - Global search is regex or not
+         * int: iColumns - Number of columns being displayed (useful for getting individual column search info)
+         * string: sSortable_(int) - Indicator for if a column is flagged as sortable or not on the client-side
+         * string: sSearchable_(int) - Indicator for if a column is flagged as searchable or not on the client-side
+         * string: sSearch_(int) - Individual column filter
+         * boolean: bEscapeRegex_(int) - Individual column filter is regex or not
+         * int: iSortingCols - Number of columns to sort on
+         * int: iSortCol_(int) - Column being sorted on (you will need to decode this number for your database)
+         * string: sSortDir_(int) - Direction to be sorted - "desc" or "asc". Note that the prefix for this variable is wrong in 1.5.x, but left for backward compatibility)
+         * string: sEcho - Information for DataTables to use for rendering
+         */
+
+        private PagedModel<T> _model;
+        private readonly HttpRequestBase _httpRequest;
+        private readonly Type _type;
+        private PropertyInfo[] _properties;
+
+        #region Ctor
+
+        public DataTablesPagedParser(HttpRequestBase httpRequest, PagedModel<T> model)
+        {
+            _model = model;
+            _httpRequest = httpRequest;
+            _type = typeof(T);
+            _properties = _type.GetProperties();
+        }
+
+        public DataTablesPagedParser(HttpRequest httpRequest, PagedModel<T> model)
+            : this(new HttpRequestWrapper(httpRequest), model)
+        { }
+
+        #endregion
+
+        /// <summary>
+        /// Parses the <see cref="HttpRequestBase"/> parameter values for the accepted 
+        /// DataTable request values
+        /// </summary>
+        /// <returns>Formated output for DataTables, which should be serialized to JSON</returns>
+        public FormatedList<T> Parse()
+        {
+            var list = new FormatedList<T>();
+
+            // parse the echo property (must be returned as int to prevent XSS-attack)
+            list.sEcho = int.Parse(_httpRequest[StateKeyManager.DataTable.ECHO]);
+
+            // count the record BEFORE filtering
+            list.iTotalRecords = _model.TotalCount;
+
+            // parse the paging values
+            int skip = 0, take = 10;
+            int.TryParse(_httpRequest[StateKeyManager.DataTable.DISPLAY_START], out skip);
+            int.TryParse(_httpRequest[StateKeyManager.DataTable.DISPLAY_LENGTH], out take);
+
+            // property list selection
+            list.aaData = _model.Data
+                        .ToList();
+
+            list.SetQuery(_model.Data.ToString());
+
+            // total records that are displayed after filter
+            list.iTotalDisplayRecords = _model.TotalCount;
+            return list;
+        }
+
+        #region Utilites
 
         #endregion
     }

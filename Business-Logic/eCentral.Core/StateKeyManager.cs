@@ -38,5 +38,20 @@
         public const string GuidEmptyValidationRegEx          = @"^(\{{0,1}([0]){8}-([0]){4}-([0]){4}-([0]){4}-([0]){12}\}{0,1})$";
 
         #endregion
+
+        #region Data Tables Constants
+
+        public static class DataTable
+        {
+            public const string INDIVIDUAL_SEARCH_KEY_PREFIX = "sSearch_";
+            public const string INDIVIDUAL_SORT_KEY_PREFIX = "iSortCol_";
+            public const string INDIVIDUAL_SORT_DIRECTION_KEY_PREFIX = "sSortDir_";
+            public const string DISPLAY_START = "iDisplayStart";
+            public const string DISPLAY_LENGTH = "iDisplayLength";
+            public const string ECHO = "sEcho";
+            public const string ASCENDING_SORT = "asc";
+        }
+
+        #endregion
     }
 }

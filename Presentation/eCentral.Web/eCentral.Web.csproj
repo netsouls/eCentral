@@ -84,27 +84,28 @@
     <Compile Include="..\..\Items\Version.cs">
       <Link>Version.cs</Link>
     </Compile>
-    <Compile Include="Controller\APIController.cs" />
-    <Compile Include="Controller\AuditHistoryController.cs" />
-    <Compile Include="Controller\BaseController.cs" />
-    <Compile Include="Controller\Administration\ClientController.cs" />
-    <Compile Include="Controller\CommonController.cs" />
-    <Compile Include="Controller\Administration\CompanyController.cs" />
-    <Compile Include="Controller\Administration\BranchOfficeController.cs" />
-    <Compile Include="Controller\Configuration\CountryController.cs" />
-    <Compile Include="Controller\Configuration\EmailAccountController.cs" />
-    <Compile Include="Controller\Configuration\MessageTemplateController.cs">
+    <Compile Include="Controllers\APIController.cs" />
+    <Compile Include="Controllers\AuditHistoryController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\Administration\ClientController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\Administration\CompanyController.cs" />
+    <Compile Include="Controllers\Administration\BranchOfficeController.cs" />
+    <Compile Include="Controllers\Configuration\CountryController.cs" />
+    <Compile Include="Controllers\Configuration\EmailAccountController.cs" />
+    <Compile Include="Controllers\Configuration\MessageTemplateController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controller\Configuration\SettingController.cs" />
-    <Compile Include="Controller\SystemController.cs" />
-    <Compile Include="Controller\Administration\UserController.cs" />
-    <Compile Include="Controller\MediaController.cs" />
-    <Compile Include="Controller\TestController.cs" />
-    <Compile Include="Controller\HomeController.cs" />
-    <Compile Include="Controller\SecurityController.cs" />
-    <Compile Include="Controller\StaticController.cs" />
-    <Compile Include="Controller\WidgetController.cs" />
+    <Compile Include="Controllers\Configuration\SettingController.cs" />
+    <Compile Include="Controllers\Administration\UserController.cs" />
+    <Compile Include="Controllers\MediaController.cs" />
+    <Compile Include="Controllers\SystemMaintenance\InfoController.cs" />
+    <Compile Include="Controllers\SystemMaintenance\LogController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\StaticController.cs" />
+    <Compile Include="Controllers\WidgetController.cs" />
     <Compile Include="Extensions\MappingExtensions.cs" />
     <Compile Include="Extensions\PagerHtmlExtension.cs" />
     <Compile Include="Extensions\SortingHtmlExtension.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Models\Logging\ActivityLogModel.cs" />
     <Compile Include="Models\Logging\ActivityLogSearchModel.cs" />
     <Compile Include="Models\Logging\ActivityLogTypeModel.cs" />
+    <Compile Include="Models\Logging\LogSearchModel.cs" />
     <Compile Include="Models\Logging\LogModel.cs" />
     <Compile Include="Models\Messages\EmailAccountModel.cs" />
     <Compile Include="Models\Messages\MessageTemplateModel.cs" />
@@ -939,7 +941,6 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\_CreateUpdate.cshtml" />
-    <Content Include="Views\System\Info.cshtml" />
     <Content Include="Views\MessageTemplate\Index.cshtml" />
     <Content Include="Views\EmailAccount\Index.cshtml" />
     <Content Include="Views\EmailAccount\Create.cshtml" />
@@ -967,10 +968,15 @@
     <Content Include="Views\AuditHistory\Index.cshtml" />
     <Content Include="Views\AuditHistory\_AuditSearch.cshtml" />
     <Content Include="Views\AuditHistory\_CreateActivityLogType.cshtml" />
-    <Content Include="Views\System\Logs.cshtml" />
+    <Content Include="Views\Log\_LogSearch.cshtml" />
+    <Content Include="Views\Log\View.cshtml" />
+    <Content Include="Views\Shared\_DeleteConfirmation.cshtml" />
+    <Content Include="Views\Info\Index.cshtml" />
+    <Content Include="Views\Log\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="library\logs\error\" />
+    <Folder Include="Views\System\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

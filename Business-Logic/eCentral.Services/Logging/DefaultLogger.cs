@@ -81,6 +81,35 @@ namespace eCentral.Services.Logging
         /// <param name="toUtc">Log item creation to; null to load all records</param>
         /// <param name="message">Message</param>
         /// <param name="logLevel">Log level; null to load all records</param>
+        /// <returns>Log item collection</returns>
+        public virtual IList<Log> GetAll(DateTime? fromUtc, DateTime? toUtc,
+            string message, LogLevel? logLevel)
+        {
+            var query = logRepository.Table;
+            if (fromUtc.HasValue)
+                query = query.Where(l => fromUtc.Value <= l.CreatedOn);
+            if (toUtc.HasValue)
+                query = query.Where(l => toUtc.Value >= l.CreatedOn);
+            if (logLevel.HasValue)
+            {
+                int logLevelId = (int)logLevel.Value;
+                query = query.Where(l => logLevelId == l.LogLevelId);
+            }
+             if (!String.IsNullOrEmpty(message))
+                query = query.Where(l => l.ShortMessage.Contains(message) || l.FullMessage.Contains(message));
+            query = query.OrderByDescending(l => l.CreatedOn);
+
+            var log = query.ToList();
+            return log;
+        }
+
+        /// <summary>
+        /// Gets all log items
+        /// </summary>
+        /// <param name="fromUtc">Log item creation from; null to load all records</param>
+        /// <param name="toUtc">Log item creation to; null to load all records</param>
+        /// <param name="message">Message</param>
+        /// <param name="logLevel">Log level; null to load all records</param>
         /// <param name="pageIndex">Page index</param>
         /// <param name="pageSize">Page size</param>
         /// <returns>Log item collection</returns>
@@ -97,7 +126,7 @@ namespace eCentral.Services.Logging
                 int logLevelId = (int)logLevel.Value;
                 query = query.Where(l => logLevelId == l.LogLevelId);
             }
-             if (!String.IsNullOrEmpty(message))
+            if (!String.IsNullOrEmpty(message))
                 query = query.Where(l => l.ShortMessage.Contains(message) || l.FullMessage.Contains(message));
             query = query.OrderByDescending(l => l.CreatedOn);
 

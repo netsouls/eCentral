@@ -60,3 +60,6 @@ table.display tr.even.row_selected td, table.display tr.odd.row_selected td {
 {
     color:#ED7A53;
 }
+.modal-confirmation {
+  width: 300px;
+}

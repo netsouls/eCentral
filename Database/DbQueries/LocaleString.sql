@@ -16,8 +16,8 @@ where ResourceName = 'Clients.Form.Add.Heading'
 /*
 insert into LocaleStringResource( LanguageId, ResourceName, ResourceValue, IsJsonResource, CreatedOn, UpdatedOn)
 VALUES ( 'C668E5F7-D174-4F09-B06C-4E3735A1BB4E',
-'AuditHistory.Fields.ActivityLogType',
-'Activity log type', --.
+'System.Log.Cleared',
+'The log has been cleared successfully.', --.
 0, dbo.fnGetGMTDateTime(GETDATE()), dbo.fnGetGMTDateTime(GETDATE()))
 	
 */

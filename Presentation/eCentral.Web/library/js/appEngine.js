@@ -188,7 +188,7 @@ $.extend(appEngine, {
                             else
                                 $('.edit-action, .change-status').show();
                             $('td.chChildren input:checkbox').uniform();
-                            appEngine.util.setqTip('td.chChildren .tip');
+                            appEngine.util.setqTip('td .tip');
                         },
                         'fnInitComplete': function (oSettings, json) {
                             $('#' + elementId + ' tr').live('click', function () {
@@ -252,9 +252,10 @@ $.extend(appEngine, {
         },
         setModalAction: function (callback) {
             $(document).ready(function () {
-                var $modalContainer = $('<div id="modal-form-container" class="modal hide fade" style="display: none;"><div id="modal-form"></div></div>');
-                $('#content').append($modalContainer);
-
+                if ($('#modal-form-container').length < 1) {
+                    var $modalContainer = $('<div id="modal-form-container" class="modal hide fade" style="display: none;"><div id="modal-form"></div></div>');
+                    $('body').append($modalContainer);
+                }
                 $('.modal-action').live('click', function (e) {
                     e.preventDefault();
                     $.get($(this).attr('data-url'), function (data) {
@@ -806,6 +807,17 @@ $(document).ready(function () {
             dateFormat: 'd MM, y'
         });
     }
+
+    //* modal window confirmation*/
+    $('a[data-confirm]').click(function (ev) {
+        if ($('#modal-confirmation-container').length < 1) {
+            $('body').append('<div id="modal-confirmation-container" class="modal modal-confirmation hide fade" style="display: none;"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span class="icon12 minia-icon-close"></span></button><h3>Please confirm</h3></div><form class="modal-form" method="post"><div class="modal-body"></div><div class="modal-footer"><button class="btn btn-mini" data-dismiss="modal">Cancel</button><button type="submit" class="btn btn-mini btn-danger" value="delete">OK</button></div></form></div>');
+        }
+        $('#modal-confirmation-container').find('.modal-body').text($(this).attr('data-confirm'))
+            .parent('form').attr('action', $(this).attr('href'));
+        $('#modal-confirmation-container').modal('show');
+        return false;
+    });
 });
 
 //window resize events

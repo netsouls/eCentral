@@ -1,1 +1,8 @@
 /* ------------------Put your custom code here--------------------*/
+.ui-dialog-small { 
+	position: absolute; 
+	padding: 0;
+	width: 20% !important; 
+	min-width: 300px; 
+	overflow: hidden; 
+}

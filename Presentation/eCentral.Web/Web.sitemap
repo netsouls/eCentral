@@ -43,12 +43,12 @@
             <!--<siteMapNode title="Plugins" siteResource="Navigation.Configuration.Plugins" PermissionNames="ManagePlugins" route="Plugin" Icon="icomoon-icon-wrench"/>-->
         </siteMapNode>
         <siteMapNode title="System" Icon="icomoon-icon-aid" PermissionNames="ManageSystemLog,ManageMessageQueue,ManageMaintenance" >
-            <siteMapNode title="Log" PermissionNames="ManageSystemLog" controller="system" action="logs" Icon="icomoon-icon-thumbs-up-4"/>
+            <siteMapNode title="Log" PermissionNames="ManageSystemLog" controller="Log" action="Index" Icon="icomoon-icon-thumbs-up-4"/>
             <!--<siteMapNode title="QueuedEmails" siteResource="Navigation.System.QueuedEmails" PermissionNames="ManageMessageQueue" Icon="icomoon-icon-envelop"/>-->
-            <siteMapNode title="System Information" controller="System" action="info" PermissionNames="ManageMaintenance" Icon="icomoon-icon-wrench-2" />
-            <siteMapNode title="Clear cache" controller="system" action="clearcache" PermissionNames="ManageMaintenance" Icon="icomoon-icon-command" />
-            <siteMapNode title="Reinstall Permissions" controller="system" action="ReinstallPermissions" PermissionNames="ManageMaintenance" Icon="icomoon-icon-lock" />
-            <siteMapNode title="Restart application" controller="system" action="RestartApplication" PermissionNames="ManageMaintenance" Icon="icomoon-icon-loop" />
+            <siteMapNode title="System Information" controller="Info" action="Index" PermissionNames="ManageMaintenance" Icon="icomoon-icon-wrench-2" />
+            <siteMapNode title="Clear cache" controller="Info" action="clearcache" PermissionNames="ManageMaintenance" Icon="icomoon-icon-command" />
+            <siteMapNode title="Reinstall Permissions" controller="Info" action="ReinstallPermissions" PermissionNames="ManageMaintenance" Icon="icomoon-icon-lock" />
+            <siteMapNode title="Restart application" controller="Info" action="RestartApplication" PermissionNames="ManageMaintenance" Icon="icomoon-icon-loop" />
             <!--<siteMapNode title="Warnings" siteResource="Navigation.System.Warnings" controller="Common" action="Warnings" />-->
             <!--<siteMapNode title="System information" siteResource="Navigation.System.SystemInfo" route="SystemInfo" PermissionNames="ManageSystemLog" Icon="entypo-icon-broadcast"/>-->
         </siteMapNode>

@@ -39,8 +39,19 @@ namespace eCentral.Services.Logging
         /// <param name="pageIndex">Page index</param>
         /// <param name="pageSize">Page size</param>
         /// <returns>Log item collection</returns>
-        IPagedList<Log> GetAll(DateTime? fromUtc, DateTime? toUtc, 
+        IPagedList<Log> GetAll(DateTime? fromUtc, DateTime? toUtc,
             string message, LogLevel? logLevel, int pageIndex, int pageSize);
+
+        /// <summary>
+        /// Gets all log items
+        /// </summary>
+        /// <param name="fromUtc">Log item creation from; null to load all records</param>
+        /// <param name="toUtc">Log item creation to; null to load all records</param>
+        /// <param name="message">Message</param>
+        /// <param name="logLevel">Log level; null to load all records</param>
+        /// <returns>Log item collection</returns>
+        IList<Log> GetAll(DateTime? fromUtc, DateTime? toUtc,
+            string message, LogLevel? logLevel);
 
         /// <summary>
         /// Gets a log item

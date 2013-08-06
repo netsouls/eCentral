@@ -11,7 +11,7 @@
         <img id="modal-window-loader" class="hide" src="@Url.ImageUrl("loaders/horizontal/018.gif")" width="80" height="10" alt=""/>
     </h3>
 </div>
-@using (Ajax.BeginForm(null, null, new AjaxOptions { HttpMethod = "Post", OnComplete = "onComplete", LoadingElementId = "modal-window-loader" }, new { @class = "form-horizontal" }))
+@using (Ajax.BeginForm(null, null, new AjaxOptions { HttpMethod = "Post", OnComplete = "onComplete", LoadingElementId = "modal-window-loader" }, new { @class = "form-horizontal modal-form" }))
 {
     @Html.HiddenFor(model => model.RowId)
     @Html.HiddenFor(model => model.CountryId)

@@ -23,7 +23,7 @@ namespace eCentral.Web.Models.Logging
         [AllowHtml]
         public string ReferrerUrl { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public string CreatedOn { get; set; }
 
         public Guid? UserId { get; set; }
         public string UserName { get; set; }
