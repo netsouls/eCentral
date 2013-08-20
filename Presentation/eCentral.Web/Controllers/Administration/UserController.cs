@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using eCentral.Core;
@@ -6,6 +7,7 @@ using eCentral.Core.Caching;
 using eCentral.Core.Domain.Security;
 using eCentral.Core.Domain.Users;
 using eCentral.Services.Common;
+using eCentral.Services.Companies;
 using eCentral.Services.Localization;
 using eCentral.Services.Messages;
 using eCentral.Services.Security.Cryptography;
@@ -25,6 +27,7 @@ namespace eCentral.Web.Controllers.Administration
 
         private readonly IUserService userService;
         private readonly IWorkflowMessageService messageService;
+        private readonly IBranchOfficeService officeService;
         private readonly IUserRegistrationService registrationService;
         private readonly IWorkContext workContext;
         private readonly IGenericAttributeService attributeService;
@@ -39,11 +42,12 @@ namespace eCentral.Web.Controllers.Administration
         public UserController(IUserService userService, ILocalizationService localizationService,
             IEncryptionService encryptionService, IUserRegistrationService registrationService,
             IWorkflowMessageService messageService, IGenericAttributeService attributeService,
-            IWorkContext workContext, ICacheManager cacheManager)
+            IWorkContext workContext, ICacheManager cacheManager, IBranchOfficeService officeService)
         {
             this.localizationService  = localizationService;
             this.cacheManager         = cacheManager;
             this.encryptionService    = encryptionService;
+            this.officeService        = officeService;
             this.registrationService  = registrationService;
             this.attributeService     = attributeService;
             this.messageService       = messageService;
@@ -84,6 +88,8 @@ namespace eCentral.Web.Controllers.Administration
         public ActionResult Create()
         {
             var model = new UserModel();
+            model.AvailableOffices = base.PrepareSelectList(officeService, cacheManager);
+
             return View(model);
         }
 
@@ -106,6 +112,10 @@ namespace eCentral.Web.Controllers.Administration
                 var result = registrationService.RegisterUser(request);
                 if (result.Success)
                 {
+                    // add the associated branches to this user
+                    attributeService.SaveAttribute<List<Guid>>(result.Data, SystemUserAttributeNames.AssociatedBrancOffices,
+                        model.OfficeId.ToList<Guid>());
+
                     // send the user activation email
                     messageService.SendUserEmailValidationMessage(result.Data, workContext.WorkingLanguage.RowId);
 
@@ -116,6 +126,7 @@ namespace eCentral.Web.Controllers.Administration
             }
 
             //If we got this far, something failed, redisplay form
+            model.AvailableOffices = base.PrepareSelectList(officeService, cacheManager);
             return View(model);
         }
 
@@ -136,6 +147,10 @@ namespace eCentral.Web.Controllers.Administration
             // retrieve extra properties
             model.Mobile = encryptionService.AESDecrypt(user.GetAttribute<string>(SystemUserAttributeNames.Mobile), user);
             model.IsAdministrator = user.IsInUserRole(SystemUserRoleNames.Administrators);
+            var associatedOffices = user.GetAttribute<List<Guid>>(SystemUserAttributeNames.AssociatedBrancOffices);
+            if (associatedOffices != null && associatedOffices.Count > 0)
+                model.OfficeId = associatedOffices.ToDelimitedString();
+            model.AvailableOffices = base.PrepareSelectList(officeService, cacheManager);
 
             return View(model);
         }
@@ -159,6 +174,10 @@ namespace eCentral.Web.Controllers.Administration
                 var result = registrationService.UpdateRegistration(request);
                 if (result.Success)
                 {
+                    // add the associated branches to this user
+                    attributeService.SaveAttribute<List<Guid>>(result.Data, SystemUserAttributeNames.AssociatedBrancOffices,
+                        model.OfficeId.ToList<Guid>());
+
                     // return notification message
                     SuccessNotification(localizationService.GetResource("Users.Updated"));
                     return RedirectToAction(SystemRouteNames.Index);
@@ -166,8 +185,9 @@ namespace eCentral.Web.Controllers.Administration
             }
 
             //If we got this far, something failed, redisplay form
-            var user = userService.GetById(model.RowId);
+            model.AvailableOffices = base.PrepareSelectList(officeService, cacheManager);
 
+            var user = userService.GetById(model.RowId);
             if (user == null)
                 return RedirectToAction(SystemRouteNames.Index);
 
@@ -222,7 +242,7 @@ namespace eCentral.Web.Controllers.Administration
                 FirstName = encryptionService.AESDecrypt( user.GetAttribute<string>(SystemUserAttributeNames.FirstName), user), 
                 LastName = encryptionService.AESDecrypt( user.GetAttribute<string>(SystemUserAttributeNames.LastName), user),
                 UserRoleNames = user.UserRoles.Select(ur => ur.Name).ToDelimitedString(", "),
-                CreatedOn = user.CreatedOn.ToString(StateKeyManager.DateFormat),
+                CreatedOn = user.CreatedOn.ToString(StateKeyManager.DateFormat), 
                 LastActivityDate = user.LastActivityDate.HasValue ? user.LastActivityDate.Value.ToString(StateKeyManager.DateTimeFormat) : string.Empty
             };
 

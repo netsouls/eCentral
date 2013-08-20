@@ -29,6 +29,13 @@ namespace eCentral.Web.Validators.Users
                 .NotEmpty()
                 .WithMessage(localizationService.GetResource("Users.Fields.Mobile.Required"));
 
+            When(x => !x.IsAdministrator, () =>
+            {
+                RuleFor(x => x.OfficeId)
+                    .NotEmpty()
+                    .WithMessage(localizationService.GetResource("Users.Fields.Offices.Required"));
+            });            
+
             When(x => !x.IsEdit, () =>
             {
                 RuleFor(x => x.Username).IsUnique(userService, localizationService.GetResource("Users.Fields.Username.NotUnique"),

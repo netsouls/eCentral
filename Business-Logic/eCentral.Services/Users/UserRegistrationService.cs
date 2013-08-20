@@ -244,11 +244,11 @@ namespace eCentral.Services.Users
         /// </summary>
         /// <param name="request">Request</param>
         /// <returns>Result</returns>
-        public virtual DataResult UpdateRegistration(UserRegistrationRequest request)
+        public virtual DataResult<User> UpdateRegistration(UserRegistrationRequest request)
         {
             Guard.IsNotNull(request, "Request");
 
-            var result = new DataResult();
+            var result = new DataResult<User>();
 
             if (!CommonHelper.IsValidEmail(request.Username))
             {
@@ -292,6 +292,7 @@ namespace eCentral.Services.Users
             if (!string.IsNullOrEmpty(request.Mobile))
                 attributeService.SaveAttribute(user, SystemUserAttributeNames.Mobile, encryptionService.AESEncrypt(request.Mobile, user));
 
+            result.Data = user;
             return result;
         }
 

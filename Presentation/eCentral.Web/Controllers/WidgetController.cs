@@ -31,8 +31,8 @@ namespace eCentral.Web.Controllers
         {
             //model
             var model = new List<WidgetModel>();
-
             var widgets = widgetService.GetAllByZone(widgetZone);
+            
             foreach (var widget in widgets)
             {
                 var widgetPlugin = widgetService.LoadWidgetPluginBySystemName(widget.PluginSystemName);

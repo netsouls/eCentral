@@ -121,7 +121,7 @@ namespace eCentral.Web.Controllers.SystemMaintenance
         [HttpPost]
         public ActionResult ClearAll()
         {
-            //logger.ClearLog();
+            logger.ClearLog();
 
             SuccessNotification(localizationService.GetResource("System.Log.Cleared"));
             return RedirectToAction(SystemRouteNames.Index);

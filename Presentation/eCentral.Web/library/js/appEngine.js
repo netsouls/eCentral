@@ -788,6 +788,12 @@ $(document).ready(function () {
 
     //------------- Application specific actions -------------//
     $("form input").attr("autocomplete", "off");
+    $('.multi-select').select2(
+    {
+        placeholder: $(this).attr('placeholder')
+    }).on('change', function (e) {
+        $('#' + $(this).attr('dataField')).val(e.val);
+    });
 
     $('.href-action').click(function (e) {
         e.preventDefault();
@@ -797,6 +803,11 @@ $(document).ready(function () {
     if ($('form #IsEdit').length) {
         if ($('form #IsEdit').val().toLowerCase() == 'true') {
             $('form .readonly').attr('readonly', 'readonly');
+            if ($('.multi-select-hidden').length > 0) {
+                $.each($('.multi-select-hidden'), function (index, element) {
+                    $('#' + element.id + '_List').select2('val', $(element).val().split(','));
+                });
+            }
         }
     }
     //------------- Datepicker -------------//

@@ -23,6 +23,19 @@ namespace eCentral.Core
                 action(local);
         }
 
+        public static List<T> ToList<T>(this string collection, string delimiter)
+        {
+            return collection
+                .Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(value => CommonHelper.To<T>(value))
+                .ToList();
+        }
+
+        public static List<T> ToList<T>(this string collection)
+        {
+            return collection.ToList<T>(",");
+        }
+
         public static string ToDelimitedString<T>(this IEnumerable<T> collection)
         {
             return collection.ToDelimitedString(",");

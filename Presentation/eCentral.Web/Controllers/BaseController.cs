@@ -1,4 +1,5 @@
 ﻿using System;
+using eCentral.Services.Companies;
 using eCentral.Web.Infrastructure.Cache;
 using System.Collections.Generic;
 using eCentral.Services.Users;
@@ -63,7 +64,7 @@ namespace eCentral.Web.Controllers
         /// Sets the list of all users in the system
         /// </summary>
         [NonAction]
-        protected IList<SelectListItem> PrepareUserSelectList(IUserService userService, ICacheManager cacheManager,
+        protected IList<SelectListItem> PrepareSelectList(IUserService userService, ICacheManager cacheManager,
             Guid selectedUserId, PublishingStatus status = PublishingStatus.Active)
         {
             string cacheKey = ModelCacheEventUser.USERS_MODEL_KEY.FormatWith(
@@ -84,6 +85,35 @@ namespace eCentral.Web.Controllers
                     .ToList();
 
                 return users;
+            });
+
+            return cacheModel;
+        }
+
+        /// <summary>
+        /// Sets the list of all users in the system
+        /// </summary>
+        [NonAction]
+        protected IList<SelectListItem> PrepareSelectList(IBranchOfficeService officeService, ICacheManager cacheManager,
+            PublishingStatus status = PublishingStatus.Active)
+        {
+            string cacheKey = ModelCacheEventUser.OFFICE_MODEL_KEY.FormatWith(
+                "SelectList.{0}".FormatWith(status.ToString()));
+
+            var cacheModel = cacheManager.Get(cacheKey, () =>
+            {
+                var offices = officeService.GetAll(status)
+                    .Select(office =>
+                    {
+                        return new SelectListItem()
+                        {
+                            Value = office.RowId.ToString(),
+                            Text = office.BranchName
+                        };
+                    })
+                    .ToList();
+
+                return offices;
             });
 
             return cacheModel;

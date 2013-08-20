@@ -82,7 +82,7 @@ namespace eCentral.Web.Controllers
             });
 
             activityLogSearchModel.Users.AddRange(
-                this.PrepareUserSelectList(userService, cacheManager, Guid.Empty, PublishingStatus.All));
+                this.PrepareSelectList(userService, cacheManager, Guid.Empty, PublishingStatus.All));
 
             return View(activityLogSearchModel);
         }

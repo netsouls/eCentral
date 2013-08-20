@@ -50,10 +50,23 @@
             <div class="form-row row-fluid">
                 <div class="span12">
                     <div class="row-fluid">
+                        @Html.LabelFor(m => m.OfficeId, new { @class = "span2" })
+                        <div class="span10 controls">
+                            @Html.DropDownList("OfficeId.List", Model.AvailableOffices, new { @class = "nostyle multi-select", style = "width:100%;", multiple = "multiple", placeholder = "Click here to select multiple offices", dataField = Html.FieldIdFor(m => m.OfficeId) })
+                            @Html.HiddenFor(m => m.OfficeId, new { @class="multi-select-hidden" })                            
+                            @Html.ValidationMessageFor(m => m.OfficeId)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
                         <div class="span2">&nbsp;</div>
                         <div class="span10 controls">
                             <div class="iToggle-button left marginR10">
-                                <input type="checkbox" @if(Model.IsAdministrator) {<text>checked="checked"</text>}  class="nostyle" data-element="@Html.FieldIdFor(m => m.IsAdministrator)" />
+                                <input type="checkbox" @if (Model.IsAdministrator)
+                                                       {<text>checked="checked"</text>}  class="nostyle" data-element="@Html.FieldIdFor(m => m.IsAdministrator)" />
                             </div>
                             @T("Users.Fields.Administrator")
                             @Html.HiddenFor(m => m.IsAdministrator)

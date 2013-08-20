@@ -29,7 +29,7 @@ namespace eCentral.Services.Users
         /// </summary>
         /// <param name="request">Request</param>
         /// <returns>Result</returns>
-        DataResult UpdateRegistration(UserRegistrationRequest request);
+        DataResult<User> UpdateRegistration(UserRegistrationRequest request);
 
         /// <summary>
         /// Change password

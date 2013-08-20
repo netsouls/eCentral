@@ -312,7 +312,9 @@ namespace eCentral.Core
                 return new GenericListTypeConverter<decimal>();
             if (type == typeof(List<string>))
                 return new GenericListTypeConverter<string>();
-            
+            if (type == typeof(List<Guid>))
+                return new GenericListTypeConverter<Guid>();
+
             return TypeDescriptor.GetConverter(type);
         }
 

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using eCentral.Web.Framework;
 using eCentral.Web.Framework.Mvc;
@@ -10,6 +12,11 @@ namespace eCentral.Web.Models.Users
     [Validator(typeof(UserValidator))]
     public partial class UserModel : BaseAuditHistoryModel
     {
+        public UserModel()
+        {
+            this.AvailableOffices = new List<SelectListItem>();
+        }
+
         [SiteResourceDisplayName("Users.Fields.Username")]
         [AllowHtml]
         public string Username { get; set; }
@@ -34,5 +41,10 @@ namespace eCentral.Web.Models.Users
         /// </summary>
         [SiteResourceDisplayName("Users.Fields.Administrator")]
         public bool IsAdministrator { get; set; }
+
+        [SiteResourceDisplayName("Users.Fields.Offices")]
+        public string OfficeId { get; set; }
+
+        public IList<SelectListItem> AvailableOffices { get; set; }
     }
 }
