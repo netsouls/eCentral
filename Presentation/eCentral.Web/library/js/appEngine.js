@@ -444,22 +444,27 @@ $(document).ready(function () {
     var absoluteUrl = 0; //put value of 1 if use absolute path links. example http://www.host.com/dashboard instead of /dashboard
 
     function setCurrentClass(mainNavLinkAll, url) {
-        url = url.toLowerCase();
-        mainNavLinkAll.each(function (index) {
-            //convert href to array and get last element
-            var href = $(this).attr('href').toLowerCase();
-            if (href == url || url.indexOf(href) > 0) {
-                //set new current class
-                $(this).addClass('current');
+        url = url.toLowerCase() + '/test';
+        var hasFound = false;
+        while (hasFound == false) {
+            url = url.substring(0, url.lastIndexOf('/')); // go one path up
+            mainNavLinkAll.each(function (index) {
+                //convert href to array and get last element
+                var href = $(this).attr('href').toLowerCase();
+                if (href == url || url.indexOf(href) > 0) {
+                    //set new current class
+                    $(this).addClass('current');
 
-                ulElem = $(this).closest('ul');
-                if (ulElem.hasClass('sub')) {
-                    //its a part of sub menu need to expand this menu
-                    aElem = ulElem.prev('a.hasUl').addClass('drop');
-                    ulElem.addClass('expand');
+                    ulElem = $(this).closest('ul');
+                    if (ulElem.hasClass('sub')) {
+                        //its a part of sub menu need to expand this menu
+                        aElem = ulElem.prev('a.hasUl').addClass('drop');
+                        ulElem.addClass('expand');
+                    }
+                    hasFound = true
                 }
-            }
-        });
+            });
+        }
     }
 
     if (domain === '') {

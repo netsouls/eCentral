@@ -12,13 +12,14 @@
         <div class="box gradient">
             <div class="title">
                 @Html.Partial("ActionList", new ActionListModel() { AddRouteUrl = Url.Action(SystemRouteNames.Create), 
-                    ChangeStatusUrl = Url.Action(SystemRouteNames.ChangeStatus), EditRouteUrl = Url.Action(SystemRouteNames.Edit),
+                    ChangeStatusUrl = Url.Action(SystemRouteNames.ChangeStatus),
                     PublishingStatus = new PublishingStatus[] { PublishingStatus.Draft }})                
             </div>
             <div class="content noPad">
                 <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered" id="myDataTable" width="100%">
                     <thead>
                         <tr>
+                            <th id="masterCh" class="ch"><input type="checkbox" name="checkbox" value="all" class="styled" /></th>                            
                             <th>
                                 Username
                             </th>
@@ -38,7 +39,7 @@
                             <th>
                                 Last Update By
                             </th>
-                            <th id="masterCh" class="ch"><input type="checkbox" name="checkbox" value="all" class="styled" /></th>                            
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,8 +53,14 @@
 </div>
 @section inlineScripts {
     <script type="text/javascript">
+        var editUrl = '@Url.Action(SystemRouteNames.Edit)';
         appEngine.util.setDataTable('myDataTable', '@Url.Action(SystemRouteNames.List)', null,
-            [
+            [                
+                { "sName": "Selection", "mData": "RowId", "bSearchable": false, "bSortable": false, sClass: "chChildren",
+                    "mRender": function (dataItem) {
+                        return '<input type="checkbox" name="checkbox" value="' + dataItem + '" />';
+                    }
+                },
                 { 'sName': 'UserName', 'mData': 'Username' },
                 { 'sName': 'ContactName', 'mData': 'FirstName',
                     'mRender': function (data, type, full) {
@@ -64,12 +71,12 @@
                 { 'sName': 'LastActivityDate', 'mData': 'LastActivityDate' },
                 {'PublishingStatus': 'PublishingStatus', 'mData': 'PublishingStatus', "bSearchable": false, "bSortable": false },
                 { 'sName': 'CreatedOn', 'mData': 'CreatedOn' },
-                { 'LastUpdated': 'LastUpdated', 'mData': 'LastUpdated', "bSearchable": false, "bSortable": false },
-                { "sName": "Actions", "mData": "RowId", "bSearchable": false, "bSortable": false, sClass: "chChildren",
-                    "mRender": function (dataItem) {
-                        return '<input type="checkbox" name="checkbox" value="' + dataItem + '" />';
+                { 'sName': 'LastUpdated', 'mData': 'LastUpdated', "bSearchable": false, "bSortable": false },
+                { 'sName': 'Actions', 'mData': 'RowId', 'bSearchable': false, 'bSortable': false, sWidth: '55px',
+                    'mRender': function (dataItem) {
+                        return '<div class="action"><a href="' + editUrl + '/' + dataItem + '" class="btn btn-mini btn-warning" ><span class="icon8 icomoon-icon-pencil-4 white"></span>Edit</a></div>';
                     }
-                }
+                }  
             ], true, true, function (dataTable) {
 
             });

@@ -1,7 +1,6 @@
 ﻿@model ActionListModel
 @{
     var addUrl = string.Empty;
-    var editUrl = string.Empty;
     var changeStatusUrl = string.Empty;
 
     if (Model.AddNewRouteName.HasValue() || Model.AddRouteUrl.HasValue())
@@ -13,18 +12,6 @@
         else 
         {
             addUrl = Model.AddRouteUrl.Trim().ToLowerInvariant();
-        }
-    }
-
-    if (Model.EditRouteName.HasValue() || Model.EditRouteUrl.HasValue())
-    {
-        if (Model.EditRouteName.HasValue())
-        {
-            editUrl = Url.EditUrl(Model.EditRouteName);
-        }
-        else
-        {
-            editUrl = Model.EditRouteUrl.Trim().ToLowerInvariant();
         }
     }
 
@@ -47,11 +34,6 @@
         { 
         <button class="btn btn-mini btn-primary href-action tip" title="Add New" data-href="@addUrl">
             <span class="icon8 icomoon-icon-plus white"></span>Add New</button>
-        }
-        @if (editUrl.HasValue())
-        { 
-            <button class="btn btn-mini btn-warning tip edit-action" data-href="@editUrl" title="Select a single record to edit">
-                <span class="icon8 icomoon-icon-pencil-4 white"></span>Edit</button>
         }
         @if (changeStatusUrl.HasValue())
         { 

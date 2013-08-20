@@ -12,7 +12,6 @@
         <div class="box gradient">
             <div class="title">
                 @Html.Partial("ActionList", new ActionListModel() { AddRouteUrl = Url.Action(SystemRouteNames.Create),
-                                                                    EditRouteUrl = Url.Action(SystemRouteNames.Edit),
                                                                     ChangeStatusUrl = Url.Action(SystemRouteNames.ChangeStatus)
            })                
             </div>
@@ -20,6 +19,7 @@
                 <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered" id="myDataTable" width="100%">
                     <thead>
                         <tr>
+                            <th id="masterCh" class="ch"><input type="checkbox" name="checkbox" value="all" class="styled" /></th>
                             <th>
                                 Branch Name
                             </th>
@@ -41,7 +41,7 @@
                             <th>
                                 Last Update By
                             </th>
-                            <th id="masterCh" class="ch"><input type="checkbox" name="checkbox" value="all" class="styled" /></th>                            
+                            <th></th>                       
                         </tr>
                     </thead>
                     <tbody>
@@ -55,20 +55,26 @@
 </div>
 @section inlineScripts {
     <script type="text/javascript">
+        var editUrl = '@Url.Action(SystemRouteNames.Edit)';
         appEngine.util.setDataTable('myDataTable', '@Url.Action(SystemRouteNames.List)', null,
             [
+                { "sName": "Selection", "mData": "RowId", "bSearchable": false, "bSortable": false, sClass: "chChildren",
+                    "mRender": function (dataItem) {
+                        return '<input type="checkbox" name="checkbox" value="' + dataItem + '" />';
+                    }
+                },
                 { 'sName': 'BranchName', 'mData': 'BranchName'},
                 { 'sName': 'Abbreviation', 'mData': 'Abbreviation' },
                 { 'sName': 'Phone', 'mData': 'Address.PhoneNumber', "bSearchable": false, "bSortable": false },
                 { 'sName': 'City', 'mData': 'Address.City', "bSearchable": false, "bSortable": false },
                 { 'sName': 'Country', 'mData': 'Address.CountryName', "bSearchable": false, "bSortable": false },
-                { 'PublishingStatus': 'PublishingStatus', 'mData': 'PublishingStatus', "bSearchable": false, "bSortable": false },
-                { 'LastUpdated': 'LastUpdated', 'mData': 'LastUpdated', "bSearchable": false, "bSortable": false },
-                { "sName": "Actions", "mData": "RowId", "bSearchable": false, "bSortable": false, sClass: "chChildren",
-                    "mRender": function (dataItem) {
-                        return '<input type="checkbox" name="checkbox" value="' + dataItem + '" />';
+                { 'sName': 'PublishingStatus', 'mData': 'PublishingStatus', "bSearchable": false, "bSortable": false },
+                { 'sName': 'LastUpdated', 'mData': 'LastUpdated', "bSearchable": false, "bSortable": false },
+                { 'sName': 'Actions', 'mData': 'RowId', 'bSearchable': false, 'bSortable': false, sWidth: '55px',
+                    'mRender': function (dataItem) {
+                        return '<div class="action"><a href="' + editUrl + '/' + dataItem + '" class="btn btn-mini btn-warning" ><span class="icon8 icomoon-icon-pencil-4 white"></span>Edit</a></div>';
                     }
-                }
+                }                
             ], false, false, function (dataTable) {
 
             });

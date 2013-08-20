@@ -11,7 +11,7 @@
     <div class="span12">
         <div class="box gradient">
             <div class="title">
-                @Html.Partial("ActionList", new ActionListModel() { EditRouteUrl = Url.Action("edit")})                
+                @Html.Partial("ActionList", new ActionListModel() {})                
             </div>
             <div class="content noPad">
                 <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered" id="myDataTable" width="100%">
@@ -23,7 +23,7 @@
                             <th>
                                 Subject
                             </th>
-                            <th id="masterCh" class="ch"></th>                            
+                            <th></th>                            
                         </tr>
                     </thead>
                     <tbody>
@@ -37,13 +37,14 @@
 </div>
 @section inlineScripts {
     <script type="text/javascript">
+        var editUrl = '@Url.Action(SystemRouteNames.Edit)';
         appEngine.util.setDataTable('myDataTable', '@Url.Action(SystemRouteNames.List)', null,
             [
                 { 'sName': 'Name', 'mData': 'Name', 'bSortable': false  },
                 { 'sName': 'Subject', 'mData': 'Subject', 'bSearchable': false, 'bSortable': false },
-                { "sName": "Actions", "mData": "RowId", 'bSearchable': false, 'bSortable': false, sClass: "chChildren",
-                    "mRender": function (dataItem) {
-                        return '<input type="checkbox" name="checkbox" value="' + dataItem + '" />';
+                { 'sName': 'Actions', 'mData': 'RowId', 'bSearchable': false, 'bSortable': false, sWidth: '55px',
+                    'mRender': function (dataItem) {
+                        return '<div class="action"><a href="' + editUrl + '/' + dataItem + '" class="btn btn-mini btn-warning" ><span class="icon8 icomoon-icon-pencil-4 white"></span>Edit</a></div>';
                     }
                 }
             ], false, false, function (dataTable) {

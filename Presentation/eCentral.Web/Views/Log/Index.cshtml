@@ -82,11 +82,11 @@
                     { 'sName': 'LogLevel', 'mData': 'LogLevel', 'bSearchable': false, 'bSortable': false },
                     { 'sName': 'ShortMessage', 'mData': 'ShortMessage', 'bSearchable': false, 'bSortable': false },
                     { 'sName': 'CreatedOn', 'mData': 'CreatedOn', 'bSearchable': false, 'bSortable': false },
-                    { 'sName': 'CreatedOn', 'mData': 'RowId', 'bSearchable': false, 'bSortable': false, sWidth: '70px',
+                    { 'sName': 'Actions', 'mData': 'RowId', 'bSearchable': false, 'bSortable': false, sWidth: '60px',
                         'mRender': function (dataItem) {
-                            return '<div class="action"><a href="' + viewUrl + '/' + dataItem + '" class="btn btn-mini btn-success">View <span class="icon8 icomoon-icon-file white"></span></a></div>';
+                            return '<div class="action"><a href="' + viewUrl + '/' + dataItem + '" class="btn btn-mini btn-success"><span class="icon8 icomoon-icon-file white"></span>View</a></div>';
                         }
-                    },
+                    }
                 ], true, false, function (dataTable) {
                     $('#search-filter, #search-filter-clear').click(function (e) {
                         e.preventDefault();

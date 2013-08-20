@@ -2,8 +2,7 @@
 @using eCentral.Web.Framework.Web;
 @{
     var siteInformationSettings = EngineContext.Current.Resolve<SiteInformationSettings>();
-    var urlGenerator = new Telerik.Web.Mvc.UrlGenerator();
-
+    
     if (!Telerik.Web.Mvc.SiteMapManager.SiteMaps.ContainsKey("sitemap"))
     {
         Telerik.Web.Mvc.SiteMapManager.SiteMaps.Register<Telerik.Web.Mvc.XmlSiteMap>("sitemap", sitemap =>
