@@ -445,9 +445,10 @@ $(document).ready(function () {
 
     function setCurrentClass(mainNavLinkAll, url) {
         url = url.toLowerCase() + '/test';
-        var hasFound = false;
-        while (hasFound == false) {
+        var hasFound = false; var iCount = 0;
+        while (hasFound == false && iCount < 3) {
             url = url.substring(0, url.lastIndexOf('/')); // go one path up
+            iCount++;
             mainNavLinkAll.each(function (index) {
                 //convert href to array and get last element
                 var href = $(this).attr('href').toLowerCase();
@@ -815,6 +816,11 @@ $(document).ready(function () {
             }
         }
     }
+
+    $('a[data-toggle="tab"]').on('shown', function (e) {
+        $($(this).attr('href')).find("select").not('.nostyle').uniform();
+    })
+
     //------------- Datepicker -------------//
     if ($('.datepicker').length) {
         $(".datepicker").datepicker({
@@ -823,7 +829,6 @@ $(document).ready(function () {
             dateFormat: 'd MM, y'
         });
     }
-
     //* modal window confirmation*/
     $('a[data-confirm]').click(function (ev) {
         if ($('#modal-confirmation-container').length < 1) {

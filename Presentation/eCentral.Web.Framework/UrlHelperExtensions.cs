@@ -66,21 +66,24 @@ namespace eCentral.Web.Framework
         {
             var linkUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, urlHelper.RouteCollection, urlHelper.RequestContext, true);
 
-            var div = new TagBuilder("div");
-            div.AddCssClass("sidebar-widget");
+            var rowFluid = new TagBuilder("div");
+            rowFluid.AddCssClass("row-fluid");
 
-            var title = new TagBuilder("h5");
-            title.AddCssClass("title");
+            var spanFluid = new TagBuilder("div");
+            spanFluid.AddCssClass("span12");
 
             var anchor = new TagBuilder("a");
             anchor.Attributes.Add("href", linkUrl);
-            var icon = new TagBuilder("span");
-            icon.AddCssClass("icon icomoon-icon-enter-4 white");
-            anchor.InnerHtml = linkText + icon.ToString(TagRenderMode.Normal);
-            title.InnerHtml = anchor.ToString(TagRenderMode.Normal);
-            div.InnerHtml = title.ToString(TagRenderMode.Normal);
+            anchor.AddCssClass("btn btn-mini btn-info");
 
-            return MvcHtmlString.Create(div.ToString(TagRenderMode.Normal));
+            var icon = new TagBuilder("span");
+            icon.AddCssClass("icon12 icon icomoon-icon-enter-4 white");
+            anchor.InnerHtml = icon.ToString(TagRenderMode.Normal) + linkText;
+            
+            spanFluid.InnerHtml = anchor.ToString(TagRenderMode.Normal);
+            rowFluid.InnerHtml = spanFluid.ToString(TagRenderMode.Normal);
+
+            return MvcHtmlString.Create(rowFluid.ToString(TagRenderMode.Normal));
         }
     }
 }
