@@ -4,11 +4,14 @@ using System.Linq;
 using System.Web.Mvc;
 using eCentral.Core;
 using eCentral.Core.Caching;
+using eCentral.Core.Domain.Common;
+using eCentral.Core.Domain.Logging;
 using eCentral.Core.Domain.Security;
 using eCentral.Core.Domain.Users;
 using eCentral.Services.Common;
 using eCentral.Services.Companies;
 using eCentral.Services.Localization;
+using eCentral.Services.Logging;
 using eCentral.Services.Messages;
 using eCentral.Services.Security.Cryptography;
 using eCentral.Services.Users;
@@ -26,6 +29,7 @@ namespace eCentral.Web.Controllers.Administration
         #region Fields
 
         private readonly IUserService userService;
+        private readonly IUserActivityService userActivityService;
         private readonly IWorkflowMessageService messageService;
         private readonly IBranchOfficeService officeService;
         private readonly IUserRegistrationService registrationService;
@@ -42,10 +46,12 @@ namespace eCentral.Web.Controllers.Administration
         public UserController(IUserService userService, ILocalizationService localizationService,
             IEncryptionService encryptionService, IUserRegistrationService registrationService,
             IWorkflowMessageService messageService, IGenericAttributeService attributeService,
-            IWorkContext workContext, ICacheManager cacheManager, IBranchOfficeService officeService)
+            IWorkContext workContext, ICacheManager cacheManager, 
+            IUserActivityService userActivityService, IBranchOfficeService officeService)
         {
             this.localizationService  = localizationService;
             this.cacheManager         = cacheManager;
+            this.userActivityService  = userActivityService;
             this.encryptionService    = encryptionService;
             this.officeService        = officeService;
             this.registrationService  = registrationService;
@@ -113,8 +119,16 @@ namespace eCentral.Web.Controllers.Administration
                 if (result.Success)
                 {
                     // add the associated branches to this user
-                    attributeService.SaveAttribute<List<Guid>>(result.Data, SystemUserAttributeNames.AssociatedBrancOffices,
-                        model.OfficeId.ToList<Guid>());
+                    var associatedOffices = model.OfficeId.ToList<Guid>();
+                    attributeService.SaveAttribute<List<Guid>>(result.Data, SystemAttributeNames.AssociatedBrancOffices,
+                        associatedOffices);
+
+                    result.Data.AuditHistory.Add
+                    (
+                        userActivityService.InsertActivity(SystemActivityLogTypeNames.EntityOfficeAssociation,
+                            PrepareOfficeAssociationModel(associatedOffices,officeService,cacheManager), StateKeyManager.USER_ACTIVITY_COMMENT, request.Username)
+                    );
+                    userService.Update(result.Data);
 
                     // send the user activation email
                     messageService.SendUserEmailValidationMessage(result.Data, workContext.WorkingLanguage.RowId);
@@ -147,7 +161,7 @@ namespace eCentral.Web.Controllers.Administration
             // retrieve extra properties
             model.Mobile = encryptionService.AESDecrypt(user.GetAttribute<string>(SystemUserAttributeNames.Mobile), user);
             model.IsAdministrator = user.IsInUserRole(SystemUserRoleNames.Administrators);
-            var associatedOffices = user.GetAttribute<List<Guid>>(SystemUserAttributeNames.AssociatedBrancOffices);
+            var associatedOffices = user.GetAttribute<List<Guid>>(SystemAttributeNames.AssociatedBrancOffices);
             if (associatedOffices != null && associatedOffices.Count > 0)
                 model.OfficeId = associatedOffices.ToDelimitedString();
             model.AvailableOffices = base.PrepareSelectList(officeService, cacheManager);
@@ -175,9 +189,17 @@ namespace eCentral.Web.Controllers.Administration
                 if (result.Success)
                 {
                     // add the associated branches to this user
-                    attributeService.SaveAttribute<List<Guid>>(result.Data, SystemUserAttributeNames.AssociatedBrancOffices,
-                        model.OfficeId.ToList<Guid>());
+                    var associatedOffices = model.OfficeId.ToList<Guid>();
+                    attributeService.SaveAttribute<List<Guid>>(result.Data, SystemAttributeNames.AssociatedBrancOffices,
+                        associatedOffices);
 
+                    result.Data.AuditHistory.Add
+                    (
+                        userActivityService.InsertActivity(SystemActivityLogTypeNames.EntityOfficeAssociation,
+                            PrepareOfficeAssociationModel(associatedOffices, officeService, cacheManager), StateKeyManager.USER_ACTIVITY_COMMENT, request.Username)
+                    );
+                    userService.Update(result.Data);
+                    
                     // return notification message
                     SuccessNotification(localizationService.GetResource("Users.Updated"));
                     return RedirectToAction(SystemRouteNames.Index);
@@ -246,6 +268,7 @@ namespace eCentral.Web.Controllers.Administration
                 LastActivityDate = user.LastActivityDate.HasValue ? user.LastActivityDate.Value.ToString(StateKeyManager.DateTimeFormat) : string.Empty
             };
 
+            PrepareOfficeAssociationModel(model, user, officeService, cacheManager);
             PrepareAuditHistoryModel(model, user);
 
             return model;

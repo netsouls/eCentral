@@ -53,5 +53,14 @@
         }
 
         #endregion
+
+        #region Audit History Comments
+
+        public const string USER_ACTIVITY_COMMENT = "User:[{0}]";
+        public const string CLIENT_ACTIVITY_COMMENT = "Client:[{0}]";
+        public const string BRANCHOFFICE_ACTIVITY_COMMENT = "Office:[{0}]";
+        public const string COMPANY_ACTIVITY_COMMENT = "Company:[{0}]";
+
+        #endregion
     }
 }

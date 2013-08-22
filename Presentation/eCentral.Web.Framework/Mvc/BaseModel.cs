@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace eCentral.Web.Framework.Mvc
@@ -39,6 +40,24 @@ namespace eCentral.Web.Framework.Mvc
         /// Get or set the user and time when the entity was last update by and on 
         /// </summary>
         string LastUpdated { get; set; }
+    }
+
+    public interface IBranchOfficeAssociation
+    {
+        /// <summary>
+        /// Gets or set the associated offices
+        /// </summary>
+        IList<string> Offices { get; set; }
+
+        /// <summary>
+        /// Gets or sets the selected associated offices identifiers
+        /// </summary>
+        string OfficeId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the available branch offices
+        /// </summary>
+        IList<SelectListItem> AvailableOffices { get; set; }
     }
 
     /// <summary>

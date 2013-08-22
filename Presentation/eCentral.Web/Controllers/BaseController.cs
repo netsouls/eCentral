@@ -1,16 +1,18 @@
 ﻿using System;
-using eCentral.Services.Companies;
-using eCentral.Web.Infrastructure.Cache;
 using System.Collections.Generic;
-using eCentral.Services.Users;
-using eCentral.Core.Caching;
 using System.Linq;
 using System.Web.Mvc;
 using eCentral.Core;
+using eCentral.Core.Caching;
+using eCentral.Core.Domain.Common;
 using eCentral.Core.Domain.Logging;
+using eCentral.Services.Common;
+using eCentral.Services.Companies;
+using eCentral.Services.Users;
 using eCentral.Web.Framework;
 using eCentral.Web.Framework.Controllers;
 using eCentral.Web.Framework.Mvc;
+using eCentral.Web.Infrastructure.Cache;
 using eCentral.Web.Models.Common;
 
 namespace eCentral.Web.Controllers
@@ -58,6 +60,50 @@ namespace eCentral.Web.Controllers
                 model.LastUpdated = string.Empty;
 
             model.PublishingStatus = entity.CurrentPublishingStatus.GetFriendlyName();
+        }
+
+        /// <summary>
+        /// Prepare branch office association
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="model"></param>
+        [NonAction]
+        protected void PrepareOfficeAssociationModel(IBranchOfficeAssociation model, BaseEntity entity, 
+            IBranchOfficeService officeService, ICacheManager cacheManager)
+        {
+            var associatedOffices = entity.GetAttribute<List<Guid>>(SystemAttributeNames.AssociatedBrancOffices);
+
+            if (associatedOffices != null && associatedOffices.Count > 0)
+            {
+                var availableOffices = PrepareSelectList(officeService, cacheManager);
+                model.Offices = availableOffices
+                    .Where(o => associatedOffices.Contains(new Guid(o.Value)))
+                    .Select(o => o.Text)
+                    .ToList();
+            }
+            else
+                model.Offices = new List<string>();
+        }
+
+        /// <summary>
+        /// Prepare branch office association
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="model"></param>
+        [NonAction]
+        protected string PrepareOfficeAssociationModel(List<Guid> associatedOffices, 
+            IBranchOfficeService officeService, ICacheManager cacheManager)
+        {
+            if (associatedOffices != null && associatedOffices.Count > 0)
+            {
+                var availableOffices = PrepareSelectList(officeService, cacheManager);
+                return availableOffices
+                    .Where(o => associatedOffices.Contains(new Guid(o.Value)))
+                    .Select(o => o.Text)
+                    .ToDelimitedString();
+            }
+
+            return string.Empty;
         }
 
         /// <summary>

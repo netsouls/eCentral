@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using eCentral.Web.Framework;
@@ -10,7 +9,7 @@ using FluentValidation.Attributes;
 namespace eCentral.Web.Models.Users
 {
     [Validator(typeof(UserValidator))]
-    public partial class UserModel : BaseAuditHistoryModel
+    public partial class UserModel : BaseAuditHistoryModel, IBranchOfficeAssociation
     {
         public UserModel()
         {
@@ -42,9 +41,20 @@ namespace eCentral.Web.Models.Users
         [SiteResourceDisplayName("Users.Fields.Administrator")]
         public bool IsAdministrator { get; set; }
 
+        /// <summary>
+        /// Gets or set the associated offices
+        /// </summary>
+        public IList<string> Offices { get; set; }
+
+        /// <summary>
+        /// Gets or sets the selected associated offices identifiers
+        /// </summary>
         [SiteResourceDisplayName("Users.Fields.Offices")]
         public string OfficeId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the available branch offices
+        /// </summary>
         public IList<SelectListItem> AvailableOffices { get; set; }
     }
 }

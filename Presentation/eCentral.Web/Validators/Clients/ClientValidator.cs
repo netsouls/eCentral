@@ -26,6 +26,10 @@ namespace eCentral.Web.Validators.Clients
                 .WithMessage(localizationService.GetResource("Clients.Fields.Email.Required"))
                 .EmailAddress()
                 .WithMessage(localizationService.GetResource("Common.WrongEmail"));
+
+            RuleFor(x => x.OfficeId)
+                .NotEmpty()
+                .WithMessage(localizationService.GetResource("Clients.Fields.Offices.Required"));
         }
     }
 }

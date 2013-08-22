@@ -1,14 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using eCentral.Core;
 using eCentral.Core.Caching;
 using eCentral.Core.Domain.Clients;
+using eCentral.Core.Domain.Common;
+using eCentral.Core.Domain.Logging;
 using eCentral.Core.Domain.Security;
 using eCentral.Core.Domain.Users;
 using eCentral.Services.Clients;
+using eCentral.Services.Common;
+using eCentral.Services.Companies;
 using eCentral.Services.Directory;
 using eCentral.Services.Localization;
+using eCentral.Services.Logging;
 using eCentral.Services.Security.Cryptography;
 using eCentral.Web.Extensions;
 using eCentral.Web.Framework;
@@ -25,29 +31,36 @@ namespace eCentral.Web.Controllers.Administration
     {
         #region Fields
 
+        private readonly IBranchOfficeService officeService; 
         private readonly IClientService clientService;
         private readonly IWorkContext workContext;
         private readonly ILocalizationService localizationService;
         private readonly ICacheManager cacheManager; 
         private readonly ICountryService countryService;
+        private readonly IGenericAttributeService attributeService;
         private readonly IStateProvinceService stateprovinceService;
         private readonly IEncryptionService encryptionService;
+        private readonly IUserActivityService userActivityService;
 
         #endregion
 
         #region Ctor
 
         public ClientController(IClientService clientService, ILocalizationService localizationService,
-            ICountryService countryService, IStateProvinceService stateprovinceService,
+            ICountryService countryService, IStateProvinceService stateprovinceService, 
+            IBranchOfficeService officeService, IGenericAttributeService attributeService, IUserActivityService userActivityService,
             IEncryptionService encryptionService, IWorkContext workContext, ICacheManager cacheManager )
         {
             this.clientService        = clientService;
             this.localizationService  = localizationService;
+            this.officeService        = officeService;
+            this.userActivityService  = userActivityService;
             this.encryptionService    = encryptionService;
             this.cacheManager         = cacheManager;
             this.countryService       = countryService;
             this.stateprovinceService = stateprovinceService;
             this.workContext          = workContext;
+            this.attributeService     = attributeService;
         }
 
         #endregion
@@ -114,6 +127,18 @@ namespace eCentral.Web.Controllers.Administration
                 // we need to add this client 
                 clientService.Insert(client);
 
+                // add the associated branches to this client
+                var associatedOffices = model.OfficeId.ToList<Guid>();
+                attributeService.SaveAttribute<List<Guid>>(client, SystemAttributeNames.AssociatedBrancOffices,
+                    associatedOffices);
+
+                client.AuditHistory.Add
+                (
+                    userActivityService.InsertActivity(SystemActivityLogTypeNames.EntityOfficeAssociation,
+                        PrepareOfficeAssociationModel(associatedOffices, officeService, cacheManager), StateKeyManager.CLIENT_ACTIVITY_COMMENT, client.ClientName)
+                );
+                clientService.Update(client);
+
                 // return notification message
                 SuccessNotification(localizationService.GetResource("Clients.Added"));
                 return RedirectToAction(SystemRouteNames.Index);
@@ -138,6 +163,11 @@ namespace eCentral.Web.Controllers.Administration
 
             var model = client.ToModel();
             PrepareAddEditModel(model);
+
+            var associatedOffices = client.GetAttribute<List<Guid>>(SystemAttributeNames.AssociatedBrancOffices);
+            if (associatedOffices != null && associatedOffices.Count > 0)
+                model.OfficeId = associatedOffices.ToDelimitedString();
+
             model.IsEdit = true;
 
             return View(model);
@@ -158,7 +188,17 @@ namespace eCentral.Web.Controllers.Administration
                 client.Email = model.Email;
                 model.Address.ToEntity( client.Address );
                 client.UpdatedOn = client.Address.UpdatedOn = DateTime.UtcNow;
-                
+
+                // add the associated branches to this client
+                var associatedOffices = model.OfficeId.ToList<Guid>();
+                attributeService.SaveAttribute<List<Guid>>(client, SystemAttributeNames.AssociatedBrancOffices,
+                    associatedOffices);
+
+                client.AuditHistory.Add
+                (
+                    userActivityService.InsertActivity(SystemActivityLogTypeNames.EntityOfficeAssociation,
+                        PrepareOfficeAssociationModel(associatedOffices, officeService, cacheManager), StateKeyManager.CLIENT_ACTIVITY_COMMENT, client.ClientName)
+                );
                 // we need to update this client 
                 clientService.Update(client);
 
@@ -220,6 +260,7 @@ namespace eCentral.Web.Controllers.Administration
                     Address = client.Address.ToModel()
                 };
 
+            PrepareOfficeAssociationModel(model, client, officeService, cacheManager);
             PrepareAuditHistoryModel(model, client);
 
             return model;
@@ -254,7 +295,9 @@ namespace eCentral.Web.Controllers.Administration
                         });
                     });
                 }
-            }           
+            }
+
+            model.AvailableOffices = base.PrepareSelectList(officeService, cacheManager);
         }
 
         #endregion

@@ -88,6 +88,7 @@
     <Compile Include="Domain\Common\SeoSettings.cs" />
     <Compile Include="Domain\Common\Sort.cs" />
     <Compile Include="Domain\Common\SortingEnum.cs" />
+    <Compile Include="Domain\Common\SystemAttributeNames.cs" />
     <Compile Include="Domain\Companies\BranchOffice.cs" />
     <Compile Include="Domain\Configuration\Setting.cs" />
     <Compile Include="Domain\Companies\Company.cs" />

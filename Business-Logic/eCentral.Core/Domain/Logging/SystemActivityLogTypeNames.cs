@@ -9,6 +9,7 @@ namespace eCentral.Core.Domain.Logging
         public const string View = "View";
         public const string Delete = "Delete";
         public const string ChangePublishingStatus = "ChangePublishingStatus";
+        public const string EntityOfficeAssociation = "EntityOfficeAssociation";
 
         public const string ClearCache = "ClearCache";
         public const string ReinstallPermissions = "ReinstallPermissions";
