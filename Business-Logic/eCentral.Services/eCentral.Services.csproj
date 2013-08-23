@@ -72,6 +72,8 @@
     <Compile Include="Configuration\SettingService.cs" />
     <Compile Include="Companies\CompanyService.cs" />
     <Compile Include="Companies\ICompanyService.cs" />
+    <Compile Include="Directory\PortService.cs" />
+    <Compile Include="Directory\IPortService.cs" />
     <Compile Include="Directory\CountryService.cs" />
     <Compile Include="Directory\CurrencyService.cs" />
     <Compile Include="Directory\ICountryService.cs" />

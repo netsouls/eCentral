@@ -21,9 +21,7 @@
         public static string AccountActivation { get { return "AccountActivation"; } }
         public static string PasswordRecovery { get { return "PasswordRecovery"; } }
         public static string PasswordRecoveryConfirm { get { return "PasswordRecoveryConfirm"; } }
-
-        // password recovery & security - todo        
-        //public static string ChangePassword { get { return "ChangePassword"; } }
+        public static string ChangePassword { get { return "ChangePassword"; } }
 
         // miscellaneous
         public static string AsyncUpload { get { return "AsyncUpload"; } }

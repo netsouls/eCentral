@@ -1,66 +1,203 @@
 /* ------------------Put your custom code here--------------------*/
-form input.input-validation-error{border: 1px solid #ED7A53 !important;}
-form input.valid {border: 1px solid #9FC569 !important;}
-form span.field-validation-valid 
+form input.input-validation-error
 {
-    display:none;
+    border: 1px solid #ED7A53 !important;
+}
+form input.valid
+{
+    border: 1px solid #9FC569 !important;
+}
+form span.field-validation-valid
+{
+    display: none;
 }
 
-span.field-validation-error {
-	padding: 3px 4px 3px 4px;
-	color: #c93605;
-	font-weight: bold;
-	display:block;
-	text-shadow: 0px 1px 1px rgba(164, 44, 4, 0.20);
+span.field-validation-error
+{
+    padding: 3px 4px 3px 4px;
+    color: #c93605;
+    font-weight: bold;
+    display: block;
+    text-shadow: 0px 1px 1px rgba(164, 44, 4, 0.20);
     -moz-text-shadow: 0px 1px 1px rgba(164, 44, 4, 0.20);
     -webkit-text-shadow: 0px 1px 1px rgba(164, 44, 4, 0.20);
-    font-size:11px;
- }
- 
-.controls span.field-validation-error {
-	margin-top:-20px;
-}
-.controls .selector span.field-validation-error{
-	position: absolute;
-	top: 5px;
-	right: 0;
-	margin:0;
+    font-size: 11px;
 }
 
-.navbar .brand .short {display:none;} /*remove the short slogan iin all devices*/ 
-@media only screen and (max-width: 600px) {
-	.navbar .brand .slogan {display:none;} /*remove the slogan in smaller devices*/
-	.navbar .brand .short {display:inline-block;} /*show the short slogan in smaller devices*/
+.controls span.field-validation-error
+{
+    margin-top: -20px;
+}
+.controls .selector span.field-validation-error
+{
+    position: absolute;
+    top: 5px;
+    right: 0;
+    margin: 0;
 }
 
-.form-actions 
+.form-actions
 {
     border-bottom: 10px solid #E5E5E5;
-	border-top:none;
-	-moz-box-shadow:0 1px 0px rgba(229, 229, 229, 0.1);
-	-webkit-box-shadow: 0 1px 0px rgba(229, 229, 229, 0.1);
-	box-shadow: 0 1px 0px rgba(229, 229, 229, 0.1);
+    border-top: none;
+    -moz-box-shadow: 0 1px 0px rgba(229, 229, 229, 0.1);
+    -webkit-box-shadow: 0 1px 0px rgba(229, 229, 229, 0.1);
+    box-shadow: 0 1px 0px rgba(229, 229, 229, 0.1);
 }
 /*Tables */
-.table thead th, .table tbody td{text-align: left;} /*removed center aligned*/
-.table thead th.center, .table tbody td.center{text-align: center;}
-table.display tr.even.row_selected td, table.display tr.odd.row_selected td {
-	background-color: #dff0d8;
-}
-.table .add-one-mini-button{ width:60px;}
-
-.btn-group > .dropdown-toggle {padding-bottom: 1px;}
-
-.loginContainer .page-header { margin:0px;}
-#search-filter-clear { display:none; } /* for hiding the search filter clear button*/ 
-.nav-tabs li.active span  
+.table thead th, .table tbody td
 {
-    color:#9FC569;
+    text-align: left;
 }
-.mainnav ul.expand a.current span 
+/*removed center aligned*/
+.table thead th.center, .table tbody td.center
 {
-    color:#ED7A53;
+    text-align: center;
 }
-.modal-confirmation {
-  width: 300px;
+table.display tr.even.row_selected td, table.display tr.odd.row_selected td
+{
+    background-color: #dff0d8;
+}
+.table .add-one-mini-button
+{
+    width: 60px;
+}
+
+.btn-group > .dropdown-toggle
+{
+    padding-bottom: 1px;
+}
+
+.loginContainer .page-header
+{
+    margin: 0px;
+}
+#search-filter-clear
+{
+    display: none;
+}
+/* for hiding the search filter clear button*/
+.nav-tabs li.active span
+{
+    color: #9FC569;
+}
+.mainnav ul.expand a.current span
+{
+    color: #ED7A53;
+}
+.modal-confirmation
+{
+    width: 300px;
+}
+@media only screen and (max-width: 980px)
+{
+    .resBtn
+    {
+        left: 275px;
+        display: block;
+    }
+}
+@media only screen and (max-width: 572px)
+{
+    .resBtn
+    {
+        top: 59px;
+        left: 10px;
+    }
+}
+@media only screen and (max-width: 500px)
+{
+    .heading
+    {
+        height: 79px;
+    }
+    
+    .heading .breadcrumb-widget .breadcrumb {
+		width: 100%;
+		padding: 14px 0 0 0;
+		margin: 0;
+		float: left;
+		margin-top: -8px;
+		border-top: 1px solid #C4C4C4;
+		padding-right: 28px;
+		text-align: center;
+		margin-left: -27px;
+		padding-left: 28px;
+	}
+}
+@media only screen and (max-width: 400px)
+{
+    .resBtn
+    {
+        left: 15px;
+    }
+}
+.heading
+{
+    height: 79px;
+}
+.heading h3
+{
+    line-height: 41px;
+    float: left;
+    margin-right: 20px;
+}
+
+.breadcrumb-widget
+{
+    position: relative;
+    margin: -1px 0 30px 0;
+    display: block;
+    float: left;
+    width: 100%;
+    background: url(patterns/3.png) repeat;
+    margin-left: -26px;
+    padding-left: 25px;
+    padding-right: 27px;
+    border-top: 1px solid #c4c4c4;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    border-left: 1px solid #c4c4c4;
+    border-bottom: 1px solid #c4c4c4;
+}
+
+.heading .breadcrumb
+{
+    float: right;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding-top:0px; padding-bottom:0px;
+}
+
+.heading .breadcrumb li
+{
+    margin-bottom:0px;
+}
+
+
+.heading .breadcrumb-widget .breadcrumb span
+{
+    margin-left: 0;
+    margin-right: 0;
+}
+.heading .breadcrumb li:first-child
+{
+    margin-right: 8px;
+}
+
+@media only screen and (max-width: 1100px) {
+	.heading .breadcrumb {margin-right: 0px;}
+}
+
+@media only screen and (max-width: 767px) {
+	.heading .breadcrumb {margin-right: 0px;}
+}
+@media only screen and (min-width : 321px) and (max-device-width : 480px) 
+{
+    .loginPage #header {display: block;}
+}
+
+@media only screen and (max-width: 320px) {
+	.loginPage #header {display: block;}
 }

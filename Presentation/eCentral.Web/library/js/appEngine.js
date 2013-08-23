@@ -28,6 +28,10 @@ $.extend(appEngine, {
         isDebug: 1,
         emptyGUID: '00000000-0000-0000-0000-000000000000'
     },
+    path: {
+        root: '/',
+        image: '/library/images/'
+    },
     util: {
         consoleMessage: function (message) {
             if (appEngine.global.isDebug == 1) {
@@ -135,8 +139,8 @@ $.extend(appEngine, {
         setDataTable: function (elementId, serviceUrl, pushDataCallback, columnStructure, bLenghtChange, bFilter, callback) {
             $(document).ready(function () {
                 if ($('table').hasClass('dynamicTable')) {
-                    var $ajaxLoader = $('<img src="' + appEngine.path.root + 'library/images/loaders/horizontal/024.gif" width="80" height="10" alt=""/>');
-                    $('.dynamicTable').parent().parent().parent().find('.title h4.clearfix .processing').html($ajaxLoader);
+                    var $ajaxLoader = $('<img src="' + appEngine.path.image + 'loaders/horizontal/024.gif" width="80" height="10" alt=""/>');
+                    $('#' + elementId).parent().parent().parent().find('.title h4.clearfix .processing').html($ajaxLoader);
                     var dataTable = $('#' + elementId).dataTable({
                         'sServerMethod': 'POST',
                         'sAjaxSource': serviceUrl,
@@ -176,17 +180,18 @@ $.extend(appEngine, {
                         },
                         'fnDrawCallback': function (oSettings) {
                             if (oSettings._iRecordsTotal <= oSettings._iDisplayLength) { // hide pagination if records are for one page only
-                                $('.dataTables_paginate, .dataTables_info').hide();
+                                $('#' + elementId + '_wrapper .dataTables_paginate, #' + elementId + '_wrapper .dataTables_info').hide();
                             }
                             else {
-                                $('.dataTables_paginate, .dataTables_info').show();
+                                $('#' + elementId + '_wrapper .dataTables_paginate, #' + elementId + '_wrapper .dataTables_info').show();
                             }
 
                             if (oSettings._iRecordsTotal == 0) {
                                 $('.edit-action, .change-status').hide();
                             }
-                            else
+                            else {
                                 $('.edit-action, .change-status').show();
+                            }
                             $('td.chChildren input:checkbox').uniform();
                             appEngine.util.setqTip('td .tip');
                         },
@@ -294,12 +299,12 @@ $.extend(appEngine, {
         statesByCountry: function ($country, $states) {
             /* Initialize */
             $country.html('<option></option>' + $country.html());
-            $country.select2({ placeholder: appEngine.i18n.Address_SelectCountry, allowClear: true });
+            $country.select2({ placeholder: $country.attr('placeholder'), allowClear: true });
             if ($country.val().length < 1)
-                $states.html('<option></option>').select2({ placeholder: appEngine.i18n.Address_SelectState });
+                $states.html('<option></option>').select2({ placeholder: $states.attr('placeholder') });
             else {
                 $states.html('<option></option>' + $states.html());
-                $states.select2({ placeholder: appEngine.i18n.Address_SelectSate, allowClear: true });
+                $states.select2({ placeholder: $states.attr('placeholder'), allowClear: true });
             }
 
             /* get records */
@@ -317,7 +322,7 @@ $.extend(appEngine, {
                                 $states.append($('<option></option>').val(option.id).html(option.name));
                             });
                         }
-                        $states.select2({ placeholder: appEngine.i18n.Address_SelectState, allowClear: true });
+                        $states.select2({ placeholder: $states.attr('placeholder'), allowClear: true });
                     }
                 });
             });
@@ -373,23 +378,23 @@ $(document).ready(function () {
             create: function () {
                 //create switcher and inject into html
                 $('body').append('<a href="#" id="switchBtn"><span class="icon24 icomoon-icon-cogs"></span></a>');
-                $('body').append('<div id="switcher"><h4>Header patterns</h4><div class="header-patterns"><ul><li><a href="#" class="hpat1"><img src="' + appEngine.path.root + 'library/images/patterns/header/1.png"></a></li><li><a href="#" class="hpat2"><img src="' + appEngine.path.root + 'library/images/patterns/header/2.png"></a></li><li><a href="#" class="hpat3"><img src="' + appEngine.path.root + 'library/images/patterns/header/3.png"></a></li><li><a href="#" class="hpat4"><img src="' + appEngine.path.root + 'library/images/patterns/header/4.png"></a></li></ul></div><h4>Sidebar patterns</h4><div class="sidebar-patterns"><ul><li><a href="#" class="spat1"><img src="' + appEngine.path.root + 'library/images/patterns/sidebar/1.png"></a></li><li><a href="#" class="spat2"><img src="' + appEngine.path.root + 'library/images/patterns/sidebar/2.png"></a></li><li><a href="#" class="spat3"><img src="' + appEngine.path.root + 'library/images/patterns/sidebar/3.png"></a></li><li><a href="#" class="spat4"><img src="' + appEngine.path.root + 'library/images/patterns/sidebar/4.png"></a></li></ul></div><h4>Body patterns</h4><div class="body-patterns"><ul><li><a href="#" class="bpat1"><img src="' + appEngine.path.root + 'library/images/patterns/body/1.png"></a></li><li><a href="#" class="bpat2"><img src="' + appEngine.path.root + 'library/images/patterns/body/2.png"></a></li><li><a href="#" class="bpat3"><img src="' + appEngine.path.root + 'library/images/patterns/body/3.png"></a></li><li><a href="#" class="bpat4"><img src="' + appEngine.path.root + 'library/images/patterns/body/4.png"></a></li></ul></div></div>');
+                $('body').append('<div id="switcher"><h4>Header patterns</h4><div class="header-patterns"><ul><li><a href="#" class="hpat1"><img src="' + appEngine.path.image + 'patterns/header/1.png"></a></li><li><a href="#" class="hpat2"><img src="' + appEngine.path.image + 'patterns/header/2.png"></a></li><li><a href="#" class="hpat3"><img src="' + appEngine.path.image + 'patterns/header/3.png"></a></li><li><a href="#" class="hpat4"><img src="' + appEngine.path.image + 'patterns/header/4.png"></a></li></ul></div><h4>Sidebar patterns</h4><div class="sidebar-patterns"><ul><li><a href="#" class="spat1"><img src="' + appEngine.path.image + 'patterns/sidebar/1.png"></a></li><li><a href="#" class="spat2"><img src="' + appEngine.path.image + 'patterns/sidebar/2.png"></a></li><li><a href="#" class="spat3"><img src="' + appEngine.path.image + 'patterns/sidebar/3.png"></a></li><li><a href="#" class="spat4"><img src="' + appEngine.path.image + 'patterns/sidebar/4.png"></a></li></ul></div><h4>Body patterns</h4><div class="body-patterns"><ul><li><a href="#" class="bpat1"><img src="' + appEngine.path.image + 'patterns/body/1.png"></a></li><li><a href="#" class="bpat2"><img src="' + appEngine.path.image + 'patterns/body/2.png"></a></li><li><a href="#" class="bpat3"><img src="' + appEngine.path.image + 'patterns/body/3.png"></a></li><li><a href="#" class="bpat4"><img src="' + appEngine.path.image + 'patterns/body/4.png"></a></li></ul></div></div>');
             },
             init: function () {
                 supr_switcher.create();
                 $('#switcher a').click(function () {
-                    if ($(this).hasClass('hpat1')) { $('#header').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/header/bedge_grunge.png)'); }
-                    if ($(this).hasClass('hpat2')) { $('#header').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/header/grid.png)'); }
-                    if ($(this).hasClass('hpat3')) { $('#header').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/header/nasty_fabric.png)'); }
-                    if ($(this).hasClass('hpat4')) { $('#header').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/header/natural_paper.png)'); }
-                    if ($(this).hasClass('spat1')) { $('#sidebarbg').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/sidebar/az_subtle.png)'); }
-                    if ($(this).hasClass('spat2')) { $('#sidebarbg').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/sidebar/billie_holiday.png)'); }
-                    if ($(this).hasClass('spat3')) { $('#sidebarbg').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/sidebar/grey.png)'); }
-                    if ($(this).hasClass('spat4')) { $('#sidebarbg').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/sidebar/noise_lines.png)'); }
-                    if ($(this).hasClass('bpat1')) { $('#content').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/body/cream_dust.png)'); }
-                    if ($(this).hasClass('bpat2')) { $('#content').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/body/dust.png)'); }
-                    if ($(this).hasClass('bpat3')) { $('#content').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/body/grey.png)'); }
-                    if ($(this).hasClass('bpat4')) { $('#content').css('background', 'url(' + appEngine.path.root + 'library/images/patterns/body/subtle_dots.png)'); }
+                    if ($(this).hasClass('hpat1')) { $('#header').css('background', 'url(' + appEngine.path.image + 'patterns/header/bedge_grunge.png)'); }
+                    if ($(this).hasClass('hpat2')) { $('#header').css('background', 'url(' + appEngine.path.image + 'patterns/header/grid.png)'); }
+                    if ($(this).hasClass('hpat3')) { $('#header').css('background', 'url(' + appEngine.path.image + 'patterns/header/nasty_fabric.png)'); }
+                    if ($(this).hasClass('hpat4')) { $('#header').css('background', 'url(' + appEngine.path.image + 'patterns/header/natural_paper.png)'); }
+                    if ($(this).hasClass('spat1')) { $('#sidebarbg').css('background', 'url(' + appEngine.path.image + 'patterns/sidebar/az_subtle.png)'); }
+                    if ($(this).hasClass('spat2')) { $('#sidebarbg').css('background', 'url(' + appEngine.path.image + 'patterns/sidebar/billie_holiday.png)'); }
+                    if ($(this).hasClass('spat3')) { $('#sidebarbg').css('background', 'url(' + appEngine.path.image + 'patterns/sidebar/grey.png)'); }
+                    if ($(this).hasClass('spat4')) { $('#sidebarbg').css('background', 'url(' + appEngine.path.image + 'patterns/sidebar/noise_lines.png)'); }
+                    if ($(this).hasClass('bpat1')) { $('#content').css('background', 'url(' + appEngine.path.image + 'patterns/body/cream_dust.png)'); }
+                    if ($(this).hasClass('bpat2')) { $('#content').css('background', 'url(' + appEngine.path.image + 'patterns/body/dust.png)'); }
+                    if ($(this).hasClass('bpat3')) { $('#content').css('background', 'url(' + appEngine.path.image + 'patterns/body/grey.png)'); }
+                    if ($(this).hasClass('bpat4')) { $('#content').css('background', 'url(' + appEngine.path.image + 'patterns/body/subtle_dots.png)'); }
                 });
 
                 $('#switchBtn').click(function () {
@@ -845,6 +850,7 @@ $(document).ready(function () {
 $(window).resize(function () {
     //get the window size
     var wsize = $(window).width();
+    console.log(wsize);
     if (wsize > 980) {
         $('.shortcuts.hided').removeClass('hided').attr("style", "");
         $('.sidenav.hided').removeClass('hided').attr("style", "");

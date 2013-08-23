@@ -70,6 +70,11 @@ namespace eCentral.Web.Infrastructure
                 new { userId = new GuidConstraint(false), token = new GuidConstraint(false) },
                 new[] { "eCentral.Web.Controllers" });
 
+            routes.MapLocalizedRoute(SystemRouteNames.ChangePassword,
+                SystemRouteUrls.ChangePassword,
+                new { controller = "Security", action = "ChangePassword" },
+                new[] { "eCentral.Web.Controllers" });
+
             //upload image
             routes.MapRoute(SystemRouteNames.AsyncUpload, 
                 SystemRouteUrls.AsyncUpload,

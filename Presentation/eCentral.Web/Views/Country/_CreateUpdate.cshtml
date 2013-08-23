@@ -8,6 +8,10 @@
         </span>Country info</a></li>
         <li><a href="#states" data-toggle="tab"><span class="icon16 icomoon-icon-list-2 gray">
         </span>States and provinces</a></li>
+        <li><a href="#air" data-toggle="tab"><span class="icon16 icomoon-icon-airplane-2 gray">
+            </span>Airports</a></li>
+        <li><a href="#sea" data-toggle="tab"><span class="icon16 icomoon-icon-boat gray">
+            </span>Sea ports</a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade in active" id="info">
@@ -85,7 +89,7 @@
             @if (Model.RowId.IsEmpty())
             {
                 <div class="content">
-                    You need to save the country before you can add states for this country page.</div>
+                    You need to save the country before you can add states for this country.</div>
             }
             else
             {
@@ -95,12 +99,12 @@
                             <span class="processing"></span>
                             <div class="right marginR10">
                                 <a href="#" class="btn btn-mini btn-primary tip modal-action" data-url = "@Url.Action("createorupdatestate", new { countryId = Model.RowId.ToString(), rowId = Guid.Empty.ToString() })" title="Add New">
-                                    <span class="icon8 icomoon-icon-plus white"></span>Add a new state/province</a>
+                                    <span class="icon8 icomoon-icon-plus white"></span> Add a new state/province</a>
                             </div>
                         </h4>
                     </div>
-                    <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered"
-                        id="myDataTable" width="100%">
+                    <p><a href="#" id="sTest">Test</a></p>
+                    <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered" id="myDataTable" width="100%">
                         <thead>
                             <tr>
                                 <th>
@@ -114,6 +118,84 @@
                                 </th>
                                 <th>
                                     Published
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+        <div class="tab-pane fade" id="air">
+            @if (Model.RowId.IsEmpty())
+            {
+                <div class="content">
+                    You need to save the country before you can add air ports for this country.</div>
+            }
+            else
+            {
+                <div class="content">
+                    <div class="title">
+                        <h4 class="clearfix">
+                            <span class="processing"></span>
+                            <div class="right marginR10">
+                                <a href="#" class="btn btn-mini btn-primary tip modal-action" data-url = "@Url.Action("createorupdateport", new { countryId = Model.RowId.ToString(), rowId = Guid.Empty.ToString() })" title="Add New">
+                                    <span class="icon8 icomoon-icon-plus white"></span> Add a new port</a>
+                            </div>
+                        </h4>
+                    </div>
+                    <p><a href="#" id="aTest">Test</a></p>
+                    <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered" id="myDataTableAir" width="100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Abbreviation
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+        <div class="tab-pane fade" id="sea">
+            @if (Model.RowId.IsEmpty())
+            {
+                <div class="content">
+                    You need to save the country before you can add sea ports for this country.</div>
+            }
+            else
+            {
+                <div class="content">
+                    <div class="title">
+                        <h4 class="clearfix">
+                            <span class="processing"></span>
+                            <div class="right marginR10">
+                                <a href="#" class="btn btn-mini btn-primary tip modal-action" data-url = "@Url.Action("createorupdateport", new { countryId = Model.RowId.ToString(), rowId = Guid.Empty.ToString() })" title="Add New">
+                                    <span class="icon8 icomoon-icon-plus white"></span> Add a new port</a>
+                            </div>
+                        </h4>
+                    </div>
+                    <p><a href="#" id="ssTest">Test</a></p>
+                    <table cellpadding="0" cellspacing="0" border="0" class="dynamicTable display table table-bordered" id="myDataTableSea" width="100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Abbreviation
                                 </th>
                                 <th>
                                     Action

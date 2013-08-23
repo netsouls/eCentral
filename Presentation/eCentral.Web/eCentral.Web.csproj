@@ -135,6 +135,7 @@
     <Compile Include="Models\Companies\BranchOfficeModel.cs" />
     <Compile Include="Models\Companies\CompanyModel.cs" />
     <Compile Include="Models\Directory\CountryModel.cs" />
+    <Compile Include="Models\Directory\PortModel.cs" />
     <Compile Include="Models\Directory\StateProvinceModel.cs" />
     <Compile Include="Models\Logging\ActivityLogModel.cs" />
     <Compile Include="Models\Logging\ActivityLogSearchModel.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Models\Messages\EmailAccountModel.cs" />
     <Compile Include="Models\Messages\MessageTemplateModel.cs" />
     <Compile Include="Models\Security\AccountActivationModel.cs" />
+    <Compile Include="Models\Security\ChangePasswordModel.cs" />
     <Compile Include="Models\Settings\GeneralCommonSettingsModel.cs" />
     <Compile Include="Models\Security\LoginModel.cs" />
     <Compile Include="Models\Security\PasswordRecoveryModel.cs" />
@@ -155,12 +157,14 @@
     <Compile Include="Validators\Common\AddressValidator.cs" />
     <Compile Include="Validators\Companies\BranchOfficeValidator.cs" />
     <Compile Include="Validators\Companies\CompanyValidator.cs" />
+    <Compile Include="Validators\Directory\PortValidator.cs" />
     <Compile Include="Validators\Directory\CountryValidator.cs" />
     <Compile Include="Validators\Directory\StateProvinceValidator.cs" />
     <Compile Include="Validators\Logging\ActivityLogTypeValidator.cs" />
     <Compile Include="Validators\Messages\EmailAccountValidator.cs" />
     <Compile Include="Validators\Messages\MessageTemplateValidator.cs" />
     <Compile Include="Validators\Security\AccountActivationValidator.cs" />
+    <Compile Include="Validators\Security\ChangePasswordValidator.cs" />
     <Compile Include="Validators\Security\LoginValidator.cs" />
     <Compile Include="Validators\Security\PasswordRecoveryValidator.cs" />
     <Compile Include="Validators\Settings\SettingValidator.cs" />
@@ -172,9 +176,11 @@
     <Content Include="library\css\bootstrap\bootstrap-modal.css" />
     <Content Include="library\css\bootstrap\bootstrap-responsive.css" />
     <Content Include="library\css\bootstrap\bootstrap.css" />
+    <Content Include="library\css\combined.min.css" />
     <Content Include="library\css\custom.css" />
     <Content Include="library\css\icons.css" />
     <Content Include="library\css\ie8.css" />
+    <Content Include="library\css\ie8.min.css" />
     <Content Include="library\css\main.css" />
     <Content Include="library\css\plugins\forms\select\select2.css" />
     <Content Include="library\css\plugins\forms\togglebutton\toggle-buttons.css" />
@@ -433,9 +439,12 @@
     <Content Include="library\js\bootstrap\bootstrap-modalmanager.js" />
     <Content Include="library\js\bootstrap\bootstrap.js" />
     <Content Include="library\js\bootstrap\bootstrap.min.js" />
+    <Content Include="library\js\combined.min.js" />
+    <Content Include="library\js\html5.min.js" />
     <Content Include="library\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="library\js\jquery-ui.1.10.2.min.js" />
     <Content Include="library\js\jquery.1.9.1.min.js" />
+    <Content Include="library\js\jquery.fileupload.min.js" />
     <Content Include="library\js\jquery.mousewheel.js" />
     <Content Include="library\js\jquery.unobtrusive-ajax.min.js" />
     <Content Include="library\js\jquery.validate.min.js" />
@@ -973,6 +982,8 @@
     <Content Include="Views\Shared\_DeleteConfirmation.cshtml" />
     <Content Include="Views\Info\Index.cshtml" />
     <Content Include="Views\Log\Index.cshtml" />
+    <Content Include="Views\Country\_CreateOrUpdatePort.cshtml" />
+    <Content Include="Views\Security\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="library\logs\error\" />

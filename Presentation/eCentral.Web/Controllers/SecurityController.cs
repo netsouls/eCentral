@@ -26,7 +26,7 @@ namespace eCentral.Web.Controllers
 
         #region Ctor
 
-        public SecurityController(IAuthenticationService authenticationService,
+        public SecurityController(IAuthenticationService authenticationService, 
             IUserRegistrationService userRegistrationService, IGenericAttributeService attributeService,
             IWorkContext workContext, IUserService userService, IWorkflowMessageService messageService)
         {
@@ -257,6 +257,40 @@ namespace eCentral.Web.Controllers
 
         #endregion
 
+        #region Change password
+
+        public ActionResult ChangePassword()
+        {
+            var model = new ChangePasswordModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var changePasswordRequest = new ChangePasswordRequest(workContext.CurrentUser.Username,
+                    true, model.NewPassword, model.OldPassword);
+                var changePasswordResult = userRegistrationService.ChangePassword(changePasswordRequest);
+                if (changePasswordResult.Success)
+                {
+                    SuccessNotification("Your password has been successfully changed");
+                    return RedirectToRoute(SystemRouteNames.HomePage);
+                }
+                else
+                {
+                    ErrorNotification(changePasswordResult.ErrorMessages);
+                }
+            }
+
+            //If we got this far, something failed, redisplay form
+            return View(model);
+        }
+        
+        #endregion
+        
+        
         #region Utilities
 
         [NonAction]

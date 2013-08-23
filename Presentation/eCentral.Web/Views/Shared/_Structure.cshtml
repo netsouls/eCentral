@@ -23,7 +23,7 @@
         <div class="navbar-inner">
             <div class="container-fluid">
                 <a href="@Url.RouteUrl(SystemRouteNames.HomePage)" class="brand">@siteInformationSettings.SiteName<span
-                    class="slogan">.@siteInformationSettings.SiteNameBlurb</span><span class="slogan short">.admin</span></a>
+                    class="slogan">.@siteInformationSettings.SiteNameBlurb</span></a>
                 @Html.Action("Header", "Common", new { area = "" })
             </div>
         </div>
@@ -59,7 +59,7 @@
                 <h3>@pageHeading</h3>
                 @Html.Partial("_Search")
                 @Html.Action("Breadcrumb", "Common", new { area = "" })
-            </div>
+            </div>            
             <!-- End .heading-->
             @Html.Partial("_Notifications")
             <!-- Build page from here: -->
@@ -71,5 +71,4 @@
     </div>
     <!-- End #content -->    
 </div>
-
 <!-- End #wrapper -->

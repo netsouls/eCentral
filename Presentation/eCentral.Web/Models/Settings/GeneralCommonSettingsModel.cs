@@ -80,6 +80,10 @@ namespace eCentral.Web.Models.Settings
             [AllowHtml]
             public string EncryptionKey { get; set; }
 
+            [SiteResourceDisplayName("Settings.GeneralCommon.PasswordMinLength")]
+            [AllowHtml]
+            public int PasswordMinLength { get; set; }
+
             [SiteResourceDisplayName("Settings.GeneralCommon.HideAdminMenuItemsBasedOnPermissions")]
             public bool HideMenuItemsBasedOnPermissions { get; set; }
         }

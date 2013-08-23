@@ -27,7 +27,7 @@ namespace eCentral.Data
         public override void SetDatabaseInitializer()
         {
             //pass some table names to ensure that we have the system installed
-            var tablesToValidate = new[] { "BranchOffices" };
+            var tablesToValidate = new[] { "Port" };
 
             //custom commands (stored proedures, indexes)
             var customCommands = new List<string>();

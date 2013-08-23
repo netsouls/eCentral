@@ -74,6 +74,7 @@ namespace eCentral.Web.Controllers.Configuration
 
             // security settings
             model.SecuritySettings.EncryptionKey = securitySettings.EncryptionKey;
+            model.SecuritySettings.PasswordMinLength = securitySettings.PasswordMinLength;
             model.SecuritySettings.HideMenuItemsBasedOnPermissions = securitySettings.HideMenuItemsBasedOnPermissions;            
 
             return View(model);
@@ -102,7 +103,8 @@ namespace eCentral.Web.Controllers.Configuration
             settingService.Save(siteInformationSettings); //save site information
 
             // security settings
-            securitySettings.HideMenuItemsBasedOnPermissions = model.SecuritySettings.HideMenuItemsBasedOnPermissions;            
+            securitySettings.HideMenuItemsBasedOnPermissions = model.SecuritySettings.HideMenuItemsBasedOnPermissions;
+            securitySettings.PasswordMinLength = model.SecuritySettings.PasswordMinLength;
             settingService.Save(securitySettings); // save security information
 
             // domain settings

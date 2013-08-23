@@ -3,28 +3,11 @@
     var pageHeading = "Add new company";
     Html.AddTitleParts(pageHeading);
     ViewBag.Heading = pageHeading;
-
+    ViewBag.HasFileUpload = true;
+    
     //other variables
     var random = CommonHelper.GenerateRandomInteger();
     var clientId = "picture" + random;
-
-    var siteInformationSettings = EngineContext.Current.Resolve<SiteInformationSettings>();
-    var siteState = siteInformationSettings.ApplicationState;
-
-    if (siteState == eCentral.Core.Domain.ApplicationState.Production)
-    {
-        Html.AddScriptParts(ResourceLocation.Foot,
-            Url.Content("plugins/misc/jquery.fileupload.min.js"));
-
-        Html.AddCssFileParts(ResourceLocation.Head,
-            Url.Content("plugins/misc/fileupload.min.css"));
-    }
-    else
-    {
-        Html.AddScriptParts(ResourceLocation.Foot,
-            Url.Content("plugins/misc/fileUpload/jquery.iframe-transport.js"),
-            Url.Content("plugins/misc/fileUpload/jquery.fileupload.js"));
-    }
 }
 @section SidebarWidget
 {

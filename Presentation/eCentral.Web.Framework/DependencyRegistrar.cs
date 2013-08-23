@@ -128,6 +128,7 @@ namespace eCentral.Web.Framework
             //.WithParameter(ResolvedParameter.ForNamed<ICacheManager>("site_cache_static")).InstancePerHttpRequest();
             builder.RegisterType<StateProvinceService>().As<IStateProvinceService>().InstancePerHttpRequest();
             //.WithParameter(ResolvedParameter.ForNamed<ICacheManager>("site_cache_static")).InstancePerHttpRequest();
+            builder.RegisterType<PortService>().As<IPortService>().InstancePerHttpRequest();
 
             builder.RegisterType<CurrencyService>().As<ICurrencyService>().InstancePerHttpRequest();
             //.WithParameter(ResolvedParameter.ForNamed<ICacheManager>("site_cache_static")).InstancePerHttpRequest();

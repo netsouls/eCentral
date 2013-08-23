@@ -33,13 +33,13 @@
         @if (addUrl.HasValue())
         { 
         <button class="btn btn-mini btn-primary href-action tip" title="Add New" data-href="@addUrl">
-            <span class="icon8 icomoon-icon-plus white"></span>Add New</button>
+            <span class="icomoon-icon-plus white"></span> Add New</button>
         }
         @if (changeStatusUrl.HasValue())
         { 
             <div class="btn-group change-status">
                 <button class="btn btn-mini btn-danger tip" title="Select single or multiple records to change their status">
-                    Change Status
+                    <span class="icomoon-icon-tag-3 white"></span> Change Status
                 </button>
                 @if (Model.PublishingStatus == null || (Model.PublishingStatus != null & !Model.PublishingStatus.Contains(PublishingStatus.Active)))
                 { 

@@ -183,12 +183,6 @@ namespace eCentral.Web
             if (webHelper.IsStaticResource(this.Request))
                 return;
 
-            //keep alive page requested
-            string keepAliveUrl = string.Format("{0}keepalive", webHelper.AbsoluteWebRoot);
-            if (webHelper.GetThisPageUrl(false).StartsWith(keepAliveUrl, StringComparison.InvariantCultureIgnoreCase))
-                return;
-
-
             if (webHelper.GetThisPageUrl(false).StartsWith(string.Format("{0}webadmin", webHelper.AbsoluteWebRoot),
                 StringComparison.InvariantCultureIgnoreCase))
             {

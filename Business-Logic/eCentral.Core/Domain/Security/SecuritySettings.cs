@@ -15,6 +15,11 @@ namespace eCentral.Core.Domain.Security
         /// </summary>
         public bool HideMenuItemsBasedOnPermissions { get; set; }
 
+        /// <summary>
+        /// Gets or sets a minimum password length
+        /// </summary>
+        public int PasswordMinLength { get; set; }
+
         #region To String
 
         public override string ToString()

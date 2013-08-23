@@ -13,10 +13,7 @@
         public static string AccountActivation { get { return "activation/{userId}/{token}"; } }
         public static string PasswordRecovery { get { return "password-recovery"; } }
         public static string PasswordRecoveryConfirm { get { return "password-recovery/confirm/{userId}/{token}"; } }
-
-        // password recovery & security
-        //public static string ChangePassword { get { return "security/change-password"; } }
-        
+        public static string ChangePassword { get { return "change-password"; } }        
 
         // miscellaneous
         public static string AsyncUpload { get { return "media/asyncupload"; } }

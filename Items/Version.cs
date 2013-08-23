@@ -34,6 +34,6 @@ using System.Reflection;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below: 
 // Versioning logic yyyy.mm.dd
-[assembly: AssemblyVersion("2013.08.06")]
-[assembly: AssemblyFileVersion("2013.08.06")]
-[assembly: AssemblyInformationalVersion("2013.08.06")]
+[assembly: AssemblyVersion("2013.08.23")]
+[assembly: AssemblyFileVersion("2013.08.23")]
+[assembly: AssemblyInformationalVersion("2013.08.23")]

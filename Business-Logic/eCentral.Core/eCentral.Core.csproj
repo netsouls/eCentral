@@ -93,6 +93,7 @@
     <Compile Include="Domain\Configuration\Setting.cs" />
     <Compile Include="Domain\Companies\Company.cs" />
     <Compile Include="Domain\Companies\SystemCompanyAttributeNames.cs" />
+    <Compile Include="Domain\Directory\Port.cs" />
     <Compile Include="Domain\Directory\Country.cs" />
     <Compile Include="Domain\Directory\Currency.cs" />
     <Compile Include="Domain\Directory\CurrencySettings.cs" />

@@ -9,6 +9,7 @@ namespace eCentral.Core.Domain.Directory
     public partial class Country : BaseEntity, ILocalizedEntity
     {
         private ICollection<StateProvince> _stateProvinces;
+        private ICollection<Port> _ports;
 
         /// <summary>
         /// Gets or sets the name
@@ -47,6 +48,15 @@ namespace eCentral.Core.Domain.Directory
         {
             get { return _stateProvinces ?? (_stateProvinces = new List<StateProvince>()); }
             protected set { _stateProvinces = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the ports
+        /// </summary>
+        public virtual ICollection<Port> Ports
+        {
+            get { return _ports ?? (_ports = new List<Port>()); }
+            protected set { _ports = value; }
         }
     }
 

@@ -71,7 +71,7 @@
                     <div class="row-fluid">
                         @Html.LabelFor(m => m.Address.CountryId, new { @class = "span2" })
                         <div class="span10 controls">
-                            @Html.DropDownListFor(m => m.Address.CountryId, Model.Address.AvailableCountries, new { @class = "nostyle", style = "width:100%;" })
+                            @Html.DropDownListFor(m => m.Address.CountryId, Model.Address.AvailableCountries, new { @class = "nostyle", style = "width:100%;", placeholder = T("Address.SelectCountry") })
                             @Html.ValidationMessageFor(m => m.Address.CountryId)
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                     <div class="row-fluid">
                         @Html.LabelFor(m => m.Address.StateProvinceId, new { @class = "span2" })
                         <div class="span10 controls">
-                            @Html.DropDownListFor(m => m.Address.StateProvinceId, Model.Address.AvailableStates, new { @class = "nostyle", style = "width:100%;" })
+                            @Html.DropDownListFor(m => m.Address.StateProvinceId, Model.Address.AvailableStates, new { @class = "nostyle", style = "width:100%;", placeholder = T("Address.SdelectState") })
                             @Html.ValidationMessageFor(m => m.Address.StateProvinceId)
                         </div>
                     </div>

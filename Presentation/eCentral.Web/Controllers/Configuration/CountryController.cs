@@ -21,16 +21,18 @@ namespace eCentral.Web.Controllers.Configuration
 
         private readonly ICountryService countryService;
         private readonly IStateProvinceService stateProvinceService;
+        private readonly IPortService portService;
         private readonly ILocalizationService localizationService;
 
         #endregion Fields
 
         #region Constructors
 
-        public CountryController(ICountryService countryService, 
+        public CountryController(ICountryService countryService, IPortService portService,
             IStateProvinceService stateProvinceService, ILocalizationService localizationService)
         {
             this.countryService       = countryService;
+            this.portService          = portService;
             this.stateProvinceService = stateProvinceService;
             this.localizationService  = localizationService;
         }
@@ -172,6 +174,75 @@ namespace eCentral.Web.Controllers.Configuration
 
             //If we got this far, something failed, redisplay form
             return Json(new { IsValid = false, htmlData = RenderPartialViewToString("_CreateOrUpdateState", model) });
+        }
+
+        #endregion
+
+        #region Ports
+
+        [HttpPost]
+        public ActionResult Ports(Guid countryId, bool isAir)
+        {
+            var query = portService.GetByCountryId(countryId);
+
+            if (isAir)
+                query = query.Where(p => p.IsAir == true).ToList();
+            else
+                query = query.Where(p => p.IsSea == true).ToList();
+
+            var ports = query.Select(s => s.ToModel());
+
+            return Json(new DataTablesParser<PortModel>(Request, ports).Parse());
+        }
+
+        //create or update
+        public ActionResult CreateOrUpdatePort(Guid rowId, Guid countryId)
+        {
+            var model = new PortModel();
+
+            if (rowId.IsEmpty())
+                model.CountryId = countryId;
+            else
+            {
+                var port = portService.GetById(rowId);
+                if (port != null)
+                {
+                    model = port.ToModel();
+                    model.IsEdit = true;
+                }
+            }
+
+            return PartialView("_CreateOrUpdatePort", model);
+        }
+
+        [HttpPost]
+        public ActionResult CreateOrUpdatePort(PortModel model)
+        {
+            var country = countryService.GetById(model.CountryId);
+            if (country == null)
+                //No country found with the specified id
+                return Json(new { IsValid = false, errorMessage = "Country does not exists" });
+
+            if (ModelState.IsValid)
+            {
+                if (model.RowId.IsEmpty())
+                    portService.Insert(model.ToEntity());
+                else
+                {
+                    var port = portService.GetById(model.RowId);
+                    if (port == null)
+                        //No state found with the specified id
+                        return Json(new { IsValid = false, errorMessage = "Port does not exists" });
+
+                    port = model.ToEntity(port);
+                    portService.Update(port);
+                }
+
+                return Json(new { IsValid = true });
+            }
+
+            //If we got this far, something failed, redisplay form
+            return Json(new { IsValid = false, htmlData = RenderPartialViewToString("_CreateOrUpdatePort", model) });
         }
 
         #endregion

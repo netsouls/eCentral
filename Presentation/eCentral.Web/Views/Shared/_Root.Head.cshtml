@@ -7,20 +7,46 @@
 @{
     var siteInformationSettings = EngineContext.Current.Resolve<SiteInformationSettings>();
     var siteState = siteInformationSettings.ApplicationState;
-    var i18n = string.Format("{0}{1}", i18nHttpHandler.DefaultPath,
-        WorkContext.WorkingLanguage.RowId);
-
+    var webHelper = EngineContext.Current.Resolve<IWebHelper>();
+    
     //resources
     if (siteState == ApplicationState.Production)
     {
         Html.AppendScriptParts(ResourceLocation.Head,
-            @Url.Content("modernizr.min.js"));
+            @Url.Content("//cdnjs.cloudflare.com/ajax/libs/modernizr/2.5.3/modernizr.min.js"));
 
         Html.AppendScriptParts(ResourceLocation.Foot,
-            @Url.Content("combined.min.js"));
+            "combined.min.js",
+            "//ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.unobtrusive-ajax.min.js",
+            "//ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js",
+            "//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js",
+            "//cdnjs.cloudflare.com/ajax/libs/qtip2/2.1.1/jquery.qtip.min.js",
+            "//cdnjs.cloudflare.com/ajax/libs/select2/3.4.0/select2.min.js",
+            "//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.3.1/jquery.maskedinput.min.js",
+            "//cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.0.6/jquery.mousewheel.min.js",
+            "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js",
+            "//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js",
+            "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js",
+            "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
+            );
+        
+        if (ViewBag.HasFileUpload != null &&
+            ViewBag.HasFileUpload == true)
+        {
+            Html.AddScriptParts(ResourceLocation.Foot,
+                Url.Content("jquery.fileupload.min.js"));
+        }
+        
+        @*
 
-        Html.AppendScriptParts(ResourceLocation.Head,
-            @Url.Content("combined.min.css"));
+        *@
+
+        Html.AppendCssFileParts(ResourceLocation.Head,
+            @Url.Content("combined.min.css"), 
+            "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css");
+
+        @*Html.AddScriptParts(ResourceLocation.Foot,
+            Url.Content("plugins/misc/jquery.fileupload.min.js"));*@
     }
     else
     {
@@ -29,6 +55,11 @@
 
         Html.AppendScriptParts(ResourceLocation.Foot,
             @Url.Content("appEngine.js"),
+            @Url.Content("plugins/tables/responsive-tables/responsive-tables.js"),
+            @Url.Content("plugins/tables/dataTables/dataTables.api.js"),
+            @Url.Content("plugins/tables/dataTables/ZeroClipboard.js"),
+            @Url.Content("plugins/tables/dataTables/TableTools.min.js"),
+            @Url.Content("plugins/tables/dataTables/jquery.dataTables.js"),
             @Url.Content("jquery.validate.unobtrusive.js"),
             @Url.Content("jquery.unobtrusive-ajax.min.js"),
             @Url.Content("jquery.validate.min.js"),
@@ -50,6 +81,8 @@
 
         Html.AppendCssFileParts(ResourceLocation.Head,             
             @Url.Content("main.css"),
+            @Url.Content("plugins/tables/dataTables/jquery.dataTables.css"),
+            @Url.Content("plugins/tables/dataTables/TableTools.css"),
             @Url.Content("plugins/forms/uniform/uniform.default.css"),
             @Url.Content("plugins/misc/qtip/jquery.qtip.css"),
             @Url.Content("plugins/forms/togglebutton/toggle-buttons.css"),
@@ -60,22 +93,15 @@
             @Url.Content("bootstrap/bootstrap-modal.css"),
             @Url.Content("bootstrap/bootstrap-responsive.css"),
             @Url.Content("bootstrap/bootstrap.css"));
-        
-        if (ViewBag.HasDataTable != null &&
-            ViewBag.HasDataTable == true)
-        {
-            Html.AddCssFileParts(ResourceLocation.Head,
-                @Url.Content("plugins/tables/dataTables/jquery.dataTables.css"),
-                @Url.Content("plugins/tables/dataTables/TableTools.css"));
-            
-            Html.AddScriptParts(ResourceLocation.Foot,
-                @Url.Content("plugins/tables/dataTables/jquery.dataTables.js"),
-                @Url.Content("plugins/tables/responsive-tables/responsive-tables.js"),
-                @Url.Content("plugins/tables/dataTables/dataTables.api.js"),
-                @Url.Content("plugins/tables/dataTables/ZeroClipboard.js"),
-                @Url.Content("plugins/tables/dataTables/TableTools.min.js"));
-        }
 
+        if (ViewBag.HasFileUpload != null &&
+            ViewBag.HasFileUpload == true)
+        {
+            Html.AddScriptParts(ResourceLocation.Foot,
+                Url.Content("plugins/misc/fileUpload/jquery.iframe-transport.js"),
+                Url.Content("plugins/misc/fileUpload/jquery.fileupload.js"));
+        }
+        
         Html.AddCssFileParts(@Url.Content("custom.css")); //add the custom stylesheet at the last
             
     }
@@ -96,20 +122,34 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
     <!-- Text -->
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' /> 
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css" />
-    <![endif]-->        
-    <!--[if IE 8]><link href="@("{0}?{1}={2}".FormatWith(CssHttpHandler.DefaultPath, CssHttpHandler.IdParameterName, Url.Content("ie8.css").Replace("/", "_").Replace(".css", ".css?{0}".FormatWith(SiteVersion.CurrentVersionHashValue)))) rel="stylesheet" type="text/css" /><![endif]-->
-    
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script type="text/javascript" src="@("{0}?{1}={2}".FormatWith(JsHttpHandler.DefaultPath, JsHttpHandler.IdParameterName, Url.Content("plugins/excanvas.min.js").Replace("/", "_").Replace(".js", ".js?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))"></script>
-      <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <script type="text/javascript" src="@("{0}?{1}={2}".FormatWith(JsHttpHandler.DefaultPath, JsHttpHandler.IdParameterName, Url.Content("plugins/respond.min.js").Replace("/", "_").Replace(".js", ".js?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))"></script>
+    @if (siteState == ApplicationState.Production)
+      {
+        <script type="text/javascript" src="@("{0}{1}".FormatWith(webHelper.RelativeWebRoot, Url.Content("library/js/html5.min.js").Replace(".js", ".js?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))"></script>
+        <script type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      }
+      else
+      { 
+        <script type="text/javascript" src="@("{0}?{1}={2}".FormatWith(JsHttpHandler.DefaultPath, JsHttpHandler.IdParameterName, Url.Content("plugins/excanvas.min.js").Replace("/", "_").Replace(".js", ".js?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))"></script>
+        <script type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script type="text/javascript" src="@("{0}?{1}={2}".FormatWith(JsHttpHandler.DefaultPath, JsHttpHandler.IdParameterName, Url.Content("plugins/respond.min.js").Replace("/", "_").Replace(".js", ".js?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))"></script>
+      }
     <![endif]-->
+    <!--[if IE 8]>
+      @if (siteState == ApplicationState.Production)
+      {
+        <link href="@("{0}?{1}={2}".FormatWith(CssHttpHandler.DefaultPath, CssHttpHandler.IdParameterName, Url.Content("ie8.min.css").Replace("/", "_").Replace(".css", ".css?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))" rel="stylesheet" type="text/css" />
+      }
+      else
+      { 
+        <link href="@("{0}?{1}={2}".FormatWith(CssHttpHandler.DefaultPath, CssHttpHandler.IdParameterName, Url.Content("ie8.css").Replace("/", "_").Replace(".css", ".css?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))" rel="stylesheet" type="text/css" />
+      }
+    <![endif]-->    
     <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
     <meta name="application-name" content="@siteInformationSettings.SiteName"/> 
     <meta name="msapplication-TileColor" content="#3399cc"/>
@@ -123,7 +163,6 @@
     @RenderBody()
     @Html.SiteCssFiles(ResourceLocation.Foot)
     @Html.SiteScripts(ResourceLocation.Foot)
-    <script src="@i18n" type="text/javascript"></script>
     @RenderSection("inlinescripts", false)@*Any inline javascript required will be rendered in this section*@
 </body>
 </html>

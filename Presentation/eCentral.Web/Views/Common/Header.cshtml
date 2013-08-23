@@ -1,30 +1,11 @@
 ﻿@using eCentral.Services.Users
 @model HeaderModel
 <div class="nav-no-collapse">
-    <ul class="nav">
+    <ul class="nav pull-right usernav">
         <li @if (Model.DashboardActive)
             {<text>class="active"</text>}><a href="@Url.RouteUrl(SystemRouteNames.HomePage)"><span
                 class="icon16 icomoon-icon-screen-2 @if (Model.DashboardActive){<text>red</text>} else {<text>blue</text>}"></span><span class="txt">Dashboard</span></a></li>
-        @if (WorkContext.IsAdministrator)
-        { 
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                class="icon16 icomoon-icon-cog green"></span><span class="txt">Settings</span> <b class="caret">
-                </b></a>
-                <ul class="dropdown-menu">
-                    <li class="menu">
-                        <ul>
-                            <li><a href="#"><span class="icon16 icomoon-icon-equalizer"></span>Site config</a>
-                            </li>
-                            <li><a href="#"><span class="icon16 icomoon-icon-wrench"></span>Plugins</a> </li>
-                            <li><a href="#"><span class="icon16 icomoon-icon-image-2"></span>Themes</a> </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        }
-    </ul>
-    <ul class="nav pull-right usernav">
-        <li class="dropdown"><a href="mailto:@Model.SupportEmailAddress" ><span
+        <li><a href="mailto:@Model.SupportEmailAddress" ><span
             class="icon16 entypo-icon-help-2 dark"></span></a>
         </li>
         <li class="dropdown"><a href="#" class="dropdown-toggle avatar" data-toggle="dropdown">
@@ -35,7 +16,7 @@
                     <ul>
                         <li><a href="#"><span class="icon16 icomoon-icon-user-3"></span>My profile</a>
                         </li>
-                        <li><a href="#"><span class="icon16 icomoon-icon-pencil-3"></span>Change Password</a>
+                        <li><a href="@Url.RouteUrl(SystemRouteNames.ChangePassword)"><span class="icon16 icomoon-icon-pencil-3"></span>Change Password</a>
                         </li>
                     </ul>
                 </li>

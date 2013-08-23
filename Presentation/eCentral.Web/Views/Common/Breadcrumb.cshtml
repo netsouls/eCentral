@@ -2,7 +2,7 @@
 @using eCentral.Web.Framework.Web;
 @{
     var siteInformationSettings = EngineContext.Current.Resolve<SiteInformationSettings>();
-    
+
     if (!Telerik.Web.Mvc.SiteMapManager.SiteMaps.ContainsKey("sitemap"))
     {
         Telerik.Web.Mvc.SiteMapManager.SiteMaps.Register<Telerik.Web.Mvc.XmlSiteMap>("sitemap", sitemap =>
@@ -51,42 +51,50 @@
         return null;
     }
 }
-<ul class="breadcrumb">
+<div class="breadcrumb-widget">
+    <ul class="breadcrumb">
+        @if (currentNode != null)
+        {
+            <li>You are here:</li>
+            <li><a href="@Url.RouteUrl(SystemRouteNames.HomePage)" class="tip" title="Dashboard">
+                <span class="icon16 icomoon-icon-screen-2 blue"></span></a><span class="divider"><span
+                    class="icon16 icomoon-icon-arrow-right-3"></span></span></li>
+        }
+        else {
+            <li>&nbsp;</li>
+        }
+        @foreach (var siteNode in ancestorList.Reverse())
+        {
+            var routeUrl = "#";
+            if (!string.IsNullOrEmpty(siteNode.RouteName))
+            {
+                routeUrl = Url.RouteUrl(siteNode.RouteName);
+            }
+            else if (!string.IsNullOrEmpty(siteNode.ControllerName) && !string.IsNullOrEmpty(siteNode.ActionName))
+            {
+                routeUrl = Url.Action(siteNode.ActionName, siteNode.ControllerName);
+            }
+
+            var resource = siteNode.Attributes["siteResource"];
+            if (resource != null && !string.IsNullOrEmpty(resource.ToString()))
+            {
+                resource = T(resource.ToString()).ToHtmlString();
+            }
+            else
+            {
+                resource = siteNode.Title;
+            }
+        <li class="active"><a href="@routeUrl.ToLowerInvariant()">@resource</a><span class="divider"><span
+            class="icon16 icomoon-icon-arrow-right-3"></span></li> 
+        }
     @if (currentNode != null)
-    {
-        <li>You are here:</li>
-        <li><a href="@Url.RouteUrl(SystemRouteNames.HomePage)" class="tip" title="Dashboard">
-        <span class="icon16 icomoon-icon-screen-2 blue"></span></a><span class="divider"><span
-            class="icon16 icomoon-icon-arrow-right-3"></span></span></li>
+    { 
+        <li class="active">
+            @if (currentNode.Attributes["siteResource"] != null)
+            {@T(currentNode.Attributes["siteResource"].ToString())}
+            else
+            { @currentNode.Title }
+        </li>
     }    
-    
-    @foreach (var siteNode in ancestorList.Reverse())
-    {
-        var routeUrl = "#";
-        if (!string.IsNullOrEmpty(siteNode.RouteName))
-        {
-            routeUrl = Url.RouteUrl(siteNode.RouteName);
-        }
-        else if (!string.IsNullOrEmpty(siteNode.ControllerName) && !string.IsNullOrEmpty(siteNode.ActionName))
-        {
-            routeUrl = Url.Action(siteNode.ActionName, siteNode.ControllerName);
-        }
-        
-        var resource = siteNode.Attributes["siteResource"];
-        if (resource != null && !string.IsNullOrEmpty(resource.ToString()))
-        {
-            resource = T(resource.ToString()).ToHtmlString();
-        }
-        else
-        {
-            resource = siteNode.Title;
-        }
-         <li class="active"><a href="@routeUrl.ToLowerInvariant()">@resource</a><span class="divider"><span class="icon16 icomoon-icon-arrow-right-3"></span></li> 
-    }
-     @if (currentNode != null)
-     { 
-         <li class="active">@if (currentNode.Attributes["siteResource"] != null)
-                            {@T(currentNode.Attributes["siteResource"].ToString())}
-                            else { @currentNode.Title } </li>
-     }
-</ul>
+    </ul>
+</div>

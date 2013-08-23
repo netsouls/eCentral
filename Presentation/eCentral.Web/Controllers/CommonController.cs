@@ -47,7 +47,7 @@ namespace eCentral.Web.Controllers
             var model = new FaviconModel()
             {
                 Uploaded = FileSystem.File.Exists(Request.PhysicalApplicationPath + "library/images/favicon.ico"),
-                FaviconUrl = webHelper.AbsoluteWebRoot + "library/images"
+                FaviconUrl = webHelper.RelativeWebRoot + "library/images"
             };
             return PartialView(model);
         }

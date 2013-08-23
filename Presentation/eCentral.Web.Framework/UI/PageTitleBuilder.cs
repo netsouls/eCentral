@@ -1,4 +1,5 @@
 ﻿using System;
+using eCentral.Core.Domain;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace eCentral.Web.Framework.UI
     {
         private readonly SeoSettings _seoSettings;
         private readonly IWebHelper _webHelper;
+        private readonly SiteInformationSettings siteSettings;
         private readonly List<string> _titleParts;
         private readonly List<string> _metaDescriptionParts;
         private readonly List<string> _metaKeywordParts;
@@ -19,10 +21,12 @@ namespace eCentral.Web.Framework.UI
         private readonly Dictionary<ResourceLocation, List<string>> _cssParts;
         private readonly List<string> _canonicalUrlParts;
                 
-        public PageTitleBuilder(SeoSettings seoSettings, IWebHelper webHelper)
+        public PageTitleBuilder(SeoSettings seoSettings, SiteInformationSettings siteSettings,
+            IWebHelper webHelper)
         {
             this._seoSettings          = seoSettings;
             this._webHelper            = webHelper;
+            this.siteSettings          = siteSettings;
             this._titleParts           = new List<string>();
             this._metaDescriptionParts = new List<string>();
             this._metaKeywordParts     = new List<string>();
@@ -108,10 +112,14 @@ namespace eCentral.Web.Framework.UI
                 if (scriptPath.StartsWith("//"))
                     result.AppendFormat("<script src=\"{0}\" type=\"text/javascript\"></script>", scriptPath);
                 else
-                    result.AppendFormat("<script src=\"{0}?{1}={2}\" type=\"text/javascript\"></script>",
-                    JsHttpHandler.DefaultPath, JsHttpHandler.IdParameterName, scriptPath.Replace("/", "_").Replace(".js", hashValue));
-
-                //result.Append(Environment.NewLine);
+                {
+                    if ( siteSettings.ApplicationState == ApplicationState.Development)
+                        result.AppendFormat("<script src=\"{0}?{1}={2}\" type=\"text/javascript\"></script>",
+                            JsHttpHandler.DefaultPath, JsHttpHandler.IdParameterName, scriptPath.Replace("/", "_").Replace(".js", hashValue));
+                    else
+                        result.AppendFormat("<script src=\"{0}library/js/{1}\" type=\"text/javascript\"></script>",
+                            _webHelper.RelativeWebRoot, scriptPath.Replace(".js", hashValue));
+                }   
             }
 
             return result.ToString();
@@ -146,14 +154,16 @@ namespace eCentral.Web.Framework.UI
 
             // set hashvalue, we set this to the site version  
             var hashValue = string.Format(".css?{0}", SiteVersion.CurrentVersionHashValue);
-
+            
             var result = new StringBuilder();
             //use only distinct rows
             foreach (var cssPath in _cssParts[location].Distinct())
             {
-                result.AppendFormat("<link href=\"{0}?{1}={2}\" rel=\"stylesheet\" type=\"text/css\" />", 
-                   CssHttpHandler.DefaultPath, CssHttpHandler.IdParameterName, cssPath.Replace("/","_").Replace(".css", hashValue ));
-                //result.Append(Environment.NewLine);
+                if (cssPath.StartsWith("//")) // 30-04-2013: Deepankar - these files are coming from the CDN
+                    result.AppendFormat("<link href=\"{0}\" rel=\"stylesheet\" type=\"text/css\" />", cssPath);
+                else
+                    result.AppendFormat("<link href=\"{0}?{1}={2}\" rel=\"stylesheet\" type=\"text/css\" />", 
+                        CssHttpHandler.DefaultPath, CssHttpHandler.IdParameterName, cssPath.Replace("/","_").Replace(".css", hashValue ));
             }
             return result.ToString();
         }

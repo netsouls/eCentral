@@ -67,6 +67,7 @@
     <Compile Include="Mapping\Companies\BranchOfficeMap.cs" />
     <Compile Include="Mapping\Configuration\SettingMap.cs" />
     <Compile Include="Mapping\Companies\CompanyMap.cs" />
+    <Compile Include="Mapping\Directory\PortMap.cs" />
     <Compile Include="Mapping\Directory\CountryMap.cs" />
     <Compile Include="Mapping\Directory\CurrencyMap.cs" />
     <Compile Include="Mapping\Directory\StateProvinceMap.cs" />

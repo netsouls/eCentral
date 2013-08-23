@@ -39,6 +39,12 @@ namespace eCentral.Web.Infrastructure
                 .ForMember(dest => dest.Abbreviation, mo => mo.NullSubstitute(string.Empty))
                 .ForMember(dest => dest.Country, mo => mo.Ignore());
 
+            //ports
+            Mapper.CreateMap<Port, PortModel>();
+            Mapper.CreateMap<PortModel, Port>()
+                .ForMember(dest => dest.Abbreviation, mo => mo.NullSubstitute(string.Empty))
+                .ForMember(dest => dest.Country, mo => mo.Ignore());
+
             //logs
             Mapper.CreateMap<Log, LogModel>()
                 .ForMember(dest => dest.UserName, mo => mo.Ignore())

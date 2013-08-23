@@ -30,7 +30,6 @@ namespace eCentral.Web.Models.Directory
         [SiteResourceDisplayName("Configuration.Countries.Fields.DisplayOrder")]
         public int DisplayOrder { get; set; }
 
-        [SiteResourceDisplayName("Configuration.Countries.Fields.NumberOfStates")]
         public int NumberOfStates { get; set; }
     }
 }

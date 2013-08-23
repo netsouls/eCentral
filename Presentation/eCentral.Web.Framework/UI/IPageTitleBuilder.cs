@@ -1,4 +1,6 @@
-﻿namespace eCentral.Web.Framework.UI
+﻿using eCentral.Core.Domain;
+
+namespace eCentral.Web.Framework.UI
 {
     public interface IPageTitleBuilder
     {
@@ -13,7 +15,6 @@
         void AddCssFileParts(ResourceLocation location, params string[] parts);
         void AppendCssFileParts(ResourceLocation location, params string[] parts);
         string GenerateCssFiles(ResourceLocation location);
-
 
         void AddCanonicalUrlParts(params string[] parts);
         void AppendCanonicalUrlParts(params string[] parts);

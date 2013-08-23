@@ -176,7 +176,7 @@ namespace eCentral.Web.Extensions
 
         #endregion
 
-        #region Countries / states
+        #region Countries / states / ports
 
         public static CountryModel ToModel(this Country entity)
         {
@@ -208,6 +208,20 @@ namespace eCentral.Web.Extensions
             return Mapper.Map(model, destination);
         }
 
+        public static PortModel ToModel(this Port entity)
+        {
+            return Mapper.Map<Port, PortModel>(entity);
+        }
+
+        public static Port ToEntity(this PortModel model)
+        {
+            return Mapper.Map<PortModel, Port>(model);
+        }
+
+        public static Port ToEntity(this PortModel model, Port destination)
+        {
+            return Mapper.Map(model, destination);
+        }
 
         #endregion
 
