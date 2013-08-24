@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/MsBuild/2003">
+
+    <UsingTask TaskName="AutoIncrementTask" AssemblyFile="..\..\Tools\eCentral.Tools.AssemblyVersioning.BuildTask\bin\Release\eCentral.Tools.AssemblyVersioning.BuildTask.dll" />
+</Project>
