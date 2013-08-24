@@ -26,7 +26,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -451,6 +451,7 @@
     <Content Include="library\js\jquery.validate.unobtrusive.js" />
     <Content Include="library\js\plugins\excanvas.min.js" />
     <Content Include="library\js\plugins\fix\ios-fix\ios-orientationchange-fix.js" />
+    <Content Include="library\js\plugins\fix\ios-fix\ios-orientationchange-fix.min.js" />
     <Content Include="library\js\plugins\fix\touch-punch\jquery.ui.touch-punch.js" />
     <Content Include="library\js\plugins\fix\touch-punch\jquery.ui.touch-punch.min.js" />
     <Content Include="library\js\plugins\forms\maskedinput\jquery.maskedinput-1.3.js" />
@@ -831,7 +832,6 @@
     <Content Include="library\js\plugins\tables\dataTables\TableTools.min.js" />
     <Content Include="library\js\plugins\tables\dataTables\ZeroClipboard.js" />
     <Content Include="library\js\plugins\tables\responsive-tables\responsive-tables.js" />
-    <Content Include="library\user-content\images\Companies\2d2e953e-4e0c-403e-b029-b031fa4f72cd.png" />
     <Content Include="library\user-content\images\Companies\Default.gif" />
     <Content Include="robots.txt" />
   </ItemGroup>
@@ -1019,6 +1019,10 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>$(MSBuildBinPath)\msbuild.exe /p:Configuration=$(ConfigurationName);SolutionDir=$(SolutionDir) $(SolutionDir)Items\YUIMinification\application.xml</PostBuildEvent>
+    <PostBuildEvent>$(MSBuildBinPath)\msbuild.exe /p:Configuration=$(ConfigurationName);SolutionDir=$(SolutionDir) $(SolutionDir)Items\BuildTasks\YUIMinification.xml</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

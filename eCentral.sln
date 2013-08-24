@@ -20,10 +20,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCentral.Web.Framework", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCentral.Web", "Presentation\eCentral.Web\eCentral.Web.csproj", "{C930C27E-9510-48E1-A255-4333A5F7A92B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "YUIMinification", "YUIMinification", "{8B9508D6-E00E-44DB-A88D-396AE6F1ABB1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{8EC529E6-8D1A-4A9C-B343-47403804E4F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCentral.Tools.AssemblyVersioning.BuildTask", "Tools\eCentral.Tools.AssemblyVersioning.BuildTask\eCentral.Tools.AssemblyVersioning.BuildTask.csproj", "{58687ED4-3E6E-4C5F-A7A9-DA4DD2C4842F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildTasks", "BuildTasks", "{A8D759B4-7C3F-49B1-AE1B-29C8BA7DA4F9}"
 	ProjectSection(SolutionItems) = preProject
-		Items\YUIMinification\Application.xml = Items\YUIMinification\Application.xml
+		Items\BuildTasks\Versioning.xml = Items\BuildTasks\Versioning.xml
+		Items\BuildTasks\YUIMinification.xml = Items\BuildTasks\YUIMinification.xml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCentral.Tools.CssPaths.BuildTask", "Tools\eCentral.Tools.CssPaths.BuildTask\eCentral.Tools.CssPaths.BuildTask.csproj", "{C31C36C9-808E-40C5-B0D6-87AE73CE4E97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,16 +58,22 @@ Global
 		{C930C27E-9510-48E1-A255-4333A5F7A92B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C930C27E-9510-48E1-A255-4333A5F7A92B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C930C27E-9510-48E1-A255-4333A5F7A92B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58687ED4-3E6E-4C5F-A7A9-DA4DD2C4842F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58687ED4-3E6E-4C5F-A7A9-DA4DD2C4842F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C31C36C9-808E-40C5-B0D6-87AE73CE4E97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C31C36C9-808E-40C5-B0D6-87AE73CE4E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8B9508D6-E00E-44DB-A88D-396AE6F1ABB1} = {653456A3-186B-46C0-86A0-4EAF99A117C5}
+		{A8D759B4-7C3F-49B1-AE1B-29C8BA7DA4F9} = {653456A3-186B-46C0-86A0-4EAF99A117C5}
 		{E4CEF55B-ECE1-44C5-A126-7B1B98BC839A} = {51C0D9C4-A982-4D17-B7E1-A99652BAE4EC}
 		{A3AF2707-90ED-46E6-AAAF-1B77E7154566} = {51C0D9C4-A982-4D17-B7E1-A99652BAE4EC}
 		{F347481F-93C7-4051-B337-59ADAAF920F6} = {51C0D9C4-A982-4D17-B7E1-A99652BAE4EC}
 		{1A1FF273-D816-4AF3-BF0B-911592A8EB08} = {1A779878-A38A-46AA-8AA2-B02B7DD21210}
 		{C930C27E-9510-48E1-A255-4333A5F7A92B} = {1A779878-A38A-46AA-8AA2-B02B7DD21210}
+		{58687ED4-3E6E-4C5F-A7A9-DA4DD2C4842F} = {8EC529E6-8D1A-4A9C-B343-47403804E4F3}
+		{C31C36C9-808E-40C5-B0D6-87AE73CE4E97} = {8EC529E6-8D1A-4A9C-B343-47403804E4F3}
 	EndGlobalSection
 EndGlobal

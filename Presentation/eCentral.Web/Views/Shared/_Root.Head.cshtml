@@ -37,16 +37,9 @@
                 Url.Content("jquery.fileupload.min.js"));
         }
         
-        @*
-
-        *@
-
         Html.AppendCssFileParts(ResourceLocation.Head,
             @Url.Content("combined.min.css"), 
             "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css");
-
-        @*Html.AddScriptParts(ResourceLocation.Foot,
-            Url.Content("plugins/misc/jquery.fileupload.min.js"));*@
     }
     else
     {
@@ -129,34 +122,33 @@
     <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css" />
     @if (siteState == ApplicationState.Production)
-      {
-        <script type="text/javascript" src="@("{0}{1}".FormatWith(webHelper.RelativeWebRoot, Url.Content("library/js/html5.min.js").Replace(".js", ".js?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))"></script>
-        <script type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      }
-      else
-      { 
-        <script type="text/javascript" src="@("{0}?{1}={2}".FormatWith(JsHttpHandler.DefaultPath, JsHttpHandler.IdParameterName, Url.Content("plugins/excanvas.min.js").Replace("/", "_").Replace(".js", ".js?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))"></script>
-        <script type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <script type="text/javascript" src="@("{0}?{1}={2}".FormatWith(JsHttpHandler.DefaultPath, JsHttpHandler.IdParameterName, Url.Content("plugins/respond.min.js").Replace("/", "_").Replace(".js", ".js?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))"></script>
-      }
+    {
+    <script type="text/javascript" src="@("{0}{1}".FormatWith(webHelper.RelativeWebRoot, Url.Content("library/js/html5.min.js").Replace(".js", ".js?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))"></script>
+    <script type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    }
+    else
+    { 
+    <script type="text/javascript" src="@("{0}?{1}={2}".FormatWith(JsHttpHandler.DefaultPath, JsHttpHandler.IdParameterName, Url.Content("plugins/excanvas.min.js").Replace("/", "_").Replace(".js", ".js?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))"></script>
+    <script type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script type="text/javascript" src="@("{0}?{1}={2}".FormatWith(JsHttpHandler.DefaultPath, JsHttpHandler.IdParameterName, Url.Content("plugins/respond.min.js").Replace("/", "_").Replace(".js", ".js?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))"></script>
+    }
     <![endif]-->
     <!--[if IE 8]>
-      @if (siteState == ApplicationState.Production)
-      {
-        <link href="@("{0}?{1}={2}".FormatWith(CssHttpHandler.DefaultPath, CssHttpHandler.IdParameterName, Url.Content("ie8.min.css").Replace("/", "_").Replace(".css", ".css?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))" rel="stylesheet" type="text/css" />
-      }
-      else
-      { 
-        <link href="@("{0}?{1}={2}".FormatWith(CssHttpHandler.DefaultPath, CssHttpHandler.IdParameterName, Url.Content("ie8.css").Replace("/", "_").Replace(".css", ".css?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))" rel="stylesheet" type="text/css" />
-      }
+    @if (siteState == ApplicationState.Production)
+    {
+    <link href="@("{0}{1}".FormatWith(webHelper.RelativeWebRoot, Url.Content("library/css/ie8.min.css").Replace(".css", ".css?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))" rel="stylesheet" type="text/css" />
+    }
+    else
+    { 
+    <link href="@("{0}?{1}={2}".FormatWith(CssHttpHandler.DefaultPath, CssHttpHandler.IdParameterName, Url.Content("ie8.css").Replace("/", "_").Replace(".css", ".css?{0}".FormatWith(SiteVersion.CurrentVersionHashValue))))" rel="stylesheet" type="text/css" />
+    }
     <![endif]-->    
     <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
     <meta name="application-name" content="@siteInformationSettings.SiteName"/> 
     <meta name="msapplication-TileColor" content="#3399cc"/>
     @Html.SiteCssFiles(ResourceLocation.Head)
     @Html.SiteScripts(ResourceLocation.Head)
-    @*Favicon - upload favicon.ico file to the root directory*@
-    @Html.Action("Favicon", "Common", new { area = "" })
+    @Html.Action("Favicon", "Common", new { area = "" })@*Favicon - upload favicon.ico file to the root directory*@    
     @Html.Action("WidgetsByZone", "Widget", new { area = "", widgetZone = eCentral.Core.Domain.Cms.WidgetZone.HeadHtmlTag })
 </head>
 <body>

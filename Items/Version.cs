@@ -1,4 +1,4 @@
-﻿#region Copyright (c) & ChangeLog
+#region Copyright (c) & ChangeLog
 /*===============================================================================
 ' Copyright (c) 2013 Studio Netsouls Pvt. Ltd. All rights reserved.
 ' All rights reserved.
@@ -19,7 +19,7 @@ using System.Reflection;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyCompany("Tranzfreight Logistics India Pvt. Ltd.")]
-[assembly: AssemblyCopyright("Copyright © Tranzfreight Logistics India Pvt. Ltd. 2012")]
+[assembly: AssemblyCopyright("Copyright Tranzfreight Logistics India Pvt. Ltd. 2013")]
 [assembly: AssemblyTrademark("Studio Netsouls Pvt. Ltd.")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyConfiguration("Debug")]
@@ -34,6 +34,6 @@ using System.Reflection;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below: 
 // Versioning logic yyyy.mm.dd
-[assembly: AssemblyVersion("2013.08.23")]
-[assembly: AssemblyFileVersion("2013.08.23")]
-[assembly: AssemblyInformationalVersion("2013.08.23")]
+[assembly: AssemblyVersion("2013.08.24")]
+[assembly: AssemblyFileVersion("2013.08.24.8")]
+[assembly: AssemblyInformationalVersion("2013.08.24")]

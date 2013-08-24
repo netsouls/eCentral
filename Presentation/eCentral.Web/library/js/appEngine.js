@@ -20,7 +20,7 @@ Modernizr.load({
 });
 Modernizr.load({
     test: Modernizr.touch,
-    yep: ['/plugins/fix/ios-fix/ios-orientationchange-fix.js', '/plugins/fix/touch-punch/jquery.ui.touch-punch.min.js']
+    yep: ['/plugins/fix/ios-fix/ios-orientationchange-fix.min.js', '/plugins/fix/touch-punch/jquery.ui.touch-punch.min.js']
 });
 
 $.extend(appEngine, {

@@ -162,8 +162,14 @@ namespace eCentral.Web.Framework.UI
                 if (cssPath.StartsWith("//")) // 30-04-2013: Deepankar - these files are coming from the CDN
                     result.AppendFormat("<link href=\"{0}\" rel=\"stylesheet\" type=\"text/css\" />", cssPath);
                 else
-                    result.AppendFormat("<link href=\"{0}?{1}={2}\" rel=\"stylesheet\" type=\"text/css\" />", 
-                        CssHttpHandler.DefaultPath, CssHttpHandler.IdParameterName, cssPath.Replace("/","_").Replace(".css", hashValue ));
+                {
+                    if (siteSettings.ApplicationState == ApplicationState.Development)
+                        result.AppendFormat("<link href=\"{0}?{1}={2}\" rel=\"stylesheet\" type=\"text/css\" />",
+                            CssHttpHandler.DefaultPath, CssHttpHandler.IdParameterName, cssPath.Replace("/", "_").Replace(".css", hashValue));
+                    else
+                        result.AppendFormat("<link href=\"{0}library/css/{1}\" rel=\"stylesheet\" type=\"text/css\" />",
+                            _webHelper.RelativeWebRoot, cssPath.Replace(".css", hashValue));
+                }
             }
             return result.ToString();
         }

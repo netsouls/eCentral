@@ -17,7 +17,7 @@
     <div class="form-row">
         @Html.Partial("_Notifications")
     </div>
-    @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "loginForm", @name = "loginForm", @class = "form-horizontal" }))
+    @using (Html.BeginRouteForm(SystemRouteNames.AccountActivation, FormMethod.Post, new { @id = "loginForm", @name = "loginForm", @class = "form-horizontal" }))
     {
         <div class="form-row row-fluid">
             <div class="span12">
